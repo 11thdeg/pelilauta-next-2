@@ -5,8 +5,8 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <img alt="Charna logo" src="/proprietary/fox.svg" id="logo" />
+  <HelloWorld msg="Charna + Pelilauta @ Next – prototype" />
 </template>
 
 <style>
@@ -17,5 +17,11 @@ import HelloWorld from './components/HelloWorld.vue'
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+img#logo {
+  width: 256px;
+  margin: 0 auto;
+  background-color: #002337;
+  border-radius: 50%;
 }
 </style>
