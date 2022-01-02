@@ -7,6 +7,8 @@ import HelloWorld from './components/HelloWorld.vue'
 <template>
   <img alt="Charna logo" src="/proprietary/fox.svg" id="logo" />
   <HelloWorld msg="Charna + Pelilauta @ Next – prototype" />
+
+  <router-view />
 </template>
 
 <style>
