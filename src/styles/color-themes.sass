@@ -1,0 +1,57 @@
+// Complete solution based on the ideas presented in
+// https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/
+:root
+  // Support for dark and light mode available
+  color-scheme: light dark
+
+  // Material text-opacity
+  --text-hight-opacity: 1
+  --text-medium-opacity: 0.87
+  --text-low-opacity: 0.60
+
+  // *** Chromatic color palettes *************************************
+
+  // Alerts:
+  --chroma-alert: #bb1187
+  --chroma-alert-field-tint: #f1cfe7
+
+  // Secondary palette:
+  // https://gka.github.io/palettes/#/9|s|002337,05e7fb,e7fbfb|ffffe0,ff005e,006c09|1|1
+  --chroma-secondary-a: rgb(0, 35, 55)
+  --chroma-secondary-b: #043c50
+  --chroma-secondary-c: #10566b
+  --chroma-secondary-d: #227286
+  --chroma-secondary-e: #388ea1
+  --chroma-secondary-f: #53abbb
+  --chroma-secondary-g: #76c8d5
+  --chroma-secondary-h: #a2e4ec
+  --chroma-secondary-i: #e7fbfb
+
+@mixin darkTheme()
+  // add dark theme colors here
+  --color-low: rgba(255,255,255,var(--text-low-opacity))
+  --color-medium: rgba(255,255,255, var(--text-medium-opacity))
+  --color-high: rgba(255,255,255, var(--text-high-opacity))
+  --color-background: var(--chroma-secondary-a)
+
+@mixin lightTheme()
+  // add light theme colors here
+  --color-low: rgba(0, 35, 55,var(--text-low-opacity))
+  --color-medium: rgba(0, 35, 55, var(--text-medium-opacity))
+  --color-high: rgba(0, 35, 55, var(--text-high-opacity))
+  --color-background: #fff
+
+body
+  @include darkTheme()
+
+body.light-theme
+  @include lightTheme()
+
+// Styles for users who prefer light mode at the OS level
+@media (prefers-color-scheme: light)
+  // defaults to light theme
+  body
+    @include lightTheme()
+  // Override light mode with dark mode styles if the user decides to swap
+  body.dark-theme
+    @include darkTheme()

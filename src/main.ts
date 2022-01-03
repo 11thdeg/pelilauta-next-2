@@ -8,6 +8,7 @@ import { initializeApp } from "firebase/app"
 import { getAnalytics, logEvent } from "firebase/analytics"
 import { useStore } from './stores/main'
 import { getAuth, onAuthStateChanged } from "firebase/auth"
+import 'animate.css'
 
 const router = createRouter({
   history: createWebHistory(),
