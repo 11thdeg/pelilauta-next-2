@@ -1,5 +1,6 @@
 <template>
   <div>Home ({{ init }})</div>
+  <div>{{ topics }}</div>
 </template>
 
 <script lang="ts">
@@ -11,6 +12,7 @@ export default defineComponent({
     const store = useStore()
     return {
       init: computed(() => store.initialized),
+      topics: computed(() => store.topics)
     }
   }
 })

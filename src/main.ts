@@ -28,13 +28,7 @@ const auth = getAuth(fb)
 
 onAuthStateChanged(auth, (user) => {
   console.log('User logged in:', user)
-  if (user) {
-    state.initialized = true
-    state.anonymous = user.isAnonymous
-  } else {
-    state.initialized = true
-    state.anonymous = true
-  }
+  state.initialize(user)
 })
 
 logEvent(analytics, "app_start")

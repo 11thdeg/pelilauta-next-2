@@ -40,7 +40,6 @@ export default defineComponent({
 
 img#logo
   width: 256px
-  margin: 0 auto
   background-color: #002337
   border-radius: 50%
 </style>
