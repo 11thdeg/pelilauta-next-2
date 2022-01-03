@@ -4,4 +4,5 @@ import About from './About.vue'
 export const routes = [
   { path: '/', component: Home },
   { path: '/about', component: About },
+  { path: '/stylebook', component: () => import('./Stylebook.vue') },
 ]

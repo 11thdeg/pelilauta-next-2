@@ -3,14 +3,17 @@ import HelloWorld from './components/HelloWorld.vue'
 import LoadingScreen from '@/components/app/LoadingScreen.vue'
 import { useStore } from './stores/main'
 import { computed, defineComponent } from 'vue'
+import LoginButton from './components/account/LoginButton.vue'
+import LogoutButton from './components/account/LogoutButton.vue'
 
 export default defineComponent({
-  components: { HelloWorld, LoadingScreen },
+  components: { HelloWorld, LoadingScreen, LoginButton, LogoutButton },
   setup() {
     const state = useStore()
     const init = computed(() => state.initialized)
     return {
-      init
+      init,
+      anon: computed(() => state.anonymous),
     }
   },
 })
@@ -23,7 +26,8 @@ export default defineComponent({
     </div>
   </transition>
   <template v-if="init">
-    <HelloWorld msg="Charna + Pelilauta @ Next – prototype" />
+    <LoginButton v-if="anon" />
+    <LogoutButton v-else />
     <router-view />
   </template>
 </template>
