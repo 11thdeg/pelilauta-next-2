@@ -1,14 +1,29 @@
-<script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
+<script lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
+import { useStore } from './stores/main'
+import { computed, defineComponent } from 'vue'
+
+export default defineComponent({
+  components: { HelloWorld },
+  setup() {
+    const state = useStore()
+    const init = computed(() => state.initialized)
+    return {
+      init
+    }
+  },
+})
 </script>
 
 <template>
   <img alt="Charna logo" src="/proprietary/fox.svg" id="logo" />
-  <HelloWorld msg="Charna + Pelilauta @ Next – prototype" />
-
-  <router-view />
+  <template v-if="init">
+    <HelloWorld msg="Charna + Pelilauta @ Next – prototype" />
+    <router-view />
+  </template>
+  <div v-else>
+    <p>Loading...</p>
+  </div>
 </template>
 
 <style>
