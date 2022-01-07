@@ -2,6 +2,7 @@ import { computed, ref, Ref } from 'vue'
 import { defineStore } from 'pinia'
 import type { User } from 'firebase/auth'
 import { getFirestore, doc, getDoc } from '@firebase/firestore'
+import { useSession } from './session'
 
 interface topic {
   slug: string
@@ -37,9 +38,13 @@ export const useStore = defineStore('main', () => {
     try {
       const metaDoc = await getDoc(metaRef)
       topics.value = metaDoc.data()?.topics || []
+
     } catch (e) {
       console.error(e)
     }
+
+    const session = useSession()
+    session.firestoreInitialized()
   }
 
   return {
@@ -50,21 +55,3 @@ export const useStore = defineStore('main', () => {
     initialize
   }
 })
-
-
-
-/* 
-{
-  // other options...
-  state: () => {
-    return {
-      initialized: false,
-      anonymous: true
-    }
-  },
-  actions: {
-    initialize: async () => {
-      this.state.initialized = true
-    }
-  }
-})*/

@@ -1,19 +1,20 @@
 <script lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
 import LoadingScreen from '@/components/app/LoadingScreen.vue'
-import { useStore } from './stores/main'
 import { computed, defineComponent } from 'vue'
 import LoginButton from './components/account/LoginButton.vue'
 import LogoutButton from './components/account/LogoutButton.vue'
+import { useSession } from './stores/session'
+import { useStore } from './stores/main'
 
 export default defineComponent({
   components: { HelloWorld, LoadingScreen, LoginButton, LogoutButton },
   setup() {
-    const state = useStore()
-    const init = computed(() => state.initialized)
+    const session = useSession()
+    const store = useStore()
     return {
-      init,
-      anon: computed(() => state.anonymous),
+      operational: computed(() => session.operational),
+      anonymous: computed(() => store.anonymous),
     }
   },
 })
@@ -21,12 +22,12 @@ export default defineComponent({
 
 <template>
   <transition mode="out-in" leave-active-class="animate__animated animate__fadeOut">
-    <div v-if="!init">
+    <div v-if="!operational">
       <LoadingScreen />
     </div>
   </transition>
-  <template v-if="init">
-    <LoginButton v-if="anon" />
+  <template v-if="operational">
+    <LoginButton v-if="anonymous" />
     <LogoutButton v-else />
     <router-view />
   </template>
