@@ -9,7 +9,7 @@ import { getAnalytics, logEvent } from "firebase/analytics"
 import { useStore } from './stores/main'
 import { getAuth, onAuthStateChanged } from "firebase/auth"
 import 'animate.css'
-import { useSession } from './stores/session'
+import { useAuthz } from './stores/authz'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -27,7 +27,7 @@ const fb = initializeApp(firebaseConfig)
 const analytics = getAnalytics(fb)
 const auth = getAuth(fb)
 
-const session = useSession()
+const session = useAuthz()
 session.firebaseInitialized()
 
 onAuthStateChanged(auth, (user) => {

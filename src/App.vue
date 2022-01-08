@@ -4,13 +4,13 @@ import LoadingScreen from '@/components/app/LoadingScreen.vue'
 import { computed, defineComponent } from 'vue'
 import LoginButton from './components/account/LoginButton.vue'
 import LogoutButton from './components/account/LogoutButton.vue'
-import { useSession } from './stores/session'
+import { useAuthz } from './stores/authz'
 import { useStore } from './stores/main'
 
 export default defineComponent({
   components: { HelloWorld, LoadingScreen, LoginButton, LogoutButton },
   setup() {
-    const session = useSession()
+    const session = useAuthz()
     const store = useStore()
     return {
       operational: computed(() => session.operational),

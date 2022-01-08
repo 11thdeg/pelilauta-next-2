@@ -7,7 +7,7 @@ const _STATE_FIREBASE_ACTIVE = 1
 const _STATE_LOGIN_COMPLETE = 2
 const _STATE_FIRESTORE_ACTIVE = 3
 
-export const useSession = defineStore('session', () => {
+export const useAuthz = defineStore('session', () => {
   const state = ref(_STATE_INITIAL)
 
   function firebaseInitialized() {
