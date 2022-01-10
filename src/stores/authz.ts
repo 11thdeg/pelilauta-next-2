@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { computed, reactive, useTransitionState } from 'vue'
 import type { User } from 'firebase/auth'
-import { Account } from '../skaldstore/src'
+import { Account } from '../skaldstore/dist'
 
 export const useAuthz = defineStore('session', () => {
   const state = reactive({
