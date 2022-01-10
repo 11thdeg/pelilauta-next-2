@@ -26,7 +26,10 @@ div.NavButton
   overflow: hidden
   position: relative
   display: inline-block
-  background-color: var(--color-rise-a)
+  background-color: var(--color-background)
+  transition: 0.22s all
+  &:hover
+    background-color: var(--color-rise-a)
   img
     height: 24px
     width: 24px
