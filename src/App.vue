@@ -29,7 +29,9 @@ export default defineComponent({
   </transition>
   <template v-if="operational">
     <NavigationRail />
-    <router-view />
+    <main>
+      <router-view />
+    </main>
   </template>
 </template>
 
@@ -42,6 +44,9 @@ export default defineComponent({
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
   text-align: center
+  background-color: var(--color-background)
+  min-height: 100vh
+  min-width: 100vw
 
 img#logo
   width: 256px
