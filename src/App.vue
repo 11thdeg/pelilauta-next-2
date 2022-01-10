@@ -6,9 +6,10 @@ import LoginButton from './components/account/LoginButton.vue'
 import LogoutButton from './components/account/LogoutButton.vue'
 import { useAuthz } from './stores/authz'
 import { useStore } from './stores/main'
+import NavigationRail from './components/navigation/NavigationRail.vue'
 
 export default defineComponent({
-  components: { HelloWorld, LoadingScreen, LoginButton, LogoutButton },
+  components: { HelloWorld, LoadingScreen, LoginButton, LogoutButton, NavigationRail },
   setup() {
     const session = useAuthz()
     const store = useStore()
@@ -27,8 +28,7 @@ export default defineComponent({
     </div>
   </transition>
   <template v-if="operational">
-    <LoginButton v-if="anonymous" />
-    <LogoutButton v-else />
+    <NavigationRail />
     <router-view />
   </template>
 </template>
