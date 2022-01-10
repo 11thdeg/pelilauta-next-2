@@ -13,7 +13,7 @@ export default defineComponent({
     const session = useAuthz()
     const store = useStore()
     return {
-      operational: computed(() => session.operational),
+      operational: computed(() => session.initialized),
       anonymous: computed(() => store.anonymous),
     }
   },

@@ -27,13 +27,12 @@ const fb = initializeApp(firebaseConfig)
 const analytics = getAnalytics(fb)
 const auth = getAuth(fb)
 
-const session = useAuthz()
-session.firebaseInitialized()
+const authz = useAuthz()
 
 onAuthStateChanged(auth, (user) => {
   console.log('User logged in:', user)
   state.initialize(user)
-  session.loginAs(user)
+  authz.loginAs(user)
 })
 
 logEvent(analytics, "app_start")

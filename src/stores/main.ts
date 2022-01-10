@@ -2,7 +2,6 @@ import { computed, ref, Ref } from 'vue'
 import { defineStore } from 'pinia'
 import type { User } from 'firebase/auth'
 import { getFirestore, doc, getDoc } from '@firebase/firestore'
-import { useAuthz } from './authz'
 
 interface topic {
   slug: string
@@ -42,9 +41,6 @@ export const useStore = defineStore('main', () => {
     } catch (e) {
       console.error(e)
     }
-
-    const session = useAuthz()
-    session.firestoreInitialized()
   }
 
   return {
