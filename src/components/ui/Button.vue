@@ -1,20 +1,18 @@
+<script setup lang="ts">
+import { defineProps } from 'vue'
+
+const props = defineProps<{
+  disabled?: boolean
+}>()
+
+</script>
+
+
 <template>
-  <button class="Button" :class="styleClasses">
+  <button class="Button" :disabled="props.disabled">
     <slot />
   </button>
 </template>
-
-<script setup lang="ts">
-import { computed } from 'vue'
-
-const props = defineProps<{
-  disabled?: Boolean
-}>()
-
-const styleClasses = computed(() => {
-  disabled: props.disabled
-})
-</script>
 
 <style lang="sass">
 button.Button
@@ -32,4 +30,8 @@ button.Button
     background-color: var(--chroma-secondary-e)
   &:active
     background-color: var(--chroma-secondary-c)
+  &:disabled
+    background-color: var(--chroma-secondary-d)
+    color: var(--chroma-secondary-i)
+    cursor: not-allowed
 </style>

@@ -1,5 +1,4 @@
 <script lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
 import LoadingScreen from '@/components/app/LoadingScreen.vue'
 import { computed, defineComponent } from 'vue'
 import LoginButton from './components/account/LoginButton.vue'
@@ -9,7 +8,7 @@ import { useStore } from './stores/main'
 import NavigationRail from './components/navigation/NavigationRail.vue'
 
 export default defineComponent({
-  components: { HelloWorld, LoadingScreen, LoginButton, LogoutButton, NavigationRail },
+  components: { LoadingScreen, LoginButton, LogoutButton, NavigationRail },
   setup() {
     const session = useAuthz()
     const store = useStore()
