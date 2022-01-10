@@ -16,3 +16,14 @@ const anonymous = computed(() => useAuthz().anonymous)
     <LogoutButton v-else />
   </nav>
 </template>
+
+<style lang="sass">
+
+nav#NavigationRail
+  display: flex
+  flex-direction: column
+  align-items: center
+  position: fixed
+  top: 16px
+  left: 16px
+</style>
