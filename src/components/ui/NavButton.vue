@@ -29,7 +29,7 @@ div.NavButton
   width: 72px
   box-sizing: border-box
   margin: 0
-  padding: 14px 24px
+  padding: 10px 18px
   overflow: hidden
   position: relative
   display: inline-block
@@ -38,11 +38,11 @@ div.NavButton
   &:hover
     background-color: var(--color-rise-a)
   img
-    height: 24px
-    width: 24px
+    height: 36px
+    width: 36px
   div.label
     position: absolute
-    bottom: 16px
+    bottom: 10px
     left: 0
     margin: 0
     padding: 0
