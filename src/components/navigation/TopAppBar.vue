@@ -4,6 +4,7 @@ import { useAuthz } from '../../stores/authz';
 import SpacerDiv from '../ui/SpacerDiv.vue';
 import LoginButton from '../account/LoginButton.vue';
 import AvatarButton from '../account/AvatarButton.vue';
+import LightmodeButton from '../app/LightmodeButton.vue';
 const anonymous = computed(() => useAuthz().anonymous)
 </script>
 
@@ -12,6 +13,7 @@ const anonymous = computed(() => useAuthz().anonymous)
     <h1>Pelilauta</h1>
     <SpacerDiv />
     <LoginButton v-if="anonymous" />
+    <LightmodeButton />
     <AvatarButton />
   </nav>
 </template>

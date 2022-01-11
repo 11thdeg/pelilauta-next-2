@@ -4,5 +4,6 @@ export const iconlist = [
   'd12',
   'd20',
   'fox',
+  'lightmode',
   'stylebook'
 ]

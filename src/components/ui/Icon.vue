@@ -12,7 +12,7 @@ const props = defineProps<{
   xlarge?: boolean
 }>()
 
-const lightmode = useLightMode()
+const { mode: lightmode } = useLightMode()
 
 const iconPath = computed(() => {
   const icon = props.icon

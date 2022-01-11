@@ -8,7 +8,7 @@ const props = defineProps<{
   to: string
 }>()
 
-const mode = useLightMode()
+const { mode } = useLightMode()
 </script>
 
 <template>

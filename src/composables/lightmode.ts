@@ -1,17 +1,27 @@
-import { computed } from "vue"
+import { computed, ref } from "vue"
 
-let mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+let mode = ref(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
 
 window.matchMedia('(prefers-color-scheme: dark)')
   .addEventListener('change', event => {
     if (event.matches) {
-      mode = 'dark'
+      mode.value = 'dark'
     } else {
-      mode = 'light'
+      mode.value = 'light'
     }
   }
 )
 
+function toggleMode() {
+  const old = mode.value
+  mode.value = mode.value === 'light' ? 'dark' : 'light'
+  document.body.classList.remove(old + '-theme')
+  document.body.classList.add(mode.value + '-theme')
+}
+
 export function useLightMode() {
-  return computed(() => mode)
+  return {
+    mode: computed(() => mode.value),
+    toggleMode
+  }
 }
