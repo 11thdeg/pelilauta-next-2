@@ -2,20 +2,11 @@
 import { defineProps } from 'vue'
 import { useLightMode } from '../../composables/lightmode'
 
-/*
-const props = defineProps<{
-  icon: string,
-  label: string,
-  to: string
-}>()
-*/
-
 const props = defineProps<{
   icon: string
   label: string
   to: string
 }>()
-
 
 const mode = useLightMode()
 </script>
