@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useAuthz } from '../../stores/authz'
 import LoginButton from '../account/LoginButton.vue'
 import LogoutButton from '../account/LogoutButton.vue'
-import NavButton from '../ui/NavButton.vue';
+import NavButton from './NavButton.vue';
 
 const anonymous = computed(() => useAuthz().anonymous)
 </script>
@@ -14,8 +14,8 @@ const anonymous = computed(() => useAuthz().anonymous)
     class="hideOnMobile"
   >
     <NavButton
-      icon="d12"
-      label="Home"
+      icon="fox"
+      label="Pelilauta"
       to="/"
     >
       Home

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import Column from '../ui/Column.vue'
-import NavButton from '../ui/NavButton.vue';
+import NavButton from '../navigation/NavButton.vue';
 </script>
 
 <template>
@@ -8,8 +8,8 @@ import NavButton from '../ui/NavButton.vue';
     <h1>Navigation</h1>
     <div class="flexList">
       <NavButton
-        icon="d12"
-        label="Home"
+        icon="fox"
+        label="Pelilauta"
         to="/"
       >
         Home
