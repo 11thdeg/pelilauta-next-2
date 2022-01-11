@@ -6,9 +6,10 @@ import LogoutButton from './components/account/LogoutButton.vue'
 import { useAuthz } from './stores/authz'
 import { useStore } from './stores/main'
 import NavigationRail from './components/navigation/NavigationRail.vue'
+import TopAppBar from './components/navigation/TopAppBar.vue'
 
 export default defineComponent({
-  components: { LoadingScreen, LoginButton, LogoutButton, NavigationRail },
+  components: { LoadingScreen, LoginButton, LogoutButton, NavigationRail, TopAppBar },
   setup() {
     const session = useAuthz()
     const store = useStore()
@@ -28,21 +29,31 @@ export default defineComponent({
   </transition>
   <template v-if="operational">
     <NavigationRail />
-    <main>
-      <router-view />
-    </main>
+    <div id="AppContent">
+      <TopAppBar />
+      <main>
+        <router-view />
+      </main>
+    </div>
   </template>
 </template>
 
 <style lang="sass">
 @use './styles/color-themes.sass'
 @use './styles/app.sass'
+@import './styles/include-media.scss'
+
+@include media('>=tablet')
+  #AppContent
+    box-model: border-box
+    margin: 0
+    padding: 0
+    padding-left: 72px
 
 #app
   font-family: Avenir, Helvetica, Arial, sans-serif
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
-  text-align: center
   background-color: var(--color-background)
   min-height: 100vh
   min-width: 100vw
