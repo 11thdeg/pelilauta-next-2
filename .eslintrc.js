@@ -5,7 +5,6 @@ module.exports = {
   },
   // parser: '@typescript-eslint/parser',
   parser: "vue-eslint-parser",
-  // https://github.com/vuejs/vue-eslint-parser#parseroptionsparser
   parserOptions: {
     parser: "@typescript-eslint/parser"
   },
@@ -16,4 +15,11 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
   ],
+  rules: {
+    'vue/multi-word-component-names': 'off',
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': ['off'],
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['off'],
+  }
 }
