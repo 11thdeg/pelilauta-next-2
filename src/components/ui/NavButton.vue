@@ -12,9 +12,14 @@ const mode = useLightMode()
 </script>
 
 <template>
-  <div class="NavButton" @click.prevent="$router.push(props.to)">
-    <img :src="`/proprietary/icons/${mode}/${props.icon}.svg`" />
-    <div class="label">{{ props.label }}</div>
+  <div
+    class="NavButton"
+    @click.prevent="$router.push(props.to)"
+  >
+    <img :src="`/proprietary/icons/${mode}/${props.icon}.svg`">
+    <div class="label">
+      {{ props.label }}
+    </div>
   </div>
 </template>
 

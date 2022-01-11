@@ -1,6 +1,6 @@
 <template>
   <article class="Column">
-    <slot></slot>
+    <slot />
   </article>
 </template>
 

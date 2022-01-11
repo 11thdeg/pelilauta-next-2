@@ -9,10 +9,31 @@ const anonymous = computed(() => useAuthz().anonymous)
 </script>
 
 <template>
-  <nav id="NavigationRail" class="hideOnMobile">
-    <NavButton icon="d12" label="Home" to="/">Home</NavButton>
-    <NavButton icon="d6" label="About" to="/about">About</NavButton>
-    <NavButton icon="stylebook" to="/stylebook" label="Stylebook">Stylebook</NavButton>
+  <nav
+    id="NavigationRail"
+    class="hideOnMobile"
+  >
+    <NavButton
+      icon="d12"
+      label="Home"
+      to="/"
+    >
+      Home
+    </NavButton>
+    <NavButton
+      icon="d6"
+      label="About"
+      to="/about"
+    >
+      About
+    </NavButton>
+    <NavButton
+      icon="stylebook"
+      to="/stylebook"
+      label="Stylebook"
+    >
+      Stylebook
+    </NavButton>
     <p>...</p>
     <LoginButton v-if="anonymous" />
     <LogoutButton v-else />

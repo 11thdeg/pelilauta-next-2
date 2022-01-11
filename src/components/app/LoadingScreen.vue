@@ -1,6 +1,10 @@
 <template>
   <div id="LoadingScreen">
-    <img alt="Charna logo" src="/proprietary/fox.svg" id="logo" />
+    <img
+      id="logo"
+      alt="Charna logo"
+      src="/proprietary/fox.svg"
+    >
   </div>
 </template>
 

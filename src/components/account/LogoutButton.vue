@@ -18,6 +18,8 @@ const logout = async () => {
 </script>
 
 <template>
-  <Button @click.prevent="logout">Logout</Button>
+  <Button @click.prevent="logout">
+    Logout
+  </Button>
 </template>
 

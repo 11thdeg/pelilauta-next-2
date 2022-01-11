@@ -1,6 +1,8 @@
 <template>
   <nav>
-    <router-link to="/stylebook">Stylebook</router-link>
+    <router-link to="/stylebook">
+      Stylebook
+    </router-link>
   </nav>
   <div>Home ({{ init }})</div>
   <div>{{ topics }}</div>

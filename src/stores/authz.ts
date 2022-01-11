@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { computed, reactive, useTransitionState } from 'vue'
+import { computed, reactive } from 'vue'
 import type { User } from 'firebase/auth'
 import { Account } from '../skaldstore/dist'
 

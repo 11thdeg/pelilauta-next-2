@@ -9,7 +9,10 @@ const props = defineProps<{
 
 
 <template>
-  <button class="Button" :disabled="props.disabled">
+  <button
+    class="Button"
+    :disabled="props.disabled"
+  >
     <slot />
   </button>
 </template>

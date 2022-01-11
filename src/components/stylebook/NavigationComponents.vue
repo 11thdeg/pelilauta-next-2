@@ -7,9 +7,27 @@ import NavButton from '../ui/NavButton.vue';
   <Column>
     <h1>Navigation</h1>
     <div class="flexList">
-      <NavButton icon="d12" label="Home" to="/">Home</NavButton>
-      <NavButton icon="d6" label="About" to="/about">About</NavButton>
-      <NavButton icon="stylebook" to="/stylebook" label="Stylebook">Stylebook</NavButton>
+      <NavButton
+        icon="d12"
+        label="Home"
+        to="/"
+      >
+        Home
+      </NavButton>
+      <NavButton
+        icon="d6"
+        label="About"
+        to="/about"
+      >
+        About
+      </NavButton>
+      <NavButton
+        icon="stylebook"
+        to="/stylebook"
+        label="Stylebook"
+      >
+        Stylebook
+      </NavButton>
     </div>
   </Column>
 </template>

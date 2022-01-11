@@ -1,15 +1,13 @@
 <script lang="ts">
 import LoadingScreen from '@/components/app/LoadingScreen.vue'
 import { computed, defineComponent } from 'vue'
-import LoginButton from './components/account/LoginButton.vue'
-import LogoutButton from './components/account/LogoutButton.vue'
 import { useAuthz } from './stores/authz'
 import { useStore } from './stores/main'
 import NavigationRail from './components/navigation/NavigationRail.vue'
 import TopAppBar from './components/navigation/TopAppBar.vue'
 
 export default defineComponent({
-  components: { LoadingScreen, LoginButton, LogoutButton, NavigationRail, TopAppBar },
+  components: { LoadingScreen, NavigationRail, TopAppBar },
   setup() {
     const session = useAuthz()
     const store = useStore()
@@ -22,7 +20,10 @@ export default defineComponent({
 </script>
 
 <template>
-  <transition mode="out-in" leave-active-class="animate__animated animate__fadeOut">
+  <transition
+    mode="out-in"
+    leave-active-class="animate__animated animate__fadeOut"
+  >
     <div v-if="!operational">
       <LoadingScreen />
     </div>

@@ -17,6 +17,8 @@ function socialGoogleLogin() {
 </script>
 
 <template>
-  <Button @click.prevent="socialGoogleLogin">Login</Button>
+  <Button @click.prevent="socialGoogleLogin">
+    Login
+  </Button>
 </template>
 
