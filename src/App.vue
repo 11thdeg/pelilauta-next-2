@@ -1,22 +1,13 @@
-<script lang="ts">
+<script lang="ts" setup>
 import LoadingScreen from '@/components/app/LoadingScreen.vue'
-import { computed, defineComponent } from 'vue'
+import { computed } from 'vue'
 import { useAuthz } from './stores/authz'
-import { useStore } from './stores/main'
 import NavigationRail from './components/navigation/NavigationRail.vue'
 import TopAppBar from './components/navigation/TopAppBar.vue'
 
-export default defineComponent({
-  components: { LoadingScreen, NavigationRail, TopAppBar },
-  setup() {
-    const session = useAuthz()
-    const store = useStore()
-    return {
-      operational: computed(() => session.initialized),
-      anonymous: computed(() => store.anonymous),
-    }
-  },
-})
+const session = useAuthz()
+const operational = computed(() => session.initialized)
+
 </script>
 
 <template>
@@ -56,8 +47,4 @@ export default defineComponent({
   min-height: 100vh
   min-width: 100vw
 
-img#logo
-  width: 256px
-  background-color: #002337
-  border-radius: 50%
 </style>
