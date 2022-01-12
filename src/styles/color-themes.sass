@@ -5,7 +5,7 @@
   color-scheme: light dark
 
   // Material text-opacity
-  --text-hight-opacity: 1
+  --text-high-opacity: 1
   --text-medium-opacity: 0.87
   --text-low-opacity: 0.60
 
@@ -61,13 +61,21 @@
   --color-rise-b: var(--chroma-secondary-c)
   --color-link: var(--chroma-secondary-f)
   --color-link-hover: var(--chroma-secondary-g)
+  h1, h2
+    color: var(--chroma-secondary-h)
+  th
+    color: var(--chroma-secondary-g)
 
 @mixin lightTheme()
   // add light theme colors here
-  --color-low: rgba(0, 35, 55,var(--text-low-opacity))
+  --color-low: rgba(0, 35, 55, var(--text-low-opacity))
   --color-medium: rgba(0, 35, 55, var(--text-medium-opacity))
   --color-high: rgba(0, 35, 55, var(--text-high-opacity))
   --color-background: #fff
+  --color-rise-a: var(--chroma-secondary-i)
+  --color-rise-b: var(--chroma-secondary-h)
+  --color-link: var(--chroma-secondary-e)
+  --color-link-hover: var(--chroma-secondary-f)
 
 body
   @include darkTheme()

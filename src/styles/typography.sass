@@ -1,0 +1,43 @@
+@import typography-mixins.sass
+
+.TypeHeadline3
+  @include TypeHeadline3()
+.TypeHeadline4
+  @include TypeHeadline4()
+.TypeHeadline5
+  @include TypeHeadline5()
+.TypeHeadline6
+  @include TypeHeadline6()
+.TypeBody1  
+  @include TypeBody1()
+.TypeBody2
+  @include TypeBody2()
+.TypeButton
+  @include TypeButton()
+.TypeCaption
+  @include TypeCaption()
+.TypeCode
+  @include TypeCode()
+
+body
+  #app
+    h1
+      @include TypeHeadline3()
+    h2
+      @include TypeHeadline4()
+    h3
+      @include TypeHeadline5()
+    h4
+      @include TypeHeadline6()
+    p
+      @include TypeBody1()
+    .Column
+      table
+        border-collapse: collapse
+        th
+          @include TypeBody1()
+          font-weight: 700
+          border-bottom: solid 1px var(--color-rise-b)
+        td
+          @include TypeBody2()
+          padding: 4px 8px
