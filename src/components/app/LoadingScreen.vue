@@ -1,3 +1,7 @@
+<script lang="ts" setup>
+import Loader from '../ui/Loader.vue';
+
+</script>
 <template>
   <div id="LoadingScreen">
     <div
@@ -9,6 +13,9 @@
         alt="Charna logo"
         src="/proprietary/fox.svg"
       >
+    </div>
+    <div id="Loading">
+      <Loader />
     </div>
   </div>
 </template>
@@ -30,6 +37,9 @@ div#LoadingScreen
     overflow: visible
     margin: 0 auto
     margin-top: 64px
+  div#Loading
+    margin: 72px auto
+    width: 128px
   img#logo
     width: 110%
     margin-left: -5%

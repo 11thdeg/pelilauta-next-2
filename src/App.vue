@@ -14,6 +14,7 @@ const operational = computed(() => session.initialized)
   <transition
     mode="out-in"
     leave-active-class="animate__animated animate__fadeOut"
+    :duration="200"
   >
     <div v-if="!operational">
       <LoadingScreen />
