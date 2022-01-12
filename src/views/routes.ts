@@ -5,4 +5,5 @@ export const routes = [
   { path: '/', component: Home },
   { path: '/about', component: About },
   { path: '/stylebook', component: () => import('./Stylebook.vue') },
+  { path: '/login', component: () => import('./LoginView.vue') },
 ]

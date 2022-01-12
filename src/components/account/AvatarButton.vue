@@ -6,12 +6,19 @@ import Icon from '../ui/Icon.vue'
 const authz = useAuthz()
 
 const anonymous = computed(() => authz.anonymous)
+const targetRoute = computed(() => {
+  if (anonymous.value) {
+    return '/login'
+  }
+  return '/account'
+})
 </script>
 
 <template>
   <div
     class="AvatarButton"
     :class="{anonymous: anonymous}"
+    @click.prevent="$router.push(targetRoute)"
   >
     <Icon
       icon="avatar"

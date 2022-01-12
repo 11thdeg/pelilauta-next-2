@@ -1,11 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useAuthz } from '../../stores/authz'
-import LoginButton from '../account/LoginButton.vue'
-import LogoutButton from '../account/LogoutButton.vue'
 import NavButton from './NavButton.vue';
-
-const anonymous = computed(() => useAuthz().anonymous)
 </script>
 
 <template>
@@ -17,26 +11,17 @@ const anonymous = computed(() => useAuthz().anonymous)
       icon="fox"
       label="Pelilauta"
       to="/"
-    >
-      Home
-    </NavButton>
+    />
     <NavButton
       icon="d6"
       label="About"
       to="/about"
-    >
-      About
-    </NavButton>
+    />
     <NavButton
       icon="stylebook"
       to="/stylebook"
       label="Stylebook"
-    >
-      Stylebook
-    </NavButton>
-    <p>...</p>
-    <LoginButton v-if="anonymous" />
-    <LogoutButton v-else />
+    />
   </nav>
 </template>
 
