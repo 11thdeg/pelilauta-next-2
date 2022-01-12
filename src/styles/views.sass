@@ -1,0 +1,75 @@
+@import include-media.scss
+// Different view layouts are defined here
+//
+// Do not include in any components, as these are already imported by base.sass
+
+:root
+  --grid-gap: 24px
+
+@mixin LayoutBase()
+  display: flex
+  flex-direction: column
+  gap: var(--grid-gap)
+  margin: 0 auto
+  padding: 8px 8px
+  section
+    margin: 0
+
+// *** singleColumnLayout ************************************************
+.singleColumnLayout
+  @include LayoutBase()
+
+@include media('>=tablet')
+  .singleColumnLayout
+    width: 720px
+    margin: 0 auto
+
+// *** dashBoardLayout ************************************************
+.dashBoardLayout
+  @include LayoutBase()
+
+@include media('>=desktop')
+  .dashBoardLayout
+    flex-direction: row
+    flex-wrap: wrap
+  .dashBoardLayout > div.column
+    width: calc(100% / 2 - 60px)
+    flex-grow: 0
+    flex-shrink: 0
+
+@include media('>=1400px')
+  .dashBoardLayout > div.column
+    width: calc(100% / 3 - 16px)
+
+// *** emptyLayout ****************************************************
+.emptyLayout
+  @include LayoutBase()
+
+@include media('>=tablet')
+  .emptyLayout
+    display: flex
+    flex-wrap: wrap
+    box-sizing: border-box
+    div.column
+      width: 100%
+
+// *** bookLayout *****************************************************
+.bookLayout
+  @include LayoutBase()
+
+@include media('>=tablet')
+  .bookLayout
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: center
+    align-items: flex-start
+    .column
+      width: 360px
+      flex-shrink: 0
+      flex-grow: 0
+    .double
+      width: 720px
+      flex-shrink: 0
+    .double-cut
+      width: 445px
+      flex-shrink: 0
