@@ -4,10 +4,15 @@ import NavigationComponents from '../components/stylebook/NavigationComponents.v
 import Loader from '../components/ui/Loader.vue'
 import Column from '../components/ui/Column.vue'
 import StyleBookIntro from '../components/stylebook/StyleBookIntro.vue'
+import TopAppBar from '../components/navigation/TopAppBar.vue'
 </script>
 
 <template>
-  <div class="bookLayout">
+  <TopAppBar
+    title="Stylebook"
+    icon="mekanismi"
+  />
+  <main class="bookLayout">
     <StyleBookIntro />
     <Column class="double-cut">
       <Button>Button</Button>
@@ -15,5 +20,5 @@ import StyleBookIntro from '../components/stylebook/StyleBookIntro.vue'
     </Column>
     
     <NavigationComponents class="double" />
-  </div>
+  </main>
 </template>

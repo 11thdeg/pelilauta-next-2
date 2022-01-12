@@ -3,7 +3,6 @@ import LoadingScreen from '@/components/app/LoadingScreen.vue'
 import { computed } from 'vue'
 import { useAuthz } from './stores/authz'
 import NavigationRail from './components/navigation/NavigationRail.vue'
-import TopAppBar from './components/navigation/TopAppBar.vue'
 
 const session = useAuthz()
 const operational = computed(() => session.initialized)
@@ -23,7 +22,6 @@ const operational = computed(() => session.initialized)
   <template v-if="operational">
     <NavigationRail />
     <div id="AppContent">
-      <TopAppBar />
       <main>
         <router-view />
       </main>

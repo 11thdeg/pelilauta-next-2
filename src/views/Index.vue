@@ -1,24 +1,16 @@
 <template>
-  <nav>
-    <router-link to="/stylebook">
-      Stylebook
-    </router-link>
-  </nav>
-  <div>Home ({{ init }})</div>
-  <div>{{ topics }}</div>
+  <TopAppBar />
+  <main class="bookLayout">
+    <div>{{ topics }}</div>
+  </main>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from 'vue'
+<script lang="ts" setup>
+import { computed } from 'vue'
 import { useStore } from '../stores/main'
+import TopAppBar from '../components/navigation/TopAppBar.vue'
 
-export default defineComponent({
-  setup() {
-    const store = useStore()
-    return {
-      init: computed(() => store.initialized),
-      topics: computed(() => store.topics)
-    }
-  }
-})
+const store = useStore()
+const topics = computed(() => store.topics)
+
 </script>
