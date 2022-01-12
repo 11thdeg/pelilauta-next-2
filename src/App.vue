@@ -47,5 +47,4 @@ const operational = computed(() => session.initialized)
   background-color: var(--color-background)
   min-height: 100vh
   min-width: 100vw
-
 </style>

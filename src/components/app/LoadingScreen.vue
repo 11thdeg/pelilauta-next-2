@@ -6,7 +6,7 @@ import Loader from '../ui/Loader.vue';
   <div id="LoadingScreen">
     <div
       id="SiteLogoContainer"
-      class="chroma-box-2"
+      class="chroma-box-3"
     >
       <img
         id="logo"
