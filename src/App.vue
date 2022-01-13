@@ -31,7 +31,7 @@ const operational = computed(() => session.initialized)
 
 <style lang="sass">
 @use './styles/color-themes.sass'
-@use './styles/app.sass'
+@import './styles/app.sass'
 @import './styles/include-media.scss'
 
 @include media('>=tablet')
