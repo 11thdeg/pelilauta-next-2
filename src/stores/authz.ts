@@ -2,6 +2,8 @@ import { defineStore } from 'pinia'
 import { computed, reactive } from 'vue'
 import type { User } from 'firebase/auth'
 import { Account } from '../skaldstore/dist'
+import { doc, getFirestore, updateDoc, getDoc, setDoc } from '@firebase/firestore'
+import { logDebug } from '../utils/loghelpers'
 
 export const useAuthz = defineStore('session', () => {
   const state = reactive({
@@ -9,16 +11,42 @@ export const useAuthz = defineStore('session', () => {
     user: new Account(null)
   })
 
-  function loginAs(user: User | null) {
+  async function synchronizeAccountData () {
+    const accountDoc = doc(getFirestore(), 'account', state.user.uid)
+    const accountData = await (await getDoc(accountDoc)).data()
+    logDebug('synchronizeAccountData', accountData)
+    if (accountData) {
+      state.user.docData = accountData
+      logDebug('synchronizeAccountData', 'updating', state.user.docData)
+      updateDoc(accountDoc, state.user.docData)
+    } 
+    else {
+      logDebug('synchronizeAccountData', 'creating', state.user.docData)
+      setDoc(accountDoc, state.user.docData)
+    }
+  }
+
+  async function loginAs(user: User | null) {
     state.initialized = false
     state.user = new Account(user)
+    if (user !== null) {
+      synchronizeAccountData()
+    }
     state.initialized = true
+  }
+
+  async function setLightMode(mode: string) {
+    if (state.user.lightMode === mode) return
+    logDebug('setLightMode', mode)
+    const accountDoc = doc(getFirestore(), 'account', state.user.uid)
+    updateDoc(accountDoc, { lightMode: mode })
   }
 
   return {
     initialized: computed(() => state.initialized),
     anonymous: computed(() => state.initialized && state.user.isAnonymous),
     loginAs,
-    user: computed(() => state.user)
+    user: computed(() => state.user),
+    setLightMode
   }
 })

@@ -1,4 +1,5 @@
 import { computed, ref } from "vue"
+import { useAuthz } from "../stores/authz"
 
 let mode = ref(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
 
@@ -17,6 +18,9 @@ function toggleMode() {
   mode.value = mode.value === 'light' ? 'dark' : 'light'
   document.body.classList.remove(old + '-theme')
   document.body.classList.add(mode.value + '-theme')
+
+  const { anonymous, setLightMode } = useAuthz()
+  if (!anonymous) setLightMode(mode.value)
 }
 
 export function useLightMode() {
