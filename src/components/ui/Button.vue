@@ -17,8 +17,11 @@ const props = defineProps<{
   </button>
 </template>
 
-<style lang="sass">
+<style lang="sass" scoped>
+@import ../../styles/typography-mixins.sass
+
 button.Button
+  @include TypeButton()
   background-color: var(--chroma-secondary-d)
   color: var(--chroma-secondary-i)
   border: none

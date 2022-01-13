@@ -1,6 +1,7 @@
 <template>
   <div class="LoginView">
     <TopAppBar
+      icon="avatar"
       title="Account"
     />
     <main class="dashBoardLayout">

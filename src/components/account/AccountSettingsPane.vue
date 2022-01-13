@@ -2,6 +2,7 @@
 import { useAuthz } from '../../stores/authz';
 import { toDisplayString } from '../../utils/firestoreHelpers';
 import Column from '../ui/Column.vue'
+import Button from '../ui/Button.vue';
 
 const { user } = useAuthz()
 const lastUpdated = toDisplayString(user.updatedAt)
@@ -45,11 +46,11 @@ const lastUpdated = toDisplayString(user.updatedAt)
       </div>
     </section>
     <section>
-      <h2>App Settings and Metadata</h2>
+      <h2>App Metadata</h2>
       <p>This data is managed by the App, and stored to your private profile visible only to you and the administrative users</p>
       <div class="dataGrid">
         <p class="headCell">
-          Site light mode
+          LightMode
         </p>
         <p>
           [{{ user.lightMode }}]
@@ -68,6 +69,11 @@ const lastUpdated = toDisplayString(user.updatedAt)
         </p>
       </div>
     </section>
+    <section class="actions">
+      <Button text>
+        Erase my account
+      </Button>
+    </section>
   </Column>
 </template>
 
@@ -76,7 +82,7 @@ const lastUpdated = toDisplayString(user.updatedAt)
 
 div.dataGrid
   display: grid
-  grid-template-columns: 1fr 4fr
+  grid-template-columns: 1fr 3fr
   p
     @include TypeBody2()
     margin: 6px 0
