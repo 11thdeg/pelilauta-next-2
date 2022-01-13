@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { computed, reactive } from 'vue'
 import type { User } from 'firebase/auth'
 import { Account } from '../skaldstore/dist'
-import { doc, getFirestore, updateDoc, getDoc, setDoc, onSnapshot, serverTimestamp } from '@firebase/firestore'
+import { doc, getFirestore, updateDoc, getDoc, setDoc, onSnapshot } from '@firebase/firestore'
 import { logDebug } from '../utils/loghelpers'
 
 export const useAuthz = defineStore('session', () => {
