@@ -2,7 +2,7 @@
   <div class="LoginView">
     <TopAppBar
       title="Login"
-      showBackButton
+      show-back-button
     />
     <main class="singleColumnLayout">
       <LoginPanel />

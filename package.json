@@ -18,6 +18,7 @@
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
+    "@types/luxon": "^2.0.9",
     "@typescript-eslint/eslint-plugin": "^5.9.0",
     "@typescript-eslint/parser": "^5.9.0",
     "@vitejs/plugin-vue": "^2.0.0",

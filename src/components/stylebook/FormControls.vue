@@ -15,7 +15,10 @@ const tfValue = ref('')
     </p>
     <section>
       <h2>Input fields</h2>
-      <Textfield v-model="tfValue" label="An example field"/>
+      <Textfield
+        v-model="tfValue"
+        label="An example field"
+      />
       <p>The field value is [<span class="code">{{ tfValue }}</span>]</p>
     </section>
   </Column>

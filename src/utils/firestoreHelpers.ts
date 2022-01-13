@@ -1,4 +1,5 @@
 import { DateTime } from 'luxon'
+import type { Timestamp } from '@firebase/firestore'
 
 export const toDisplayString = (timestamp: Timestamp|string|null|undefined): string => {
   if (timestamp === null || typeof timestamp === 'undefined') return '---'
