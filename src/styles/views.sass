@@ -32,13 +32,13 @@
   .dashBoardLayout
     flex-direction: row
     flex-wrap: wrap
-  .dashBoardLayout > div.column
+  .dashBoardLayout > article.Column
     width: calc(100% / 2 - 60px)
     flex-grow: 0
     flex-shrink: 0
 
 @include media('>=1400px')
-  .dashBoardLayout > div.column
+  .dashBoardLayout > article.Column
     width: calc(100% / 3 - 16px)
 
 // *** emptyLayout ****************************************************

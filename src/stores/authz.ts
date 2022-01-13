@@ -18,6 +18,7 @@ export const useAuthz = defineStore('session', () => {
   return {
     initialized: computed(() => state.initialized),
     anonymous: computed(() => state.initialized && state.user.isAnonymous),
-    loginAs
+    loginAs,
+    user: computed(() => state.user)
   }
 })
