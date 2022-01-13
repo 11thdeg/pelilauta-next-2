@@ -1,6 +1,8 @@
 {
   "name": "pelilauta-next",
-  "version": "0.6.0",
+  "version": "14.0.0-alpha.1",
+  "license": "MIT",
+  "author": "Ville Takanen",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
