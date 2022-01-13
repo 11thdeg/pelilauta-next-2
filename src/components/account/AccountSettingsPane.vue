@@ -60,6 +60,12 @@ const lastUpdated = toDisplayString(user.updatedAt)
         <p>
           {{ lastUpdated }}
         </p>
+        <p class="headCell">
+          UI Locale
+        </p>
+        <p>
+          {{ user.locale }}
+        </p>
       </div>
     </section>
   </Column>
