@@ -5,6 +5,7 @@ import Loader from '../components/ui/Loader.vue'
 import Column from '../components/ui/Column.vue'
 import StyleBookIntro from '../components/stylebook/StyleBookIntro.vue'
 import TopAppBar from '../components/navigation/TopAppBar.vue'
+import FormControls from '../components/stylebook/FormControls.vue'
 </script>
 
 <template>
@@ -14,6 +15,7 @@ import TopAppBar from '../components/navigation/TopAppBar.vue'
   />
   <main class="bookLayout">
     <StyleBookIntro />
+    <FormControls />
     <Column class="double-cut">
       <Button>Button</Button>
       <Loader />
