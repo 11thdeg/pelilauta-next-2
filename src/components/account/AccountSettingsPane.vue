@@ -3,6 +3,7 @@ import { useAuthz } from '../../stores/authz';
 import { toDisplayString } from '../../utils/firestoreHelpers';
 import Column from '../ui/Column.vue'
 import Button from '../ui/Button.vue';
+import LocaleSwitcher from '../app/LocaleSwitcher.vue';
 
 const { user } = useAuthz()
 const lastUpdated = toDisplayString(user.updatedAt)
@@ -11,7 +12,7 @@ const lastUpdated = toDisplayString(user.updatedAt)
 
 <template>
   <Column class="AccountSettingsPane">
-    <h1>Account Data</h1>
+    <h1>Personal Data</h1>
     <section>
       <h2>Sign-on info</h2>
       <p class="lowEmphasis">
@@ -61,7 +62,7 @@ const lastUpdated = toDisplayString(user.updatedAt)
           LightMode
         </p>
         <p>
-          [{{ user.lightMode }}]
+          {{ user.lightMode }}
         </p>
         <p class="headCell">
           Last login
@@ -78,6 +79,7 @@ const lastUpdated = toDisplayString(user.updatedAt)
       </div>
     </section>
     <section class="actions">
+      <LocaleSwitcher />
       <Button text>
         Erase my account
       </Button>

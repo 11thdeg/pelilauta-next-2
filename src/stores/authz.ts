@@ -53,11 +53,21 @@ export const useAuthz = defineStore('session', () => {
     updateDoc(accountDoc, { lightMode: mode })
   }
 
+  async function setLocale (locale: string) {
+    if (state.user.locale === locale) return
+    if (!state.user.isAnonymous) {
+      logDebug('Updating account.locale', locale)
+      const accountDoc = doc(getFirestore(), 'account', state.user.uid)
+      updateDoc(accountDoc, { locale: locale })
+    }
+  }
+
   return {
     initialized: computed(() => state.initialized),
     anonymous: computed(() => state.initialized && state.user.isAnonymous),
     loginAs,
     user: computed(() => state.user),
-    setLightMode
+    setLightMode,
+    setLocale
   }
 })
