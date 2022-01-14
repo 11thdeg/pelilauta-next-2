@@ -27,9 +27,7 @@ const operational = computed(() => auth.initialized)
   <template v-if="operational">
     <NavigationRail />
     <div id="AppContent">
-      <main>
-        <router-view />
-      </main>
+      <router-view />
     </div>
   </template>
   <Snackbar />

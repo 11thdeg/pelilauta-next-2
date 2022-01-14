@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import SpacerDiv from '../ui/SpacerDiv.vue';
-import AvatarButton from '../account/AvatarButton.vue';
-import LightmodeButton from '../app/LightmodeButton.vue';
+import SpacerDiv from '../ui/SpacerDiv.vue'
+import AvatarButton from '../account/AvatarButton.vue'
+import LightmodeButton from '../app/LightmodeButton.vue'
 import Icon from '../ui/Icon.vue';
+import { version } from '../../../package.json'
 
 const props = defineProps<{
   title?: string,
@@ -26,6 +27,12 @@ const props = defineProps<{
       {{ props.title || 'Pelilauta' }}
     </h1>
     <SpacerDiv />
+    <p
+      class="TypeCaption"
+      style="line-height: 48px;padding-top:8px"
+    >
+      {{ version }}
+    </p>
     <LightmodeButton />
     <AvatarButton />
   </nav>

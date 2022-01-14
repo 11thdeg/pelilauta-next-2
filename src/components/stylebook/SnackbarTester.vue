@@ -28,7 +28,9 @@ function showSnack () {
         label="Snackbar"
         :options="snacks"
       />
-      <Button @click="showSnack">Show snack</Button>
+      <Button @click="showSnack">
+        Show snack
+      </Button>
     </section>
   </Column>
 </template>
