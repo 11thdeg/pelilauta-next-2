@@ -3,6 +3,7 @@ import LoadingScreen from '@/components/app/LoadingScreen.vue'
 import { computed } from 'vue'
 import { useAuthz } from './stores/authz'
 import NavigationRail from './components/navigation/NavigationRail.vue'
+import Snackbar from './components/app/Snackbar.vue'
 
 const session = useAuthz()
 const operational = computed(() => session.initialized)
@@ -27,6 +28,7 @@ const operational = computed(() => session.initialized)
       </main>
     </div>
   </template>
+  <Snackbar />
 </template>
 
 <style lang="sass">

@@ -2,5 +2,8 @@
   "Actions": {
     "Login": "Login",
     "Logout": "Logout"
+  },
+  "snacks": {
+    "profileCreated": "Profile created successfully"
   }
 }

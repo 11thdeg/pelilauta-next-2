@@ -2,5 +2,8 @@
   "Actions": {
     "Login": "Kirjaudu",
     "Logout": "Kirjaudu ulos"
+  },
+  "snacks": {
+    "profileCreated": "Uusi käyttäjäprofiili luotu onnistuneesti"
   }
 }

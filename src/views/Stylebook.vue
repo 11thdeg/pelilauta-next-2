@@ -6,6 +6,7 @@ import Column from '../components/ui/Column.vue'
 import StyleBookIntro from '../components/stylebook/StyleBookIntro.vue'
 import TopAppBar from '../components/navigation/TopAppBar.vue'
 import FormControls from '../components/stylebook/FormControls.vue'
+import SnackbarTester from '../components/stylebook/SnackbarTester.vue'
 </script>
 
 <template>
@@ -22,5 +23,6 @@ import FormControls from '../components/stylebook/FormControls.vue'
     </Column>
     
     <NavigationComponents class="double" />
+    <SnackbarTester />
   </main>
 </template>
