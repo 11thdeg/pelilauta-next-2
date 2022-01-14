@@ -1,7 +1,22 @@
 <script lang="ts" setup>
-import Loader from '../ui/Loader.vue';
+import { computed } from 'vue';
+import { useAuthz } from '../../stores/authz';
+import Loader from '../ui/Loader.vue'
+import LoginPanel from '../account/LoginPanel.vue';
+import Button from '../ui/Button.vue';
+import { useI18n } from 'vue-i18n';
+
+const authz = useAuthz()
+const t = useI18n().t
+
+const initialized = computed(() => authz.initialized)
+
+const loginAsAnonymous = () => {
+  authz.loginAsAnonymous()
+}
 
 </script>
+
 <template>
   <div id="LoadingScreen">
     <div
@@ -14,8 +29,20 @@ import Loader from '../ui/Loader.vue';
         src="/proprietary/fox.svg"
       >
     </div>
-    <div id="Loading">
+    <div
+      v-if="!initialized"
+      id="Loading"
+    >
       <Loader />
+    </div>
+    <div v-else>
+      <LoginPanel />
+      <Button
+        text
+        @click.prevent="loginAsAnonymous"
+      >
+        {{ t('actions.loginAnonymous') }}
+      </Button>
     </div>
   </div>
 </template>
