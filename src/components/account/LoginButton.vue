@@ -20,7 +20,7 @@ function socialGoogleLogin() {
 
 <template>
   <Button @click.prevent="socialGoogleLogin">
-    {{ t('AccountView.Login') }}
+    {{ t('Actions.Login') }}
   </Button>
 </template>
 
