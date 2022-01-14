@@ -4,9 +4,14 @@ import { computed } from 'vue'
 import { useAuthz } from './stores/authz'
 import NavigationRail from './components/navigation/NavigationRail.vue'
 import Snackbar from './components/app/Snackbar.vue'
+import { useStore } from './stores/main'
 
-const session = useAuthz()
-const operational = computed(() => session.initialized)
+const { initAppMeta } = useStore()
+initAppMeta()
+
+
+const { initialized } = useAuthz()
+const operational = computed(() => initialized)
 
 </script>
 

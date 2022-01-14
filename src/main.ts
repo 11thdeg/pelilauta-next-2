@@ -35,7 +35,6 @@ const app = createApp(App)
 app.use(router)
 app.use(pinia)
 app.use(i18n)
-const state = useStore() // needs to be called after app.use(pinia)
 
 const fb = initializeApp(firebaseConfig)
 const analytics = getAnalytics(fb)
@@ -45,7 +44,6 @@ const authz = useAuthz()
 
 onAuthStateChanged(auth, (user) => {
   console.log('User logged in:', user)
-  state.initialize(user)
   authz.loginAs(user)
 })
 
