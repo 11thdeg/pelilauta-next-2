@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { getAnalytics, logEvent } from 'firebase/analytics'
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import Button from '../ui/Button.vue'
-
 const router = useRouter()
+
+const t = useI18n().t
 
 function socialGoogleLogin() {
   const provider = new GoogleAuthProvider()
@@ -18,7 +20,7 @@ function socialGoogleLogin() {
 
 <template>
   <Button @click.prevent="socialGoogleLogin">
-    Login
+    {{ t('AccountView.Login') }}
   </Button>
 </template>
 
