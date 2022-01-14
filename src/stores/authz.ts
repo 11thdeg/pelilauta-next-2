@@ -8,6 +8,7 @@ import { logDebug } from '../utils/loghelpers'
 export const useAuthz = defineStore('session', () => {
   const state = reactive({
     initialized: false,
+    operational: false,
     user: new Account(null)
   })
 
@@ -41,10 +42,11 @@ export const useAuthz = defineStore('session', () => {
     unsubscribeToAccount && unsubscribeToAccount()
     state.user = new Account(user)
     if (user !== null) {
-      synchronizeAccountData()
+      await synchronizeAccountData()
+      state.operational = true
     }
-    logDebug('App initialized as', user?.displayName || 'anonymous')
     state.initialized = true
+    logDebug('App initialized as', user?.displayName || 'anonymous')
   }
 
   async function setLightMode(mode: string) {
@@ -63,12 +65,18 @@ export const useAuthz = defineStore('session', () => {
     }
   }
 
+  function loginAsAnonymous () {
+    state.operational = true
+  }
+
   return {
     initialized: computed(() => state.initialized),
     anonymous: computed(() => state.initialized && state.user.isAnonymous),
+    operational: computed(() => state.initialized && state.operational),
     loginAs,
     user: computed(() => state.user),
     setLightMode,
-    setLocale
+    setLocale,
+    loginAsAnonymous
   }
 })

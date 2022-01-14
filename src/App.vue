@@ -10,7 +10,7 @@ const { initAppMeta } = useStore()
 initAppMeta()
 
 const auth = useAuthz()
-const operational = computed(() => auth.initialized)
+const operational = computed(() => auth.operational)
 
 </script>
 

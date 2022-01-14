@@ -3,5 +3,7 @@ import LoginButton from './LoginButton.vue';
 </script>
 
 <template>
-  <LoginButton />
+  <div id="LoginButtonContainer">
+    <LoginButton />
+  </div>
 </template>
