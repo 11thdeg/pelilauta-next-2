@@ -9,9 +9,8 @@ import { useStore } from './stores/main'
 const { initAppMeta } = useStore()
 initAppMeta()
 
-
-const { initialized } = useAuthz()
-const operational = computed(() => initialized)
+const auth = useAuthz()
+const operational = computed(() => auth.initialized)
 
 </script>
 

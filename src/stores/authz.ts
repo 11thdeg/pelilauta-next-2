@@ -43,6 +43,7 @@ export const useAuthz = defineStore('session', () => {
     if (user !== null) {
       synchronizeAccountData()
     }
+    logDebug('App initialized as', user?.displayName || 'anonymous')
     state.initialized = true
   }
 
