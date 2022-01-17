@@ -35,7 +35,7 @@ const loginAsAnonymous = () => {
     >
       <Loader />
     </div>
-    <div v-else>
+    <div v-else id="loginActions">
       <LoginPanel />
       <Button
         text
@@ -67,6 +67,10 @@ div#LoadingScreen
   div#Loading
     margin: 72px auto
     width: 128px
+  div#loginActions
+    width: min(256px, 80vw)
+    margin: 72px auto
+    padding: 0
   img#logo
     width: 110%
     margin-left: -5%
