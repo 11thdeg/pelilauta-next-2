@@ -35,7 +35,10 @@ const loginAsAnonymous = () => {
     >
       <Loader />
     </div>
-    <div v-else id="loginActions">
+    <div
+      v-else
+      id="loginActions"
+    >
       <LoginPanel />
       <hr>
       <Button
