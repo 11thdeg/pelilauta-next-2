@@ -21,7 +21,10 @@ const logout = async () => {
 </script>
 
 <template>
-  <Button @click.prevent="logout">
+  <Button
+    text
+    @click.prevent="logout"
+  >
     {{ t('Actions.Logout') }}
   </Button>
 </template>

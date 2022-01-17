@@ -1,4 +1,11 @@
 {
+  "account": {
+    "actions": {
+      "title": "Settings and actions",
+      "locale": "Language & Locale",
+      "lightmode": "Dark/Light mode"
+    }
+  },
   "Actions": {
     "Login": "Login",
     "Logout": "Logout"

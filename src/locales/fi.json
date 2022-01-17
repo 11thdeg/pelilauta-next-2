@@ -1,4 +1,11 @@
 {
+  "account": {
+    "actions": {
+      "title": "Asetukset ja toiminnot",
+      "locale": "Kieli",
+      "lightmode": "Tumma/vaalea teema"
+    }
+  },
   "Actions": {
     "Login": "Kirjaudu",
     "Logout": "Kirjaudu ulos"
