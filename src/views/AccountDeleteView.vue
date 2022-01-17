@@ -17,7 +17,7 @@ const t = useI18n().t
 const deleteConfirm = ref('')
 const deletionInProgress = ref(false)
 
-const { store } = useStore()
+const store = useStore()
 const { user } = useAuthz()
 const { pushSnack } = useSnack()
 
