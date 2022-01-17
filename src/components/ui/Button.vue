@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
+import Icon from './Icon.vue';
 
 const props = defineProps<{
-  disabled?: boolean
+  disabled?: boolean,
+  text?: boolean,
+  icon?: string
 }>()
 
 </script>
@@ -12,7 +15,14 @@ const props = defineProps<{
   <button
     class="Button"
     :disabled="props.disabled"
+    :class="{ 'text': props.text }"
   >
+    <Icon
+      v-if="icon"
+      class="inButton"
+      :icon="icon"
+      small
+    />
     <slot />
   </button>
 </template>
@@ -22,8 +32,8 @@ const props = defineProps<{
 
 button.Button
   @include TypeButton()
-  background-color: var(--chroma-secondary-d)
-  color: var(--chroma-secondary-i)
+  background-color: var(--color-button)
+  color: var(--color-button-text)
   border: none
   height: 38px
   margin: 5px
@@ -32,12 +42,22 @@ button.Button
   transition-property: box-shadow background
   transition-duration: 0.3s
   position: relative
+  .inButton
+   margin-left: -10px
+   padding-right: 4px
+   margin-top: -2px
   &:hover
-    background-color: var(--chroma-secondary-e)
+    background-color: var(--color-button-hover)
   &:active
-    background-color: var(--chroma-secondary-c)
+    background-color: var(--color-button-active)
   &:disabled
-    background-color: var(--chroma-secondary-d)
-    color: var(--chroma-secondary-i)
+    background-color: var(--color-button-disabled)
+    color: var(--color-button-disabled-text)
     cursor: not-allowed
+  &.text
+    background: none
+    &:hover
+      background-color: var(--color-text-button-hover)
+    &:active
+      background-color: var(--color-text-button-active)
 </style>

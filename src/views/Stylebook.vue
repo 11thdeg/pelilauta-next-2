@@ -7,6 +7,7 @@ import StyleBookIntro from '../components/stylebook/StyleBookIntro.vue'
 import TopAppBar from '../components/navigation/TopAppBar.vue'
 import FormControls from '../components/stylebook/FormControls.vue'
 import SnackbarTester from '../components/stylebook/SnackbarTester.vue'
+import ButtonsAndActions from '../components/stylebook/ButtonsAndActions.vue'
 </script>
 
 <template>
@@ -17,11 +18,7 @@ import SnackbarTester from '../components/stylebook/SnackbarTester.vue'
   <main class="bookLayout">
     <StyleBookIntro />
     <FormControls />
-    <Column class="double-cut">
-      <Button>Button</Button>
-      <Loader />
-    </Column>
-    
+    <ButtonsAndActions />
     <NavigationComponents class="double" />
     <SnackbarTester />
   </main>
