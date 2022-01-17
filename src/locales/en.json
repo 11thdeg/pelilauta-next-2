@@ -5,5 +5,14 @@
   },
   "snacks": {
     "profileCreated": "Profile created successfully"
+  },
+  "login": {
+    "emailLoginHelper": "Enter your email address",
+    "withEmail": "Send email",
+    "withGoogle": "Google-Login",
+    "withFacebook": "Facebook-Login",
+    "continueAsAnonymous": "Continue as anonymous",
+    "title": "Login",
+    "loginWithEmail": "Send a link"
   }
 }

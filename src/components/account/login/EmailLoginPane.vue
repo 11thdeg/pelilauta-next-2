@@ -1,5 +1,5 @@
 <template>
-  <section class="emailLoginForm">
+  <section id="emailLoginForm">
     <div
       v-if="verify"
       class="verifyWarning"
@@ -7,26 +7,31 @@
       {{ t('login.verifyEmailLoginMessage') }}
     </div>
 
-    <Textfield
-      v-model="emailAdress"
-      :label="t('login.emailLoginHelper')"
-      dark
-    />
-
-    <div style="display: flex;">
+    <template
+      v-if="!verify"
+    >
+      <div>
+        <h3>
+          {{ t('login.loginWithEmail') }}
+        </h3>
+      </div>
+      <Textfield
+        v-model="emailAdress"
+        :label="t('login.emailLoginHelper')"
+        dark
+      />
       <Button
         :disabled="!emailAdress"
         @click="sendLinkToEmail"
       >
         {{ t('login.withEmail') }}
       </Button>
-    </div>
+    </template>
   </section>
 </template>
 
 <script lang="ts" setup>
 import Textfield from '../../ui/Textfield.vue'
-import SpacerDiv from '../../ui/SpacerDiv.vue'
 import { getAuth, isSignInWithEmailLink, sendSignInLinkToEmail, signInWithEmailLink } from '@firebase/auth'
 import { ref } from 'vue'
 import { useSnack } from '../../../composables/useSnack'
@@ -87,3 +92,11 @@ const sendLinkToEmail = async () => {
 }
 
 </script>
+
+<style lang="sass" scoped>
+#emailLoginForm
+  display: flex
+  flex-direction: column
+  align-items: stretch
+  gap: 8px
+</style>

@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useAuthz } from '../../stores/authz';
 import Loader from '../ui/Loader.vue'
-import LoginPanel from '../account/LoginPanel.vue';
+import LoginPanel from '../account/login/LoginPanel.vue';
 import Button from '../ui/Button.vue';
 import { useI18n } from 'vue-i18n';
 
@@ -37,11 +37,12 @@ const loginAsAnonymous = () => {
     </div>
     <div v-else id="loginActions">
       <LoginPanel />
+      <hr>
       <Button
         text
         @click.prevent="loginAsAnonymous"
       >
-        {{ t('actions.loginAnonymous') }}
+        {{ t('login.continueAsAnonymous') }}
       </Button>
     </div>
   </div>
@@ -69,8 +70,10 @@ div#LoadingScreen
     width: 128px
   div#loginActions
     width: min(256px, 80vw)
-    margin: 72px auto
+    margin: 56px auto
     padding: 0
+    display: flex
+    flex-direction: column
   img#logo
     width: 110%
     margin-left: -5%

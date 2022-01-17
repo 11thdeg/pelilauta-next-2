@@ -12,6 +12,6 @@
 
 <script lang="ts" setup>
 import TopAppBar from '../components/navigation/TopAppBar.vue';
-import LoginPanel from '../components/account/LoginPanel.vue';
+import LoginPanel from '../components/account/login/LoginPanel.vue';
 
 </script>

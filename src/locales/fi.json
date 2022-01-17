@@ -5,5 +5,14 @@
   },
   "snacks": {
     "profileCreated": "Uusi käyttäjäprofiili luotu onnistuneesti"
+  },
+  "login": {
+    "emailLoginHelper": "Osoite",
+    "withEmail": "Kirjaudu",
+    "withGoogle": "Google-tunnuksilla",
+    "withFacebook": "Facebook-tunnuksilla",
+    "continueAsAnonymous": "Jatka kirjautumatta",
+    "title": "Kirjaudu",
+    "loginWithEmail": "Sähköpostilinkillä"
   }
 }
