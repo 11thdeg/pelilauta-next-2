@@ -82,12 +82,6 @@ const lastUpdated = toDisplayString(user.updatedAt)
         </p>
       </div>
     </section>
-    <section class="actions">
-      <LocaleSwitcher />
-      <Button text>
-        Erase my account
-      </Button>
-    </section>
   </Column>
 </template>
 
