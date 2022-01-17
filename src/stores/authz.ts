@@ -4,6 +4,7 @@ import type { User } from 'firebase/auth'
 import { Account } from '../skaldstore/dist'
 import { doc, getFirestore, updateDoc, getDoc, setDoc, onSnapshot } from '@firebase/firestore'
 import { logDebug } from '../utils/loghelpers'
+import { useProfile } from './profile'
 
 export const useAuthz = defineStore('session', () => {
   const state = reactive({
@@ -35,6 +36,8 @@ export const useAuthz = defineStore('session', () => {
         state.user.docData = snapshot.data()
       }
     })
+    const { initialize: initProfile } = useProfile()
+    initProfile(state.user.uid)
   }
 
   async function loginAs(user: User | null) {
@@ -69,6 +72,12 @@ export const useAuthz = defineStore('session', () => {
     state.operational = true
   }
 
+  function $reset () {
+    state.initialized = false
+    state.operational = false
+    state.user = new Account(null)
+  }
+
   return {
     initialized: computed(() => state.initialized),
     anonymous: computed(() => state.initialized && state.user.isAnonymous),
@@ -77,6 +86,7 @@ export const useAuthz = defineStore('session', () => {
     user: computed(() => state.user),
     setLightMode,
     setLocale,
-    loginAsAnonymous
+    loginAsAnonymous,
+    $reset
   }
 })

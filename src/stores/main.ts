@@ -1,6 +1,8 @@
 import { computed, ref, Ref } from 'vue'
 import { defineStore } from 'pinia'
 import { getFirestore, doc, getDoc } from '@firebase/firestore'
+import { useAuthz } from './authz'
+import { useProfile } from './profile'
 
 interface topic {
   slug: string
@@ -31,6 +33,10 @@ export const useStore = defineStore('main', () => {
 
   function $reset () {
     topics.value = []
+    const authz = useAuthz()
+    authz.$reset()
+    const profile = useProfile()
+    profile.$reset()
   }
 
   return {
