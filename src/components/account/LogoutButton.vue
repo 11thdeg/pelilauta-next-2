@@ -25,7 +25,7 @@ const logout = async () => {
     text
     @click.prevent="logout"
   >
-    {{ t('Actions.Logout') }}
+    {{ t('actions.logout') }}
   </Button>
 </template>
 

@@ -4,11 +4,18 @@
       "title": "Asetukset ja toiminnot",
       "locale": "Kieli",
       "lightmode": "Tumma/vaalea teema"
+    },
+    "delete": {
+      "title": "Poista tilini",
+      "warning": "Tilisi, ja profiilisi poistetaan tietokannasta. Tätä toimintoa ei voi perua. Luomasi sisältö pitää poistaa ennen kuin poistat tilisi. Kirjoita \"POISTA\" alla olevaan kenttään, jos haluat varmasti poistaa tilisi.",
+      "confirm": "Vahvista poisto"
     }
   },
-  "Actions": {
-    "Login": "Kirjaudu",
-    "Logout": "Kirjaudu ulos"
+  "actions": {
+    "back": "Palaa",
+    "delete": "Poista",
+    "login": "Kirjaudu",
+    "logout": "Kirjaudu ulos"
   },
   "snacks": {
     "profileCreated": "Uusi käyttäjäprofiili luotu onnistuneesti"

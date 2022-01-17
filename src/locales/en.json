@@ -4,6 +4,9 @@
       "title": "Settings and actions",
       "locale": "Language & Locale",
       "lightmode": "Dark/Light mode"
+    },
+    "delete": {
+      "title": "Remove account"
     }
   },
   "Actions": {

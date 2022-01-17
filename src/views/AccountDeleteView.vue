@@ -41,6 +41,7 @@ const deleteAccount = async () => {
     />
     <main class="singleColumnLayout">
       <h2>{{ t('account.delete.title') }}</h2>
+      <p>{{ t('account.delete.warning') }}</p>
       <p>
         <Textfield 
           v-model="deleteConfirm"
@@ -56,7 +57,7 @@ const deleteAccount = async () => {
         </Button>
         <Button
           text
-          :disabled="deleteConfirm != 'poista'"
+          :disabled="deleteConfirm != 'POISTA'"
           @click.prevent="deleteAccount"
         >
           {{ t('actions.delete') }}
