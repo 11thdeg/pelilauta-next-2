@@ -10,7 +10,7 @@ const { initAppMeta } = useStore()
 initAppMeta()
 
 const auth = useAuthz()
-const operational = computed(() => auth.operational)
+const showLoadingScreen = computed(() => !auth.operational)
 
 </script>
 
@@ -20,11 +20,11 @@ const operational = computed(() => auth.operational)
     leave-active-class="animate__animated animate__fadeOut"
     :duration="200"
   >
-    <div v-if="!operational">
+    <div v-if="showLoadingScreen">
       <LoadingScreen />
     </div>
   </transition>
-  <template v-if="operational">
+  <template v-if="!showLoadingScreen">
     <NavigationRail />
     <div id="AppContent">
       <router-view />
