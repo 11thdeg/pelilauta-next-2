@@ -33,7 +33,6 @@ div.NavButton
   overflow: hidden
   position: relative
   display: inline-block
-  background-color: var(--color-background)
   transition: 0.22s all
   &:hover
     background-color: var(--color-rise-a)

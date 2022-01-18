@@ -5,6 +5,7 @@ import { useAuthz } from './stores/authz'
 import NavigationRail from './components/navigation/NavigationRail.vue'
 import Snackbar from './components/app/Snackbar.vue'
 import { useStore } from './stores/main'
+import NavigationBar from './components/navigation/NavigationBar.vue'
 
 const { initAppMeta } = useStore()
 initAppMeta()
@@ -25,10 +26,11 @@ const showLoadingScreen = computed(() => !auth.operational)
     </div>
   </transition>
   <template v-if="!showLoadingScreen">
-    <NavigationRail />
     <div id="AppContent">
       <router-view />
     </div>
+    <NavigationRail />
+    <NavigationBar />
   </template>
   <Snackbar />
 </template>

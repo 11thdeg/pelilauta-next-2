@@ -1,4 +1,13 @@
 @import typography-mixins.sass
+@import include-media.scss
+
+@include media('<600px')
+  .hideOnMobile
+    display: none !important
+
+@include media('>=600px')
+  .onlyOnMobile
+    display: none !important
 
 span.code
   @include TypeCode()
