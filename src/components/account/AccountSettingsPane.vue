@@ -1,9 +1,7 @@
 <script lang="ts" setup>
-import { useAuthz } from '../../stores/authz';
-import { toDisplayString } from '../../utils/firestoreHelpers';
+import { useAuthz } from '../../stores/authz'
+import { toDisplayString } from '../../utils/firestoreHelpers'
 import Column from '../ui/Column.vue'
-import Button from '../ui/Button.vue';
-import LocaleSwitcher from '../app/LocaleSwitcher.vue';
 
 const { user } = useAuthz()
 const lastUpdated = toDisplayString(user.updatedAt)
