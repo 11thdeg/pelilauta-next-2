@@ -2,6 +2,7 @@
 import TopAppBar from '../components/navigation/TopAppBar.vue'
 import AccountSettingsPane from '../components/account/AccountSettingsPane.vue'
 import AccountActionsColumn from '../components/account/AccountActionsColumn.vue'
+import ProfileSettingsColumn from '../components/account/ProfileSettingsColumn.vue'
 
 </script>
 
@@ -13,6 +14,7 @@ import AccountActionsColumn from '../components/account/AccountActionsColumn.vue
     />
     <main class="dashBoardLayout">
       <AccountActionsColumn />
+      <ProfileSettingsColumn />
       <AccountSettingsPane />
     </main>
   </div>

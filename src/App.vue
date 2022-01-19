@@ -5,12 +5,13 @@ import { useAuthz } from './stores/authz'
 import NavigationRail from './components/navigation/NavigationRail.vue'
 import Snackbar from './components/app/Snackbar.vue'
 import { useStore } from './stores/main'
+import NavigationBar from './components/navigation/NavigationBar.vue'
 
 const { initAppMeta } = useStore()
 initAppMeta()
 
 const auth = useAuthz()
-const operational = computed(() => auth.operational)
+const showLoadingScreen = computed(() => !auth.operational)
 
 </script>
 
@@ -20,15 +21,16 @@ const operational = computed(() => auth.operational)
     leave-active-class="animate__animated animate__fadeOut"
     :duration="200"
   >
-    <div v-if="!operational">
+    <div v-if="showLoadingScreen">
       <LoadingScreen />
     </div>
   </transition>
-  <template v-if="operational">
-    <NavigationRail />
+  <template v-if="!showLoadingScreen">
     <div id="AppContent">
       <router-view />
     </div>
+    <NavigationRail />
+    <NavigationBar />
   </template>
   <Snackbar />
 </template>

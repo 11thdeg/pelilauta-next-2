@@ -1,7 +1,7 @@
 import { defineStore } from "pinia"
 import { Ref, ref } from "vue"
 import { Profile } from "../skaldstore/dist"
-import { doc, getFirestore, getDoc, setDoc, onSnapshot } from '@firebase/firestore'
+import { doc, getFirestore, getDoc, setDoc, onSnapshot, updateDoc } from '@firebase/firestore'
 import { getAuth } from "firebase/auth"
 import { logDebug } from "../utils/loghelpers"
 
@@ -34,6 +34,17 @@ export const useProfile = defineStore('profile', () => {
     })
   }
 
+  async function saveToFirebase () {
+    if (!profile.value) return
+    logDebug('profile', 'saveToFirebase')
+    const data = profile.value.docData
+    logDebug('profile', 'saveToFirebase', 'dry data is', data)
+    const profileRef = doc(getFirestore(), 'profiles', profile.value.id)
+    logDebug('profile', 'saveToFirebase', 'profileRef set')
+    await updateDoc(profileRef, data)
+    logDebug('profile', 'saveToFirebase', 'saved')
+  }
+
   function $reset () {
     unsubscribeToProfile && unsubscribeToProfile()
     profile.value = undefined
@@ -41,6 +52,8 @@ export const useProfile = defineStore('profile', () => {
 
   return {
     $reset,
-    initialize
+    initialize,
+    profile,
+    saveToFirebase
   }
 })
