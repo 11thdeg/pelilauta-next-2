@@ -1,21 +1,20 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useProfile } from '../../stores/profile'
 import Column from '../ui/Column.vue'
 import Textfield from '../ui/Textfield.vue'
-import Button from '../ui/Button.vue';
+import Button from '../ui/Button.vue'
 
 const t = useI18n().t
 
 const saving = ref(false)
-const { profile, saveToFirebase } = useProfile()
-const nickname = computed({
-  get: () => (profile?.nickname || ''),
-  set: (value:string) => {
-    if (profile) profile.nickname = value
-  }
-})
+const profile = useProfile()
+const nickname = ref('')
+
+watch(profile.$state, (value) => {
+  nickname.value = value.profile.nickname
+}, { immediate: true, deep: true })
 
 const invalidNickname = computed(() => {
   return nickname.value.length < 4
@@ -23,7 +22,7 @@ const invalidNickname = computed(() => {
 
 async function save () {
   saving.value = true
-  await saveToFirebase()
+  await profile.updateNickname(nickname.value)
   saving.value = false
 }
 </script>
@@ -34,7 +33,7 @@ async function save () {
     <p>{{ t('profile.settings.description') }}</p>
     <Textfield
       v-model="nickname"
-      :label="t('profile.settings.nickname')"
+      :label="t('profile.fields.nickname')"
     />
     <Button
       :disabled="invalidNickname"
