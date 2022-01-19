@@ -15,10 +15,8 @@
     "back": "Palaa",
     "delete": "Poista",
     "login": "Kirjaudu",
-    "logout": "Kirjaudu ulos"
-  },
-  "snacks": {
-    "profileCreated": "Uusi käyttäjäprofiili luotu onnistuneesti"
+    "logout": "Kirjaudu ulos",
+    "save": "Tallenna"
   },
   "login": {
     "emailLoginHelper": "Osoite",
@@ -28,5 +26,18 @@
     "continueAsAnonymous": "Jatka kirjautumatta",
     "title": "Kirjaudu",
     "loginWithEmail": "Sähköpostilinkillä"
+  },
+  "profile": {
+    "title": "Profiili",
+    "fields": {
+      "nickname": "Nimimerkki"
+    },
+    "settings": {
+      "title": "Julkinen Profiilini",
+      "description": "Julkinen profiilisi näkyy kaikille sivuston käyttäjille. Voit muokata julkaisemasi sisältöä ja kuvia."
+    }
+  },
+  "snacks": {
+    "profileCreated": "Uusi käyttäjäprofiili luotu onnistuneesti"
   }
 }

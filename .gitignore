@@ -67,3 +67,5 @@ node_modules/
 src/firebaseConfig.ts
 
 dist
+
+.DS_Store

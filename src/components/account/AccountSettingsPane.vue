@@ -1,10 +1,18 @@
 <script lang="ts" setup>
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useAuthz } from '../../stores/authz'
+import { useProfile } from '../../stores/profile'
 import { toDisplayString } from '../../utils/firestoreHelpers'
 import Column from '../ui/Column.vue'
 
 const { user } = useAuthz()
+const profileState = useProfile()
+const t = useI18n().t
+
 const lastUpdated = toDisplayString(user.updatedAt)
+const nickname = computed(() => profileState.$state.profile.nickname)
+
 
 </script>
 
@@ -78,6 +86,13 @@ const lastUpdated = toDisplayString(user.updatedAt)
         <p>
           {{ user.locale }}
         </p>
+      </div>
+    </section>
+    <section>
+      <h2>{{ t('profile.title') }}</h2>
+      <div class="titledList">
+        <h4>{{ t('profile.fields.nickname') }}</h4>
+        <p>{{ nickname }}</p>
       </div>
     </section>
   </Column>

@@ -1,4 +1,4 @@
-<script lang="ts" setup>import { ref } from 'vue';
+<script lang="ts" setup>import { ref, watch } from 'vue';
 
 const props = defineProps<{
   modelValue: string,
@@ -11,6 +11,12 @@ const emit = defineEmits<{
 }>()
 
 const value = ref(props.modelValue)
+
+watch(props, (p) => {
+  if (p.modelValue !== value.value) {
+    value.value = p.modelValue
+  }
+}, { immediate: true })
 
 function onInput() {
   emit('update:modelValue', value.value)

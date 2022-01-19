@@ -1,12 +1,12 @@
 import { defineStore } from "pinia"
-import { Ref, ref } from "vue"
+import { readonly, ref } from "vue"
 import { Profile } from "../skaldstore/dist"
 import { doc, getFirestore, getDoc, setDoc, onSnapshot, updateDoc } from '@firebase/firestore'
 import { getAuth } from "firebase/auth"
 import { logDebug } from "../utils/loghelpers"
 
 export const useProfile = defineStore('profile', () => {
-  const profile:Ref<Profile|undefined> = ref(undefined)
+  const profile = ref(new Profile('-'))
 
   async function enroll () {
     const fbUser = await getAuth().currentUser
@@ -31,6 +31,7 @@ export const useProfile = defineStore('profile', () => {
     unsubscribeToProfile = onSnapshot(profileRef, async (snapshot) => {
       logDebug('profile', 'snapshot', snapshot.data())
       if (snapshot.exists()) profile.value = new Profile(snapshot.data())
+      logDebug('profile', 'profile', profile.value)
     })
   }
 
@@ -45,15 +46,20 @@ export const useProfile = defineStore('profile', () => {
     logDebug('profile', 'saveToFirebase', 'saved')
   }
 
+  async function updateNickname (nickname: string) {
+    profile.value.nickname = nickname
+    await saveToFirebase()
+  }
+
   function $reset () {
     unsubscribeToProfile && unsubscribeToProfile()
-    profile.value = undefined
+    profile.value = new Profile('-')
   }
 
   return {
     $reset,
     initialize,
-    profile,
-    saveToFirebase
+    profile: ref(readonly(profile)),
+    updateNickname
   }
 })
