@@ -17,9 +17,6 @@
     "login": "Kirjaudu",
     "logout": "Kirjaudu ulos"
   },
-  "snacks": {
-    "profileCreated": "Uusi käyttäjäprofiili luotu onnistuneesti"
-  },
   "login": {
     "emailLoginHelper": "Osoite",
     "withEmail": "Kirjaudu",
@@ -28,5 +25,8 @@
     "continueAsAnonymous": "Jatka kirjautumatta",
     "title": "Kirjaudu",
     "loginWithEmail": "Sähköpostilinkillä"
+  },
+  "snacks": {
+    "profileCreated": "Uusi käyttäjäprofiili luotu onnistuneesti"
   }
 }
