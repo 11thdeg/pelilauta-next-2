@@ -8,4 +8,5 @@ export const routes = [
   { path: '/login', component: () => import('./LoginView.vue') },
   { path: '/account', component: () => import('./AccountView.vue') },
   { path: '/account/delete', component: () => import('./AccountDeleteView.vue') },
+  { path: '/assets', component: () => import('./AssetsView.vue') },
 ]

@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import NavButton from './NavButton.vue';
+import { useI18n } from 'vue-i18n';
+import NavButton from './NavButton.vue'
+
+const t = useI18n().t
 </script>
 
 <template>
@@ -16,6 +19,11 @@ import NavButton from './NavButton.vue';
       icon="d6"
       label="About"
       to="/about"
+    />
+    <NavButton
+      icon="assets"
+      :label="t('assets.title')"
+      to="/assets"
     />
     <NavButton
       icon="stylebook"
