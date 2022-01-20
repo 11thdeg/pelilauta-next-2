@@ -18,10 +18,13 @@
     "logout": "Kirjaudu ulos",
     "save": "Tallenna"
   },
+  "assets": {
+    "title": "Lataukset"
+  },
   "login": {
     "emailLoginHelper": "Osoite",
     "withEmail": "Kirjaudu",
-    "withGoogle": "Google-tunnuksilla",
+    "withGoogle": "Goog le-tunnuksilla",
     "withFacebook": "Facebook-tunnuksilla",
     "continueAsAnonymous": "Jatka kirjautumatta",
     "title": "Kirjaudu",
