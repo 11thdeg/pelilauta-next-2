@@ -5,6 +5,7 @@ import { Account } from '../skaldstore/dist'
 import { doc, getFirestore, updateDoc, getDoc, setDoc, onSnapshot } from '@firebase/firestore'
 import { logDebug } from '../utils/loghelpers'
 import { useProfile } from './profile'
+import { useAssets } from './assets'
 
 export const useAuthz = defineStore('session', () => {
   const state = reactive({
@@ -37,7 +38,10 @@ export const useAuthz = defineStore('session', () => {
       }
     })
     const { initialize: initProfile } = useProfile()
-    initProfile(state.user.uid)
+    await initProfile(state.user.uid) // We need to initialize the profile before we can use it, lets wait for it to initialize
+
+    const { initAssetCache } = useAssets()
+    initAssetCache() // we can load these after login, so no need to wait for the cache to initialize
   }
 
   async function loginAs(user: User | null) {
