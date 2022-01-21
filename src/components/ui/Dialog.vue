@@ -23,6 +23,7 @@ function close () {
   >
     <div
       id="DialogCard"
+      class="theme-surface"
     >
       <div class="dialogTopBar">
         <Icon
@@ -30,9 +31,9 @@ function close () {
           medium
           @click="close"
         />
-        <h3 class="label">
+        <h4 class="label">
           {{ props.label }}
-        </h3>
+        </h4>
       </div>
       <div class="contentSlot">
         <slot />
@@ -54,7 +55,7 @@ function close () {
   display: flex
   .icon
     margin: 8px
-  h3
+  h4.label
     flex-grow: 1
     text-align: center
 
@@ -72,7 +73,6 @@ function close () {
   height: auto
   border-radius: 4px
   width: 720px
-  background-color: var(--color-rise-a)
   border-radius: 4px
   
 </style>

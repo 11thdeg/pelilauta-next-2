@@ -60,4 +60,8 @@ button.Button
       background-color: var(--color-text-button-hover)
     &:active
       background-color: var(--color-text-button-active)
+
+.theme-surface
+  button.Button
+    background-color: var(--color-on-surface)
 </style>
