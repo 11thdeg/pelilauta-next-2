@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n';
 import TopAppBar from '../components/navigation/TopAppBar.vue'
+import AddAssetButton from '../components/actions/AddAssetButton.vue';
 
 const t = useI18n().t
 
@@ -14,6 +15,7 @@ const t = useI18n().t
     />
     <main class="singleColumnLayout">
       ...
+      <AddAssetButton />
     </main>
   </div>
 </template>
