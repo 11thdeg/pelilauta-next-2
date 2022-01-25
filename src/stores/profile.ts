@@ -4,19 +4,19 @@ import { Profile } from "../skaldstore/dist"
 import { doc, getFirestore, getDoc, setDoc, onSnapshot, updateDoc } from '@firebase/firestore'
 import { getAuth } from "firebase/auth"
 import { logDebug } from "../utils/loghelpers"
+import { useAuthz } from "./authz"
 
 export const useProfile = defineStore('profile', () => {
-  const profile = ref(new Profile('-'))
+  const profile = ref(new Profile())
 
   async function enroll () {
     const fbUser = await getAuth().currentUser
     if (!fbUser) throw new Error('No user logged in')
-    const p = new Profile(fbUser.uid)
-    const data = p.docData
-    data.nickname = fbUser.displayName || fbUser.email?.split('@')[0]
-    data.avatarURL = fbUser.photoURL || ''
+    const p = new Profile()
+    p.nickname = fbUser.displayName || fbUser.email?.split('@')[0] || 'Anonymous'
+    p.avatarURL = fbUser.photoURL || undefined
     const profileRef = doc(getFirestore(), 'profiles', fbUser.uid)
-    await setDoc(profileRef, data)
+    await setDoc(profileRef, p.docData)
   }
 
   let unsubscribeToProfile:CallableFunction|undefined
@@ -37,10 +37,11 @@ export const useProfile = defineStore('profile', () => {
 
   async function saveToFirebase () {
     if (!profile.value) return
+    const { user } = useAuthz()
     logDebug('profile', 'saveToFirebase')
     const data = profile.value.docData
     logDebug('profile', 'saveToFirebase', 'dry data is', data)
-    const profileRef = doc(getFirestore(), 'profiles', profile.value.id)
+    const profileRef = doc(getFirestore(), 'profiles', user.uid)
     logDebug('profile', 'saveToFirebase', 'profileRef set')
     await updateDoc(profileRef, data)
     logDebug('profile', 'saveToFirebase', 'saved')
@@ -53,7 +54,7 @@ export const useProfile = defineStore('profile', () => {
 
   function $reset () {
     unsubscribeToProfile && unsubscribeToProfile()
-    profile.value = new Profile('-')
+    profile.value = new Profile()
   }
 
   return {

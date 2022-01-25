@@ -3,6 +3,7 @@ import { computed, ref } from 'vue';
 import Column from '../ui/Column.vue';
 import Textfield from '../ui/Textfield.vue';
 import Select from '../ui/Select.vue';
+import FileInput from '../actions/FileInput.vue';
 
 const tfValue = ref('')
 const selectValue = ref('init')
@@ -37,6 +38,12 @@ const selectedOp = computed(() => selectOpts[selectValue.value])
         :options="selectOpts"
       />
       <p>The field value is [<span class="code">{{ selectValue }}</span>], which corresponds to option [<span class="code">{{ selectedOp }}</span>]</p>
+    </section>
+    <section>
+      <h2>File Input</h2>
+      <p>
+        <FileInput />
+      </p>
     </section>
   </Column>
 </template>

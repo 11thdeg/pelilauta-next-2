@@ -69,6 +69,8 @@
   --color-button-disabled-text: var(--chroma-secondary-d)
   --color-text-button-hover: rgba(231, 251, 251, 0.11)
   --color-text-button-active: rgba(231, 251, 251, 0.22)
+  --color-surface: var(--chroma-primary-a)
+  --color-on-surface: var(--chroma-primary-d)
   h1, h2
     color: var(--chroma-secondary-h)
   th
@@ -84,12 +86,16 @@
   --color-rise-b: var(--chroma-secondary-h)
   --color-link: var(--chroma-secondary-e)
   --color-link-hover: var(--chroma-secondary-f)
+  --color-surface: var(--chroma-secondary-a)
 
 body
   @include darkTheme()
 
 body.light-theme
   @include lightTheme()
+
+.theme-surface
+  background-color: var(--color-surface)
 
 // Styles for users who prefer light mode at the OS level
 @media (prefers-color-scheme: light)
