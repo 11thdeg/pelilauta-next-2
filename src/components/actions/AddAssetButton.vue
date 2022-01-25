@@ -9,7 +9,7 @@ import Select from '../ui/Select.vue';
 import { useAssets } from '../../stores/assets';
 import { useSnack } from '../../composables/useSnack';
 
-const dialog = ref(true)
+const dialog = ref(false)
 const uploading = ref(false)
 
 const fileName = ref('')
