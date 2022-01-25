@@ -34,7 +34,7 @@ export const useAssets = defineStore('assets', () => {
 
     docs.forEach((assetDoc) => {
       const asset = new Asset(assetDoc.data())
-      assetCache.value.set(asset.id, asset)
+      assetCache.value.set(assetDoc.id, asset)
     })
   }
 
@@ -55,7 +55,7 @@ export const useAssets = defineStore('assets', () => {
   
     const downloadUrl = await getDownloadURL(asseteRef)
 
-    const asset = new Asset(name)
+    const asset = new Asset()
     asset.owners = [user.uid]
     asset.mimetype = mimetype
     asset.url = downloadUrl
