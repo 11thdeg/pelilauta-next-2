@@ -5,6 +5,7 @@ import { useProfile } from '../../stores/profile'
 import Column from '../ui/Column.vue'
 import Textfield from '../ui/Textfield.vue'
 import Button from '../ui/Button.vue'
+import AvatarSwitcher from './AvatarSwitcher.vue'
 
 const t = useI18n().t
 
@@ -31,6 +32,7 @@ async function save () {
   <Column>
     <h1>{{ t('profile.settings.title') }}</h1>
     <p>{{ t('profile.settings.description') }}</p>
+    <AvatarSwitcher />
     <Textfield
       v-model="nickname"
       :label="t('profile.fields.nickname')"
