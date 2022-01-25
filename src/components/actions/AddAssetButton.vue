@@ -6,8 +6,11 @@ import FileInput from './FileInput.vue';
 import Textfield from '../ui/Textfield.vue';
 import { FileData } from '../../utils/fileHelpers';
 import Select from '../ui/Select.vue';
+import { useAssets } from '../../stores/assets';
+import { useSnack } from '../../composables/useSnack';
 
 const dialog = ref(true)
+const uploading = ref(false)
 
 const fileName = ref('')
 const description = ref('')
@@ -17,6 +20,8 @@ const licenses = {
   '1': 'CC-BY',
 }
 
+const { pushSnack } = useSnack()
+
 const file:Ref<FileData|undefined> = ref(undefined)
 
 watch(file, (newVal) => {
@@ -25,11 +30,34 @@ watch(file, (newVal) => {
   }
 })
 
+function open () {
+  file.value = undefined
+  fileName.value = ''
+  description.value = ''
+  license.value = '0'
+  dialog.value = true
+}
+
+async function upload () {
+  uploading.value = true
+  const assets = useAssets()
+  if (file.value) {
+    uploading.value = true
+    await assets.uploadAsset(
+      file.value.name,
+      file.value.mimetype,
+      file.value.dataURL
+    )
+    pushSnack('Asset uploaded')
+  }
+  uploading.value = false
+  dialog.value = false
+}
 
 </script>
 
 <template>
-  <Button @click.prevent="dialog = true">
+  <Button @click.prevent="open">
     Open
   </Button>
   <Dialog
@@ -65,7 +93,8 @@ watch(file, (newVal) => {
         Cancel
       </Button>
       <Button
-        @click="dialog = false"
+        @click="upload"
+        :working="uploading"
       >
         Upload
       </Button>
@@ -82,5 +111,11 @@ watch(file, (newVal) => {
     display: flex
     gap: 12px
     flex-direction: column
+.actions
+  width: 100%
+  display: flex
+  gap: 12px
+  justify-content: flex-end
+  margin-top: 12px
     
 </style>
