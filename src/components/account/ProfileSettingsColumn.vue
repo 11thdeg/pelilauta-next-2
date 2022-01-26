@@ -12,18 +12,23 @@ const t = useI18n().t
 const saving = ref(false)
 const profile = useProfile()
 const nickname = ref('')
+const avatarURL = ref('')
 
 watch(profile.$state, (value) => {
   nickname.value = value.profile.nickname
+  avatarURL.value = value.profile.avatarURL || ''
 }, { immediate: true, deep: true })
 
-const invalidNickname = computed(() => {
-  return nickname.value.length < 4
+const disableSaving = computed(() => {
+  if (nickname.value.length < 4) {
+    return true
+  }
+  return nickname.value === profile.$state.profile.nickname && avatarURL.value === profile.$state.profile.avatarURL
 })
 
 async function save () {
   saving.value = true
-  await profile.updateNickname(nickname.value)
+  await profile.update({ nickname: nickname.value, avatarURL: avatarURL.value })
   saving.value = false
 }
 </script>
@@ -32,13 +37,13 @@ async function save () {
   <Column>
     <h1>{{ t('profile.settings.title') }}</h1>
     <p>{{ t('profile.settings.description') }}</p>
-    <AvatarSwitcher />
+    <AvatarSwitcher v-model="avatarURL" />
     <Textfield
       v-model="nickname"
       :label="t('profile.fields.nickname')"
     />
     <Button
-      :disabled="invalidNickname"
+      :disabled="disableSaving"
       :working="saving"
       @click="save"
     >

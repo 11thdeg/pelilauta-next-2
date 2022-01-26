@@ -1,13 +1,32 @@
 <script lang="ts" setup>
 import { computed, ref } from "vue"
-import { useProfile } from "../../stores/profile"
-import SelectImageDialog from "../assets/SelectImageDialog.vue";
+import { useAssets } from "../../stores/assets"
+import SelectImageDialog from "../assets/SelectImageDialog.vue"
 
-const profileStore = useProfile()
+const assetsStore = useAssets()
 
-const imageUrl = computed(() => profileStore.profile.avatarURL || '')
+const imageUrl = computed(() => assetsStore.assets.get(selectedImage.value)?.url || props.modelValue || '')
 
 const selectDialogOpen = ref(false)
+const selected = ref('')
+
+const props = defineProps<{
+  modelValue:string
+}>()
+
+const emit = defineEmits<{
+  (e: 'update:modelValue', modelValue: string): void
+}>()
+
+const selectedImage = computed({
+  get: () => selected.value,
+  set: (value:string) => {
+    selected.value = value
+    emit('update:modelValue', assetsStore.assets.get(selectedImage.value)?.url || '')
+  }
+ })
+
+
 </script>
 
 <template>
@@ -22,7 +41,10 @@ const selectDialogOpen = ref(false)
       class="hoverIcon"
       @click="selectDialogOpen = true"
     >
-    <SelectImageDialog v-model="selectDialogOpen" />
+    <SelectImageDialog
+      v-model="selectDialogOpen"
+      v-model:image="selectedImage"
+    />
   </div>
 </template>
 
@@ -36,6 +58,7 @@ const selectDialogOpen = ref(false)
     height: 72px
     width: 72px
     border-radius: 36px
+    object-fit: cover
   img.hoverIcon
     position: absolute
     top: 8px

@@ -12,6 +12,7 @@ const t = useI18n().t
 
 const lastUpdated = toDisplayString(user.updatedAt)
 const nickname = computed(() => profileState.$state.profile.nickname)
+const avatarURL = computed(() => profileState.$state.profile.avatarURL || '')
 
 
 </script>
@@ -93,6 +94,8 @@ const nickname = computed(() => profileState.$state.profile.nickname)
       <div class="titledList">
         <h4>{{ t('profile.fields.nickname') }}</h4>
         <p>{{ nickname }}</p>
+        <h4>{{ t('profile.fields.avatarurl') }}</h4>
+        <p>{{ avatarURL }}</p>
       </div>
     </section>
   </Column>

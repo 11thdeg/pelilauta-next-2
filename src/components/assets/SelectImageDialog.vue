@@ -1,13 +1,18 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
 import { useAssets } from '../../stores/assets';
+import { logDebug } from '../../utils/loghelpers';
 import Dialog from '../ui/Dialog.vue'
+import ImageList from '../ui/ImageList.vue';
+import Button from '../ui/Button.vue';
 
 const props = defineProps<{
-  modelValue:boolean
+  modelValue:boolean,
+  image: string
   }>()
 const emit = defineEmits<{
   (e: 'update:modelValue', modelValue: boolean): void
+  (e: 'update:image', selected: string): void
 }>()
 
 const open = computed({
@@ -18,9 +23,30 @@ const open = computed({
 })
 
 const assetStore = useAssets()
-const assetList = computed(() => assetStore.assets)
 
-const selected = ref('')
+const assetList = computed(() => {
+  logDebug('ImageList', 'assetList', assetStore.assets)
+  const assets = assetStore.assets
+  const list:Map<string, string> = new Map()
+  assets.forEach((a, key) => {
+    list.set(key, a.url || '')
+  })
+  return list
+})
+
+const selected = ref(props.image)
+
+const selectedImage = computed({
+  get: () => selected.value,
+  set: (value:string) => {
+    selected.value = value
+  }
+})
+
+function select () {
+  emit('update:image', selected.value)
+  open.value = false
+}
 </script>
 
 <template>
@@ -30,19 +56,14 @@ const selected = ref('')
     label="Select Image"
   >
     <div class="imageGrid">
-      <div
-        v-for="asset in assetList"
-        :key="asset[0]"
-        class="assetImageContainer"
-        :class="{ selected: selected === asset[0] }"
-        @click="selected = asset[0]"
-      >
-        <img
-          class="assetImage"
-          :src="asset[1].url"
-          :alt="asset[1].name"
-        >
-      </div>
+      <ImageList
+        v-model="selectedImage"
+        :images="assetList"
+      />
+    </div>
+    <div class="actions">
+      <Button text @click="open = false">Close</Button>
+      <Button @click="select">Select</Button>
     </div>
   </Dialog>
 </template>
@@ -63,4 +84,8 @@ const selected = ref('')
   padding: 4px
 .selected
   background-color: var(--chroma-primary-f)
+.actions
+  display: flex
+  gap: 4px
+  justify-content: flex-end
 </style>
