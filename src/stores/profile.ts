@@ -47,8 +47,9 @@ export const useProfile = defineStore('profile', () => {
     logDebug('profile', 'saveToFirebase', 'saved')
   }
 
-  async function updateNickname (nickname: string) {
-    profile.value.nickname = nickname
+  async function update (data: Record<string, string>) {
+    if (data.nickname) profile.value.nickname = data.nickname
+    if (data.avatarURL) profile.value.avatarURL = data.avatarURL
     await saveToFirebase()
   }
 
@@ -61,6 +62,6 @@ export const useProfile = defineStore('profile', () => {
     $reset,
     initialize,
     profile: ref(readonly(profile)),
-    updateNickname
+    update
   }
 })
