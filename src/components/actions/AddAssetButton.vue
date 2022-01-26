@@ -93,8 +93,8 @@ async function upload () {
         Cancel
       </Button>
       <Button
-        @click="upload"
         :working="uploading"
+        @click="upload"
       >
         Upload
       </Button>

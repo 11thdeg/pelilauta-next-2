@@ -4,7 +4,7 @@ import type { FirebaseError } from '@firebase/app'
 import { getFirestore, getDocs, query, where, collection, addDoc, getDoc, doc, deleteDoc} from '@firebase/firestore'
 import { getStorage, ref as storageRef, uploadString, getDownloadURL, deleteObject } from '@firebase/storage'
 import { useAuthz } from "./authz"
-import { computed, readonly, ref } from "vue"
+import { computed, ref } from "vue"
 import { logDebug, logError } from "../utils/loghelpers"
 
 export const useAssets = defineStore('assets', () => {
@@ -76,10 +76,9 @@ export const useAssets = defineStore('assets', () => {
     const data = await savedAssetDoc.data()
 
     if (!data) throw new Error('No data returned from addDoc')
-    data.id = savedAssetDoc.id
-
+    
     const cachedAsset = new Asset(data)
-    assetCache.value.set(cachedAsset.id, cachedAsset)
+    assetCache.value.set(savedAssetDoc.id, cachedAsset)
     return cachedAsset
   }
 

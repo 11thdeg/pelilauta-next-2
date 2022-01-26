@@ -62,8 +62,15 @@ function select () {
       />
     </div>
     <div class="actions">
-      <Button text @click="open = false">Close</Button>
-      <Button @click="select">Select</Button>
+      <Button
+        text
+        @click="open = false"
+      >
+        Close
+      </Button>
+      <Button @click="select">
+        Select
+      </Button>
     </div>
   </Dialog>
 </template>
