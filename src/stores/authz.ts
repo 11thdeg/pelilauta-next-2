@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { computed, reactive } from 'vue'
 import type { User } from 'firebase/auth'
-import { Account } from '../skaldstore/dist'
+import { Account } from '@11thdeg/skaldstore'
 import { doc, getFirestore, updateDoc, getDoc, setDoc, onSnapshot } from '@firebase/firestore'
 import { logDebug } from '../utils/loghelpers'
 import { useProfile } from './profile'

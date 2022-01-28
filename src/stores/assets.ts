@@ -1,5 +1,5 @@
 import { defineStore } from "pinia"
-import { Asset } from "../skaldstore/dist"
+import { Asset } from "@11thdeg/skaldstore"
 import type { FirebaseError } from '@firebase/app'
 import { getFirestore, getDocs, query, where, collection, addDoc, getDoc, doc, deleteDoc} from '@firebase/firestore'
 import { getStorage, ref as storageRef, uploadString, getDownloadURL, deleteObject } from '@firebase/storage'

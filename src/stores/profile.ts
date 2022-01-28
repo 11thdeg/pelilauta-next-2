@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
 import { readonly, ref } from "vue"
-import { Profile } from "../skaldstore/dist"
+import { Profile } from "@11thdeg/skaldstore"
 import { doc, getFirestore, getDoc, setDoc, onSnapshot, updateDoc } from '@firebase/firestore'
 import { getAuth } from "firebase/auth"
 import { logDebug } from "../utils/loghelpers"
