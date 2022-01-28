@@ -5,6 +5,7 @@ import TopAppBar from '../components/navigation/TopAppBar.vue'
 import FormControls from '../components/stylebook/FormControls.vue'
 import SnackbarTester from '../components/stylebook/SnackbarTester.vue'
 import ButtonsAndActions from '../components/stylebook/ButtonsAndActions.vue'
+import MarkdownAndSubthemes from '../components/stylebook/MarkdownAndSubthemes.vue'
 </script>
 
 <template>
@@ -15,6 +16,7 @@ import ButtonsAndActions from '../components/stylebook/ButtonsAndActions.vue'
   <main class="bookLayout">
     <StyleBookIntro />
     <FormControls />
+    <MarkdownAndSubthemes class="double" />
     <ButtonsAndActions />
     <NavigationComponents class="double" />
     <SnackbarTester />

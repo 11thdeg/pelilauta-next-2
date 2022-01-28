@@ -18,6 +18,19 @@ const value = computed({
 
 const t = useI18n().t
 
+
+function onExpandableTextareaInput({ target: node }:Event){
+  if ((node as Node).nodeName.toLowerCase() !== 'textarea') return
+  const elm = node as HTMLTextAreaElement
+
+  if (elm.scrollHeight > elm.clientHeight) {
+    elm.style.height = `${elm.scrollHeight}px`
+  } else if (elm.scrollHeight < elm.clientHeight) {
+    elm.style.height = `${elm.scrollHeight}px`
+  }
+}
+
+
 </script>
 
 <template>
@@ -25,14 +38,26 @@ const t = useI18n().t
     v-model="value"
     class="Textarea"
     :placeholder="t(label)"
+    @input="onExpandableTextareaInput" 
   />
 </template>
 
 <style lang="sass" scoped>
-textarea.Textarea
+@import '../../styles/typography-mixins.sass'
+
+.Textarea
+  @include TypeCode()
+  font-size: 17px
   border: none
-  border-bottom: 1px solid #ccc
+  border-bottom: 1px solid var(--color-rise-b)
   background: none
-  background-color: var(color-rise-a)
+  background-color: var(--color-rise-a)
   margin: 12px 0
+  width: 100%
+  box-sizing: border-box
+  padding: 8px
+  min-height: 72px
+  overflow: hidden
+  resize: none
+  border-radius: 0 8px 0 0
 </style>
