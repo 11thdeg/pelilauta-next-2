@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
 import Icon from './Icon.vue';
 
 const props = defineProps<{

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
 import { useLightMode } from '../../composables/lightmode'
 
 const props = defineProps<{
