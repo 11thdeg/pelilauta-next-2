@@ -11,7 +11,10 @@ const markdown = ref('# Markdown demo\n\n- With some text\n')
   <Column class="MarkdownAndSubThemes">
     <h1>Markdown and Themes</h1>
     <h2>Enter Markup</h2>
-    <TextArea v-model="markdown" label="aaa"/>
+    <TextArea
+      v-model="markdown"
+      label="aaa"
+    />
     <h2>Preview</h2>
     <MarkDownSection :content="markdown" />
   </Column>
