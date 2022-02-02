@@ -14,12 +14,21 @@
   "actions": {
     "back": "Palaa",
     "delete": "Poista",
+    "edit": "Muokkaa",
     "login": "Kirjaudu",
     "logout": "Kirjaudu ulos",
     "save": "Tallenna"
   },
   "assets": {
     "title": "Lataukset"
+  },
+  "createThread": {
+    "title": "Uusi viesti",
+    "actions": {
+      "preview": "Esikatselu",
+      "addVideo": "Lisää video",
+      "addImages": "Lisää kuvia"
+    }
   },
   "login": {
     "emailLoginHelper": "Osoite",

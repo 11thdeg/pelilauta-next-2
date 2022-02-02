@@ -7,6 +7,7 @@ export const iconlist = [
   'd12',
   'd20',
   'facebook',
+  'edit',
   'eye',
   'eye-slash',
   'fox',

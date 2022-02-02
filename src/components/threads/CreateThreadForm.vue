@@ -32,10 +32,10 @@ const preview = ref(false)
       <Button
         v-if="preview"
         text
-        icon="eye-slash"
+        icon="edit"
         @click="preview = false"
       >
-        {{ t('createThread.actions.hidepreview') }}
+        {{ t('actions.edit') }}
       </Button>
       <Button
         text
