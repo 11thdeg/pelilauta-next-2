@@ -23,13 +23,30 @@ const value = computed({
 
 <template>
   <div class="MarkdownArea">
-    <MarkdownSection
+    <div
       v-if="preview"
-      :content="modelValue"
-    />
+      class="markdownFrame"
+    >
+      <MarkdownSection
+        :content="modelValue"
+      />
+    </div>
     <TextArea
       v-else
       v-model="value"
     />
   </div>
 </template>
+
+<style lang="sass">
+.markdownFrame
+  border-bottom: 1px solid var(--color-rise-b)
+  background: none
+  background-color: var(--color-rise-a)
+  margin: 12px 0
+  border-radius: 0 8px 0 0
+  width: 100%
+  box-sizing: border-box
+  padding: 8px
+  min-height: 72px
+</style>

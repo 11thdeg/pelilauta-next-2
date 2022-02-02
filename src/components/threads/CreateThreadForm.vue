@@ -12,6 +12,9 @@ const t = useI18n().t
 
 const preview = ref(false)
 
+const showYoutube = ref(false)
+const youtubeId = ref('')
+
 </script>
 
 <template>
@@ -37,9 +40,11 @@ const preview = ref(false)
       >
         {{ t('actions.edit') }}
       </Button>
+      <div style="flex-grow: 1" />
       <Button
         text
         icon="youtube"
+        @click="showYoutube = !showYoutube"
       >
         {{ t('createThread.actions.addVideo') }}
       </Button>
@@ -50,6 +55,16 @@ const preview = ref(false)
         {{ t('createThread.actions.addImages') }}
       </Button>
     </div>
+    <transition
+      mode="out-in"
+      enter-active-class="animate__animated animate__fadeIn"
+      leave-active-class="animate__animated animate__fadeOut"
+      :duration="200"
+    >
+      <div v-if="showYoutube">
+        <Textfield v-model="youtubeId" />
+      </div>
+    </transition>
     <MarkdownArea
       v-model="markdownContent"
       :preview="preview"
@@ -60,3 +75,8 @@ const preview = ref(false)
     <Button>{{ t('actions.add') }}</Button>
   </section>
 </template>
+
+<style lang="sass">
+.topActions
+  display: flex
+</style>
