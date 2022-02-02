@@ -24,20 +24,23 @@ const preview = ref(false)
       <Button
         v-if="!preview"
         text
-        @click="preview = true"
         icon="eye"
+        @click="preview = true"
       >
         {{ t('createThread.actions.preview') }}
       </Button>
       <Button
         v-if="preview"
         text
-        @click="preview = false"
         icon="eye-slash"
+        @click="preview = false"
       >
         {{ t('createThread.actions.hidepreview') }}
       </Button>
-      <Button text icon="youtube">
+      <Button
+        text
+        icon="youtube"
+      >
         {{ t('createThread.actions.addVideo') }}
       </Button>
       <Button
