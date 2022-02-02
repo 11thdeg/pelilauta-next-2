@@ -6,6 +6,7 @@ import FormControls from '../components/stylebook/FormControls.vue'
 import SnackbarTester from '../components/stylebook/SnackbarTester.vue'
 import ButtonsAndActions from '../components/stylebook/ButtonsAndActions.vue'
 import MarkdownAndSubthemes from '../components/stylebook/MarkdownAndSubthemes.vue'
+import Iconography from '../components/stylebook/Iconography.vue'
 </script>
 
 <template>
@@ -15,6 +16,7 @@ import MarkdownAndSubthemes from '../components/stylebook/MarkdownAndSubthemes.v
   />
   <main class="bookLayout">
     <StyleBookIntro />
+    <Iconography />
     <FormControls />
     <MarkdownAndSubthemes class="double" />
     <ButtonsAndActions />
