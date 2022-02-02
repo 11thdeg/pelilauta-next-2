@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import Column from '../ui/Column.vue';
 import Button from '../ui/Button.vue';
+import Fab from '../ui/Fab.vue';
 </script>
 
 <template>
@@ -29,6 +30,13 @@ import Button from '../ui/Button.vue';
       >
         With Avatar
       </Button>
+    </section>
+    <section>
+      <h2>Fabs!</h2>
+      <Fab
+        icon="avatar"
+        label="Avatar!"
+      />
     </section>
   </Column>
 </template>
