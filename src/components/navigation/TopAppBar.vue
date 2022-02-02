@@ -18,6 +18,7 @@ const props = defineProps<{
       <Icon
         v-if="showBackButton"
         icon="arrow_back"
+        @click.prevent="$router.back()"
       />
       <Icon
         v-if="icon"

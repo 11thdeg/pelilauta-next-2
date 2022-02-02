@@ -12,7 +12,8 @@
   <FabTray>
     <Fab
       icon="mekanismi"
-      label="New Thread" />
+      label="New Thread"
+      @click.prevent="$router.push('/create/thread')" />
   </FabTray>
 </template>
 
