@@ -7,9 +7,12 @@ export const iconlist = [
   'd12',
   'd20',
   'facebook',
+  'eye',
+  'eye-slash',
   'fox',
   'google',
   'lightmode',
   'mekanismi',
-  'stylebook'
+  'stylebook',
+  'youtube'
 ]

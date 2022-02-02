@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { computed } from 'vue';
 import Icon from './Icon.vue'
 
 const props = defineProps<{
@@ -8,17 +9,19 @@ const props = defineProps<{
   secondary?: boolean,
   tertiary?: boolean,
 }>()
+
+const classes = computed(() => ({
+    'small': props.small,
+    'secondary': props.secondary && !props.tertiary,
+    'tertiary': props.tertiary && !props.secondary,
+    'withLabel': props.label && props.label.length > 0
+  })) 
 </script>
 
 <template>
   <button
     class="Fab"
-    :class="{
-      small: small,
-      secondary: secondary,
-      tertiary: tertiary,
-      withLabel: label && label.length > 0
-    }"
+    :class="classes"
   >
     <Icon
       class="fabIcon"

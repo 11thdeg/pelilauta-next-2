@@ -3,7 +3,7 @@ import { useI18n } from 'vue-i18n';
 
 const props = defineProps<{
   modelValue:string,
-  label:string,
+  label?:string,
 }>()
 const emit = defineEmits<{
   (e: 'update:modelValue', modelValue: string): void
@@ -37,7 +37,7 @@ function onExpandableTextareaInput({ target: node }:Event){
   <textarea
     v-model="value"
     class="Textarea"
-    :placeholder="t(label)"
+    :placeholder="label ? t(label) : ''"
     @input="onExpandableTextareaInput" 
   />
 </template>
