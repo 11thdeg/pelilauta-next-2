@@ -28,7 +28,7 @@ const props = defineProps<{
     />
     <span
       v-if="label"
-      class="label onlyForDesktop"
+      class="label onlyOnDesktop"
     >{{ label }}</span>
   </button>
 </template>

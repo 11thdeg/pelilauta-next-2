@@ -16,6 +16,8 @@ interface topic {
 // useStore could be anything like useUser, useCart
 // the first argument is a unique id of the store across your application
 export const useStore = defineStore('main', () => {
+  const withFabs = ref(false)
+
   const topics: Ref<topic[]> = ref([])
 
 
@@ -39,9 +41,20 @@ export const useStore = defineStore('main', () => {
     profile.$reset()
   }
 
+  function mountFabs () {
+    withFabs.value = true
+  }
+
+  function unmountFabs () {
+    withFabs.value = false
+  }
+
   return {
     topics: computed(() => topics.value), // Read only
+    withFabs: computed(() => withFabs.value), // Read only
     initAppMeta,
-    $reset
+    $reset,
+    mountFabs,
+    unmountFabs
   }
 })

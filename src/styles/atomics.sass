@@ -9,6 +9,14 @@
   .onlyOnMobile
     display: none !important
 
+@include media('>=1024px')
+  .hideOnDesktop
+    display: none !important
+
+@include media('<1024px')
+  .onlyOnDesktop
+    display: none !important
+
 span.code
   @include TypeCode()
   background-color: var(--color-rise-a)
