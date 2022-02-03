@@ -27,6 +27,10 @@ nav#FabTray
   bottom: 56px
   right: 0
   padding: 16px
+  display: flex
+  flex-direction: column-reverse
+  align-items: flex-end
+  gap: 12px
 
 @include media('>=tablet')
   nav#FabTray
