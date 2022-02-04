@@ -3,7 +3,7 @@
 const props = defineProps<{
   modelValue: string,
   error?: boolean,
-  label?: string
+  label: string
 }>()
 
 const emit = defineEmits<{
@@ -24,32 +24,37 @@ function onInput() {
 </script>
 
 <template>
-  <div class="Textfield">
-    <label
-      :class="{ error: error }"
-    >{{ label }}
-      <input
-        v-model="value"
-        type="text"
-        @input="onInput"
-        @blur="onInput"
-      >
-    </label>
-  </div>
+  <label
+    class="Textfield"
+    :class="{ error: error }"
+  >
+    <input
+      v-model="value"
+      type="text"
+      @input="onInput"
+      @blur="onInput"
+    >
+    <span class="labelText">{{ label }}</span>
+  </label>
 </template>
 
 <style lang="sass" scoped>
 @import ../../styles/typography-mixins.sass
 
 .Textfield
-  background-color: var(--color-rise-a)
-  border-bottom: var(--color-rise-b) solid 1px
   height: 48px
   position: relative
-  border-radius: 0 12px 0 0
-  label
+  display: block
+ 
+  .labelText
     @include TypeCaption()
     padding: 0 8px
+    position: absolute
+    top: 2px
+    left: 0
+    z-index: 2
+    pointer-events: none
+    color: var(--color-field-active-border)
   input
     @include TypeBody2()
     background: none
@@ -62,6 +67,22 @@ function onInput() {
     box-sizing: border-box
     margin: 0
     padding: 0 8px
+    height: 48px
+    padding-top: 16px
+    border: none
+    background-color: var(--color-field-background)
+    border-bottom: var(--color-field-border) solid 1px
+    border-radius: 0 12px 0 0
+    color: var(--color-high)
+    &:hover
+      border: none
+      background-color: var(--color-field-hover-background)
+      border-bottom: var(--color-field-hover-border) solid 1px
+    &:focus, &:active
+      border: none
+      background-color: var(--color-field-active-background)
+      border-bottom: var(--color-field-active-border) solid 1px
+      outline: none
 
 
 </style>

@@ -5,6 +5,7 @@ export const routes = [
   { path: '/', component: Home },
   { path: '/about', component: About },
   { path: '/stylebook', component: () => import('./Stylebook.vue') },
+  { path: '/stylebook/:page', component: () => import('./Stylebook.vue'), props: true },
   { path: '/login', component: () => import('./LoginView.vue') },
   { path: '/account', component: () => import('./AccountView.vue') },
   { path: '/account/delete', component: () => import('./AccountDeleteView.vue') },

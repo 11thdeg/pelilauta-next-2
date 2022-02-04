@@ -12,6 +12,7 @@ const selectOpts: Record<string, string> = {
   one: 'Option one',
   two: 'Option two',
   three: 'Option three',
+  aReallyLongOption: 'Option aReallyLongOption which is quite long',
 }
 const selectedOp = computed(() => selectOpts[selectValue.value])
 </script>
@@ -19,6 +20,11 @@ const selectedOp = computed(() => selectOpts[selectValue.value])
 <template>
   <Column class="FormContols double">
     <h1>Forms</h1>
+    <p>
+      <router-link to="/stylebook/formcontrols">
+        Show only this column
+      </router-link>
+    </p>
     <p>
       And other input components.
     </p>

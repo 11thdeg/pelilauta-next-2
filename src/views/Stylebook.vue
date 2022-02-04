@@ -7,6 +7,13 @@ import SnackbarTester from '../components/stylebook/SnackbarTester.vue'
 import ButtonsAndActions from '../components/stylebook/ButtonsAndActions.vue'
 import MarkdownAndSubthemes from '../components/stylebook/MarkdownAndSubthemes.vue'
 import Iconography from '../components/stylebook/Iconography.vue'
+import { computed } from 'vue'
+
+const props = defineProps<{
+  page?: string
+}>()
+
+const subPage = computed(() => props.page || '')
 </script>
 
 <template>
@@ -15,12 +22,18 @@ import Iconography from '../components/stylebook/Iconography.vue'
     icon="mekanismi"
   />
   <main class="bookLayout">
-    <StyleBookIntro />
-    <Iconography />
-    <FormControls />
-    <MarkdownAndSubthemes class="double" />
-    <ButtonsAndActions />
-    <NavigationComponents class="double" />
-    <SnackbarTester />
+    <StyleBookIntro v-if="!subPage" />
+    <Iconography v-if="!subPage" />
+    <FormControls v-if="!subPage || subPage === 'formcontrols' " />
+    <MarkdownAndSubthemes
+      v-if="!subPage"
+      class="double"
+    />
+    <ButtonsAndActions v-if="!subPage" />
+    <NavigationComponents
+      v-if="!subPage"
+      class="double"
+    />
+    <SnackbarTester v-if="!subPage" />
   </main>
 </template>

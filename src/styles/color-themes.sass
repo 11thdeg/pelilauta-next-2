@@ -39,6 +39,16 @@
   --chroma-secondary-h: #a2e4ec
   --chroma-secondary-i: #e7fbfb
 
+  --chroma-dark-secondary-a: #0e1317
+  --chroma-dark-secondary-b: #1a2c39
+  --chroma-dark-secondary-c: #28465c
+  --chroma-dark-secondary-d: #3c627d
+  --chroma-dark-secondary-e: #567f9c
+  --chroma-dark-secondary-f: #759db9
+  --chroma-dark-secondary-g: #98bcd2
+  --chroma-dark-secondary-h: #bedbe8
+  --chroma-dark-secondary-i: #e7fbfb
+
 // *** Color Styles shared between the modes **************************
 
 .chroma-box-2
@@ -52,11 +62,21 @@
 // *** Theme mixins ***************************************************
 
 @mixin darkTheme()
+  --color-background: var(--chroma-dark-secondary-a)
+
+  // Forms
+  --color-field-background: var(--chroma-dark-secondary-b)
+  --color-field-hover-background: var(--chroma-dark-secondary-c)
+  --color-field-active-background: var(--chroma-dark-secondary-b)
+
+  --color-field-border: var(--chroma-dark-secondary-d)
+  --color-field-hover-border: var(--chroma-dark-secondary-e)
+  --color-field-active-border: var(--chroma-dark-secondary-f)
+
   // add dark theme colors here
   --color-low: rgba(255,255,255,var(--text-low-opacity))
   --color-medium: rgba(255,255,255, var(--text-medium-opacity))
   --color-high: rgba(255,255,255, var(--text-high-opacity))
-  --color-background: var(--chroma-secondary-a)
   --color-rise-a: var(--chroma-secondary-b)
   --color-rise-b: var(--chroma-secondary-c)
   --color-link: var(--chroma-secondary-f)
@@ -77,11 +97,22 @@
     color: var(--chroma-secondary-g)
 
 @mixin lightTheme()
+  --color-background: #fff
+
+  // Forms
+  --color-field-background: var(--chroma-dark-secondary-i)
+  --color-field-hover-background: var(--chroma-dark-secondary-h)
+  --color-field-active-background: var(--chroma-dark-secondary-i)
+
+  --color-field-border: var(--chroma-dark-secondary-g)
+  --color-field-hover-border: var(--chroma-dark-secondary-d)
+  --color-field-active-border: var(--chroma-dark-secondary-d)
+
   // add light theme colors here
   --color-low: rgba(0, 35, 55, var(--text-low-opacity))
   --color-medium: rgba(0, 35, 55, var(--text-medium-opacity))
-  --color-high: rgba(0, 35, 55, var(--text-high-opacity))
-  --color-background: #fff
+  --color-high: var(--chroma-dark-secondary-a)
+ 
   --color-rise-a: var(--chroma-secondary-i)
   --color-rise-b: var(--chroma-secondary-h)
   --color-link: var(--chroma-secondary-e)
