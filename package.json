@@ -1,7 +1,6 @@
 {
   "name": "pelilauta-next",
-  "version": "14.0.0-alpha.7",
-  "license": "MIT",
+  "version": "14.0.0-alpha.8",
   "author": "Ville Takanen",
   "scripts": {
     "dev": "vite",

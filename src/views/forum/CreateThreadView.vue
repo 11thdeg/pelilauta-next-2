@@ -20,8 +20,8 @@ const withYoutube = ref(false)
   />
   <main class="singleColumnLayout">
     <CreateThreadForm
-      :withYoutube = "withYoutube"
-      :withImages = "withImages"
+      :with-youtube="withYoutube"
+      :with-images="withImages"
     />
   </main>
   <FabTray>
