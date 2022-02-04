@@ -12,7 +12,9 @@
     }
   },
   "actions": {
+    "add": "Lisää",
     "back": "Palaa",
+    "cancel": "Peruuta",
     "delete": "Poista",
     "edit": "Muokkaa",
     "login": "Kirjaudu",

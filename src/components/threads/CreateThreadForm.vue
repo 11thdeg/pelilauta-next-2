@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onMounted, ref, watch } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n'
 import Textfield from '../ui/Textfield.vue'
 import Button from '../ui/Button.vue'
@@ -7,11 +7,15 @@ import MarkdownArea from '../ui/MarkdownArea.vue'
 import ImageList from '../ui/ImageList.vue'
 import SelectImageDialog from '../assets/SelectImageDialog.vue'
 import { useAssets } from '../../stores/assets'
-import { Thread } from '@11thdeg/skaldstore';
-import TopicSelector from './TopicSelector.vue';
-import { logDebug } from '../../utils/loghelpers';
-import ActionBar from '../ui/ActionBar.vue';
-import SpacerDiv from '../ui/SpacerDiv.vue';
+import { Thread } from '@11thdeg/skaldstore'
+import TopicSelector from './TopicSelector.vue'
+import { logDebug, logError } from '../../utils/loghelpers'
+import ActionBar from '../ui/ActionBar.vue'
+import SpacerDiv from '../ui/SpacerDiv.vue'
+import { useAuthz } from '../../stores/authz'
+import { addDoc, collection, getFirestore } from '@firebase/firestore'
+import { useSnack } from '../../composables/useSnack';
+import { useRouter } from 'vue-router';
 
 const props = defineProps<{
   withImages: boolean
@@ -22,6 +26,7 @@ const title = ref('')
 const markdownContent = ref('')
 
 const t = useI18n().t
+const authz = useAuthz()
 
 const preview = ref(false)
 
@@ -54,15 +59,36 @@ function cancel () {
   preview.value = false
 }
 
-function submit () {
+const { pushSnack } = useSnack()
+const router = useRouter()
+
+async function submit () {
   const thread = new Thread()
   thread.title = title.value
   thread.markdownContent = markdownContent.value
   thread.topicid = topic.value
+  thread.author = authz.user.uid
   if (youtubeId.value) thread.youtubeId = youtubeId.value
   if (images.value.size) thread.assets = images.value
   logDebug('CreateThreadForm', 'submit', thread.docData)
+  try {
+    const threadid = await addDoc(
+      collection(getFirestore(), 'stream'),
+      thread.docData
+    )
+    pushSnack('thread.create.success')
+    router.push('/thread/' + threadid)
+  } catch (e) {
+    pushSnack('thread.create.error')
+    logError('CreateThreadForm', 'submit', e)
+  }
 }
+
+const valid = computed(() => {
+  return title.value.length > 0 && 
+    markdownContent.value.length > 0
+})
+
 </script>
 
 <template>
@@ -71,9 +97,7 @@ function submit () {
       v-model="title"
       :label="t('thread.fields.title')"
     />
-    <div
-      class="topActions"
-    >
+    <ActionBar>
       <TopicSelector v-model="topic" />
       <Button
         v-if="!preview"
@@ -106,7 +130,7 @@ function submit () {
       >
         {{ t('createThread.actions.addImages') }}
       </Button>
-    </div>
+    </ActionBar>
 
     <!-- YouTube sharing options -->
     <transition
@@ -116,7 +140,10 @@ function submit () {
       :duration="200"
     >
       <div v-if="showYoutube || withYoutube">
-        <Textfield v-model="youtubeId" />
+        <Textfield
+          v-model="youtubeId"
+          :label="t('thread.fields.youtubeId')"
+        />
       </div>
     </transition>
 
@@ -147,7 +174,10 @@ function submit () {
       >
         {{ t('actions.cancel') }}
       </Button>
-      <Button @click="submit">
+      <Button
+        :disabled="!valid"
+        @click="submit"
+      >
         {{ t('actions.add') }}
       </Button>
 
@@ -164,6 +194,5 @@ function submit () {
   display: flex
   flex-direction: column
   gap: var(--page-grid-gap)
-.topActions
-  display: flex
+
 </style>
