@@ -1,7 +1,7 @@
 <script lang="ts" setup>import { ref } from 'vue';
 
 const props = defineProps<{
-  label?: string,
+  label: string,
   options: Record<string, string>,
   modelValue: string,
 }>()
@@ -19,51 +19,63 @@ function onChange () {
 </script>
 
 <template>
-  <div class="Select">
-    <label>
-      {{ label }}
-      <select
-        v-model="value"
-        @change="onChange"
+  <label class="Select">
+    <select
+      v-model="value"
+      @change="onChange"
+    >
+      <option
+        v-for="option, key in options"
+        :key="key"
+        :value="key"
+        :selected="option === modelValue"
       >
-        <option
-          v-for="option, key in options"
-          :key="key"
-          :value="key"
-          :selected="option === modelValue"
-        >
-          {{ option }}
-        </option>
-      </select>
-    </label>
-  </div>
+        {{ option }}
+      </option>
+    </select>
+    <span class="labelText">{{ label }}</span>
+  </label>
 </template>
 
 <style lang="sass" scoped>
 @import ../../styles/typography-mixins.sass
 
 .Select
-  background-color: var(--color-rise-a)
-  border-bottom: var(--color-rise-b) solid 1px
   height: 48px
   position: relative
-  border-radius: 0 12px 0 0
   display: inline-block
-  label
+  .labelText
     @include TypeCaption()
     padding: 0 8px
-    padding-right: 32px
+    position: absolute
+    top: 2px
+    left: 0
+    z-index: 2
+    pointer-events: none
+    color: var(--color-field-active-border)
+
   select
     @include TypeBody2()
     background: none
     border: none
-    height: 28px
-    position: absolute
-    bottom: 0px
-    left: 0px
-    width: calc(100% - 8px)
+    height: 48px
     box-sizing: border-box
     margin: 0
-    padding: 0 8px
+    padding: 0 4px
+    padding-top: 16px
+    border: none
+    background-color: var(--color-field-background)
+    border-bottom: var(--color-field-border) solid 1px
+    border-radius: 0 12px 0 0
+    color: var(--color-high)
+    &:hover
+      border: none
+      background-color: var(--color-field-hover-background)
+      border-bottom: var(--color-field-hover-border) solid 1px
+    &:focus, &:active
+      border: none
+      background-color: var(--color-field-active-background)
+      border-bottom: var(--color-field-active-border) solid 1px
+      outline: none
 
 </style>

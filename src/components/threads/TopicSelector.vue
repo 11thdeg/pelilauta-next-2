@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useStore } from '../../stores/main';
 import Select from '../ui/Select.vue'
 
@@ -27,12 +28,14 @@ const topics = computed(() => {
   return list
 })
 
+const t = useI18n().t
 
 </script>
 
 <template>
   <Select
     v-model="selected"
+    :label="t('thread.fields.topic')"
     :options="topics"
   />
 </template>

@@ -67,7 +67,10 @@ function submit () {
 
 <template>
   <section class="CreateThreadForm">
-    <Textfield v-model="title" :label="t('createThread.fields.title')"/>
+    <Textfield
+      v-model="title"
+      :label="t('thread.fields.title')"
+    />
     <div
       class="topActions"
     >
