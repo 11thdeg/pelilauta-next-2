@@ -51,5 +51,11 @@
   },
   "snacks": {
     "profileCreated": "Uusi käyttäjäprofiili luotu onnistuneesti"
+  },
+  "thread": {
+    "fields": {
+      "title": "Otsikko",
+      "topic": "Aihe"
+    }
   }
 }

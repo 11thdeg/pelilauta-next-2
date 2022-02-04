@@ -63,6 +63,7 @@ function onChange () {
     margin: 0
     padding: 0 4px
     padding-top: 16px
+    min-width: 144px
     border: none
     background-color: var(--color-field-background)
     border-bottom: var(--color-field-border) solid 1px
