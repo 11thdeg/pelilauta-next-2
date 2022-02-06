@@ -1,12 +1,15 @@
 <template>
   <TopAppBar />
   <main class="bookLayout">
-    <div>{{ topics }}</div>
     <div
       v-for="thread in threads"
       :key="thread.key"
     >
-      <div>{{ thread.title }}</div>
+      <div>
+        <router-link :to="`/threads/${thread.key}`">
+          {{ thread.title }}
+        </router-link>
+      </div>
     </div>
   </main>
   <FabTray>
@@ -20,14 +23,11 @@
 
 <script lang="ts" setup>
 import { computed, onMounted } from 'vue'
-import { useStore } from '../stores/main'
 import TopAppBar from '../components/navigation/TopAppBar.vue'
 import { useStream } from '../stores/stream'
 import FabTray from '../components/navigation/FabTray.vue'
 import Fab from '../components/ui/Fab.vue'
 
-const store = useStore()
-const topics = computed(() => store.topics)
 
 const stream = useStream()
 const threads = computed(() => {

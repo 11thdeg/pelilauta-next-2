@@ -10,5 +10,6 @@ export const routes = [
   { path: '/account', component: () => import('./AccountView.vue') },
   { path: '/account/delete', component: () => import('./AccountDeleteView.vue') },
   { path: '/assets', component: () => import('./AssetsView.vue') },
-  { path: '/create/thread', component: () => import('./forum/CreateThreadView.vue'), props: true }
+  { path: '/create/thread', component: () => import('./forum/CreateThreadView.vue'), props: true },
+  { path: '/threads/:threadid', component: () => import('./forum/ThreadView.vue'), props: true}
 ]
