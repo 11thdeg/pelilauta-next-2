@@ -15,7 +15,7 @@ const { mode } = useLightMode()
     class="NavButton"
     @click.prevent="$router.push(props.to)"
   >
-    <img :src="`/proprietary/icons/${mode}/${props.icon}.svg`">
+    <img :src="`/proprietary/icons/dark/${props.icon}.svg`">
     <div class="label">
       {{ props.label }}
     </div>
@@ -49,5 +49,6 @@ div.NavButton
     text-align: center
     width: 72px
     font-weight: bold
+    color: var(--chroma-secondary-h)
 
 </style>

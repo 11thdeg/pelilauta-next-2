@@ -73,6 +73,10 @@
   --color-field-hover-border: var(--chroma-dark-secondary-e)
   --color-field-active-border: var(--chroma-dark-secondary-f)
 
+  // UI Elements
+  // --color-navbar-background: var(--chroma-dark-secondary-b)
+  --color-navbar-background: var(--chroma-secondary-b)
+
   // add dark theme colors here
   --color-low: rgba(255,255,255,var(--text-low-opacity))
   --color-medium: rgba(255,255,255, var(--text-medium-opacity))
@@ -91,6 +95,8 @@
   --color-text-button-active: rgba(231, 251, 251, 0.22)
   --color-surface: var(--chroma-primary-a)
   --color-on-surface: var(--chroma-primary-d)
+  body
+    color: var(--color-low)
   h1, h2
     color: var(--chroma-secondary-h)
   th
@@ -108,10 +114,13 @@
   --color-field-hover-border: var(--chroma-dark-secondary-d)
   --color-field-active-border: var(--chroma-dark-secondary-d)
 
+  // UI Elements
+  --color-navbar-background: var(--chroma-secondary-d)
+
   // add light theme colors here
   --color-low: rgba(0, 35, 55, var(--text-low-opacity))
   --color-medium: rgba(0, 35, 55, var(--text-medium-opacity))
-  --color-high: var(--chroma-dark-secondary-a)
+  --color-high: var(--chroma-secondary-a)
  
   --color-rise-a: var(--chroma-secondary-i)
   --color-rise-b: var(--chroma-secondary-h)
@@ -119,8 +128,14 @@
   --color-link-hover: var(--chroma-secondary-f)
   --color-surface: var(--chroma-secondary-a)
 
+  body
+    color: var(--color-low)
+
   h1, h2
     color: var(--chroma-secondary-d)
+
+  p
+    color: var(--color-medium)
 
 body
   @include darkTheme()

@@ -31,8 +31,12 @@ const snippet = computed(() => {
     <MarkDownSection
       v-if="thread.markdownContent"
       :content="snippet"
+      class="contentSnippet"
     />
-    <p v-else>
+    <p
+      v-else
+      class="contentSnippet TypeBody2"
+    >
       {{ snippet }}
     </p>
   </Card>

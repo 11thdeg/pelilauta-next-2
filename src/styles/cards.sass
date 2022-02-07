@@ -1,0 +1,15 @@
+@import typography-mixins.sass
+
+body
+  #app
+    .card
+      .contentSnippet
+        p
+          @include TypeBody2()
+          color: var(--color-medium)
+        h1, h2, h3, h4
+          @include TypeHeadline6()
+      h1, h2, h3, h4
+        a
+          color: var(--color-high)
+        
