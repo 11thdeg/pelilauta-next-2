@@ -8,6 +8,7 @@ import ButtonsAndActions from '../components/stylebook/ButtonsAndActions.vue'
 import MarkdownAndSubthemes from '../components/stylebook/MarkdownAndSubthemes.vue'
 import Iconography from '../components/stylebook/Iconography.vue'
 import { computed } from 'vue'
+import Cards from '../components/stylebook/Cards.vue'
 
 const props = defineProps<{
   page?: string
@@ -25,6 +26,10 @@ const subPage = computed(() => props.page || '')
     <StyleBookIntro v-if="!subPage" />
     <Iconography v-if="!subPage" />
     <FormControls v-if="!subPage || subPage === 'formcontrols' " />
+    <Cards
+      v-if="!subPage || subPage === 'cards' "
+      class="double"
+    />
     <MarkdownAndSubthemes
       v-if="!subPage"
       class="double"

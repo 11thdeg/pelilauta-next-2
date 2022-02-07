@@ -16,6 +16,7 @@ import { useAuthz } from '../../stores/authz'
 import { addDoc, collection, getFirestore } from '@firebase/firestore'
 import { useSnack } from '../../composables/useSnack';
 import { useRouter } from 'vue-router';
+import { marked } from 'marked';
 
 const props = defineProps<{
   withImages: boolean
@@ -65,6 +66,7 @@ const router = useRouter()
 async function submit () {
   const thread = new Thread()
   thread.title = title.value
+  thread.htmlContent =  marked(markdownContent.value) // Legacy app support
   thread.markdownContent = markdownContent.value
   thread.topicid = topic.value
   thread.author = authz.user.uid
