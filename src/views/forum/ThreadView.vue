@@ -26,7 +26,8 @@ onMounted(async ()  => {
   />
   <main class="singleColumnLayout">
     <template v-if="thread">
-      <MarkDownSection :content="thread.markdownContent" />
+      <MarkDownSection v-if="thread.markdownContent" :content="thread.markdownContent" />
+      <div v-else :innerHTML="thread.htmlContent" />
     </template>
     <hr>
     {{ thread }}

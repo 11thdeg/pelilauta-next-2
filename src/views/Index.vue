@@ -1,16 +1,13 @@
 <template>
   <TopAppBar />
   <main class="bookLayout">
-    <div
-      v-for="thread in threads"
-      :key="thread.key"
-    >
-      <div>
-        <router-link :to="`/threads/${thread.key}`">
-          {{ thread.title }}
-        </router-link>
-      </div>
-    </div>
+    <Column class="double-cut streamcards">
+      <ThreadCard
+        v-for="thread in threads"
+        :key="thread.key"
+        :thread="thread"
+      />
+    </Column>
   </main>
   <FabTray>
     <Fab
@@ -27,6 +24,8 @@ import TopAppBar from '../components/navigation/TopAppBar.vue'
 import { useStream } from '../stores/stream'
 import FabTray from '../components/navigation/FabTray.vue'
 import Fab from '../components/ui/Fab.vue'
+import ThreadCard from '../components/threads/ThreadCard.vue'
+import Column from '../components/ui/Column.vue'
 
 
 const stream = useStream()
@@ -41,3 +40,10 @@ onMounted(() => {
 })
 
 </script>
+
+<style lang="sass" scoped>
+.streamcards
+  display: flex
+  flex-direction: column
+  gap: 8px
+</style>
