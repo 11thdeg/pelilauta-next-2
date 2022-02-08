@@ -17,7 +17,8 @@ const props = defineProps<{
     <h1>
       <Icon
         v-if="showBackButton"
-        icon="arrow_back"
+        icon="back"
+        class="hoverable clickable"
         @click.prevent="$router.back()"
       />
       <Icon

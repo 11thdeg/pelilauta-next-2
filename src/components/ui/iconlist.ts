@@ -3,6 +3,7 @@ export const iconlist = [
   'assets',
   'arrow_back',
   'avatar',
+  'back',
   'close',
   'd6',
   'd12',

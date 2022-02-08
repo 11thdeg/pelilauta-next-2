@@ -14,6 +14,7 @@ const { toggleMode } = useLightMode()
     <Icon
       icon="lightmode"
       medium
+      class="hoverable clickable"
     />
   </div>
 </template>
@@ -28,11 +29,4 @@ div.LightmodeButton
   opacity: 0.83
   transition: all 0.2s ease-in-out
   border-radius: 50%
-  &:hover
-    opacity: 1
-    background: var(--color-rise-a)
-    border-radius: 50%
-  &:active
-    background: var(--color-rise-b)
-    border-radius: 8px
 </style>

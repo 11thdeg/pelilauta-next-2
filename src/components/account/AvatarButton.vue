@@ -23,6 +23,7 @@ const targetRoute = computed(() => {
     <Icon
       icon="avatar"
       medium
+      class="hoverable clickable"
     />
   </div>
 </template>

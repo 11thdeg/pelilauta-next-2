@@ -55,6 +55,7 @@ button.Button
     cursor: not-allowed
   &.text
     background: none
+    color: var(--color-high)
     &:hover
       background-color: var(--color-text-button-hover)
     &:active
