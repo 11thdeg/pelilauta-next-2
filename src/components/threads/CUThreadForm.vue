@@ -17,6 +17,7 @@ import { addDoc, collection, getFirestore } from '@firebase/firestore'
 import { useSnack } from '../../composables/useSnack';
 import { useRouter } from 'vue-router';
 import { marked } from 'marked';
+import YoutubePreview from '../ui/YoutubePreview.vue'
 
 const props = defineProps<{
   withImages: boolean
@@ -141,12 +142,18 @@ const valid = computed(() => {
       leave-active-class="animate__animated animate__fadeOut"
       :duration="200"
     >
-      <div v-if="showYoutube || withYoutube">
+      <ActionBar v-if="showYoutube || withYoutube">
         <Textfield
           v-model="youtubeId"
           :label="t('thread.fields.youtubeId')"
+          style="flex-grow: 1"
         />
-      </div>
+        <YoutubePreview
+          :video-id="youtubeId"
+          :width="84"
+          :height="56"
+        />
+      </ActionBar>
     </transition>
 
     <!-- Image sharing options -->

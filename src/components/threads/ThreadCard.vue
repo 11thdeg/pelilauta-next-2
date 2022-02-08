@@ -3,6 +3,7 @@ import { Thread } from '@11thdeg/skaldstore'
 import { computed } from 'vue';
 import Card from '../ui/Card.vue';
 import MarkDownSection from '../ui/MarkDownSection.vue';
+import YoutubePreview from '../ui/YoutubePreview.vue';
 
 const props = defineProps<{
   thread: Thread
@@ -28,16 +29,25 @@ const snippet = computed(() => {
         {{ thread.title }}
       </router-link>
     </h1>
-    <MarkDownSection
-      v-if="thread.markdownContent"
-      :content="snippet"
-      class="contentSnippet"
-    />
-    <p
-      v-else
-      class="contentSnippet TypeBody2"
-    >
-      {{ snippet }}
-    </p>
+    <template v-if="thread.youtubeId">
+      <YoutubePreview
+        :video-id="thread.youtubeId"
+        :width="413"
+        :height="275"
+      />
+    </template>
+    <template v-else>
+      <MarkDownSection
+        v-if="thread.markdownContent"
+        :content="snippet"
+        class="contentSnippet"
+      />
+      <p
+        v-else
+        class="contentSnippet TypeBody2"
+      >
+        {{ snippet }}
+      </p>
+    </template>
   </Card>
 </template>
