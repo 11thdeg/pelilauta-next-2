@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import Column from '../ui/Column.vue'
-import ActionBar from '../ui/ActionBar.vue';
-import Card from '../ui/Card.vue';
-import Button from '../ui/Button.vue';
+import Card from '../ui/Card.vue'
+import Button from '../ui/Button.vue'
 
 </script>
 
@@ -17,11 +16,17 @@ import Button from '../ui/Button.vue';
     <div class="gridTwoByTwo">
       <Card :rise="0">
         <h1>Rise 0</h1>
-        <p class="subtitle">With some text?</p>
+        <p class="subtitle">
+          With some text?
+        </p>
         <p>And some actual text?</p>
       </Card>
       <Card>
-        <p class="subtitle"><router-link to="/">And a link on top</router-link></p>
+        <p class="subtitle">
+          <router-link to="/">
+            And a link on top
+          </router-link>
+        </p>
         <h1>[Rise 1]</h1>
         <p><i>Or more actual text, with italics and some styling and a <a href="/">outlink?</a> maybe?</i></p>
       </Card>

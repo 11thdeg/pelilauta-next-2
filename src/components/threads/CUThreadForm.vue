@@ -35,7 +35,7 @@ const preview = ref(false)
 const showYoutube = ref(props.withYoutube)
 const youtubeId = ref('')
 
-const images = ref<Map<string, string>>(new Map())
+const images = ref<string[]>([])
 const selectedImage = ref('')
 
 const assetStore = useAssets()
@@ -43,7 +43,8 @@ const assetStore = useAssets()
 onMounted(() => {
   watch(selectedImage, (value) => {
     if (!value) return
-    images.value.set(value, assetStore.assets.get(value)?.url || '')
+    const image = assetStore.assetCache.get(value)?.url
+    if (image && !images.value.includes(image)) images.value.push(image)
     selectedImage.value = ''
   })
 })
@@ -55,7 +56,7 @@ const topic = ref('')
 function cancel () {
   title.value = ''
   markdownContent.value = ''
-  images.value.clear()
+  images.value = []
   youtubeId.value = ''
   topic.value = ''
   preview.value = false
@@ -72,15 +73,15 @@ async function submit () {
   thread.topicid = topic.value
   thread.author = authz.user.uid
   if (youtubeId.value) thread.youtubeId = youtubeId.value
-  if (images.value.size) thread.assets = images.value
+  if (images.value.length) thread.images = images.value
   logDebug('CreateThreadForm', 'submit', thread.docData)
   try {
-    const threadid = await addDoc(
+    const threadDoc = await addDoc(
       collection(getFirestore(), 'stream'),
       thread.docData
     )
     pushSnack('thread.create.success')
-    router.push('/thread/' + threadid)
+    router.push('/threads/' + threadDoc.id)
   } catch (e) {
     pushSnack('thread.create.error')
     logError('CreateThreadForm', 'submit', e)
@@ -90,6 +91,12 @@ async function submit () {
 const valid = computed(() => {
   return title.value.length > 0 && 
     markdownContent.value.length > 0
+})
+
+const previewImages = computed(() => {
+  return new Map(images.value.map((image) => {
+    return [image, image]
+  }))
 })
 
 </script>
@@ -142,7 +149,7 @@ const valid = computed(() => {
       leave-active-class="animate__animated animate__fadeOut"
       :duration="200"
     >
-      <ActionBar v-if="showYoutube || withYoutube">
+      <ActionBar v-if="showYoutube || withYoutube">
         <Textfield
           v-model="youtubeId"
           :label="t('thread.fields.youtubeId')"
@@ -164,9 +171,9 @@ const valid = computed(() => {
       :duration="100"
     >
       <ImageList
-        v-if="images.size > 0"
+        v-if="images.length > 0"
         v-model="selectedImage"
-        :images="images"
+        :images="previewImages"
       />
     </transition>
 

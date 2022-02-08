@@ -37,6 +37,11 @@ const snippet = computed(() => {
       />
     </template>
     <template v-else>
+      <img
+        v-if="thread.poster"
+        class="poster"
+        :src="thread.poster"
+      >
       <MarkDownSection
         v-if="thread.markdownContent"
         :content="snippet"
@@ -51,3 +56,13 @@ const snippet = computed(() => {
     </template>
   </Card>
 </template>
+
+<style lang="sass" scoped>
+img.poster
+  object-fit: cover
+  width: calc(100% + 32px)
+  max-height: 220px
+  margin: 12px -16px
+  border-top: solid 1px var(--chroma-secondary-d)
+  border-bottom: solid 1px var(--chroma-secondary-d)
+</style>
