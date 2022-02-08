@@ -1,6 +1,6 @@
 {
   "name": "pelilauta-next",
-  "version": "14.0.0-alpha.8",
+  "version": "14.0.0-alpha.9",
   "author": "Ville Takanen",
   "scripts": {
     "dev": "vite",
