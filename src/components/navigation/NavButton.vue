@@ -5,6 +5,7 @@ const props = defineProps<{
   icon: string
   label: string
   to: string
+  disabled?: boolean
 }>()
 
 const { mode } = useLightMode()
@@ -13,9 +14,17 @@ const { mode } = useLightMode()
 <template>
   <div
     class="NavButton"
+    :class="{ disabled: disabled }"
     @click.prevent="$router.push(props.to)"
   >
-    <img :src="`/proprietary/icons/dark/${props.icon}.svg`">
+    <img
+      :src="`/proprietary/icons/dark/${props.icon}.svg`"
+      class="dark"
+    >
+    <img
+      :src="`/proprietary/icons/${mode}/${props.icon}.svg`"
+      class="light"
+    >
     <div class="label">
       {{ props.label }}
     </div>
@@ -23,6 +32,8 @@ const { mode } = useLightMode()
 </template>
 
 <style scoped lang="sass">
+@import '../../styles/include-media.scss'
+
 div.NavButton
   height: 72px
   width: 72px
@@ -50,5 +61,17 @@ div.NavButton
     width: 72px
     font-weight: bold
     color: var(--chroma-secondary-h)
+  &.disabled
+    opacity: 0.2
+    cursor: not-allowed
+
+img.light
+  display: none
+
+@include media('>=600px')
+  img.dark
+    display: none
+  img.light
+    display: block
 
 </style>

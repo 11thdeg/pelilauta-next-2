@@ -49,15 +49,25 @@ function onExpandableTextareaInput({ target: node }:Event){
   @include TypeCode()
   font-size: 17px
   border: none
-  border-bottom: 1px solid var(--color-rise-b)
-  background: none
-  background-color: var(--color-rise-a)
-  margin: 12px 0
+  margin: 0
   width: 100%
   box-sizing: border-box
   padding: 8px
-  min-height: 72px
+  min-height: 220px
   overflow: hidden
   resize: none
-  border-radius: 0 8px 0 0
+  background-color: var(--color-field-background)
+  border-bottom: var(--color-field-border) solid 1px
+  border-radius: 0 12px 0 0
+  color: var(--color-high)
+  &:hover
+    border: none
+    background-color: var(--color-field-hover-background)
+    border-bottom: var(--color-field-hover-border) solid 1px
+  &:focus, &:active
+    border: none
+    background-color: var(--color-field-active-background)
+    border-bottom: var(--color-field-active-border) solid 1px
+    outline: none
+
 </style>

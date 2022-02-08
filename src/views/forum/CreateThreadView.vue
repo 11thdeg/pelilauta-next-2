@@ -2,9 +2,7 @@
 import { useI18n } from 'vue-i18n';
 import TopAppBar from '../../components/navigation/TopAppBar.vue'
 import CreateThreadForm from '../../components/threads/CUThreadForm.vue'
-import FabTray from '../../components/navigation/FabTray.vue';
-import Fab from '../../components/ui/Fab.vue';
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 const t = useI18n().t
 
@@ -24,18 +22,4 @@ const withYoutube = ref(false)
       :with-images="withImages"
     />
   </main>
-  <FabTray>
-    <Fab
-      icon="assets"
-      :label="t('actions.addImage')"
-      @click="withImages = !withImages"
-    />
-    <Fab
-      small
-      secondary
-      icon="youtube"
-      :label="t('actions.addVideo')"
-      @click="withYoutube = !withYoutube"
-    />
-  </FabTray>
 </template>

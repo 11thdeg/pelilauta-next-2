@@ -29,7 +29,7 @@ const props = defineProps<{
     </h1>
     <SpacerDiv />
     <p
-      class="TypeCaption"
+      class="TypeCaption hideOnMobile"
       style="line-height: 48px;padding-top:8px"
     >
       {{ version }}
@@ -47,8 +47,9 @@ nav#TopAppBar
   padding: 0 16px
   height: 64px
   h1
-    line-height: 48px
+    line-height: 64px
     font-size: 24px
     margin: 0
     padding: 0
+    user-select: none
 </style>

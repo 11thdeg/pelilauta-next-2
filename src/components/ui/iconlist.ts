@@ -1,4 +1,5 @@
 export const iconlist = [
+  'adventurer',
   'assets',
   'arrow_back',
   'avatar',
@@ -6,6 +7,7 @@ export const iconlist = [
   'd6',
   'd12',
   'd20',
+  'discussion',
   'facebook',
   'edit',
   'eye',

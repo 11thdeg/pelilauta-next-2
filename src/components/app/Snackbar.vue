@@ -46,7 +46,7 @@ onMounted(() => {
         {{ t(messageCode) }}
       </div>
     </transition>
-  </div>"
+  </div>
 </template>
 
 <style lang="sass" scoped>

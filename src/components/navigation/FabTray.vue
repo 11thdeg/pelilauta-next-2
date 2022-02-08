@@ -32,7 +32,7 @@ nav#FabTray
   align-items: flex-end
   gap: 12px
 
-@include media('>=tablet')
+@include media('>=600px')
   nav#FabTray
     bottom: 0px
 </style>

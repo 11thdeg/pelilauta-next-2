@@ -24,6 +24,9 @@
   "assets": {
     "title": "Lataukset"
   },
+  "characters": {
+    "title": "Hahmot"
+  },
   "createThread": {
     "title": "Uusi viesti",
     "actions": {
@@ -31,6 +34,9 @@
       "addVideo": "Lisää video",
       "addImages": "Lisää kuvia"
     }
+  },
+  "discourse": {
+    "title": "Keskustelu"
   },
   "login": {
     "emailLoginHelper": "Osoite",
@@ -51,13 +57,17 @@
       "description": "Julkinen profiilisi näkyy kaikille sivuston käyttäjille. Voit muokata julkaisemasi sisältöä ja kuvia."
     }
   },
+  "sites": {
+    "title": "Pelit"
+  },
   "snacks": {
     "profileCreated": "Uusi käyttäjäprofiili luotu onnistuneesti"
   },
   "thread": {
     "fields": {
       "title": "Otsikko",
-      "topic": "Aihe"
+      "topic": "Aihe",
+      "youtubeId": "Youtube videon tunnus"
     }
   }
 }

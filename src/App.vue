@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import LoadingScreen from '@/components/app/LoadingScreen.vue'
+import LoadingScreen from './components/app/LoadingScreen.vue'
 import { computed } from 'vue'
 import { useAuthz } from './stores/authz'
 import NavigationRail from './components/navigation/NavigationRail.vue'
@@ -40,7 +40,7 @@ const showLoadingScreen = computed(() => !auth.operational)
 @import './styles/app.sass'
 @import './styles/include-media.scss'
 
-@include media('>=tablet')
+@include media('>=600px')
   #AppContent
     box-model: border-box
     margin: 0

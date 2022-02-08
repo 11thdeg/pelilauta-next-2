@@ -22,24 +22,27 @@ const t = useI18n().t
       to="/"
     />
     <NavButton
-      icon="d6"
+      icon="discussion"
       :label="t('discourse.title')"
       to="/discourse"
+      disabled
     />
     <NavButton
-      icon="d6"
+      icon="mekanismi"
       :label="t('sites.title')"
       to="/sites"
+      disabled
     />
     <NavButton
-      icon="d6"
+      icon="adventurer"
       :label="t('characters.title')"
-      to="/discourse"
+      to="/characters"
+      disabled
     />
     <NavButton
       icon="stylebook"
       to="/stylebook"
-      label="Stylebook"
+      label="Meta"
     />
   </nav>
 </template>
