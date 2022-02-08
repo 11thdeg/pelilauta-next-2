@@ -4,6 +4,8 @@ import { computed } from 'vue';
 import Card from '../ui/Card.vue';
 import MarkDownSection from '../ui/MarkDownSection.vue';
 import YoutubePreview from '../ui/YoutubePreview.vue';
+import ActionBar from '../ui/ActionBar.vue';
+import AuthorTag from '../author/AuthorTag.vue';
 
 const props = defineProps<{
   thread: Thread
@@ -54,6 +56,9 @@ const snippet = computed(() => {
         {{ snippet }}
       </p>
     </template>
+    <ActionBar>
+      <AuthorTag :uid="thread.author" />
+    </ActionBar>
   </Card>
 </template>
 

@@ -24,6 +24,12 @@
   "assets": {
     "title": "Lataukset"
   },
+  "bio": {
+    "title": "Profiili",
+    "precursor": {
+      "title": "-- Nimetön --"
+    }
+  },
   "characters": {
     "title": "Hahmot"
   },
