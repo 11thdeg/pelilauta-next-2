@@ -27,7 +27,7 @@ const disableSaving = computed(() => {
   if (nick.value.length < 4) {
     return true
   }
-  return nick.value === profile.$state.profile.nickname && avatarURL.value === profile.$state.profile.avatarURL && bio.value === profile.$state.profile.bio
+  return nick.value === profile.$state.profile.nick && avatarURL.value === profile.$state.profile.avatarURL && bio.value === profile.$state.profile.bio
 })
 
 async function save () {

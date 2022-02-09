@@ -11,7 +11,7 @@ const profileState = useProfile()
 const t = useI18n().t
 
 const lastUpdated = toDisplayString(user.updatedAt)
-const nickname = computed(() => profileState.$state.profile.nickname)
+const nickname = computed(() => profileState.$state.profile.nick)
 const avatarURL = computed(() => profileState.$state.profile.avatarURL || '')
 
 
