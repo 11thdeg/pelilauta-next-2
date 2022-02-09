@@ -47,6 +47,7 @@ export const useProfile = defineStore('profile', () => {
   async function update (data: Record<string, string>) {
     if (data.nick) profile.value.nick = data.nick
     if (data.avatarURL) profile.value.avatarURL = data.avatarURL
+    if (data.bio) profile.value.bio = data.bio
     await saveToFirebase()
   }
 

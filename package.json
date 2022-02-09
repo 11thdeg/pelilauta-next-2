@@ -9,7 +9,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.vue"
   },
   "dependencies": {
-    "@11thdeg/skaldstore": "^0.1.0-alpha.13",
+    "@11thdeg/skaldstore": "^0.1.0-alpha.14",
     "animate.css": "^4.1.1",
     "downscale": "^1.0.6",
     "firebase": "^9.6.4",

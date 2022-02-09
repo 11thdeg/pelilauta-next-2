@@ -8,6 +8,8 @@ import Textarea from '../ui/Textarea.vue'
 import Button from '../ui/Button.vue'
 import AvatarSwitcher from './AvatarSwitcher.vue'
 import MarkDownSection from '../ui/MarkDownSection.vue';
+import ActionBar from '../ui/ActionBar.vue';
+import SpacerDiv from '../ui/SpacerDiv.vue';
 
 const t = useI18n().t
 
@@ -41,22 +43,34 @@ async function save () {
   <Column>
     <h1>{{ t('profile.settings.title') }}</h1>
     <p>{{ t('profile.settings.description') }}</p>
-    <AvatarSwitcher v-model="avatarURL" />
-    <Textfield
-      v-model="nick"
-      :label="t('profile.fields.nickname')"
-    />
-    <Textarea
-      v-model="bio"
-      :label="t('profile.fields.bio')"
-    />
-    <MarkDownSection :content="bio" />
-    <Button
-      :disabled="disableSaving"
-      :working="saving"
-      @click="save"
-    >
-      {{ t('actions.save') }}
-    </Button>
+    <div class="formFields">
+      <AvatarSwitcher v-model="avatarURL" />
+      <Textfield
+        v-model="nick"
+        :label="t('profile.fields.nickname')"
+      />
+      <Textarea
+        v-model="bio"
+        :label="t('profile.fields.bio')"
+      />
+      <MarkDownSection :content="bio" />
+    </div>
+    <ActionBar>
+      <SpacerDiv />
+      <Button
+        :disabled="disableSaving"
+        :working="saving"
+        @click="save"
+      >
+        {{ t('actions.save') }}
+      </Button>
+    </ActionBar>
   </Column>
 </template>
+
+<style lang="sass" scoped>
+.formFields
+  display: flex
+  flex-direction: column
+  gap: var(--page-grid-gap)
+</style>

@@ -17,13 +17,13 @@ onMounted(async () => {
 
 const nick = computed(() => {
   if (!profile.value) return t('info.loading')
-  if (!profile.value.exists) return t('bio.precursor.title')
+  if (!profile.value.uid) return t('bio.precursor.title')
   return profile.value.nick
 })
 
 const route = computed(() => {
   if (!profile.value) return ''
-  if (!profile.value.exists) return '/meta/precursor'
+  if (!profile.value.uid) return '/meta/precursor'
   return `/bio/${profile.value.uid}`
 })
 </script>

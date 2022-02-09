@@ -56,7 +56,8 @@
   "profile": {
     "title": "Profiili",
     "fields": {
-      "nickname": "Nimimerkki"
+      "nickname": "Nimimerkki",
+      "bio": "Kuvaus"
     },
     "settings": {
       "title": "Julkinen Profiilini",
