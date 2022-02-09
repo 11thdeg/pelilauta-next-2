@@ -34,8 +34,9 @@ const snippet = computed(() => {
     <template v-if="thread.youtubeId">
       <YoutubePreview
         :video-id="thread.youtubeId"
-        :width="413"
-        :height="275"
+        :width="413+32"
+        :height="275+(32/3*2)"
+        style="margin: 12px -16px"
       />
     </template>
     <template v-else>

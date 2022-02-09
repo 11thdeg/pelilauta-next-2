@@ -13,7 +13,7 @@ export const useProfile = defineStore('profile', () => {
     const fbUser = await getAuth().currentUser
     if (!fbUser) throw new Error('No user logged in')
     const p = new Profile()
-    p.nickname = fbUser.displayName || fbUser.email?.split('@')[0] || 'Anonymous'
+    p.nick = fbUser.displayName || fbUser.email?.split('@')[0] || 'Anonymous'
     p.avatarURL = fbUser.photoURL || undefined
     const profileRef = doc(getFirestore(), 'profiles', fbUser.uid)
     await setDoc(profileRef, p.docData)
@@ -38,17 +38,14 @@ export const useProfile = defineStore('profile', () => {
   async function saveToFirebase () {
     if (!profile.value) return
     const { user } = useAuthz()
-    logDebug('profile', 'saveToFirebase')
     const data = profile.value.docData
-    logDebug('profile', 'saveToFirebase', 'dry data is', data)
     const profileRef = doc(getFirestore(), 'profiles', user.uid)
-    logDebug('profile', 'saveToFirebase', 'profileRef set')
+    logDebug('profile', 'saveToFirebase', user.uid, data)
     await updateDoc(profileRef, data)
-    logDebug('profile', 'saveToFirebase', 'saved')
   }
 
   async function update (data: Record<string, string>) {
-    if (data.nickname) profile.value.nickname = data.nickname
+    if (data.nick) profile.value.nick = data.nick
     if (data.avatarURL) profile.value.avatarURL = data.avatarURL
     await saveToFirebase()
   }

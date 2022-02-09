@@ -1,4 +1,4 @@
-<script lang='ts' setup>import { onMounted, ref } from 'vue';
+<script lang='ts' setup>import { computed, onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { PublicProfile, useProfiles } from '../../composables/useProfiles';
 
@@ -14,24 +14,48 @@ const t = useI18n().t
 onMounted(async () => {
   profile.value = await fetchProfile(props.uid)
 })
+
+const nick = computed(() => {
+  if (!profile.value) return t('info.loading')
+  if (!profile.value.exists) return t('bio.precursor.title')
+  return profile.value.nick
+})
+
+const route = computed(() => {
+  if (!profile.value) return ''
+  if (!profile.value.exists) return '/meta/precursor'
+  return `/bio/${profile.value.uid}`
+})
 </script>
 
 <template>
   <div class="AuthorTag">
-    <template v-if="profile">
-      <template v-if="profile.exists">
-        <router-link :to="`/bio/${profile.uid}`">
-          {{ profile.nick }}
-        </router-link>
-      </template>
-      <template v-else>
-        <router-link :to="`/meta/precursor`">
-          {{ t('bio.precursor.title') }}
-        </router-link>
-      </template>
-    </template>
-    <template v-else>
-      ...
-    </template>
+    <router-link
+      v-if="profile"
+      :to="route"
+    >
+      {{ nick }}
+    </router-link>
+    <span
+      v-else
+      class="loading"
+    >
+      {{ nick }}
+    </span>
   </div>
 </template>
+
+<style lang="sass" scoped>
+.AuthorTag
+  display: inline-block
+  height: 20px
+  min-width: 80px
+  background-color: var(--color-pill-background)
+  margin: 3px 0
+  padding: 0 8px
+  line-height: 20px
+  border-radius: 10px
+  color: var(--color-pill-text)
+  a
+    color:  var(--color-pill-text)
+</style>

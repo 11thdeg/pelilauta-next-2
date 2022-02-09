@@ -4,12 +4,12 @@ import { computed } from 'vue'
 export class PublicProfile {
   readonly uid:string
   readonly nick:string
-  readonly photoURL:string
+  readonly avatarURL:string
 
   constructor (data?:DocumentData, uid?:string) {
     this.uid = uid || ''
     this.nick = data?.nick || ''
-    this.photoURL = data?.photoURL || ''
+    this.avatarURL = data?.avararURL || data?.photoURL || '' //deprecate photoURL in favor of avatarURL
   }
 
   get exists () {
