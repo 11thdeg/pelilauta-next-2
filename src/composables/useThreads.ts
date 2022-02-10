@@ -10,7 +10,13 @@ async function fetchThread (id: string):Promise<Thread|undefined> {
   const stream = useStream()
 
   // Lets see if it has been updated lately (and is thus available in the stream)
-  if (stream.threads.has(id)) return stream.threads.get(id)
+  // Also update the cache, just for the rare case, that the stream gets multiple
+  // updates while the app is running
+  if (stream.threads.has(id)) {
+    const t = stream.threads.get(id)
+    if (t) threadCache.set(id, t)
+    return t
+  }
 
   // Ok, not, lets see if we have it cached here
   if (threadCache.has(id)) return threadCache.get(id)

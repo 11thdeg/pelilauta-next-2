@@ -30,7 +30,7 @@ export const useProfile = defineStore('profile', () => {
     }
     unsubscribeToProfile = onSnapshot(profileRef, async (snapshot) => {
       logDebug('profile', 'snapshot', snapshot.data())
-      if (snapshot.exists()) profile.value = new Profile(snapshot.data())
+      if (snapshot.exists()) profile.value = new Profile(snapshot.data(), snapshot.id)
       logDebug('profile', 'profile', profile.value)
     })
   }
