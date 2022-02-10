@@ -1,11 +1,12 @@
 <script lang="ts" setup>
-import { PublicProfile, useProfiles } from '../composables/useProfiles'
+import { useProfiles } from '../composables/useProfiles'
 import Loader from '../components/ui/Loader.vue'
 import { computed, onMounted, ref } from 'vue'
 import Column from '../components/ui/Column.vue'
 import TopAppBar from '../components/navigation/TopAppBar.vue';
 import { useI18n } from 'vue-i18n';
 import MarkDownSection from '../components/ui/MarkDownSection.vue';
+import { Profile } from '@11thdeg/skaldstore';
 
 const props = defineProps<{
   uid: string
@@ -14,7 +15,7 @@ const props = defineProps<{
 const { fetchProfile } = useProfiles()
 const t = useI18n().t
 
-const profile = ref<PublicProfile|undefined>(undefined)
+const profile = ref<Profile|undefined>(undefined)
 
 onMounted(async () => {
   profile.value = await fetchProfile(props.uid)

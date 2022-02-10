@@ -44,6 +44,9 @@
   "discourse": {
     "title": "Keskustelu"
   },
+  "info": {
+    "ago": "sitten"
+  },
   "login": {
     "emailLoginHelper": "Osoite",
     "withEmail": "Kirjaudu",

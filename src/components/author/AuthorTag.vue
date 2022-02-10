@@ -1,13 +1,14 @@
-<script lang='ts' setup>import { computed, onMounted, ref } from 'vue';
+<script lang='ts' setup>import { Profile } from '@11thdeg/skaldstore';
+import { computed, onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { PublicProfile, useProfiles } from '../../composables/useProfiles';
+import { useProfiles } from '../../composables/useProfiles';
 
 const props = defineProps<{
   uid: string
 }>()
 
 const { fetchProfile } = useProfiles()
-const profile = ref<PublicProfile | undefined>(undefined)
+const profile = ref<Profile | undefined>(undefined)
 
 const t = useI18n().t
 

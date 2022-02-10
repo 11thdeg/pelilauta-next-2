@@ -6,6 +6,8 @@ import MarkDownSection from '../ui/MarkDownSection.vue';
 import YoutubePreview from '../ui/YoutubePreview.vue';
 import ActionBar from '../ui/ActionBar.vue';
 import AuthorTag from '../author/AuthorTag.vue';
+import SinceTag from '../ui/SinceTag.vue';
+import SpacerDiv from '../ui/SpacerDiv.vue';
 
 const props = defineProps<{
   thread: Thread
@@ -58,7 +60,15 @@ const snippet = computed(() => {
       </p>
     </template>
     <ActionBar>
+      <SinceTag :time="thread.createdAt" />
       <AuthorTag :uid="thread.author" />
+      <SpacerDiv />
+    </ActionBar>
+    <ActionBar>
+      <div>Aiheessa</div>
+      <SpacerDiv />
+      <div>Replies</div>
+      <div>Loves</div>
     </ActionBar>
   </Card>
 </template>
