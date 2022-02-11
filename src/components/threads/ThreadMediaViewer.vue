@@ -1,37 +1,37 @@
 <script lang="ts" setup>
 import { Thread } from '@11thdeg/skaldstore'
-import { computed } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import YoutubePreview from '../ui/YoutubePreview.vue';
 import ImageList from '../ui/ImageList.vue';
 import { logDebug } from '../../utils/loghelpers';
+import { useThreads } from '../../composables/useThreads';
+
+const { fetchThread } = useThreads()
 
 const props = defineProps<{
-  thread: Thread
+  threadid: string
 }>()
 
-const hasYoutube = computed(() => {
-  if (!props.thread.youtubeId) return false
-  return true
+const thread = ref<Thread|undefined>(undefined)
+
+onMounted(async ()  => {
+  thread.value = await fetchThread(props.threadid)
 })
-const imageCount = computed(() => {
-  if (!props.thread.images) return 0
-  return props.thread.images.length
-})
-const youtubeId = computed(() => {
-  if (!props.thread.youtubeId) return ''
-  return props.thread.youtubeId
-})
+
+const hasYoutube = computed(() => thread.value?.youtubeId ? true : false)
+const imageCount = computed(() => thread.value?.images?.length || 0)
+const youtubeId = computed(() => thread.value?.youtubeId || '')
 const imageList = computed(() => {
   const m = new Map<string, string>()
-  if (props.thread.images) {
-    props.thread.images.forEach(i => m.set(i, i))
+  if (thread.value?.images) {
+    thread.value?.images.forEach(i => m.set(i, i))
   }
   return m
 })
 const poster = computed({
   get: () => {
-  if (!props.thread.poster) return ''
-  return props.thread.poster
+  if (!thread.value?.poster) return ''
+  return thread.value?.poster
   },
   set: (val:string) => {
     logDebug('poster can not be set', val)
@@ -50,7 +50,7 @@ const poster = computed({
     <template v-if="!hasYoutube && imageCount">
       <img
         class="poster"
-        :src="thread.poster"
+        :src="poster"
       >
       <ImageList
         v-if="imageCount > 1"

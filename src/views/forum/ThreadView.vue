@@ -19,8 +19,8 @@ const props = defineProps<{
 }>()
 
 const thread = ref<Thread|undefined>(undefined)
-const title = computed(() => thread.value ? thread.value.title : '...')
-
+const title = computed<string>(() => thread.value?.title ? thread.value.title : '...')
+const topic = computed(() => thread.value?.topicid ? thread.value.topicid : 'Yleinen')
 
 onMounted(async ()  => {
   thread.value = await fetchThread(props.threadid)
@@ -33,17 +33,17 @@ onMounted(async ()  => {
   />
   <main class="singleColumnLayout">
     <template v-if="thread">
-      <h1>{{thread.title}}</h1>
+      <h1>{{ thread.title }}</h1>
       <ActionBar>
         <AuthorTag :uid="thread.author" />
         <SpacerDiv />
         <SinceTag :time="thread.createdAt" />
       </ActionBar>
-      <ThreadMediaViewer :thread="thread" />
+      <ThreadMediaViewer :threadid="threadid" />
       <ActionBar>
-        <TopicTag :slug="thread.topicid" />
+        <TopicTag :slug="topic" />
         <SpacerDiv />
-        <LoveTag :thread="thread" />
+        <LoveTag :count="thread.lovedCount" />
       </ActionBar>
       <MarkDownSection
         v-if="thread.markdownContent"

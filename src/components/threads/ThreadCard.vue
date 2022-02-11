@@ -71,7 +71,7 @@ const snippet = computed(() => {
       <TopicTag :slug="thread.topicid || ''" />
       <SpacerDiv />
       <RepliesTag :thread="thread" />
-      <LoveTag :thread="thread" />
+      <LoveTag :count="thread.lovedCount" />
     </ActionBar>
   </Card>
 </template>
