@@ -12,7 +12,7 @@ const emit = defineEmits<{
 }>()
 
 const selected = computed({
-  get: () => props.modelValue,
+  get: () => props.modelValue || 'Yleinen',
   set: (value:string) => {
     emit('update:modelValue', value)
   }
@@ -20,10 +20,10 @@ const selected = computed({
 const store = useStore()
 
 const topics = computed(() => {
-  const t = store.topics
+  const t = store.streams
   const list:Record<string, string> = {}
-  t.forEach((topic) => {
-    list[topic.slug] = topic.name
+  Object.keys(t).forEach((key) => {
+    if(key !== '-') list[key] = t[key].name // "-" is a virtual topic we need for technical reasons, not a real one
   })
   return list
 })

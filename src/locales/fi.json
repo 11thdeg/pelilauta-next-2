@@ -45,7 +45,9 @@
     "title": "Keskustelu"
   },
   "info": {
-    "ago": "sitten"
+    "ago": "sitten",
+    "loves": "♡",
+    "replies": "Vastausta"
   },
   "login": {
     "emailLoginHelper": "Osoite",

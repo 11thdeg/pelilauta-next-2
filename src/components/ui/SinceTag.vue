@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import type { Timestamp } from '@firebase/firestore-types'
+import { Timestamp } from '@firebase/firestore'
 import { DateTime } from 'luxon'
 
 const props = defineProps<{

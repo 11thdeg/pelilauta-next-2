@@ -6,11 +6,21 @@ import { useProfile } from './profile'
 
 interface topic {
   slug: string
-  name: string
+  title: string
   description: string
   icon: string
   count: number,
   order: number
+}
+
+interface streams {
+  [key: string]: {
+    slug: string
+    name: string,
+    icon: string
+    count: number
+    order: number
+  }
 }
 
 // useStore could be anything like useUser, useCart
@@ -19,6 +29,7 @@ export const useStore = defineStore('main', () => {
   const withFabs = ref(false)
 
   const topics: Ref<topic[]> = ref([])
+  const streams = ref<streams>({})
 
 
   async function initAppMeta() {
@@ -27,7 +38,7 @@ export const useStore = defineStore('main', () => {
     try {
       const metaDoc = await getDoc(metaRef)
       topics.value = metaDoc.data()?.topics || []
-
+      streams.value = metaDoc.data()?.streams || {}
     } catch (e) {
       console.error(e)
     }
@@ -35,6 +46,7 @@ export const useStore = defineStore('main', () => {
 
   function $reset () {
     topics.value = []
+    streams.value = {}
     const authz = useAuthz()
     authz.$reset()
     const profile = useProfile()
@@ -51,6 +63,7 @@ export const useStore = defineStore('main', () => {
 
   return {
     topics: computed(() => topics.value), // Read only
+    streams: computed(() => streams.value), // Read only
     withFabs: computed(() => withFabs.value), // Read only
     initAppMeta,
     $reset,
