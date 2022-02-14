@@ -11,6 +11,8 @@ import SinceTag from '../../components/ui/SinceTag.vue';
 import TopicTag from '../../components/threads/TopicTag.vue';
 import LoveTag from '../../components/threads/LoveTag.vue';
 import ThreadMediaViewer from '../../components/threads/ThreadMediaViewer.vue';
+import ThreadDiscussionColumn from '../../components/dicsussion/ThreadDiscussionColumn.vue';
+import Column from '../../components/ui/Column.vue';
 
 const { fetchThread } = useThreads()
 
@@ -32,28 +34,30 @@ onMounted(async ()  => {
     :title="title"
   />
   <main class="singleColumnLayout">
-    <template v-if="thread">
-      <h1>{{ thread.title }}</h1>
-      <ActionBar>
-        <AuthorTag :uid="thread.author" />
-        <SpacerDiv />
-        <SinceTag :time="thread.createdAt" />
-      </ActionBar>
-      <ThreadMediaViewer :threadid="threadid" />
-      <ActionBar>
-        <TopicTag :slug="topic" />
-        <SpacerDiv />
-        <LoveTag :count="thread.lovedCount" />
-      </ActionBar>
-      <MarkDownSection
-        v-if="thread.markdownContent"
-        :content="thread.markdownContent"
-      />
-      <div
-        v-else
-        :innerHTML="thread.htmlContent"
-      />
-    </template>
-    <hr>
+    <Column class="double">
+      <template v-if="thread">
+        <h1>{{ thread.title }}</h1>
+        <ActionBar>
+          <AuthorTag :uid="thread.author" />
+          <SpacerDiv />
+          <SinceTag :time="thread.createdAt" />
+        </ActionBar>
+        <ThreadMediaViewer :threadid="threadid" />
+        <ActionBar>
+          <TopicTag :slug="topic" />
+          <SpacerDiv />
+          <LoveTag :count="thread.lovedCount" />
+        </ActionBar>
+        <MarkDownSection
+          v-if="thread.markdownContent"
+          :content="thread.markdownContent"
+        />
+        <div
+          v-else
+          :innerHTML="thread.htmlContent"
+        />
+      </template>
+    </Column>
+    <ThreadDiscussionColumn :threadid="threadid" />
   </main>
 </template>
