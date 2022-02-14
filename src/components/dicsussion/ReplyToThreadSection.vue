@@ -4,6 +4,9 @@ import { ref } from 'vue';
 import { useI18n } from 'vue-i18n'
 import { logDebug } from '../../utils/loghelpers';
 import MarkdownArea from '../ui/MarkdownArea.vue';
+import ActionBar from '../ui/ActionBar.vue';
+import SpacerDiv from '../ui/SpacerDiv.vue';
+import Button from '../ui/Button.vue';
 const t = useI18n().t
 
 const reply = ref(new Reply())
@@ -19,5 +22,10 @@ logDebug('ThreadDiscussionColumn.vue: threadid=', props.threadid)
   <section>
     <h4>{{ t('reply.title') }}</h4>
     <MarkdownArea v-model="reply.markdownContent" />
+    <ActionBar>
+      <SpacerDiv />
+      <Button text>{{ t('actions.cancel')}}</Button>
+      <Button>{{ t('actions.send') }}</Button>
+    </ActionBar>
   </section>
 </template>

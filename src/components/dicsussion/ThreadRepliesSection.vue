@@ -1,8 +1,7 @@
 <script lang="ts" setup>
-import { Reply, Thread } from '@11thdeg/skaldstore';
+import { Reply } from '@11thdeg/skaldstore';
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { collection, getFirestore, onSnapshot } from '@firebase/firestore'
-import { marked } from 'marked';
 import MarkDownSection from '../ui/MarkDownSection.vue';
 import SinceTag from '../ui/SinceTag.vue';
 import AuthorTag from '../author/AuthorTag.vue';
@@ -73,10 +72,29 @@ onUnmounted(() => {
 
 <style lang="sass">
 .reply
-  background-color: var(--chroma-secondary-b)
-  padding: 12px 8px
+  background-color: var(--chroma-secondary-c)
+  padding: 12px 16px
   border-radius: 8px
+  position: relative
+  margin-bottom: 24px
   &.fromMe
-    background-color: var(--chroma-primary-a)
-    border: solid 1px var(--chroma-primary-e)
+    background-color: var(--chroma-primary-b)
+
+.reply:after
+  content: ""
+  width: 0px
+  height: 0px
+  position: absolute
+  border-left: 12px solid var(--chroma-secondary-c)
+  border-right: 6px solid transparent
+  border-top: 6px solid var(--chroma-secondary-c)
+  border-bottom: 12px solid transparent
+  left: 32px
+  bottom: -18px
+.reply.fromMe:after
+  border-right: 12px solid var(--chroma-primary-b)
+  border-left: 6px solid transparent
+  border-top: 6px solid var(--chroma-primary-b)
+  border-bottom: 12px solid transparent
+  left: calc(100% - 48px)
 </style>
