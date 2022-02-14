@@ -13,6 +13,7 @@ const markdown = ref('# Markdown demo\n\n- With some text\n')
     <h2>Enter Markup</h2>
     <TextArea
       v-model="markdown"
+      collapsed
       label="aaa"
     />
     <h2>Preview</h2>

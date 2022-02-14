@@ -1,13 +1,20 @@
 <script lang="ts" setup>
 import { Reply } from '@11thdeg/skaldstore';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n'
-import { logDebug } from '../../utils/loghelpers';
+import { logDebug, logError } from '../../utils/loghelpers';
 import MarkdownArea from '../ui/MarkdownArea.vue';
 import ActionBar from '../ui/ActionBar.vue';
 import SpacerDiv from '../ui/SpacerDiv.vue';
 import Button from '../ui/Button.vue';
+import { useAuthz } from '../../stores/authz';
+import { collection, getFirestore, addDoc } from '@firebase/firestore'
+import { useSnack } from '../../composables/useSnack';
+
 const t = useI18n().t
+const user = useAuthz().user
+const uid = computed(() => user?.uid || '')
+const { pushSnack } = useSnack()
 
 const reply = ref(new Reply())
 
@@ -15,19 +22,52 @@ const props = defineProps<{
   threadid: string
 }>()
 
+function onCancel () {
+  reply.value = new Reply()
+}
+
+async function onSubmit () {
+  reply.value.author = uid.value
+  logDebug('onSubmit', reply.value)
+  try {
+    await addDoc(
+      collection(
+        getFirestore(),
+        'stream',
+        props.threadid,
+        'comments'
+      ),
+      reply.value.docData
+    )
+    pushSnack('snacks.reply.success')
+    onCancel()
+  } catch (e) {
+    pushSnack('snacks.reply.error')
+    logError(e)
+  }
+}
+
 logDebug('ThreadDiscussionColumn.vue: threadid=', props.threadid)
 </script>
 
 <template>
   <section>
     <h4>{{ t('reply.title') }}</h4>
-    <MarkdownArea v-model="reply.markdownContent" />
+    <MarkdownArea
+      v-model="reply.markdownContent"
+      collapsed
+    />
     <ActionBar>
       <SpacerDiv />
-      <Button text>
+      <Button
+        text
+        @click.prevent="onCancel"
+      >
         {{ t('actions.cancel') }}
       </Button>
-      <Button>{{ t('actions.send') }}</Button>
+      <Button @click.prevent="onSubmit">
+        {{ t('actions.send') }}
+      </Button>
     </ActionBar>
   </section>
 </template>

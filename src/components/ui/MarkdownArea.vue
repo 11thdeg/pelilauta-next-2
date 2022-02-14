@@ -6,6 +6,7 @@ import { computed } from "vue";
 const props = defineProps<{
   preview?: boolean,
   modelValue: string,
+  collapsed?: boolean,
 }>()
 
 const emit = defineEmits<{
@@ -34,6 +35,7 @@ const value = computed({
     <TextArea
       v-else
       v-model="value"
+      :collapsed="collapsed || false"
     />
   </div>
 </template>
@@ -45,9 +47,9 @@ const value = computed({
   width: 100%
   box-sizing: border-box
   padding: 8px
-  min-height: 220px
   background-color: var(--color-field-background)
   border-bottom: var(--color-field-border) solid 1px
   border-radius: 0 12px 0 0
   color: var(--color-high)
+  transition: all 0.2s ease-in-out
 </style>

@@ -4,7 +4,7 @@ import { useI18n } from 'vue-i18n';
 import { useProfile } from '../../stores/profile'
 import Column from '../ui/Column.vue'
 import Textfield from '../ui/Textfield.vue'
-import Textarea from '../ui/Textarea.vue'
+import TextArea from '../ui/TextArea.vue'
 import Button from '../ui/Button.vue'
 import AvatarSwitcher from './AvatarSwitcher.vue'
 import MarkDownSection from '../ui/MarkDownSection.vue';
@@ -49,7 +49,7 @@ async function save () {
         v-model="nick"
         :label="t('profile.fields.nickname')"
       />
-      <Textarea
+      <TextArea
         v-model="bio"
         :label="t('profile.fields.bio')"
       />

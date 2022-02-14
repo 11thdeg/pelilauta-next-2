@@ -1,9 +1,10 @@
-<script lang="ts" setup>import { computed } from 'vue';
+<script lang="ts" setup>import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const props = defineProps<{
   modelValue:string,
   label?:string,
+  collapsed?: boolean
 }>()
 const emit = defineEmits<{
   (e: 'update:modelValue', modelValue: string): void
@@ -20,6 +21,7 @@ const t = useI18n().t
 
 
 function onExpandableTextareaInput({ target: node }:Event){
+  if (collapsedState.value) return
   if ((node as Node).nodeName.toLowerCase() !== 'textarea') return
   const elm = node as HTMLTextAreaElement
 
@@ -29,7 +31,16 @@ function onExpandableTextareaInput({ target: node }:Event){
     elm.style.height = `${elm.scrollHeight}px`
   }
 }
-
+const hadFocus = ref(false)
+const collapsedState = computed(() => {
+  if (hadFocus.value) return false
+  return props.collapsed
+})
+function onFocus () {
+  setTimeout(() => {
+    hadFocus.value = true
+  }, 300)
+}
 
 </script>
 
@@ -37,8 +48,10 @@ function onExpandableTextareaInput({ target: node }:Event){
   <textarea
     v-model="value"
     class="Textarea"
+    :class="{ collapsed: collapsedState }"
     :placeholder="label ? t(label) : ''"
     @input="onExpandableTextareaInput" 
+    @focus="onFocus"
   />
 </template>
 
@@ -53,7 +66,7 @@ function onExpandableTextareaInput({ target: node }:Event){
   width: 100%
   box-sizing: border-box
   padding: 8px
-  min-height: 220px
+  height: 220px
   overflow: hidden
   resize: none
   background-color: var(--color-field-background)
@@ -69,5 +82,12 @@ function onExpandableTextareaInput({ target: node }:Event){
     background-color: var(--color-field-active-background)
     border-bottom: var(--color-field-active-border) solid 1px
     outline: none
+  &.collapsed
+    transition: all 0.2s ease-in-out
+    height: 36px
+    scrollbar-width: thin
+    scrollbar-color: #6969dd #e0e0e0
+    &:focus, &:active
+      height: 220px
 
 </style>

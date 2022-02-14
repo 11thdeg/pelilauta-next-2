@@ -19,7 +19,8 @@
     "edit": "Muokkaa",
     "login": "Kirjaudu",
     "logout": "Kirjaudu ulos",
-    "save": "Tallenna"
+    "save": "Tallenna",
+    "send": "Lähetä"
   },
   "assets": {
     "title": "Lataukset"
