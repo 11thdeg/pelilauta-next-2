@@ -4,6 +4,7 @@ import Column from '../ui/Column.vue'
 import ReplyToThreadSection from './ReplyToThreadSection.vue';
 import ThreadRepliesSection from './ThreadRepliesSection.vue';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const props = defineProps<{
   threadid: string
 }>()

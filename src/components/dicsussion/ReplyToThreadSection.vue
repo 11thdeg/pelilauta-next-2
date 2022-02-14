@@ -24,7 +24,9 @@ logDebug('ThreadDiscussionColumn.vue: threadid=', props.threadid)
     <MarkdownArea v-model="reply.markdownContent" />
     <ActionBar>
       <SpacerDiv />
-      <Button text>{{ t('actions.cancel')}}</Button>
+      <Button text>
+        {{ t('actions.cancel') }}
+      </Button>
       <Button>{{ t('actions.send') }}</Button>
     </ActionBar>
   </section>
