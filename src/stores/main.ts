@@ -27,9 +27,11 @@ interface streams {
 // the first argument is a unique id of the store across your application
 export const useStore = defineStore('main', () => {
   const withFabs = ref(false)
+  const withTray = ref(false)
 
   const topics: Ref<topic[]> = ref([])
   const streams = ref<streams>({})
+  const admins = ref<string[]>([])
 
 
   async function initAppMeta() {
@@ -38,7 +40,8 @@ export const useStore = defineStore('main', () => {
     try {
       const metaDoc = await getDoc(metaRef)
       topics.value = metaDoc.data()?.topics || []
-      streams.value = metaDoc.data()?.streams || {}
+      streams.value = metaDoc.data()?.streams || {}
+      admins.value = metaDoc.data()?.admins || []
     } catch (e) {
       console.error(e)
     }
@@ -61,13 +64,25 @@ export const useStore = defineStore('main', () => {
     withFabs.value = false
   }
 
+  function mountTray () {
+    withTray.value = true
+  }
+
+  function unmountTray () {
+    withTray.value = false
+  }
+
   return {
     topics: computed(() => topics.value), // Read only
     streams: computed(() => streams.value), // Read only
     withFabs: computed(() => withFabs.value), // Read only
+    withTray: computed(() => withTray.value), // Read only
+    admins: computed(() => admins.value), // Read only
     initAppMeta,
     $reset,
     mountFabs,
-    unmountFabs
+    unmountFabs,
+    mountTray,
+    unmountTray
   }
 })

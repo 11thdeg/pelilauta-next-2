@@ -4,12 +4,18 @@ import AvatarButton from '../account/AvatarButton.vue'
 import LightmodeButton from '../app/LightmodeButton.vue'
 import Icon from '../ui/Icon.vue';
 import { version } from '../../../package.json'
+import { useAuthz } from '../../stores/authz';
+import { computed } from 'vue';
 
 const props = defineProps<{
   title?: string,
   icon?: string,
   showBackButton?: boolean,
 }>()
+
+const authz = useAuthz()
+
+const admin = computed(() => authz.isAdmin)
 </script>
 
 <template>
@@ -34,8 +40,19 @@ const props = defineProps<{
       style="line-height: 48px;padding-top:8px"
     >
       {{ version }}
-    </p>
+    </p>  
     <LightmodeButton />
+    <div
+      class="AdminButton hoverable clickable"
+      style="margin: calc((64px - 36px) / 2) 0"
+      @click="$router.push('/admin')"
+    >
+      <Icon
+        v-if="admin"
+        icon="admin"
+        class="hideOnMobile"
+      />
+    </div>
     <AvatarButton />
   </nav>
 </template>

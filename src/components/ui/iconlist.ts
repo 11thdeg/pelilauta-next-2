@@ -1,4 +1,5 @@
 export const iconlist = [
+  'admin',
   'adventurer',
   'assets',
   'arrow_back',

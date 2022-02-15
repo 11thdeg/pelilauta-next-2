@@ -6,6 +6,7 @@ import { doc, getFirestore, updateDoc, getDoc, setDoc, onSnapshot } from '@fireb
 import { logDebug } from '../utils/loghelpers'
 import { useProfile } from './profile'
 import { useAssets } from './assets'
+import { useStore } from './main'
 
 export const useAuthz = defineStore('session', () => {
   const state = reactive({
@@ -14,25 +15,23 @@ export const useAuthz = defineStore('session', () => {
     user: new Account(null)
   })
 
+  const main = useStore()
+
   let unsubscribeToAccount:CallableFunction|undefined
 
   async function synchronizeAccountData () {
     const accountDoc = doc(getFirestore(), 'account', state.user.uid)
     const accountData = await (await getDoc(accountDoc)).data()
-    logDebug('synchronizeAccountData', accountData)
     if (accountData) {
       state.user.docData = accountData
-      logDebug('synchronizeAccountData', 'updating', state.user.docData)
       await updateDoc(accountDoc, state.user.docData)
     } 
     else {
-      logDebug('synchronizeAccountData', 'creating', state.user.docData)
       const data = state.user.docData
       data.uid = state.user.uid
       await setDoc(accountDoc, data)
     }
     unsubscribeToAccount = onSnapshot(accountDoc, async (snapshot) => {
-      logDebug('synchronizeAccountData', 'snapshot', snapshot.data())
       if (snapshot.exists()) {
         state.user.docData = snapshot.data()
       }
@@ -86,6 +85,7 @@ export const useAuthz = defineStore('session', () => {
     initialized: computed(() => state.initialized),
     anonymous: computed(() => state.initialized && state.user.isAnonymous),
     operational: computed(() => state.initialized && state.operational),
+    isAdmin: computed(() => state.operational && main.admins.includes(state.user.uid)),
     loginAs,
     user: computed(() => state.user),
     setLightMode,

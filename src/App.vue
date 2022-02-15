@@ -7,11 +7,12 @@ import Snackbar from './components/app/Snackbar.vue'
 import { useStore } from './stores/main'
 import NavigationBar from './components/navigation/NavigationBar.vue'
 
-const { initAppMeta } = useStore()
-initAppMeta()
+const main = useStore()
+main.initAppMeta()
 
 const auth = useAuthz()
 const showLoadingScreen = computed(() => !auth.operational)
+const showTray = computed(() => main.withTray)
 
 </script>
 
@@ -26,7 +27,10 @@ const showLoadingScreen = computed(() => !auth.operational)
     </div>
   </transition>
   <template v-if="!showLoadingScreen">
-    <div id="AppContent">
+    <div
+      id="AppContent"
+      :class="{ showTray: showTray }"
+    >
       <router-view />
     </div>
     <NavigationRail />
@@ -46,6 +50,8 @@ const showLoadingScreen = computed(() => !auth.operational)
     margin: 0
     padding: 0
     padding-left: 72px
+    &.showTray
+      padding-left: 256px
 
 #app
   background-color: var(--color-background)

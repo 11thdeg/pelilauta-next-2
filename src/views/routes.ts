@@ -4,6 +4,8 @@ import About from './About.vue'
 export const routes = [
   { path: '/', component: Home },
   { path: '/about', component: About },
+  { path: '/admin',  component: () => import('./admin/AdminIndexView.vue') },
+  { path: '/admin/entryfixer',  component: () => import('./admin/EntryFixerView.vue') },
   { path: '/stylebook', component: () => import('./Stylebook.vue') },
   { path: '/stylebook/:page', component: () => import('./Stylebook.vue'), props: true },
   { path: '/login', component: () => import('./LoginView.vue') },
