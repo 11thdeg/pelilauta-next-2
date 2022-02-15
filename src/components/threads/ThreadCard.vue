@@ -11,6 +11,7 @@ import SpacerDiv from '../ui/SpacerDiv.vue';
 import TopicTag from './TopicTag.vue';
 import RepliesTag from './RepliesTag.vue';
 import LoveTag from './LoveTag.vue';
+import SiteLink from '../sites/SiteLink.vue';
 
 const props = defineProps<{
   thread: Thread
@@ -31,6 +32,12 @@ const snippet = computed(() => {
 
 <template>
   <Card>
+    <p
+      v-if="thread.siteid"
+      class="subtitle"
+    >
+      <SiteLink :siteid="thread.siteid" />
+    </p>
     <h1>
       <router-link :to="`/threads/${thread.key}`">
         {{ thread.title }}
