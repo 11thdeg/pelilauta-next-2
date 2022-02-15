@@ -118,7 +118,6 @@ async function fetchThread () {
             Fix
           </Button><br>
           {{ entry[1].title }}
-          <span class="TypeCaption">{{ entry[1].content.substring(0, 200) }}</span>
         </p>
         <p>
           Created: <SinceTag
