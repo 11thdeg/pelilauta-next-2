@@ -40,9 +40,9 @@ const t = useI18n().t
       disabled
     />
     <NavButton
-      icon="stylebook"
-      to="/stylebook"
-      label="Meta"
+      icon="avatar"
+      to="/account"
+      :label="t('account.title')"
     />
   </nav>
 </template>
@@ -59,6 +59,7 @@ const t = useI18n().t
   justify-content: space-between
   box-sizing: border-box
   background-color: var(--color-navbar-background)
+  z-index: 2000
   &.withFabs
     clip-path: polygon(0 0, calc(100% - 76px) 0, calc(100% - 64px) 8px, calc(100% - 24px) 8px, calc(100% - 12px) 0, 100% 0, 100% 100%, 0 100%)
 </style>

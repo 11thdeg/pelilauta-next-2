@@ -45,4 +45,6 @@ nav#NavigationRail
   width: 72px
   border-right: 1px solid var(--color-rise-a)
   height: 100vh
+  z-index: 90000
+  background-color: var(--color-navbar-background)
 </style>

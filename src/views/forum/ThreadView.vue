@@ -32,6 +32,7 @@ onMounted(async ()  => {
 <template>
   <TopAppBar
     :title="title"
+    sticky
   />
   <main class="singleColumnLayout">
     <Column class="double">

@@ -1,5 +1,5 @@
 <template>
-  <TopAppBar />
+  <TopAppBar icon="pelilauta-logo" />
   <main class="bookLayout">
     <Column class="double-cut streamcards">
       <ThreadCard

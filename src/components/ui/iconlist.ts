@@ -18,6 +18,7 @@ export const iconlist = [
   'google',
   'lightmode',
   'mekanismi',
+  'pelilauta-logo',
   'stylebook',
   'youtube'
 ]
