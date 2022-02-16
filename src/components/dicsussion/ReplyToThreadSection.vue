@@ -8,8 +8,9 @@ import ActionBar from '../ui/ActionBar.vue';
 import SpacerDiv from '../ui/SpacerDiv.vue';
 import Button from '../ui/Button.vue';
 import { useAuthz } from '../../stores/authz';
-import { collection, getFirestore, addDoc } from '@firebase/firestore'
+import { collection, getFirestore, addDoc, updateDoc, doc, serverTimestamp, increment } from '@firebase/firestore'
 import { useSnack } from '../../composables/useSnack';
+import { marked } from 'marked';
 
 const t = useI18n().t
 const user = useAuthz().user
@@ -28,7 +29,10 @@ function onCancel () {
 
 async function onSubmit () {
   reply.value.author = uid.value
-  logDebug('onSubmit', reply.value)
+  reply.value.htmlContent = marked(reply.value.markdownContent)
+  const data = reply.value.docData
+  data.created = data.createdAt // TODO: remove this after migration
+  logDebug('onSubmit', data)
   try {
     await addDoc(
       collection(
@@ -37,7 +41,19 @@ async function onSubmit () {
         props.threadid,
         'comments'
       ),
-      reply.value.docData
+      data
+    )
+    logDebug('updating thread fields by the client, this should be moved to cloud-side for cIA purposes')
+    await updateDoc(
+      doc(
+        getFirestore(),
+        'stream',
+        props.threadid
+      ),
+      {
+        flowTime: serverTimestamp(),
+        replyCount: increment(1)
+      }
     )
     pushSnack('snacks.reply.success')
     onCancel()

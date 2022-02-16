@@ -35,7 +35,12 @@ onMounted(async () => {
         if (change.type === 'added') {
           replies.value.push(new Reply(change.doc.data(), change.doc.id))
         }
+        if (change.type === 'modified') {
+          const index = replies.value.findIndex((reply) => reply.key === change.doc.id)
+          if (index >= 0) replies.value[index] = new Reply(change.doc.data(), change.doc.id)
+        }
       })
+      replies.value.sort((a, b) => b.compareFlowTime(a))
     })
 })
 onUnmounted(() => {
