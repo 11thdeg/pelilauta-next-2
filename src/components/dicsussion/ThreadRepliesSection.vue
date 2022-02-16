@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Reply } from '@11thdeg/skaldstore';
+import { Entry, Reply } from '@11thdeg/skaldstore';
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { collection, getFirestore, onSnapshot } from '@firebase/firestore'
 import MarkDownSection from '../ui/MarkDownSection.vue';
@@ -40,7 +40,7 @@ onMounted(async () => {
           if (index >= 0) replies.value[index] = new Reply(change.doc.data(), change.doc.id)
         }
       })
-      replies.value.sort((a, b) => b.compareFlowTime(a))
+      replies.value.sort((a, b) => b.compareFlowTime(a as unknown as Entry))
     })
 })
 onUnmounted(() => {

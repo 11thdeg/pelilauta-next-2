@@ -6,6 +6,9 @@ import NavigationRail from './components/navigation/NavigationRail.vue'
 import Snackbar from './components/app/Snackbar.vue'
 import { useStore } from './stores/main'
 import NavigationBar from './components/navigation/NavigationBar.vue'
+import { Workbox } from 'workbox-window'
+import { useSnack } from './composables/useSnack'
+import { logDebug } from './utils/loghelpers'
 
 const main = useStore()
 main.initAppMeta()
@@ -13,6 +16,33 @@ main.initAppMeta()
 const auth = useAuthz()
 const showLoadingScreen = computed(() => !auth.operational)
 const showTray = computed(() => main.withTray)
+const { pushSnack } = useSnack()
+
+// *** Workbox/Service worker setup starts ******************************
+    // let skipWaiting: CallableFunction|undefined
+    if ('serviceWorker' in navigator) {
+      const workbox = new Workbox('/service-worker.js')
+      const skipWaiting = () => {
+        console.debug('App.js skipwaiting called')
+        workbox.addEventListener('controlling', (event) => {
+          console.debug('controlling', event)
+          window.location.reload()
+        })
+        workbox.messageSkipWaiting()
+      }
+      workbox.addEventListener('waiting', (event) => {
+        console.debug('WorkboxEvent', event.type)
+        pushSnack('messages.updatesAvailable', { action: skipWaiting})
+      })
+      // WB debugs
+      workbox.addEventListener('message', (event) => { logDebug('WorkboxEvent', event) })
+      workbox.addEventListener('installed', (event) => { logDebug('WorkboxEvent', event) })
+      workbox.addEventListener('controlling', (event) => { logDebug('WorkboxEvent', event) })
+      workbox.addEventListener('activated', (event) => { logDebug('WorkboxEvent', event) })
+      workbox.addEventListener('redundant', (event) => { logDebug('WorkboxEvent', event) })
+      workbox.register()
+    }
+    // *** Workbox/Service worker setup ends ********************************
 
 </script>
 

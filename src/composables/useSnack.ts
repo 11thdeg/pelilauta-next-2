@@ -1,11 +1,16 @@
 import { ref } from 'vue'
 import { logDebug } from '../utils/loghelpers'
 
-const snackStack = ref(new Array<{ message: string, params?: Record<string, string> }>())
+const snackStack = ref(new Array<{ message: string, params?: Record<string, string>, action?: CallableFunction }>())
 
-function pushSnack(message: string, params?: Record<string, string>) {
+interface Config {
+  params?: Record<string, string>
+  action?: CallableFunction
+}
+
+function pushSnack(message: string, config?:Config) {
   logDebug("pushSnack", message)
-  snackStack.value.push({ message, params })
+  snackStack.value.push({ message, ...config })
 }
 
 export function useSnack() {

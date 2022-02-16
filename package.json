@@ -1,10 +1,10 @@
 {
   "name": "pelilauta-next",
-  "version": "14.0.0-alpha.12",
+  "version": "14.0.0-alpha.14",
   "author": "Ville Takanen",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vue-tsc --noEmit && vite build && node workbox-build.js",
     "preview": "vite preview",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.vue"
   },
@@ -18,7 +18,9 @@
     "pinia": "^2.0.9",
     "vue": "^3.2.25",
     "vue-i18n": "^9.2.0-beta.26",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.12",
+    "workbox-core": "^6.4.2",
+    "workbox-window": "^6.4.2"
   },
   "devDependencies": {
     "@types/downscale": "^1.0.1",
@@ -33,6 +35,7 @@
     "typescript": "^4.5.4",
     "vite": "^2.7.2",
     "vue-eslint-parser": "^8.0.1",
-    "vue-tsc": "^0.29.8"
+    "vue-tsc": "^0.29.8",
+    "workbox-build": "^6.4.2"
   }
 }
