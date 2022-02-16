@@ -50,7 +50,7 @@ const t = useI18n().t
 <style lang="sass" scoped>
  #NavigationBar
   position: fixed
-  bottom: 0
+  bottom: 0%
   left: 0
   width: 100vw
   display: flex
