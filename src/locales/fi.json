@@ -20,10 +20,14 @@
     "login": "Kirjaudu",
     "logout": "Kirjaudu ulos",
     "save": "Tallenna",
-    "send": "Lähetä"
+    "send": "Lähetä",
+    "ok": "OK"
   },
   "assets": {
     "title": "Lataukset"
+  },
+  "banner": {
+    "updatesAvailable": "Uusi versio sovelluksesta julkaistu. Päivitä lataamalla sivu uudelleen, tai painamalla OK alta"
   },
   "bio": {
     "title": "Profiili",

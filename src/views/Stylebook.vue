@@ -9,6 +9,7 @@ import MarkdownAndSubthemes from '../components/stylebook/MarkdownAndSubthemes.v
 import Iconography from '../components/stylebook/Iconography.vue'
 import { computed } from 'vue'
 import Cards from '../components/stylebook/Cards.vue'
+import Banner from '../components/navigation/Banner.vue'
 
 const props = defineProps<{
   page?: string
@@ -22,6 +23,7 @@ const subPage = computed(() => props.page || '')
     title="Stylebook"
     icon="mekanismi"
   />
+  <Banner />
   <main class="bookLayout">
     <StyleBookIntro v-if="!subPage" />
     <Iconography v-if="!subPage" />
@@ -39,6 +41,6 @@ const subPage = computed(() => props.page || '')
       v-if="!subPage"
       class="double"
     />
-    <SnackbarTester v-if="!subPage" />
+    <SnackbarTester v-if="!subPage || subPage === 'notifications' " />
   </main>
 </template>

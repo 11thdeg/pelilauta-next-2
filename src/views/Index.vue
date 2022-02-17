@@ -1,5 +1,6 @@
 <template>
-  <TopAppBar icon="pelilauta-logo" />
+  <TopAppBar icon="pelilauta-logo" sitcky/>
+  <Banner />
   <main class="bookLayout">
     <Column class="double-cut streamcards">
       <ThreadCard
@@ -26,6 +27,7 @@ import FabTray from '../components/navigation/FabTray.vue'
 import Fab from '../components/ui/Fab.vue'
 import ThreadCard from '../components/threads/ThreadCard.vue'
 import Column from '../components/ui/Column.vue'
+import Banner from '../components/navigation/Banner.vue'
 
 
 const stream = useStream()

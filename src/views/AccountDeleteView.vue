@@ -29,7 +29,7 @@ const deleteAccount = async () => {
       await deleteDoc (profileRef)
       logDebug('Deleted profile')
     } catch (error) {
-      pushSnack('snacks.error', { topic: (error as Error).message })
+      pushSnack('snacks.error', { params: { topic: (error as Error).message }})
       console.error(error)
     }
     const accountRef = doc(getFirestore(), 'account', user.uid)

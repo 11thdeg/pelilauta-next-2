@@ -4,6 +4,7 @@ import Column from '../ui/Column.vue'
 import Select from '../ui/Select.vue'
 import Button from '../ui/Button.vue'
 import { useSnack } from '../../composables/useSnack'
+import { useBanner } from '../../composables/useBanner'
 
 const snackmessage = ref('a')
 const snacks: Record<string, string> = {
@@ -12,9 +13,14 @@ const snacks: Record<string, string> = {
 }
 
 const { pushSnack } = useSnack()
+const { raise } = useBanner()
 
 function showSnack () {
   pushSnack(snacks[snackmessage.value])
+}
+
+function showBanner () {
+  raise(snacks[snackmessage.value])
 }
 
 </script>
@@ -31,6 +37,10 @@ function showSnack () {
       <Button @click="showSnack">
         Show snack
       </Button>
+    </section>
+    <section>
+      <h1>Banner</h1>
+      <Button @click="showBanner">Show Banner</Button>
     </section>
   </Column>
 </template>

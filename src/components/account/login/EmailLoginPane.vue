@@ -55,7 +55,7 @@ function singInWithEmail () {
       window.localStorage.removeItem('emailForSignIn')
     })
     .catch((error: Error) => {
-      pushSnack('snacks.error', { topic: error.message })
+      pushSnack('snacks.error', { params: { topic: error.message }})
       logError(error)
     })
 }
@@ -86,7 +86,7 @@ const sendLinkToEmail = async () => {
       pushSnack('snacks.emailSent')
     })
     .catch((error: Error) => {
-      pushSnack('snacks.error', { topic: error.message })
+      pushSnack('snacks.error', { params: { topic: error.message }})
       logError(error)
   })
 }
