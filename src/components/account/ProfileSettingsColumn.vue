@@ -41,7 +41,7 @@ async function save () {
 
 <template>
   <Column>
-    <h1>{{ t('profile.settings.title') }}</h1>
+    <h3>{{ t('profile.settings.title') }}</h3>
     <p>{{ t('profile.settings.description') }}</p>
     <div class="formFields">
       <AvatarSwitcher v-model="avatarURL" />

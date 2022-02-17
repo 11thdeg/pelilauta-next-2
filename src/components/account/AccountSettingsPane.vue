@@ -19,9 +19,9 @@ const avatarURL = computed(() => profileState.$state.profile.avatarURL || '')
 
 <template>
   <Column class="AccountSettingsPane">
-    <h1>Personal Data</h1>
+    <h3>Personal Data</h3>
     <section>
-      <h2>Sign-on info</h2>
+      <h4>Sign-on info</h4>
       <p class="lowEmphasis">
         This data is provided to the App by your authentication provider, and it is stored
         by Pelilauta for administrative purposes.
@@ -66,7 +66,7 @@ const avatarURL = computed(() => profileState.$state.profile.avatarURL || '')
       </p>
     </section>
     <section>
-      <h2>App Metadata</h2>
+      <h4>App Metadata</h4>
       <p>This data is managed by the App, and stored to your private profile visible only to you and the administrative users</p>
       <div class="dataGrid">
         <p class="headCell">
@@ -90,12 +90,17 @@ const avatarURL = computed(() => profileState.$state.profile.avatarURL || '')
       </div>
     </section>
     <section>
-      <h2>{{ t('profile.title') }}</h2>
+      <h4>{{ t('profile.title') }}</h4>
       <div class="titledList">
         <h4>{{ t('profile.fields.nickname') }}</h4>
         <p>{{ nickname }}</p>
         <h4>{{ t('profile.fields.avatarurl') }}</h4>
-        <p>{{ avatarURL }}</p>
+        <p>
+          <a
+            :href="avatarURL"
+            target="_new"
+          >{{ avatarURL }}</a>
+        </p>
       </div>
     </section>
   </Column>
@@ -110,6 +115,7 @@ div.dataGrid
   p
     @include TypeBody2()
     margin: 6px 0
+    @include dont-break-out()
   p.headCell
     font-weight: 700
 

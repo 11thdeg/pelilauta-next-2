@@ -1,5 +1,8 @@
 <template>
-  <TopAppBar icon="pelilauta-logo" sitcky/>
+  <TopAppBar
+    icon="pelilauta-logo"
+    sitcky
+  />
   <Banner />
   <main class="bookLayout">
     <Column class="double-cut streamcards">
@@ -12,7 +15,7 @@
   </main>
   <FabTray>
     <Fab
-      icon="mekanismi"
+      icon="add"
       label="New Thread"
       @click.prevent="$router.push('/create/thread')" 
     />

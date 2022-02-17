@@ -11,7 +11,7 @@ const t = useI18n().t
 </script>
 <template>
   <Column>
-    <h1>{{ t('account.actions.title') }}</h1>
+    <h3>{{ t('account.actions.title') }}</h3>
     <section class="titledList">
       <h4>{{ t('account.actions.locale') }}</h4>
       <LocaleSwitcher />
@@ -20,6 +20,7 @@ const t = useI18n().t
     </section>
     <LogoutButton />
     <Button
+      icon="delete"
       text
       @click.prevent="$router.push('/account/delete')"
     >

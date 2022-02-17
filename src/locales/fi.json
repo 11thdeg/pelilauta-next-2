@@ -1,9 +1,10 @@
 {
   "account": {
+    "title": "Asetukset",
     "actions": {
-      "title": "Asetukset ja toiminnot",
+      "title": "Sovelluksen asetukset",
       "locale": "Kieli",
-      "lightmode": "Tumma/vaalea teema"
+      "lightmode": "Teema"
     },
     "delete": {
       "title": "Poista tilini",
@@ -67,7 +68,8 @@
     "title": "Profiili",
     "fields": {
       "nickname": "Nimimerkki",
-      "bio": "Kuvaus"
+      "bio": "Kuvaus",
+      "avatarURL": "Avatar"
     },
     "settings": {
       "title": "Julkinen Profiilini",

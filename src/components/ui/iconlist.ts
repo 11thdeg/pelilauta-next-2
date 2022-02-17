@@ -1,4 +1,5 @@
 export const iconlist = [
+  'add',
   'admin',
   'adventurer',
   'assets',
@@ -9,6 +10,7 @@ export const iconlist = [
   'd6',
   'd12',
   'd20',
+  'delete',
   'discussion',
   'facebook',
   'edit',
@@ -17,6 +19,7 @@ export const iconlist = [
   'fox',
   'google',
   'lightmode',
+  'logout',
   'mekanismi',
   'pelilauta-logo',
   'stylebook',

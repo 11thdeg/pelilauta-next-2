@@ -40,7 +40,9 @@ function showBanner () {
     </section>
     <section>
       <h1>Banner</h1>
-      <Button @click="showBanner">Show Banner</Button>
+      <Button @click="showBanner">
+        Show Banner
+      </Button>
     </section>
   </Column>
 </template>

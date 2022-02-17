@@ -22,6 +22,7 @@ const logout = async () => {
 
 <template>
   <Button
+    icon="logout"
     text
     @click.prevent="logout"
   >

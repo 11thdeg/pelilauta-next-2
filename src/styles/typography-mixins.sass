@@ -6,6 +6,7 @@
   line-height: 56px
   margin: 0
   padding: 0
+  margin-bottom: 24px
 
 @mixin TypeHeadline4()
   font-family: 'Overpass', sans-serif
@@ -15,6 +16,7 @@
   line-height: 56px
   margin: 0
   padding: 0
+  margin-bottom: 12px
 
 @mixin TypeHeadline5()
   font-family: 'Overpass', sans-serif
@@ -25,6 +27,7 @@
   margin: 0
   margin-top: 8px
   padding: 0
+  margin-bottom: 12px
 
 @mixin TypeHeadline6()
   font-family: 'Overpass', sans-serif
@@ -71,3 +74,20 @@
   margin: 0
   padding: 0
 
+@mixin dont-break-out
+
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word
+  word-wrap: break-word
+
+  -ms-word-break: break-all
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all
+  /* Instead use this non-standard one: */
+  word-break: break-word
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto
+  -moz-hyphens: auto
+  -webkit-hyphens: auto
+  hyphens: auto
