@@ -86,7 +86,7 @@ if ('serviceWorker' in navigator) {
     padding: 0
     padding-left: 72px
     &.showTray
-      padding-left: 256px
+      padding-left: calc(80px + 360px)
 
 #app
   background-color: var(--color-background)

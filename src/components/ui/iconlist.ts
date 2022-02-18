@@ -10,6 +10,7 @@ export const iconlist = [
   'd6',
   'd12',
   'd20',
+  'dd-logo',
   'delete',
   'discussion',
   'facebook',

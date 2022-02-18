@@ -25,7 +25,7 @@ onUnmounted(() => {
   position: fixed
   top: 0
   left: 80px
-  width: calc(256px - 80px)
+  width: 360px
   border-right: 1px solid var(--color-border)
   height: 100vh
   margin: 0

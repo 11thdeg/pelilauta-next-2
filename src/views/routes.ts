@@ -7,6 +7,7 @@ export const routes = [
   { path: '/admin',  component: () => import('./admin/AdminIndexView.vue') },
   { path: '/admin/entryfixer',  component: () => import('./admin/EntryFixerView.vue') },
   { path: '/sites/', component: () => import('./sites/SiteIndexView.vue') },
+  { path: '/sites/:siteid', component: () => import('./sites/SiteHomeView.vue'), props: true },
   { path: '/stylebook', component: () => import('./Stylebook.vue') },
   { path: '/stylebook/:page', component: () => import('./Stylebook.vue'), props: true },
   { path: '/login', component: () => import('./LoginView.vue') },

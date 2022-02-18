@@ -1,17 +1,18 @@
 <script lang="ts" setup>
 import { Thread } from '@11thdeg/skaldstore'
-import { computed } from 'vue';
-import Card from '../ui/Card.vue';
-import MarkDownSection from '../ui/MarkDownSection.vue';
-import YoutubePreview from '../ui/YoutubePreview.vue';
-import ActionBar from '../ui/ActionBar.vue';
-import AuthorTag from '../author/AuthorTag.vue';
-import SinceTag from '../ui/SinceTag.vue';
-import SpacerDiv from '../ui/SpacerDiv.vue';
-import TopicTag from './TopicTag.vue';
-import RepliesTag from './RepliesTag.vue';
-import LoveTag from './LoveTag.vue';
-import SiteLink from '../sites/SiteLink.vue';
+import { computed } from 'vue'
+import Card from '../ui/Card.vue'
+import MarkDownSection from '../ui/MarkDownSection.vue'
+import YoutubePreview from '../ui/YoutubePreview.vue'
+import ActionBar from '../ui/ActionBar.vue'
+import AuthorTag from '../author/AuthorTag.vue'
+import SinceTag from '../ui/SinceTag.vue'
+import SpacerDiv from '../ui/SpacerDiv.vue'
+import TopicTag from './TopicTag.vue'
+import RepliesTag from './RepliesTag.vue'
+import LoveTag from './LoveTag.vue'
+import SiteLink from '../sites/SiteLink.vue'
+import SiteAvatar from '../sites/SiteAvatar.vue'
 
 const props = defineProps<{
   thread: Thread
@@ -32,17 +33,25 @@ const snippet = computed(() => {
 
 <template>
   <Card>
-    <p
-      v-if="thread.siteid"
-      class="subtitle"
-    >
-      <SiteLink :siteid="thread.siteid" />
-    </p>
-    <h1>
-      <router-link :to="`/threads/${thread.key}`">
-        {{ thread.title }}
-      </router-link>
-    </h1>
+    <div class="cardHeader">
+      <SiteAvatar
+        v-if="thread.siteid"
+        :siteid="thread.siteid"
+      />
+      <div class="cardHeaderText">
+        <p
+          v-if="thread.siteid"
+          class="subtitle"
+        >
+          <SiteLink :siteid="thread.siteid" />
+        </p>
+        <h1>
+          <router-link :to="`/threads/${thread.key}`">
+            {{ thread.title }}
+          </router-link>
+        </h1>
+      </div>
+    </div>
     <template v-if="thread.youtubeId">
       <YoutubePreview
         :video-id="thread.youtubeId"
@@ -91,4 +100,7 @@ img.poster
   margin: 12px -16px
   border-top: solid 1px var(--chroma-secondary-d)
   border-bottom: solid 1px var(--chroma-secondary-d)
+div.cardHeader
+  display: flex
+  gap: var(--page-column-gap)
 </style>
