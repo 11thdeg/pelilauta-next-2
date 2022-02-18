@@ -4,7 +4,7 @@
     sitcky
   />
   <Banner />
-  <main class="bookLayout">
+  <Main book-layout>
     <Column class="double-cut streamcards">
       <ThreadCard
         v-for="thread in threads"
@@ -12,7 +12,7 @@
         :thread="thread"
       />
     </Column>
-  </main>
+  </Main>
   <FabTray>
     <Fab
       icon="add"
@@ -31,6 +31,7 @@ import Fab from '../components/ui/Fab.vue'
 import ThreadCard from '../components/threads/ThreadCard.vue'
 import Column from '../components/ui/Column.vue'
 import Banner from '../components/navigation/Banner.vue'
+import Main from '../components/layout/Main.vue'
 
 
 const stream = useStream()
