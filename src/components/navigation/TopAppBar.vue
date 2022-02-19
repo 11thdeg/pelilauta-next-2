@@ -6,6 +6,7 @@ import Icon from '../ui/Icon.vue';
 import { version } from '../../../package.json'
 import { useAuthz } from '../../stores/authz';
 import { computed, onMounted, ref } from 'vue';
+import HamburgerButton from './HamburgerButton.vue';
 
 const props = defineProps<{
   title?: string,
@@ -39,6 +40,7 @@ onMounted(() => {
       'rise-1': overlay
     }"
   >
+    <HamburgerButton style="margin-top:12px"/>
     <h1>
       <Icon
         v-if="showBackButton"

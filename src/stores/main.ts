@@ -28,6 +28,7 @@ interface streams {
 export const useStore = defineStore('main', () => {
   const withFabs = ref(false)
   const withTray = ref(false)
+  const showTrayOnMobile = ref(false)
 
   const topics: Ref<topic[]> = ref([])
   const streams = ref<streams>({})
@@ -72,17 +73,23 @@ export const useStore = defineStore('main', () => {
     withTray.value = false
   }
 
+  function toggleMobileTray () {
+    showTrayOnMobile.value = !showTrayOnMobile.value
+  }
+
   return {
     topics: computed(() => topics.value), // Read only
     streams: computed(() => streams.value), // Read only
     withFabs: computed(() => withFabs.value), // Read only
     withTray: computed(() => withTray.value), // Read only
     admins: computed(() => admins.value), // Read only
+    showTrayOnMobile: computed(() => showTrayOnMobile.value), // Read only
     initAppMeta,
     $reset,
     mountFabs,
     unmountFabs,
     mountTray,
-    unmountTray
+    unmountTray,
+    toggleMobileTray
   }
 })
