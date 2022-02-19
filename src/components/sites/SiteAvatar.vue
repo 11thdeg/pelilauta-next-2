@@ -21,7 +21,10 @@ const sitename = computed(() => site.value?.name || '...')
 </script>
 
 <template>
-  <div class="SiteAvatar" v-if="sitename">
+  <div
+    v-if="sitename"
+    class="SiteAvatar"
+  >
     <Icon
       v-if="!avatarURL"
       :icon="badge"

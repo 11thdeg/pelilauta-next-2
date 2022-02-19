@@ -2,6 +2,7 @@
 import { Site } from "@11thdeg/skaldstore"
 import { ref } from "@vue/reactivity"
 import { onMounted } from "@vue/runtime-core"
+import { usePages } from "../../composables/usePages"
 import { useSites } from "../../composables/useSites"
 import Loader from '../ui/Loader.vue'
 import SiteAvatar from "./SiteAvatar.vue"
@@ -11,11 +12,18 @@ const props = defineProps<{
 }>()
 
 const { fetchSite } = useSites()
+const { pages, subscribeToSite } = usePages()
 const site = ref<Site|undefined>()
 
 onMounted(async () => {
   site.value = await fetchSite(props.siteid)
+  subscribeToSite(props.siteid)
 })
+
+function inCategory (category: string) {
+  const arr = Array.from(pages.value.values())
+  return arr.filter(page => page.category === category) || []
+}
 
 </script>
 
@@ -37,6 +45,14 @@ onMounted(async () => {
         :key="category.slug"
       >
         {{ category.name }}
+        <p
+          v-for="page in inCategory(category.slug)"
+          :key="page.key"
+        >
+          <router-link :to="`/sites/${siteid}/pages/${page.key}`">
+            {{ page.name }}
+          </router-link>
+        </p>
       </h4>
     </template>
   </div>

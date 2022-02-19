@@ -76,6 +76,11 @@
       "description": "Julkinen profiilisi näkyy kaikille sivuston käyttäjille. Voit muokata julkaisemasi sisältöä ja kuvia."
     }
   },
+  "site": {
+    "home": {
+      "title": "Etusivu"
+    }
+  },
   "sites": {
     "title": "Pelit"
   },

@@ -31,4 +31,8 @@ onUnmounted(() => {
   margin: 0
   padding: 12px 16px
   box-sizing: border-box
+  overflow-y: scroll
+  scroll-bar-width: none
+  &::-webkit-scrollbar
+    display: none
 </style>
