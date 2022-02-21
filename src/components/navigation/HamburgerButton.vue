@@ -1,17 +1,17 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
-import { useStore } from '../../stores/main'
+import { computed } from 'vue'
+import { useUxState } from '../../composables/useUxState';
 
-const main = useStore()
+const uxState = useUxState()
 
-const active = computed(() => main.showTrayOnMobile )
+const active = computed(() => uxState.showNavTrayOnMobile.value )
 </script>
 
 <template>
   <div
     class="HamburgerButton onlyOnMobile"
     :class="{ active: active }"
-    @click.prevent="main.toggleMobileTray()"
+    @click.prevent="uxState.toggleMobileNavTray()"
   >
     <div class="hamburger">
       <div class="bar" />
@@ -33,6 +33,7 @@ const active = computed(() => main.showTrayOnMobile )
   top: 0px
   left: 16px
   transition: all 300ms ease-in-out
+  z-index: 100000
   .hamburger  
     position: relative
     height: 30px
@@ -54,7 +55,8 @@ const active = computed(() => main.showTrayOnMobile )
       &:nth-of-type(3)
         top: 24px
   &.active
-    left: calc(100vw - 80px)
+    left: calc(100vw - 92px)
+    background-color: var(--chroma-secondary-a)
     .bar
       transition: all 280ms
       transition-timing-function: cubic-bezier(1, 0.05, 0.62, 1.78)

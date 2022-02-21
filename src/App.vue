@@ -10,13 +10,15 @@ import { Workbox } from 'workbox-window'
 import { logDebug } from './utils/loghelpers'
 import { useBanner } from './composables/useBanner'
 import { useI18n } from 'vue-i18n'
+import { useUxState } from './composables/useUxState'
 
 const main = useStore()
 main.initAppMeta()
+const uxState = useUxState()
 
 const auth = useAuthz()
 const showLoadingScreen = computed(() => !auth.operational)
-const showTray = computed(() => main.withTray)
+const showTray = computed(() => uxState.navTrayVisible.value)
 const { raise } = useBanner()
 const t = useI18n().t
 
