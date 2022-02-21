@@ -75,20 +75,22 @@ const showTrayOnMobile = computed(() => uxState.showNavTrayOnMobile.value)
       left: 0
       width: 100vw
       height: 100vh
-      background-color: rgba(0, 0, 0, 0.7)
+      background-color: rgba(#227286, 0.44)
       pointer-events: all
+      -webkit-backdrop-filter: blur(1px)
+      backdrop-filter: blur(1px)
     #TrayContainer
       position: fixed
       top: 0
       left: 0
       width: calc(100vw - 80px)
       height: calc(100vh - 24px)
-      background-color: var(--color-surface)
+      background-color: var(--color-navbar-background)
       overflow-y: scroll
       box-model: border-box
       padding: 12px 16px
       pointer-events: all
-      box-shadow: 0px 0px 24px 0px var(--chroma-secondary-d)
+      box-shadow: 0px 0px 48px 0px var(--chroma-secondary-a)
       transform: translateX(-300px)
       transition: all 0.3s ease-in-out
       opacity: 0

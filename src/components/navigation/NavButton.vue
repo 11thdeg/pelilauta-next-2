@@ -1,29 +1,23 @@
 <script setup lang="ts">
-import { useLightMode } from '../../composables/lightmode'
 
 const props = defineProps<{
   icon: string
   label: string
   to: string
-  disabled?: boolean
+  disabled?: boolean,
+  active?: boolean
 }>()
-
-const { mode } = useLightMode()
 </script>
 
 <template>
   <div
     class="NavButton"
-    :class="{ disabled: disabled }"
+    :class="{ disabled: disabled, active: active }"
     @click.prevent="$router.push(props.to)"
   >
+    <div class="activeButtonHighlight" />
     <img
       :src="`/proprietary/icons/dark/${props.icon}.svg`"
-      class="dark"
-    >
-    <img
-      :src="`/proprietary/icons/${mode}/${props.icon}.svg`"
-      class="light"
     >
     <div class="label">
       {{ props.label }}
@@ -49,6 +43,10 @@ div.NavButton
   img
     height: 36px
     width: 36px
+    position: absolute
+    top: 10px
+    left: 18px
+    z-index: 2
   div.label
     position: absolute
     bottom: 10px
@@ -61,17 +59,23 @@ div.NavButton
     width: 72px
     font-weight: bold
     color: var(--chroma-secondary-h)
+    z-index: 3
   &.disabled
     opacity: 0.2
     cursor: not-allowed
-
-img.light
-  display: none
-
-@include media('>=600px')
-  img.dark
-    display: none
-  img.light
-    display: block
-
+  .activeButtonHighlight
+    position: absolute
+    pointer-actions: none
+    top: 4px
+    left: 4px
+    width: 64px
+    height: 64px
+    background-color: rgba(255, 255, 255, 0.17)
+    z-index: 1
+    border-radius: 8px
+    opacity: 0
+    transition: 200ms all
+  &.active, &:hover
+    .activeButtonHighlight
+      opacity: 1
 </style>

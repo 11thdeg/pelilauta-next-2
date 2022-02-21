@@ -29,6 +29,7 @@ const t = useI18n().t
       icon="stylebook"
       to="/stylebook"
       label="Stylebook"
+      :active="$route.path.startsWith('/stylebook')"
     />
   </nav>
 </template>
@@ -47,4 +48,5 @@ nav#NavigationRail
   height: 100vh
   z-index: 90000
   background-color: var(--color-navbar-background)
+  padding-top: 4px
 </style>

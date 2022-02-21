@@ -11,6 +11,10 @@ const withFabs = computed(() => (store.withFabs))
 const t = useI18n().t
 </script>
 <template>
+  <div
+    id="NavigationBarShadow"
+    class="onlyOnMobile"
+  />
   <nav
     id="NavigationBar"
     class="onlyOnMobile"
@@ -59,7 +63,16 @@ const t = useI18n().t
   justify-content: space-between
   box-sizing: border-box
   background-color: var(--color-navbar-background)
-  z-index: 2000
+  z-index: var(--z-index-navigation)
   &.withFabs
     clip-path: polygon(0 0, calc(100% - 76px) 0, calc(100% - 64px) 8px, calc(100% - 24px) 8px, calc(100% - 12px) 0, 100% 0, 100% 100%, 0 100%)
+#NavigationBarShadow
+  content: ''
+  position: fixed
+  bottom: 50px
+  left: 0
+  width: 100vw
+  height: 32px
+  z-index: calc(var(--z-index-navigation) - 10 )
+  background: linear-gradient(0deg, rgba(0,35,55,1) 0%, rgba(0,35,55,0) 100%)
 </style>

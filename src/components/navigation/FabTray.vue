@@ -31,6 +31,7 @@ nav#FabTray
   flex-direction: column-reverse
   align-items: flex-end
   gap: 12px
+  z-index: var(--z-index-fabs)
 
 @include media('>=600px')
   nav#FabTray

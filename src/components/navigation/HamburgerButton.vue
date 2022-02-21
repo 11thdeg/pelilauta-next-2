@@ -5,10 +5,12 @@ import { useUxState } from '../../composables/useUxState';
 const uxState = useUxState()
 
 const active = computed(() => uxState.showNavTrayOnMobile.value )
+const visible = computed(() => uxState.navTrayVisible.value )
 </script>
 
 <template>
   <div
+    v-if="visible"
     class="HamburgerButton onlyOnMobile"
     :class="{ active: active }"
     @click.prevent="uxState.toggleMobileNavTray()"
@@ -25,10 +27,10 @@ const active = computed(() => uxState.showNavTrayOnMobile.value )
 .HamburgerButton
   height: 36px
   width: 36px
-  padding: 3px
+  padding: 7px 6px
   box-sizing: border-box
   border-radius: 50%
-  background-color: var(--chroma-secondary-d)
+  background-color: var(--color-navbar-background)
   position: absolute
   top: 0px
   left: 16px
@@ -36,24 +38,24 @@ const active = computed(() => uxState.showNavTrayOnMobile.value )
   z-index: 100000
   .hamburger  
     position: relative
-    height: 30px
-    width: 30px
+    height: 24px
+    width: 24px
     .bar
       opacity: 0.8
       background-color: white
-      height: 4px
-      width: 30px
-      border-radius: 2px
+      height: 2px
+      width: 24px
+      border-radius: 1px
       position: absolute
       display: block
       transition: all 350ms
       transition-timing-function: cubic-bezier(1, 0.05, 0.62, 1.78)
       &:first-of-type
-        top: 3px
+        top: 0px
       &:nth-of-type(2)
-        top: 13px
+        top: 10px
       &:nth-of-type(3)
-        top: 24px
+        top: 20px
   &.active
     left: calc(100vw - 92px)
     background-color: var(--chroma-secondary-a)
@@ -61,13 +63,13 @@ const active = computed(() => uxState.showNavTrayOnMobile.value )
       transition: all 280ms
       transition-timing-function: cubic-bezier(1, 0.05, 0.62, 1.78)
       &:first-of-type
-        top: 13px
+        top: 10px
         transform: rotate(45deg)
       &:nth-of-type(2)
         opacity: 0
         transform: translateX(-15px)
       &:nth-of-type(3)
-        top: 13px
+        top: 10px
         transform: rotate(-45deg)
 </style>
 

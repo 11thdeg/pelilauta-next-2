@@ -7,6 +7,7 @@ import { version } from '../../../package.json'
 import { useAuthz } from '../../stores/authz';
 import { computed, onMounted, ref } from 'vue';
 import HamburgerButton from './HamburgerButton.vue';
+import { useUxState } from '../../composables/useUxState';
 
 const props = defineProps<{
   title?: string,
@@ -29,6 +30,10 @@ onMounted(() => {
     })
   }
 })
+
+const uxState = useUxState()
+const hamburgerPadded = computed(() => uxState.navTrayVisible.value)
+
 </script>
 
 <template>
@@ -40,8 +45,8 @@ onMounted(() => {
       'rise-1': overlay
     }"
   >
-    <HamburgerButton style="margin-top:12px"/>
-    <h1>
+    <HamburgerButton style="margin-top:12px" />
+    <h1 :class="{ hamburgerPadded: hamburgerPadded }">
       <Icon
         v-if="showBackButton"
         icon="back"
@@ -91,6 +96,8 @@ nav#TopAppBar
     margin: 0
     padding: 0
     user-select: none
+    &.hamburgerPadded
+      padding-left: 48px
   &.sticky
     position: -webkit-sticky
     position: sticky
