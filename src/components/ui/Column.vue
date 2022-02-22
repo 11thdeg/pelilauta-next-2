@@ -1,5 +1,27 @@
+<script lang="ts" setup>
+import { computed } from 'vue'
+
+const props = defineProps<{
+  double?: boolean
+  cut?: boolean
+}>()
+
+const layoutClasses = computed(() => {
+  const classes = []
+  if (props.double && !props.cut) {
+    classes.push('double')
+  } else if (props.double) {
+    classes.push('double')
+  }
+  return classes.join(' ')
+})
+</script>
+
 <template>
-  <article class="Column">
+  <article
+    class="Column"
+    :class="layoutClasses"
+  >
     <slot />
   </article>
 </template>

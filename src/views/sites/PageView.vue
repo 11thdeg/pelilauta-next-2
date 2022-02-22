@@ -7,6 +7,7 @@ import { Page } from '@11thdeg/skaldstore';
 import { computed } from 'vue';
 import NavigationTray from '../../components/navigation/NavigationTray.vue';
 import SiteTray from '../../components/sites/SiteTray.vue';
+import RichContentSection from '../../components/content/RichContentSection.vue';
 
 const props = defineProps<{
   siteid: string
@@ -24,11 +25,11 @@ const page = computed(() => pages.pages.value.get(props.pageid) || new Page())
       <SiteTray :siteid="siteid" />
     </NavigationTray>
     <Main book-layout>
-      <Column>
-        {{ siteid }} / {{ pageid }}
-      </Column>
-      <Column>
-        {{ page.name }}
+      <Column double cut>
+        <section>
+          <h4>{{ page.name }}</h4>
+        </section>
+        <RichContentSection :content-entry="page" />
       </Column>
     </Main>
   </div>
