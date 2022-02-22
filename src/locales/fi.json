@@ -2,6 +2,7 @@
   "account": {
     "title": "Asetukset",
     "actions": {
+      "comment": "Uusi ketju",
       "title": "Sovelluksen asetukset",
       "locale": "Kieli",
       "lightmode": "Teema"

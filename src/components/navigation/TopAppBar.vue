@@ -83,6 +83,7 @@ const hamburgerPadded = computed(() => uxState.navTrayVisible.value)
 </template>
 
 <style lang="sass" scoped>
+@import ../../styles/include-media.scss
 nav#TopAppBar
   display: flex
   gap: 24px
@@ -96,8 +97,6 @@ nav#TopAppBar
     margin: 0
     padding: 0
     user-select: none
-    &.hamburgerPadded
-      padding-left: 48px
   &.sticky
     position: -webkit-sticky
     position: sticky
@@ -109,4 +108,8 @@ nav#TopAppBar
     &.overlay
       transition: all 0.6s ease-in-out
       box-shadow: 0px 0px 55px -12px var(--chroma-secondary-d)
+@include media('<=600px')
+  nav#TopAppBar
+    h1.hamburgerPadded
+      padding-left: 48px
 </style>
