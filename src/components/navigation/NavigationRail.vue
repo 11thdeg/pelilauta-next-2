@@ -16,6 +16,11 @@ const t = useI18n().t
       to="/"
     />
     <NavButton
+      icon="mekanismi"
+      :label="t('sites.title')"
+      to="/sites"
+    />
+    <NavButton
       icon="d6"
       label="About"
       to="/about"

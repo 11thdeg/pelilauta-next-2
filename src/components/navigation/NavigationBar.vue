@@ -35,7 +35,6 @@ const t = useI18n().t
       icon="mekanismi"
       :label="t('sites.title')"
       to="/sites"
-      disabled
     />
     <NavButton
       icon="adventurer"

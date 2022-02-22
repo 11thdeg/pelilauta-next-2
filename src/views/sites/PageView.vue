@@ -25,7 +25,10 @@ const page = computed(() => pages.pages.value.get(props.pageid) || new Page())
 
 <template>
   <div id="PageView">
-    <TopAppBar :title="page.name" sticky />
+    <TopAppBar
+      :title="page.name"
+      sticky
+    />
     <NavigationTray>
       <SiteTray :siteid="siteid" />
     </NavigationTray>
