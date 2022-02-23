@@ -57,7 +57,7 @@ div#LoadingScreen
   top: 0
   left: 0
   width: 100vw
-  height: 100vw
+  height: 100vh
   box-sizing: border-box
   background-color: var(--chroma-primary-a)
   background: linear-gradient(11deg, var(--chroma-secondary-a) 0%, var(--chroma-secondary-b) 100%)  

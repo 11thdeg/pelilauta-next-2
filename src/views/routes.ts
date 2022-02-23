@@ -15,6 +15,7 @@ export const routes = [
   },
   { path: '/site/:siteid', component: () => import('./sites/SiteHomeView.vue'), props: true },
   { path: '/site/:siteid/page/:pageid', component: () => import('./sites/PageView.vue'), props: true },
+  { path: '/site/:siteid/page/:pageid/edit', component: () => import('./sites/PageEditView.vue'), props: true },
   { path: '/stylebook', component: () => import('./Stylebook.vue') },
   { path: '/stylebook/:page', component: () => import('./Stylebook.vue'), props: true },
   { path: '/login', component: () => import('./LoginView.vue') },
