@@ -12,6 +12,9 @@ import NavigationTray from '../../components/navigation/NavigationTray.vue';
 import Column from '../../components/ui/Column.vue';
 import Textfield from '../../components/ui/Textfield.vue';
 import MarkdownArea from '../../components/ui/MarkdownArea.vue';
+import { useBanner } from '../../composables/useBanner';
+import { NodeHtmlMarkdown } from 'node-html-markdown';
+import Banner from '../../components/navigation/Banner.vue';
 
 const props = defineProps<{
   siteid: string
@@ -19,6 +22,7 @@ const props = defineProps<{
 }>()
 
 const { t } = useI18n()
+const { raise } = useBanner()
 
 const MODE_CREATE = 'create'
 const MODE_UPDATE = 'update'
@@ -34,13 +38,23 @@ onMounted(async() => {
   const { fetchPage } = await usePages()
   try {
     const p = await fetchPage(props.pageid || '', props.siteid)
-    logDebug('PageEditView.onMounted', p)
+    logDebug('PageEditView.onMounted', p, p.htmlContent && !p.markdownContent)
     page.value = p
+    if (p.htmlContent && !p.markdownContent) {
+      raise(t('page.convert.warning'), convertPageContentToMarkdown)
+    }
   } catch (e) {
     logError('PageEditView.onMounted', e)
     pageNotFound.value = true
   }
 })
+
+const nhm = new NodeHtmlMarkdown({}, undefined, undefined)
+
+function convertPageContentToMarkdown() {
+  if (page.value && !page.value.markdownContent) page.value.markdownContent = nhm.translate(page.value.htmlContent, {})
+  else throw new Error('PageEditView.convertPageContentToMarkdown: page.value.markdownContent is already set')
+}
 
 </script>
 
@@ -50,6 +64,7 @@ onMounted(async() => {
     show-back-button
     sticky
   />
+  <Banner />
   <NavigationTray>
     <SiteTray :siteid="siteid" />
   </NavigationTray>
