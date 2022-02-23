@@ -6,11 +6,14 @@ import { usePages } from "../../composables/usePages"
 import { useSites } from "../../composables/useSites"
 import Loader from '../ui/Loader.vue'
 import SiteAvatar from "./SiteAvatar.vue"
+import Fab from "../ui/Fab.vue"
+import { useI18n } from "vue-i18n"
 
 const props = defineProps<{
   siteid: string
 }>()
 
+const { t } = useI18n()
 const { fetchSite } = useSites()
 const { pages, subscribeToSite } = usePages()
 const site = ref<Site|undefined>()
@@ -40,6 +43,12 @@ function inCategory (category: string) {
   
         {{ site.name }}
       </h3>
+      <Fab
+        small
+        icon="add"
+        :label="t('actions.add')"
+        @click.prevent="$router.push('/site/add/page')"
+      />
       <h4
         v-for="category in site.pageCategories"
         :key="category.slug"
@@ -49,7 +58,7 @@ function inCategory (category: string) {
           v-for="page in inCategory(category.slug)"
           :key="page.key"
         >
-          <router-link :to="`/sites/${siteid}/pages/${page.key}`">
+          <router-link :to="`/site/${siteid}/page/${page.key}`">
             {{ page.name }}
           </router-link>
         </p>

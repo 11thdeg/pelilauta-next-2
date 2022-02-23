@@ -19,6 +19,7 @@ export const iconlist = [
   'eye-slash',
   'fox',
   'google',
+  'homebrew-logo',
   'lightmode',
   'logout',
   'mekanismi',

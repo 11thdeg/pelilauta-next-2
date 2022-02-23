@@ -1,12 +1,53 @@
 import { Site } from "@11thdeg/skaldstore"
 import { logDebug, logError } from "../utils/loghelpers"
 import { doc, getDoc, getFirestore, onSnapshot, query, where, collection } from "@firebase/firestore"
-import { computed } from "vue"
+import { computed, ref } from "vue"
 
-const siteCache = new Map<string, Site>()
+const siteCache = ref(new Map<string, Site>())
 let uid = ''
+let pid = ''
 let userSitesSubscription:undefined|CallableFunction = undefined
-const userSites:string[] = []
+let playerSiteSubscription:undefined|CallableFunction = undefined
+const userSites = computed(() => {
+  const sites:Site[] = []
+  siteCache.value.forEach((site) => {
+    if (site.owners.includes(uid)) sites.push(site)
+  })
+  return sites
+})
+const playerSites = computed(() => {
+  const sites:Site[] = []
+  siteCache.value.forEach((site) => {
+    logDebug(`playerSites (${uid}), site: ${site.key}`)
+    if (site.players.includes(uid)) sites.push(site)
+  })
+  return sites
+})
+
+async function subscribeToPlayerSites(newPid: string) {
+  if (newPid === pid) return
+
+  logDebug(`subscribeToPlayerSites(${pid})`)
+  pid = newPid
+  if (playerSiteSubscription) playerSiteSubscription()
+
+  playerSiteSubscription = onSnapshot(
+    query(
+      collection(getFirestore(), 'sites'),
+      where('players', 'array-contains', pid)
+    ),
+    (snapshot) => {
+      snapshot.docChanges().forEach((docChange) => {
+        logDebug(`subscribeToPlayerSites(${pid}), docChange: ${docChange.type}, ${docChange.doc.id}`)
+        if (docChange.type !== 'removed') {
+          const site = new Site(docChange.doc.data(), docChange.doc.id)
+          siteCache.value.set(docChange.doc.id, site)
+        } else {
+          siteCache.value.delete(docChange.doc.id)
+        }
+      })
+    })
+}
 
 async function subscribeToUserSites(newUid: string) {
   if (uid === newUid) return
@@ -25,11 +66,9 @@ async function subscribeToUserSites(newUid: string) {
         logDebug(`subscribeToUserSites(${uid}), docChange: ${docChange.type}, ${docChange.doc.id}`)
         if (docChange.type !== 'removed') {
           const site = new Site(docChange.doc.data(), docChange.doc.id)
-          siteCache.set(docChange.doc.id, site)
-          userSites.push(docChange.doc.id)
+          siteCache.value.set(docChange.doc.id, site)
         } else {
-          siteCache.delete(docChange.doc.id)
-          userSites.splice(userSites.indexOf(docChange.doc.id), 1)
+          siteCache.value.delete(docChange.doc.id)
         }
       })
     }
@@ -40,8 +79,8 @@ async function fetchSite(id: string): Promise<Site> {
   logDebug(`fetchSite(${id})`)
 
   // Lets see if its available in the cache
-  if (siteCache.has(id)) {
-    const site = siteCache.get(id)
+  if (siteCache.value.has(id)) {
+    const site = siteCache.value.get(id)
     if (site) return site
   }
   
@@ -56,7 +95,7 @@ async function fetchSite(id: string): Promise<Site> {
 
   if (siteDoc.exists()) {
     const site = new Site(siteDoc.data(), siteDoc.id)
-    siteCache.set(siteDoc.id, site)
+    siteCache.value.set(siteDoc.id, site)
     return site
   }
 
@@ -67,8 +106,11 @@ async function fetchSite(id: string): Promise<Site> {
 
 export function useSites () {
   return {
+    siteCache: computed(() => siteCache.value),
     fetchSite,
     subscribeToUserSites,
-    userSites: computed(() => [...userSites])
+    subscribeToPlayerSites,
+    userSites,
+    playerSites
   }
 }
