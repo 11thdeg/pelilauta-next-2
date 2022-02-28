@@ -56,25 +56,23 @@ const hamburgerPadded = computed(() => uxState.navTrayVisible.value)
       <Icon
         v-if="icon"
         :icon="icon"
-        class="inTopBar"
       />
       {{ props.title || 'Pelilauta' }}
     </h1>
     <SpacerDiv />
     <p
       class="TypeCaption hideOnMobile"
-      style="line-height: 48px;padding-top:8px"
+      style="line-height: 48px;padding-top:6px"
     >
       {{ version }}
     </p>  
     <LightmodeButton class="hideOnMobile" />
     <div
+      v-if="admin"
       class="AdminButton hoverable clickable"
-      style="margin: calc((64px - 36px) / 2) 0"
       @click="$router.push('/admin')"
     >
       <Icon
-        v-if="admin"
         icon="admin"
       />
     </div>
@@ -89,10 +87,9 @@ nav#TopAppBar
   gap: 24px
   margin: 0
   padding: 0 16px
-  height: 64px
-  border-bottom: 1px solid var(--color-navbar-border)
+  height: 56px
   h1
-    line-height: 64px
+    line-height: 56px
     font-size: 24px
     margin: 0
     padding: 0
@@ -112,4 +109,14 @@ nav#TopAppBar
   nav#TopAppBar
     h1.hamburgerPadded
       padding-left: 48px
+@media (prefers-color-scheme: light)
+  nav#TopAppBar
+    border-bottom: 1px solid var(--color-border)
+    height: 55px
+@media (prefers-color-scheme: dark)
+  body.light-theme
+    nav#TopAppBar
+      border-bottom: 1px solid var(--color-border)
+      height: 55px
+
 </style>

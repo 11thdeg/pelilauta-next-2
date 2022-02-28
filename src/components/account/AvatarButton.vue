@@ -34,7 +34,7 @@ div.AvatarButton
   width: 64px
   box-sizing: border-box
   margin: 0
-  padding: calc((64px - 36px) / 2)
+  padding: calc((56px - 36px) / 2)
   opacity: 0.83
   transition: all 0.2s ease-in-out
   &.anonymous

@@ -24,7 +24,7 @@ div.LightmodeButton
   height: 36px
   width: 36px
   box-sizing: border-box
-  margin: calc((64px - 36px) / 2) 0
+  margin: calc((56px - 36px) / 2) 0
   padding: 0
   opacity: 0.83
   transition: all 0.2s ease-in-out
