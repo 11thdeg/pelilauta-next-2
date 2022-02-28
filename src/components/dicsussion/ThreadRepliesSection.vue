@@ -61,7 +61,7 @@ onUnmounted(() => {
       <ActionBar>
         <AuthorTag :uid="reply.author" />
         <SpacerDiv />
-        <SinceTag :time="reply.createdAt" />
+        <SinceTag :time="reply.createdAt?.seconds" />
       </ActionBar>
       <MarkDownSection
         v-if="reply.markdownContent"

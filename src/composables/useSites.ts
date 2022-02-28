@@ -76,7 +76,7 @@ async function subscribeToUserSites(newUid: string) {
 }
 
 async function fetchSite(id: string): Promise<Site> {
-  logDebug(`fetchSite(${id})`)
+  // logDebug(`fetchSite(${id})`)
 
   // Lets see if its available in the cache
   if (siteCache.value.has(id)) {

@@ -79,7 +79,7 @@ const snippet = computed(() => {
       </p>
     </template>
     <ActionBar>
-      <SinceTag :time="thread.createdAt" />
+      <SinceTag :time="thread.createdAt?.seconds" />
       <AuthorTag :uid="thread.author" />
       <SpacerDiv />
     </ActionBar>

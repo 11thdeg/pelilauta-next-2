@@ -20,7 +20,7 @@ onMounted(async () => {
 
 <template>
   <span class="SiteLink">
-    <router-link :to="`/sites/${siteid}`">
+    <router-link :to="`/site/${siteid}`">
       {{ sitename }}
     </router-link>
   </span>

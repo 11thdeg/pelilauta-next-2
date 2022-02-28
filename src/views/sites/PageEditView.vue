@@ -52,7 +52,7 @@ onMounted(async() => {
 const nhm = new NodeHtmlMarkdown({}, undefined, undefined)
 
 function convertPageContentToMarkdown() {
-  if (page.value && !page.value.markdownContent) page.value.markdownContent = nhm.translate(page.value.htmlContent, {})
+  if (page.value && !page.value.markdownContent) page.value.markdownContent = nhm.translate(page.value.htmlContent)
   else throw new Error('PageEditView.convertPageContentToMarkdown: page.value.markdownContent is already set')
 }
 

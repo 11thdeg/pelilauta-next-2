@@ -54,7 +54,8 @@
   "info": {
     "ago": "sitten",
     "loves": "♡",
-    "replies": "Vastausta"
+    "replies": "Vastausta",
+    "loading": "Ladataan..."
   },
   "login": {
     "emailLoginHelper": "Osoite",
@@ -64,6 +65,18 @@
     "continueAsAnonymous": "Jatka kirjautumatta",
     "title": "Kirjaudu",
     "loginWithEmail": "Sähköpostilinkillä"
+  },
+  "page": {
+    "convert": {
+      "warning": "Sivun sisältö on luotu pelilaudan aiemmalla versiolla, ja se on muutettava Markdown -muotoon jatkaaksesi."
+    },
+    "update": {
+      "title": "Muokkaa sivua"
+    },
+    "fields": {
+      "name": "Sivun nimi",
+      "content": "Sivun sisältö"
+    }
   },
   "profile": {
     "title": "Profiili",

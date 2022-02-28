@@ -30,7 +30,7 @@ async function subscribeToSite (siteid:string) {
   )
 }
 
-async function fetchPage (pageid:string, siteid?:string ): Page {
+async function fetchPage (pageid:string, siteid?:string ): Promise<Page> {
   if (siteid === activeSite?.key) {
     const p = pageCache.value.get(pageid)
     if (p) return p
