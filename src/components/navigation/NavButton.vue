@@ -38,8 +38,6 @@ div.NavButton
   position: relative
   display: inline-block
   transition: 0.22s all
-  &:hover
-    background-color: var(--color-rise-a)
   img
     height: 36px
     width: 36px
@@ -70,7 +68,7 @@ div.NavButton
     left: 4px
     width: 64px
     height: 64px
-    background-color: rgba(255, 255, 255, 0.17)
+    background-color: rgba(#a2e4ec, 0.11)
     z-index: 1
     border-radius: 8px
     opacity: 0
@@ -78,4 +76,7 @@ div.NavButton
   &.active, &:hover
     .activeButtonHighlight
       opacity: 1
+  &.active:hover
+    .activeButtonHighlight
+      background-color: rgba(#a2e4ec, 0.22)
 </style>

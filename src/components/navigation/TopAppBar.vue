@@ -71,6 +71,7 @@ const hamburgerPadded = computed(() => uxState.navTrayVisible.value)
       v-if="admin"
       class="AdminButton hoverable clickable"
       @click="$router.push('/admin')"
+      style="margin-top:12px"
     >
       <Icon
         icon="admin"
