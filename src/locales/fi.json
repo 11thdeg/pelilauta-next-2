@@ -15,6 +15,7 @@
   },
   "actions": {
     "add": "Lisää",
+    "addThread": "Uusi keskustelu",
     "back": "Palaa",
     "cancel": "Peruuta",
     "delete": "Poista",

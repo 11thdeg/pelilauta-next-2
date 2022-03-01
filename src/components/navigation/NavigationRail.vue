@@ -19,6 +19,7 @@ const t = useI18n().t
       icon="mekanismi"
       :label="t('sites.title')"
       to="/sites"
+      :active="$route.path.startsWith('/site')"
     />
     <NavButton
       icon="d6"
@@ -53,5 +54,5 @@ nav#NavigationRail
   height: 100vh
   z-index: 90000
   background-color: var(--color-navbar-background)
-  padding-top: 4px
+  padding-top: 0px
 </style>

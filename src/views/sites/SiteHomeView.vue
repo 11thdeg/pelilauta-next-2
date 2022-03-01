@@ -10,6 +10,7 @@ import { useSites } from '../../composables/useSites';
 import { Page, Site } from '@11thdeg/skaldstore';
 import MarkDownSection from '../../components/ui/MarkDownSection.vue';
 import { usePages } from '../../composables/usePages';
+import PageFabs from '../../components/sites/PageFabs.vue';
 
 const props = defineProps<{
   siteid: string
@@ -60,5 +61,8 @@ const homePage = computed(() => {
         />
       </Column>
     </Main>
+    <PageFabs
+      :siteid="siteid"
+    />
   </div>
 </template>

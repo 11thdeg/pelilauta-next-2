@@ -8,6 +8,7 @@ import Loader from '../ui/Loader.vue'
 import SiteAvatar from "./SiteAvatar.vue"
 import Fab from "../ui/Fab.vue"
 import { useI18n } from "vue-i18n"
+import ActionBar from "../ui/ActionBar.vue"
 
 const props = defineProps<{
   siteid: string
@@ -34,20 +35,21 @@ function inCategory (category: string) {
   <div id="SiteTray">
     <Loader v-if="!site" />
     <template v-if="site">
-      <h3>
+      <ActionBar style="margin-bottom: 12px">
         <SiteAvatar
           :siteid="siteid" 
           style="display:inline-block"
         />
-
-  
-        {{ site.name }}
-      </h3>
+        <h3 style="margin:0">
+          <router-link :to="`/site/${site.key}`">{{ site.name }}</router-link>
+        </h3>
+      </ActionBar>
+      
       <Fab
         small
         icon="add"
         :label="t('actions.add')"
-        @click.prevent="$router.push('/site/add/page')"
+        @click.prevent="$router.push(`/site/${siteid}/add/page`)"
       />
       <h4
         v-for="category in site.pageCategories"
