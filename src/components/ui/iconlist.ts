@@ -22,6 +22,8 @@ export const iconlist = [
   'homebrew-logo',
   'lightmode',
   'logout',
+  'love',
+  'loves',
   'mekanismi',
   'pelilauta-logo',
   'stylebook',

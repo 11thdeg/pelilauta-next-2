@@ -10,12 +10,23 @@ import Iconography from '../components/stylebook/Iconography.vue'
 import { computed } from 'vue'
 import Cards from '../components/stylebook/Cards.vue'
 import Banner from '../components/navigation/Banner.vue'
+import NavigationTray from '../components/navigation/NavigationTray.vue'
+import { useRoute } from 'vue-router'
 
 const props = defineProps<{
   page?: string
 }>()
 
+const route = useRoute()
+
 const subPage = computed(() => props.page || '')
+
+const laytoutClass = computed(() => {
+  if (route.fullPath === '/stylebook') {
+    return 'bookLayout'
+  }
+  return 'singleColumnLayout'
+})
 </script>
 
 <template>
@@ -24,7 +35,19 @@ const subPage = computed(() => props.page || '')
     icon="mekanismi"
   />
   <Banner />
-  <main class="bookLayout">
+  <NavigationTray>
+    <h3>
+      <router-link to="/stylebook">Stylebook</router-link>
+    </h3>
+    <ul>
+      <li>
+        <router-link to="/stylebook/buttonsandactions">
+          Buttons and Actions
+        </router-link>
+      </li>
+    </ul>
+  </NavigationTray>
+  <main :class="laytoutClass">
     <StyleBookIntro v-if="!subPage" />
     <Iconography v-if="!subPage" />
     <FormControls v-if="!subPage || subPage === 'formcontrols' " />
@@ -36,7 +59,7 @@ const subPage = computed(() => props.page || '')
       v-if="!subPage"
       class="double"
     />
-    <ButtonsAndActions v-if="!subPage" />
+    <ButtonsAndActions v-if="!subPage || subPage === 'buttonsandactions'" />
     <NavigationComponents
       v-if="!subPage"
       class="double"

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { Thread } from '@11thdeg/skaldstore'
-import { computed } from 'vue'
+import { computed, ref, useAttrs } from 'vue'
 import Card from '../ui/Card.vue'
 import MarkDownSection from '../ui/MarkDownSection.vue'
 import YoutubePreview from '../ui/YoutubePreview.vue'
@@ -10,13 +10,16 @@ import SinceTag from '../ui/SinceTag.vue'
 import SpacerDiv from '../ui/SpacerDiv.vue'
 import TopicTag from './TopicTag.vue'
 import RepliesTag from './RepliesTag.vue'
-import LoveTag from './LoveTag.vue'
 import SiteLink from '../sites/SiteLink.vue'
 import SiteAvatar from '../sites/SiteAvatar.vue'
+import LoveButton from '../actions/LoveButton.vue'
+import { useProfile } from '../../stores/profile'
 
 const props = defineProps<{
   thread: Thread
 }>()
+
+const profile = useProfile()
 
 const snippet = computed(() => {
   if (props.thread.markdownContent) return props.thread.markdownContent.slice(0, 240) + '...'
@@ -29,6 +32,8 @@ const snippet = computed(() => {
       }
       return snip
 })
+
+const loves = ref(false)
 </script>
 
 <template>
@@ -87,7 +92,10 @@ const snippet = computed(() => {
       <TopicTag :slug="thread.topicid || ''" />
       <SpacerDiv />
       <RepliesTag :thread="thread" />
-      <LoveTag :count="thread.lovedCount" />
+      <LoveButton
+        v-model:loves="loves"
+        :count="thread.lovedCount"
+      />
     </ActionBar>
   </Card>
 </template>
