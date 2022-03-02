@@ -8,11 +8,11 @@ import ActionBar from '../../components/ui/ActionBar.vue';
 import AuthorTag from '../../components/author/AuthorTag.vue';
 import SpacerDiv from '../../components/ui/SpacerDiv.vue';
 import SinceTag from '../../components/ui/SinceTag.vue';
-import TopicTag from '../../components/threads/TopicTag.vue';
-import LoveTag from '../../components/threads/LoveTag.vue';
+import TopicTag from '../../components/threads/TopicTag.vue'
 import ThreadMediaViewer from '../../components/threads/ThreadMediaViewer.vue';
 import ThreadDiscussionColumn from '../../components/dicsussion/ThreadDiscussionColumn.vue';
 import Column from '../../components/ui/Column.vue';
+import LoveAThreadButton from '../../components/threads/LoveAThreadButton.vue';
 
 const { fetchThread } = useThreads()
 
@@ -41,13 +41,16 @@ onMounted(async ()  => {
         <ActionBar>
           <AuthorTag :uid="thread.author" />
           <SpacerDiv />
-          <SinceTag :time="thread.createdAt" />
+          <SinceTag :time="thread.createdAt?.seconds" />
         </ActionBar>
         <ThreadMediaViewer :threadid="threadid" />
         <ActionBar>
           <TopicTag :slug="topic" />
           <SpacerDiv />
-          <LoveTag :count="thread.lovedCount" />
+          <LoveAThreadButton
+            v-if="thread"
+            :thread="thread"
+          />
         </ActionBar>
         <MarkDownSection
           v-if="thread.markdownContent"

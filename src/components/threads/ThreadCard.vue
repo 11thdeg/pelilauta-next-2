@@ -12,10 +12,7 @@ import TopicTag from './TopicTag.vue'
 import RepliesTag from './RepliesTag.vue'
 import SiteLink from '../sites/SiteLink.vue'
 import SiteAvatar from '../sites/SiteAvatar.vue'
-import LoveButton from '../actions/LoveButton.vue'
-import { useProfile } from '../../composables/useProfile'
-import { logDebug } from '../../utils/loghelpers'
-import { loveThread, unLoveThread } from '../../composables/useTheads'
+import LoveAThreadButton from './LoveAThreadButton.vue'
 
 const props = defineProps<{
   thread: Thread
@@ -33,19 +30,6 @@ const snippet = computed(() => {
       }
       return snip
 })
-
-const { profile } = useProfile()
-const loves = computed(
-  {
-    get: () => profile.value?.loves(props.thread.key || '') || false,
-    set: async (value: boolean) => {
-      logDebug('loves', value)
-      if (value) await loveThread(profile.value?.key || '', props.thread.key || '')
-      else await unLoveThread(profile.value?.key || '', props.thread.key || '')
-    }
-  }
-)
-const owns = computed(() => props.thread.hasOwner(profile.value?.key || ''))
 </script>
 
 <template>
@@ -104,11 +88,7 @@ const owns = computed(() => props.thread.hasOwner(profile.value?.key || ''))
       <TopicTag :slug="thread.topicid || ''" />
       <SpacerDiv />
       <RepliesTag :thread="thread" />
-      <LoveButton
-        v-model:loves="loves"
-        :count="thread.lovedCount"
-        :disabled="owns"
-      />
+      <LoveAThreadButton :thread="thread" />
     </ActionBar>
   </Card>
 </template>
