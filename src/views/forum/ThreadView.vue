@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { Thread } from '@11thdeg/skaldstore'
 import { computed, onMounted, ref } from 'vue'
-import { useThreads } from '../../composables/useThreads';
+import { useThreads } from '../../composables/useTheads';
 import TopAppBar from '../../components/navigation/TopAppBar.vue';
 import MarkDownSection from '../../components/ui/MarkDownSection.vue';
 import ActionBar from '../../components/ui/ActionBar.vue';

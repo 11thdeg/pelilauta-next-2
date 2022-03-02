@@ -7,6 +7,7 @@ import { logDebug } from '../utils/loghelpers'
 import { useProfile } from './profile'
 import { useAssets } from './assets'
 import { useStore } from './main'
+import { useProfile as initCompProfile} from '../composables/useProfile'
 
 export const useAuthz = defineStore('session', () => {
   const state = reactive({
@@ -41,6 +42,8 @@ export const useAuthz = defineStore('session', () => {
 
     const { initAssetCache } = useAssets()
     initAssetCache() // we can load these after login, so no need to wait for the cache to initialize
+
+    initCompProfile(state.user.uid) // This initializes the composable profile copmonent – that should replace the store one
   }
 
   async function loginAs(user: User | null) {

@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { Thread } from '@11thdeg/skaldstore'
-import { computed, onMounted, ref } from 'vue';
-import YoutubePreview from '../ui/YoutubePreview.vue';
-import ImageList from '../ui/ImageList.vue';
-import { logDebug } from '../../utils/loghelpers';
-import { useThreads } from '../../composables/useThreads';
+import { computed, onMounted, ref } from 'vue'
+import YoutubePreview from '../ui/YoutubePreview.vue'
+import ImageList from '../ui/ImageList.vue'
+import { logDebug } from '../../utils/loghelpers'
+import { useThreads } from '../../composables/useTheads'
 
 const { fetchThread } = useThreads()
 

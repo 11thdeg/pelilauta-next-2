@@ -1,7 +1,8 @@
-import { Thread } from "@11thdeg/skaldstore"
-import { doc, getDoc, getFirestore } from "@firebase/firestore"
-import { useStream } from "../stores/stream"
-import { logDebug, logError } from "../utils/loghelpers"
+import { Thread } from '@11thdeg/skaldstore'
+import { doc, getDoc, getFirestore } from '@firebase/firestore'
+import { useStream } from "../../stores/stream"
+import { logDebug, logError } from "../../utils/loghelpers"
+import { loveThread, unLoveThread } from './reations'
 
 const threadCache = new Map<String, Thread>()
 
@@ -40,8 +41,14 @@ async function fetchThread (id: string):Promise<Thread|undefined> {
   return undefined
 }
 
-export function useThreads () {
+function useThreads () {
   return {
     fetchThread
   }
+}
+
+export {
+  loveThread,
+  unLoveThread,
+  useThreads
 }

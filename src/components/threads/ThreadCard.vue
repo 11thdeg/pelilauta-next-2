@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { Thread } from '@11thdeg/skaldstore'
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import Card from '../ui/Card.vue'
 import MarkDownSection from '../ui/MarkDownSection.vue'
 import YoutubePreview from '../ui/YoutubePreview.vue'
@@ -13,6 +13,9 @@ import RepliesTag from './RepliesTag.vue'
 import SiteLink from '../sites/SiteLink.vue'
 import SiteAvatar from '../sites/SiteAvatar.vue'
 import LoveButton from '../actions/LoveButton.vue'
+import { useProfile } from '../../composables/useProfile'
+import { logDebug } from '../../utils/loghelpers'
+import { loveThread, unLoveThread } from '../../composables/useTheads'
 
 const props = defineProps<{
   thread: Thread
@@ -31,7 +34,18 @@ const snippet = computed(() => {
       return snip
 })
 
-const loves = ref(false)
+const { profile } = useProfile()
+const loves = computed(
+  {
+    get: () => profile.value?.loves(props.thread.key || '') || false,
+    set: async (value: boolean) => {
+      logDebug('loves', value)
+      if (value) await loveThread(profile.value?.key || '', props.thread.key || '')
+      else await unLoveThread(profile.value?.key || '', props.thread.key || '')
+    }
+  }
+)
+const owns = computed(() => props.thread.hasOwner(profile.value?.key || ''))
 </script>
 
 <template>
@@ -93,6 +107,7 @@ const loves = ref(false)
       <LoveButton
         v-model:loves="loves"
         :count="thread.lovedCount"
+        :disabled="owns"
       />
     </ActionBar>
   </Card>

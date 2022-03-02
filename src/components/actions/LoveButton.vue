@@ -4,6 +4,7 @@ import Icon from '../ui/Icon.vue';
 const props = defineProps<{
   count: number
   loves: boolean
+  disabled?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -19,7 +20,10 @@ function clicked () {
 <template>
   <button
     class="TypeButton LoveButton"
-    :class="{ active: loves }"
+    :class="{
+      active: loves,
+      disabled: disabled,
+    }"
     @click="clicked"
   >
     <Icon
@@ -58,6 +62,8 @@ function clicked () {
       background-color: var(--chroma-primary-d)
   span.count
     margin-left: 8px
+  &.disabled
+    background: none
 
 @mixin lightModeStyles()
     background-color: var(--chroma-secondary-h)
