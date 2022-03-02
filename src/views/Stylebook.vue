@@ -37,7 +37,9 @@ const laytoutClass = computed(() => {
   <Banner />
   <NavigationTray>
     <h3>
-      <router-link to="/stylebook">Stylebook</router-link>
+      <router-link to="/stylebook">
+        Stylebook
+      </router-link>
     </h3>
     <ul>
       <li>

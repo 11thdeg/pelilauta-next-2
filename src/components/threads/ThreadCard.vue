@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { Thread } from '@11thdeg/skaldstore'
-import { computed, ref, useAttrs } from 'vue'
+import { computed, ref } from 'vue'
 import Card from '../ui/Card.vue'
 import MarkDownSection from '../ui/MarkDownSection.vue'
 import YoutubePreview from '../ui/YoutubePreview.vue'
@@ -13,13 +13,11 @@ import RepliesTag from './RepliesTag.vue'
 import SiteLink from '../sites/SiteLink.vue'
 import SiteAvatar from '../sites/SiteAvatar.vue'
 import LoveButton from '../actions/LoveButton.vue'
-import { useProfile } from '../../stores/profile'
 
 const props = defineProps<{
   thread: Thread
 }>()
 
-const profile = useProfile()
 
 const snippet = computed(() => {
   if (props.thread.markdownContent) return props.thread.markdownContent.slice(0, 240) + '...'

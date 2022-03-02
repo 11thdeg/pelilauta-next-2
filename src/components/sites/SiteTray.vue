@@ -41,7 +41,9 @@ function inCategory (category: string) {
           style="display:inline-block"
         />
         <h3 style="margin:0">
-          <router-link :to="`/site/${site.key}`">{{ site.name }}</router-link>
+          <router-link :to="`/site/${site.key}`">
+            {{ site.name }}
+          </router-link>
         </h3>
       </ActionBar>
       
