@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Page } from '@11thdeg/skaldstore';
+import { Page, Site } from '@11thdeg/skaldstore';
 import { computed, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import TopAppBar from '../../components/navigation/TopAppBar.vue'
@@ -15,6 +15,11 @@ import MarkdownArea from '../../components/ui/MarkdownArea.vue';
 import { useBanner } from '../../composables/useBanner';
 import { NodeHtmlMarkdown } from 'node-html-markdown';
 import Banner from '../../components/navigation/Banner.vue';
+import ActionBar from '../../components/ui/ActionBar.vue';
+import PageCategorySelect from '../../components/page/PageCategorySelect.vue';
+import { useSites } from '../../composables/useSites';
+import Button from '../../components/ui/Button.vue';
+import SpacerDiv from '../../components/ui/SpacerDiv.vue';
 
 const props = defineProps<{
   siteid: string
@@ -35,6 +40,7 @@ const loading = computed(() => page.value === null && !pageNotFound.value)
 const pageNotFound = ref(false)
 
 onMounted(async() => {
+  if (mode.value === MODE_CREATE) return
   const { fetchPage } = await usePages()
   try {
     const p = await fetchPage(props.pageid || '', props.siteid)
@@ -55,6 +61,14 @@ function convertPageContentToMarkdown() {
   if (page.value && !page.value.markdownContent) page.value.markdownContent = nhm.translate(page.value.htmlContent)
   else throw new Error('PageEditView.convertPageContentToMarkdown: page.value.markdownContent is already set')
 }
+
+const site = ref<Site|undefined>()
+
+const { fetchSite } = useSites()
+
+onMounted(async () => {
+  site.value = await fetchSite(props.siteid)
+})
 
 </script>
 
@@ -86,6 +100,23 @@ function convertPageContentToMarkdown() {
           v-model="page.markdownContent"
           :label="t('page.fields.content')"
         />
+        <ActionBar>
+          <PageCategorySelect
+            v-if="site"
+            :site="site"
+            :selected="page.category"
+          />
+          <SpacerDiv />
+          <Button
+            text
+            @click="$router.back()"
+          >
+            {{ t('actions.cancel') }}
+          </Button>
+          <Button :disabled="!page.name || !page.markdownContent">
+            {{ t('actions.save') }}
+          </Button>
+        </ActionBar>
       </template>
     </Column>
   </Main>

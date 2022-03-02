@@ -9,4 +9,5 @@
   display: flex
   flex-direction: row
   gap: var(--page-grid-gap)
+  align-items: center
 </style>

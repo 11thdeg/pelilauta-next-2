@@ -94,10 +94,22 @@
   "site": {
     "home": {
       "title": "Etusivu"
+    },
+    "pages": {
+      "withoutCategory": "Sivut"
     }
   },
   "sites": {
-    "title": "Pelit"
+    "title": "Pelit",
+    "owns": {
+      "title": "Omat pelini"
+    },
+    "plays": {
+      "title": "Pelit joissa pelaan"
+    },
+    "all": {
+      "title": "Kaikki"
+    }
   },
   "snacks": {
     "profileCreated": "Uusi käyttäjäprofiili luotu onnistuneesti"

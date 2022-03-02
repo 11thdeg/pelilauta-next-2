@@ -9,6 +9,8 @@ import SiteAvatar from "./SiteAvatar.vue"
 import Fab from "../ui/Fab.vue"
 import { useI18n } from "vue-i18n"
 import ActionBar from "../ui/ActionBar.vue"
+import { computed } from "vue"
+import Section from "../layout/Section.vue"
 
 const props = defineProps<{
   siteid: string
@@ -29,6 +31,10 @@ function inCategory (category: string) {
   return arr.filter(page => page.category === category) || []
 }
 
+const withoutCategory = computed(() => {
+  return Array.from(pages.value.values())
+    .filter(page => !page.category)
+})
 </script>
 
 <template>
@@ -53,20 +59,35 @@ function inCategory (category: string) {
         :label="t('actions.add')"
         @click.prevent="$router.push(`/site/${siteid}/add/page`)"
       />
-      <h4
-        v-for="category in site.pageCategories"
-        :key="category.slug"
-      >
-        {{ category.name }}
+      <Section>
+        <h4
+          v-for="category in site.pageCategories"
+          :key="category.slug"
+        >
+          {{ category.name }}
+          <p
+            v-for="page in inCategory(category.slug)"
+            :key="page.key"
+          >
+            <router-link :to="`/site/${siteid}/page/${page.key}`">
+              {{ page.name }}
+            </router-link>
+          </p>
+        </h4>
+      </Section>
+      <Section v-if="withoutCategory && withoutCategory.length">
+        <h4>
+          {{ t('site.pages.withoutCategory') }}
+        </h4>
         <p
-          v-for="page in inCategory(category.slug)"
+          v-for="page in withoutCategory"
           :key="page.key"
         >
           <router-link :to="`/site/${siteid}/page/${page.key}`">
             {{ page.name }}
           </router-link>
         </p>
-      </h4>
+      </Section>
     </template>
   </div>
 </template>

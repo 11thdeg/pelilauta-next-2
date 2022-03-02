@@ -19,7 +19,7 @@ const discussionPage = computed(() => props.pageid ? '/' + props.pageid : '')
     <Fab
       icon="edit"
       :label="t('actions.edit')"
-      @click.prevent="$router.push(`/sites/${siteid}/pages/${pageSlug}/edit`)"
+      @click.prevent="$router.push(`/site/${siteid}/page/${pageSlug}/edit`)"
     />
     <Fab
       small
