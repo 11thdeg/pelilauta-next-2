@@ -4,7 +4,8 @@ import Icon from './Icon.vue';
 const props = defineProps<{
   disabled?: boolean,
   text?: boolean,
-  icon?: string
+  icon?: string,
+  tertiary?: boolean
 }>()
 
 </script>
@@ -14,7 +15,10 @@ const props = defineProps<{
   <button
     class="Button"
     :disabled="props.disabled"
-    :class="{ 'text': props.text }"
+    :class="{
+      'text': props.text,
+      'tertiary': props.tertiary
+    }"
   >
     <Icon
       v-if="icon"
@@ -60,6 +64,13 @@ button.Button
       background-color: var(--color-text-button-hover)
     &:active
       background-color: var(--color-text-button-active)
+  &.tertiary
+    background-color: var(--chroma-primary-h)
+    color: var(--chroma-secondary-a)
+    &:hover
+      background-color: var(--chroma-primary-i)
+    &:active
+      background-color: var(--chroma-primary-g)
 
 .theme-surface
   button.Button

@@ -12,6 +12,9 @@
         :thread="thread"
       />
     </Column>
+    <Column class="double-cut">
+      <CreateSiteCta />
+    </Column>
   </Main>
   <FabTray>
     <Fab
@@ -32,6 +35,7 @@ import ThreadCard from '../components/threads/ThreadCard.vue'
 import Column from '../components/ui/Column.vue'
 import Banner from '../components/navigation/Banner.vue'
 import Main from '../components/layout/Main.vue'
+import CreateSiteCta from '../components/calltoaction/CreateSiteCta.vue'
 
 
 const stream = useStream()

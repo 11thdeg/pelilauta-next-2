@@ -41,6 +41,14 @@
   "characters": {
     "title": "Hahmot"
   },
+  "cta": {
+    "createSite": {
+      "title": "Pelit ja sivustot",
+      "content": "Voit luoda pelillesi oman sivuston, ja halutessasi julkaista sivuston Pelilaudalla. Julkaisemattomaan sivustoon pääsee vain suoralla linkillä, tai omien pelien listauksesta.",
+      "list": "Pelt ja sivustot",
+      "add": "Luo uusi peli"
+    }
+  },
   "createThread": {
     "title": "Uusi viesti",
     "actions": {
