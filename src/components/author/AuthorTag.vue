@@ -19,7 +19,7 @@ onMounted(async () => {
 const nick = computed(() => {
   if (!profile.value) return t('info.loading')
   if (!profile.value.uid) return t('bio.precursor.title')
-  return profile.value.nick
+  return profile.value.nick.trim()
 })
 
 const route = computed(() => {
@@ -30,33 +30,35 @@ const route = computed(() => {
 </script>
 
 <template>
-  <div class="AuthorTag">
+  <div class="AuthorTag TypeCaption">
     <router-link
       v-if="profile"
       :to="route"
     >
-      {{ nick }}
+      @{{ nick }}
     </router-link>
     <span
       v-else
       class="loading"
     >
-      {{ nick }}
+      @{{ nick }}
     </span>
   </div>
 </template>
 
 <style lang="sass" scoped>
-.AuthorTag
+#app .AuthorTag
   display: inline-block
   height: 20px
-  min-width: 80px
-  background-color: var(--color-pill-background)
+  min-width: 72px
+  background-color: var(--color-tag-background)
   margin: 3px 0
   padding: 0 8px
   line-height: 20px
   border-radius: 10px
-  color: var(--color-pill-text)
+  color: var(--color-tag-text)
+  text-align: center
+  font-weight: bold
   a
-    color:  var(--color-pill-text)
+    color:  var(--color-tag-text)
 </style>

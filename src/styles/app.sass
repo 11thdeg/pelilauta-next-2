@@ -30,6 +30,7 @@ body
   -moz-osx-font-smoothing: grayscale
   margin: 0
   padding: 0
+  color: var(--color-medium)
 
   a
     color: var(--color-link)
@@ -37,3 +38,10 @@ body
     &:hover
       color: var(--color-link-hover)
       text-decoration: underline
+
+// Hide scrollbars
+body::-webkit-scrollbar
+  display: none
+body
+  -ms-overflow-style: none // IE and Edge
+  scrollbar-width: none // Firefox

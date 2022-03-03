@@ -3,75 +3,75 @@
 //
 // Do not include in any components, as these are already imported by base.sass
 
-:root
-  --grid-gap: 24px
+// :root
+//   --grid-gap: 24px
 
-@mixin LayoutBase()
-  display: flex
-  flex-direction: column
-  gap: var(--grid-gap)
-  margin: 0 auto
-  padding: 0px 8px
-  section
-    margin: 0
-  @include media('>=600px')
-    padding: 12px 16px
+// @mixin LayoutBase()
+//   display: flex
+//   flex-direction: column
+//   gap: var(--grid-gap)
+//   margin: 0 auto
+//   padding: 0px 8px
+//   section
+//     margin: 0
+//   @include media('>=600px')
+//     padding: 12px 16px
 
-// *** singleColumnLayout ************************************************
-.singleColumnLayout
-  @include LayoutBase()
+// // *** singleColumnLayout ************************************************
+// .singleColumnLayout
+//   @include LayoutBase()
 
-@include media('>=tablet')
-  .singleColumnLayout
-    width: 720px
-    margin: 0 auto
+// @include media('>=tablet')
+//   .singleColumnLayout
+//     width: 720px
+//     margin: 0 auto
 
-// *** dashBoardLayout ************************************************
-.dashBoardLayout
-  @include LayoutBase()
+// // *** dashBoardLayout ************************************************
+// .dashBoardLayout
+//   @include LayoutBase()
 
-@include media('>=desktop')
-  .dashBoardLayout
-    flex-direction: row
-    flex-wrap: wrap
-  .dashBoardLayout > article.Column
-    width: calc(100% / 2 - 60px)
-    flex-grow: 0
-    flex-shrink: 0
+// @include media('>=desktop')
+//   .dashBoardLayout
+//     flex-direction: row
+//     flex-wrap: wrap
+//   .dashBoardLayout > article.Column
+//     width: calc(100% / 2 - 60px)
+//     flex-grow: 0
+//     flex-shrink: 0
 
-@include media('>=1400px')
-  .dashBoardLayout > article.Column
-    width: calc(100% / 3 - 16px)
+// @include media('>=1400px')
+//   .dashBoardLayout > article.Column
+//     width: calc(100% / 3 - 16px)
 
-// *** emptyLayout ****************************************************
-.emptyLayout
-  @include LayoutBase()
+// // *** emptyLayout ****************************************************
+// .emptyLayout
+//   @include LayoutBase()
 
-@include media('>=tablet')
-  .emptyLayout
-    display: flex
-    flex-wrap: wrap
-    box-sizing: border-box
-    div.column
-      width: 100%
+// @include media('>=tablet')
+//   .emptyLayout
+//     display: flex
+//     flex-wrap: wrap
+//     box-sizing: border-box
+//     div.column
+//       width: 100%
 
-// *** bookLayout *****************************************************
-.bookLayout
-  @include LayoutBase()
+// // *** bookLayout *****************************************************
+// .bookLayout
+//   @include LayoutBase()
 
-@include media('>=tablet')
-  .bookLayout
-    flex-direction: row
-    flex-wrap: wrap
-    justify-content: center
-    align-items: flex-start
-    .Column
-      width: 360px
-      flex-shrink: 0
-      flex-grow: 0
-    .double
-      width: 720px
-      flex-shrink: 0
-    .double-cut
-      width: 445px
-      flex-shrink: 0
+// @include media('>=tablet')
+//   .bookLayout
+//     flex-direction: row
+//     flex-wrap: wrap
+//     justify-content: center
+//     align-items: flex-start
+//     .Column
+//       width: 360px
+//       flex-shrink: 0
+//       flex-grow: 0
+//     .double
+//       width: 720px
+//       flex-shrink: 0
+//     .double-cut
+//       width: 445px
+//       flex-shrink: 0

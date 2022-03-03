@@ -9,9 +9,9 @@ const props = defineProps<{
 
 const layoutClasses = computed(() => ({
   singleColumnLayout: !props.bookLayout && !props.dashboardLayout && !props.emptyLayout,
-  bookLayout: props.bookLayout && !props.dashboardLayout && !props.emptyLayout,
-  dashboardLayout: props.dashboardLayout && !props.bookLayout && !props.emptyLayout,
-  emptyLayout: !props.bookLayout && !props.dashboardLayout && props.emptyLayout,
+  bookLayout: props.bookLayout,
+  dashboardLayout: props.dashboardLayout,
+  emptyLayout: props.emptyLayout
 }))
 </script>
 
@@ -21,7 +21,7 @@ const layoutClasses = computed(() => ({
   </main>
 </template>
 
-<style lang="sass" scoped>
+<style lang="sass">
 @import ../../styles/include-media.scss
 
 @mixin LayoutBase()

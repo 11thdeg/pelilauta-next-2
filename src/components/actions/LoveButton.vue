@@ -26,6 +26,9 @@ function clicked () {
     }"
     @click="clicked"
   >
+    <span class="count">
+      {{ count }}
+    </span>
     <Icon
       v-if="loves"
       icon="loves"
@@ -36,9 +39,6 @@ function clicked () {
       icon="love"
       xsmall
     />
-    <span class="count">
-      {{ count }}
-    </span>
   </button>
 </template>
 
@@ -48,11 +48,11 @@ function clicked () {
   border: none
   box-sizing: border-box
   display: inline-block
-  height: 24px
-  line-height: 24px
+  height: 20px
+  line-height: 20px
   margin: 0
   padding: 0 8px
-  border-radius: 6px
+  border-radius: 10px
   transition: background-color 0.2s ease-in-out
   &:hover
     background-color: var(--chroma-secondary-d)  
@@ -61,9 +61,9 @@ function clicked () {
     &:hover
       background-color: var(--chroma-primary-d)
   span.count
-    margin-left: 8px
+    margin-right: 2px
   &.disabled
-    background: none
+    background-color: none
 
 @mixin lightModeStyles()
     background-color: var(--chroma-secondary-h)

@@ -51,5 +51,6 @@ onMounted(() => {
 .streamcards
   display: flex
   flex-direction: column
-  gap: 8px
+  gap: var(--page-grid-gap)
+  margin-top: -4px
 </style>

@@ -28,6 +28,7 @@ const sitename = computed(() => site.value?.name || '...')
     <Icon
       v-if="!avatarURL"
       :icon="badge"
+      class="siteAvatarIcon"
     />
     <img
       v-if="avatarURL"
@@ -37,3 +38,19 @@ const sitename = computed(() => site.value?.name || '...')
     >
   </div>
 </template>
+
+<style scoped>
+.SiteAvatar {
+  background-color: rgba(34, 114, 134, 0.22);
+  width: 48px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  position: relative;
+}
+.siteAvatarIcon {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+}
+  
+</style>

@@ -5,6 +5,20 @@ import { resolve } from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
+  /*build: {
+    rollupOptions: {
+      output: {
+        manualChunks: (id) => {
+          if (id.includes("node_modules")) {
+              if (id.includes("@firebase")) {
+                  return "vendor_firebase";
+              }
+              return "vendor"; // all other package goes here
+          }
+        }
+      }
+    }
+  },*/
   resolve: {
     alias: {
       '@': resolve(__dirname, './src')

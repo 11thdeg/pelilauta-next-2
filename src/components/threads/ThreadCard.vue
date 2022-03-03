@@ -33,7 +33,10 @@ const snippet = computed(() => {
 </script>
 
 <template>
-  <Card>
+  <Card
+    rise-1
+    class="ThreadCard"
+  >
     <div class="cardHeader">
       <SiteAvatar
         v-if="thread.siteid"
@@ -80,20 +83,22 @@ const snippet = computed(() => {
       </p>
     </template>
     <ActionBar>
-      <SinceTag :time="thread.createdAt?.seconds" />
       <AuthorTag :uid="thread.author" />
+      <SinceTag :time="thread.createdAt?.seconds" />
       <SpacerDiv />
     </ActionBar>
     <ActionBar>
+      <LoveAThreadButton :thread="thread" />
       <TopicTag :slug="thread.topicid || ''" />
       <SpacerDiv />
       <RepliesTag :thread="thread" />
-      <LoveAThreadButton :thread="thread" />
     </ActionBar>
   </Card>
 </template>
 
 <style lang="sass" scoped>
+.ThreadCard
+  padding-bottom: 16px
 img.poster
   object-fit: cover
   width: calc(100% + 32px)
@@ -104,4 +109,5 @@ img.poster
 div.cardHeader
   display: flex
   gap: var(--page-column-gap)
+  margin-top: 4px
 </style>

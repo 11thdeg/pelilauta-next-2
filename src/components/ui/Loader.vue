@@ -15,7 +15,7 @@ import Icon from '/src/components/ui/Icon.vue'
 <style scoped>
 
 .loader {
-  background-color: var(--color-rise-a);
+  background-color: rgba(34, 114, 134, 0.22);
   width: 104px;
   border-radius: 50%;
   height: 104px;
