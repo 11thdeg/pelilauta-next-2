@@ -1,47 +1,60 @@
 <script lang="ts" setup>
-import { Page, Site } from '@11thdeg/skaldstore';
+import { Page, Site } from '@11thdeg/skaldstore'
 import { computed, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import TopAppBar from '../../components/navigation/TopAppBar.vue'
-import Main from '../../components/layout/Main.vue';
-import Loader from '../../components/ui/Loader.vue';
-import { usePages } from '../../composables/usePages';
-import { logDebug, logError } from '../../utils/loghelpers';
-import SiteTray from '../../components/sites/SiteTray.vue';
-import NavigationTray from '../../components/navigation/NavigationTray.vue';
-import Column from '../../components/ui/Column.vue';
-import Textfield from '../../components/ui/Textfield.vue';
-import MarkdownArea from '../../components/ui/MarkdownArea.vue';
-import { useBanner } from '../../composables/useBanner';
-import { NodeHtmlMarkdown } from 'node-html-markdown';
-import Banner from '../../components/navigation/Banner.vue';
-import ActionBar from '../../components/ui/ActionBar.vue';
-import PageCategorySelect from '../../components/page/PageCategorySelect.vue';
-import { useSites } from '../../composables/useSites';
-import Button from '../../components/ui/Button.vue';
-import SpacerDiv from '../../components/ui/SpacerDiv.vue';
+import Main from '../../components/layout/Main.vue'
+import Loader from '../../components/ui/Loader.vue'
+import { usePages } from '../../composables/usePages'
+import { logDebug, logError } from '../../utils/loghelpers'
+import SiteTray from '../../components/sites/SiteTray.vue'
+import NavigationTray from '../../components/navigation/NavigationTray.vue'
+import Column from '../../components/ui/Column.vue'
+import Textfield from '../../components/ui/Textfield.vue'
+import MarkdownArea from '../../components/ui/MarkdownArea.vue'
+import { useBanner } from '../../composables/useBanner'
+import { NodeHtmlMarkdown } from 'node-html-markdown'
+import Banner from '../../components/navigation/Banner.vue'
+import ActionBar from '../../components/ui/ActionBar.vue'
+import PageCategorySelect from '../../components/page/PageCategorySelect.vue'
+import { useSites } from '../../composables/useSites'
+import Button from '../../components/ui/Button.vue'
+import SpacerDiv from '../../components/ui/SpacerDiv.vue'
+import { useAuthz } from '../../stores/authz'
+import { marked } from 'marked'
 
 const props = defineProps<{
   siteid: string
   pageid?: string
 }>()
 
+// Helpers and composables
 const { t } = useI18n()
 const { raise } = useBanner()
+const { fetchPage, createPage, updatePage } = usePages()
+const { fetchSite } = useSites()
+const { user } = useAuthz()
+const nhm = new NodeHtmlMarkdown({}, undefined, undefined)
 
+// The view has two modes:
 const MODE_CREATE = 'create'
 const MODE_UPDATE = 'update'
 
+// Reactive
 const page= ref<Page|null>(!props.pageid ? new Page() : null)
-
 const mode = computed(() => !!props.pageid ? MODE_UPDATE : MODE_CREATE)
 const title = computed(() => mode.value === MODE_CREATE ? t('page.create.title') : t('page.update.title'))
 const loading = computed(() => page.value === null && !pageNotFound.value)
 const pageNotFound = ref(false)
+const site = ref<Site|undefined>()
 
 onMounted(async() => {
+  // Just in case we have not initialized the site state yet
+  site.value = await fetchSite(props.siteid)
+
+  // We need to fetch the page if we are in the update mode
   if (mode.value === MODE_CREATE) return
-  const { fetchPage } = await usePages()
+  
   try {
     const p = await fetchPage(props.pageid || '', props.siteid)
     logDebug('PageEditView.onMounted', p, p.htmlContent && !p.markdownContent)
@@ -55,20 +68,25 @@ onMounted(async() => {
   }
 })
 
-const nhm = new NodeHtmlMarkdown({}, undefined, undefined)
-
 function convertPageContentToMarkdown() {
   if (page.value && !page.value.markdownContent) page.value.markdownContent = nhm.translate(page.value.htmlContent)
   else throw new Error('PageEditView.convertPageContentToMarkdown: page.value.markdownContent is already set')
 }
 
-const site = ref<Site|undefined>()
-
-const { fetchSite } = useSites()
-
-onMounted(async () => {
-  site.value = await fetchSite(props.siteid)
-})
+async function postForm () {
+  if (!page.value || !page.value.markdownContent || !page.value.name) return
+  const p = page.value as Page
+  p.owners = [user.uid]
+  p.htmlContent = marked(p.markdownContent)
+  if (mode.value === MODE_CREATE) {
+    logDebug('PageEditView.postForm: create', p.docData)
+    createPage(p)
+  }
+  else {
+    logDebug('PageEditView.postForm: update', p.docData)
+    updatePage(p)
+  }
+}
 
 </script>
 
@@ -113,7 +131,10 @@ onMounted(async () => {
           >
             {{ t('actions.cancel') }}
           </Button>
-          <Button :disabled="!page.name || !page.markdownContent">
+          <Button
+            :disabled="!page.name || !page.markdownContent"
+            @click.prevent="postForm()"
+          >
             {{ t('actions.save') }}
           </Button>
         </ActionBar>
