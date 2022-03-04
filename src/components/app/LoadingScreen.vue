@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
-import { useAuthz } from '../../stores/authz';
+import { computed } from 'vue'
+import { useAuthz } from '../../stores/authz'
 import Loader from '../ui/Loader.vue'
-import LoginPanel from '../account/login/LoginPanel.vue';
-import Button from '../ui/Button.vue';
-import { useI18n } from 'vue-i18n';
+import LoginPanel from '../account/login/LoginPanel.vue'
+import Button from '../ui/Button.vue'
+import { useI18n } from 'vue-i18n'
 
 const authz = useAuthz()
 const t = useI18n().t

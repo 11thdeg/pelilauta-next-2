@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue';
-import { useSites } from '../../composables/useSites';
+import { onMounted, ref } from 'vue'
+import { useSites } from '../../composables/useSites'
 
 const props = defineProps<{
   siteid: string

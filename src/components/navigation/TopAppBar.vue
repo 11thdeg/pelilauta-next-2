@@ -2,12 +2,12 @@
 import SpacerDiv from '../ui/SpacerDiv.vue'
 import AvatarButton from '../account/AvatarButton.vue'
 import LightmodeButton from '../app/LightmodeButton.vue'
-import Icon from '../ui/Icon.vue';
+import Icon from '../ui/Icon.vue'
 import { version } from '../../../package.json'
-import { useAuthz } from '../../stores/authz';
-import { computed, onMounted, ref } from 'vue';
-import HamburgerButton from './HamburgerButton.vue';
-import { useUxState } from '../../composables/useUxState';
+import { useAuthz } from '../../stores/authz'
+import { computed, onMounted, ref } from 'vue'
+import HamburgerButton from './HamburgerButton.vue'
+import { useUxState } from '../../composables/useUxState'
 
 const props = defineProps<{
   title?: string,

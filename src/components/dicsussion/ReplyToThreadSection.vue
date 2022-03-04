@@ -1,16 +1,16 @@
 <script lang="ts" setup>
-import { Reply } from '@11thdeg/skaldstore';
-import { computed, ref } from 'vue';
+import { Reply } from '@11thdeg/skaldstore'
+import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { logDebug, logError } from '../../utils/loghelpers';
-import MarkdownArea from '../ui/MarkdownArea.vue';
-import ActionBar from '../ui/ActionBar.vue';
-import SpacerDiv from '../ui/SpacerDiv.vue';
-import Button from '../ui/Button.vue';
-import { useAuthz } from '../../stores/authz';
+import { logDebug, logError } from '../../utils/loghelpers'
+import MarkdownArea from '../ui/MarkdownArea.vue'
+import ActionBar from '../ui/ActionBar.vue'
+import SpacerDiv from '../ui/SpacerDiv.vue'
+import Button from '../ui/Button.vue'
+import { useAuthz } from '../../stores/authz'
 import { collection, getFirestore, addDoc, updateDoc, doc, serverTimestamp, increment } from '@firebase/firestore'
-import { useSnack } from '../../composables/useSnack';
-import { marked } from 'marked';
+import { useSnack } from '../../composables/useSnack'
+import { marked } from 'marked'
 
 const t = useI18n().t
 const user = useAuthz().user

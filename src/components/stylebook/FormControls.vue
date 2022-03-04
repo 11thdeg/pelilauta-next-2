@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue';
-import Column from '../ui/Column.vue';
-import Textfield from '../ui/Textfield.vue';
-import Select from '../ui/Select.vue';
-import FileInput from '../actions/FileInput.vue';
+import { computed, ref } from 'vue'
+import Column from '../ui/Column.vue'
+import Textfield from '../ui/Textfield.vue'
+import Select from '../ui/Select.vue'
+import FileInput from '../actions/FileInput.vue'
 
 const tfValue = ref('')
 const selectValue = ref('init')

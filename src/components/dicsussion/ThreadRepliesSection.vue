@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import { Entry, Reply } from '@11thdeg/skaldstore';
+import { Entry, Reply } from '@11thdeg/skaldstore'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { collection, getFirestore, onSnapshot } from '@firebase/firestore'
-import MarkDownSection from '../ui/MarkDownSection.vue';
-import SinceTag from '../ui/SinceTag.vue';
-import AuthorTag from '../author/AuthorTag.vue';
-import { useAuthz } from '../../stores/authz';
-import ActionBar from '../ui/ActionBar.vue';
-import SpacerDiv from '../ui/SpacerDiv.vue';
+import MarkDownSection from '../ui/MarkDownSection.vue'
+import SinceTag from '../ui/SinceTag.vue'
+import AuthorTag from '../author/AuthorTag.vue'
+import { useAuthz } from '../../stores/authz'
+import ActionBar from '../ui/ActionBar.vue'
+import SpacerDiv from '../ui/SpacerDiv.vue'
 
 const props = defineProps<{
   threadid: string

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { useI18n } from 'vue-i18n'
-import { logEvent } from '../../../utils/loghelpers';
-import Button from '../../ui/Button.vue';
+import { logEvent } from '../../../utils/loghelpers'
+import Button from '../../ui/Button.vue'
 
 const t = useI18n().t
 

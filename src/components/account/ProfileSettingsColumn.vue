@@ -1,15 +1,15 @@
 <script lang="ts" setup>
-import { computed, ref, watch } from 'vue';
-import { useI18n } from 'vue-i18n';
+import { computed, ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useProfile } from '../../stores/profile'
 import Column from '../ui/Column.vue'
 import Textfield from '../ui/Textfield.vue'
 import TextArea from '../ui/TextArea.vue'
 import Button from '../ui/Button.vue'
 import AvatarSwitcher from './AvatarSwitcher.vue'
-import MarkDownSection from '../ui/MarkDownSection.vue';
-import ActionBar from '../ui/ActionBar.vue';
-import SpacerDiv from '../ui/SpacerDiv.vue';
+import MarkDownSection from '../ui/MarkDownSection.vue'
+import ActionBar from '../ui/ActionBar.vue'
+import SpacerDiv from '../ui/SpacerDiv.vue'
 
 const t = useI18n().t
 

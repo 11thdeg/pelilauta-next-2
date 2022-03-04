@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
+import { computed } from 'vue'
 import Icon from './Icon.vue'
 
 const props = defineProps<{

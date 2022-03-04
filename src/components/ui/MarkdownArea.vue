@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import TextArea from "./TextArea.vue"
 import MarkdownSection from "./MarkdownSection.vue"
-import { computed } from "vue";
+import { computed } from "vue"
 
 const props = defineProps<{
   preview?: boolean,

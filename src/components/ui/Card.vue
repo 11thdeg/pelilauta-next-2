@@ -1,6 +1,6 @@
-<script lang="ts" setup>import { computed, useSlots } from 'vue';
-import ActionBar from './ActionBar.vue';
-import SpacerDiv from './SpacerDiv.vue';
+<script lang="ts" setup>import { computed, useSlots } from 'vue'
+import ActionBar from './ActionBar.vue'
+import SpacerDiv from './SpacerDiv.vue'
 
 const props = defineProps<{
   rise?: number // Defaults to 1

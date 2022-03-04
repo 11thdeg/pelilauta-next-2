@@ -2,12 +2,12 @@
 import { Ref, ref, watch } from 'vue'
 import Button from '../ui/Button.vue'
 import Dialog from '../ui/Dialog.vue'
-import FileInput from './FileInput.vue';
-import Textfield from '../ui/Textfield.vue';
-import { FileData } from '../../utils/fileHelpers';
-import Select from '../ui/Select.vue';
-import { useAssets } from '../../stores/assets';
-import { useSnack } from '../../composables/useSnack';
+import FileInput from './FileInput.vue'
+import Textfield from '../ui/Textfield.vue'
+import { FileData } from '../../utils/fileHelpers'
+import Select from '../ui/Select.vue'
+import { useAssets } from '../../stores/assets'
+import { useSnack } from '../../composables/useSnack'
 
 const dialog = ref(false)
 const uploading = ref(false)

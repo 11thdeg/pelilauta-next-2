@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { useI18n } from 'vue-i18n';
+import { useI18n } from 'vue-i18n'
 import Column from '../ui/Column.vue'
-import LocaleSwitcher from '../app/LocaleSwitcher.vue';
-import LogoutButton from './LogoutButton.vue';
-import LightmodeButton from '../app/LightmodeButton.vue';
-import Button from '../ui/Button.vue';
+import LocaleSwitcher from '../app/LocaleSwitcher.vue'
+import LogoutButton from './LogoutButton.vue'
+import LightmodeButton from '../app/LightmodeButton.vue'
+import Button from '../ui/Button.vue'
 
 const t = useI18n().t
 

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 import Column from '../ui/Column.vue'
 import TextArea from '../ui/TextArea.vue'
-import MarkDownSection from '../ui/MarkDownSection.vue';
+import MarkDownSection from '../ui/MarkDownSection.vue'
 
 const markdown = ref('# Markdown demo\n\n- With some text\n')
 </script>

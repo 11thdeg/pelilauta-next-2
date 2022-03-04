@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Icon from '../ui/Icon.vue';
+import Icon from '../ui/Icon.vue'
 
 const props = defineProps<{
   count: number

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import Column from '../ui/Column.vue'
-import NavButton from '../navigation/NavButton.vue';
+import NavButton from '../navigation/NavButton.vue'
 </script>
 
 <template>

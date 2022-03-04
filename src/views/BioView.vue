@@ -3,10 +3,10 @@ import { useProfiles } from '../composables/useProfiles'
 import Loader from '../components/ui/Loader.vue'
 import { computed, onMounted, ref } from 'vue'
 import Column from '../components/ui/Column.vue'
-import TopAppBar from '../components/navigation/TopAppBar.vue';
-import { useI18n } from 'vue-i18n';
-import MarkDownSection from '../components/ui/MarkDownSection.vue';
-import { Profile } from '@11thdeg/skaldstore';
+import TopAppBar from '../components/navigation/TopAppBar.vue'
+import { useI18n } from 'vue-i18n'
+import MarkDownSection from '../components/ui/MarkDownSection.vue'
+import { Profile } from '@11thdeg/skaldstore'
 
 const props = defineProps<{
   uid: string

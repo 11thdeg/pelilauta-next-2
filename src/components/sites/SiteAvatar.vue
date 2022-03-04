@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { Site } from '@11thdeg/skaldstore';
-import { computed, onMounted, ref } from 'vue';
-import { useSites } from '../../composables/useSites';
+import { Site } from '@11thdeg/skaldstore'
+import { computed, onMounted, ref } from 'vue'
+import { useSites } from '../../composables/useSites'
 import Icon from '../ui/Icon.vue'
 
 const props = defineProps<{

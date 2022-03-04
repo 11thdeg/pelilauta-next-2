@@ -1,18 +1,18 @@
 <script lang="ts" setup>
 import { Thread } from '@11thdeg/skaldstore'
 import { computed, onMounted, ref } from 'vue'
-import { useThreads } from '../../composables/useTheads';
-import TopAppBar from '../../components/navigation/TopAppBar.vue';
-import MarkDownSection from '../../components/ui/MarkDownSection.vue';
-import ActionBar from '../../components/ui/ActionBar.vue';
-import AuthorTag from '../../components/author/AuthorTag.vue';
-import SpacerDiv from '../../components/ui/SpacerDiv.vue';
-import SinceTag from '../../components/ui/SinceTag.vue';
+import { useThreads } from '../../composables/useTheads'
+import TopAppBar from '../../components/navigation/TopAppBar.vue'
+import MarkDownSection from '../../components/ui/MarkDownSection.vue'
+import ActionBar from '../../components/ui/ActionBar.vue'
+import AuthorTag from '../../components/author/AuthorTag.vue'
+import SpacerDiv from '../../components/ui/SpacerDiv.vue'
+import SinceTag from '../../components/ui/SinceTag.vue'
 import TopicTag from '../../components/threads/TopicTag.vue'
-import ThreadMediaViewer from '../../components/threads/ThreadMediaViewer.vue';
-import ThreadDiscussionColumn from '../../components/dicsussion/ThreadDiscussionColumn.vue';
-import Column from '../../components/ui/Column.vue';
-import LoveAThreadButton from '../../components/threads/LoveAThreadButton.vue';
+import ThreadMediaViewer from '../../components/threads/ThreadMediaViewer.vue'
+import ThreadDiscussionColumn from '../../components/dicsussion/ThreadDiscussionColumn.vue'
+import Column from '../../components/ui/Column.vue'
+import LoveAThreadButton from '../../components/threads/LoveAThreadButton.vue'
 
 const { fetchThread } = useThreads()
 

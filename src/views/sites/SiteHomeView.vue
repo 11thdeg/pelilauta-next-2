@@ -3,14 +3,14 @@ import TopAppBar from '../../components/navigation/TopAppBar.vue'
 import Main from '../../components/layout/Main.vue'
 import NavigationTray from '../../components/navigation/NavigationTray.vue'
 import Column from '../../components/ui/Column.vue'
-import SiteTray from '../../components/sites/SiteTray.vue';
-import { useI18n } from 'vue-i18n';
-import { computed, onMounted, ref } from 'vue';
-import { useSites } from '../../composables/useSites';
-import { Page, Site } from '@11thdeg/skaldstore';
-import MarkDownSection from '../../components/ui/MarkDownSection.vue';
-import { usePages } from '../../composables/usePages';
-import PageFabs from '../../components/sites/PageFabs.vue';
+import SiteTray from '../../components/sites/SiteTray.vue'
+import { useI18n } from 'vue-i18n'
+import { computed, onMounted, ref } from 'vue'
+import { useSites } from '../../composables/useSites'
+import { Page, Site } from '@11thdeg/skaldstore'
+import MarkDownSection from '../../components/ui/MarkDownSection.vue'
+import { usePages } from '../../composables/usePages'
+import PageFabs from '../../components/sites/PageFabs.vue'
 
 const props = defineProps<{
   siteid: string

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
+import { computed } from 'vue'
 import { useAssets } from '../../stores/assets'
 import Column from '../ui/Column.vue'
 import AssetListItem from './AssetListItem.vue'

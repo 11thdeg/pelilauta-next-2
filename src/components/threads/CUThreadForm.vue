@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, onMounted, ref, watch } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import Textfield from '../ui/Textfield.vue'
 import Button from '../ui/Button.vue'
@@ -14,9 +14,9 @@ import ActionBar from '../ui/ActionBar.vue'
 import SpacerDiv from '../ui/SpacerDiv.vue'
 import { useAuthz } from '../../stores/authz'
 import { addDoc, collection, getFirestore } from '@firebase/firestore'
-import { useSnack } from '../../composables/useSnack';
-import { useRouter } from 'vue-router';
-import { marked } from 'marked';
+import { useSnack } from '../../composables/useSnack'
+import { useRouter } from 'vue-router'
+import { marked } from 'marked'
 import YoutubePreview from '../ui/YoutubePreview.vue'
 
 const props = defineProps<{

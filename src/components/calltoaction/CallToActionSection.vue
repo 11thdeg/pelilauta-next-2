@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
+import { computed } from 'vue'
 import Section from '../layout/Section.vue'
-import ActionBar from '../ui/ActionBar.vue';
+import ActionBar from '../ui/ActionBar.vue'
 
 const props = defineProps<{
   posterurl?: string

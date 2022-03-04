@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue';
-import { useAssets } from '../../stores/assets';
-import { logDebug } from '../../utils/loghelpers';
+import { computed, ref } from 'vue'
+import { useAssets } from '../../stores/assets'
+import { logDebug } from '../../utils/loghelpers'
 import Dialog from '../ui/Dialog.vue'
-import ImageList from '../ui/ImageList.vue';
-import Button from '../ui/Button.vue';
+import ImageList from '../ui/ImageList.vue'
+import Button from '../ui/Button.vue'
 
 const props = defineProps<{
   modelValue:boolean,

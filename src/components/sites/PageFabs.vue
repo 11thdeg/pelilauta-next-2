@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
-import { useI18n } from 'vue-i18n';
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import FabTray from '../navigation/FabTray.vue'
 import Fab from '../ui/Fab.vue'
 

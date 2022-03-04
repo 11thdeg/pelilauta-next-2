@@ -1,5 +1,5 @@
-<script lang="ts" setup>import { ref } from 'vue';
-import { logDebug } from '../../utils/loghelpers';
+<script lang="ts" setup>import { ref } from 'vue'
+import { logDebug } from '../../utils/loghelpers'
 
 const props = defineProps<{
   modelValue:string,

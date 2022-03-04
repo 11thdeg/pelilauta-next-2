@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
-import { useI18n } from 'vue-i18n';
-import { logDebug } from '../../utils/loghelpers';
-import Select from '../ui/Select.vue';
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { logDebug } from '../../utils/loghelpers'
+import Select from '../ui/Select.vue'
 
 
 const props = defineProps<{

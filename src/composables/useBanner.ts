@@ -1,5 +1,5 @@
-import { computed, ref, Ref } from "vue";
-import { logDebug } from "../utils/loghelpers";
+import { computed, ref, Ref } from "vue"
+import { logDebug } from "../utils/loghelpers"
 
 const bannerText = ref('')
 const show = ref(false)

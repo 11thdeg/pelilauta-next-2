@@ -1,4 +1,4 @@
-<script lang="ts" setup>import { ref, watch } from 'vue';
+<script lang="ts" setup>import { ref, watch } from 'vue'
 
 const props = defineProps<{
   modelValue: string,

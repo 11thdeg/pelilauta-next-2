@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
-import { useI18n } from 'vue-i18n';
-import { useBanner } from '../../composables/useBanner';
-import ActionBar from '../ui/ActionBar.vue';
-import Button from '../ui/Button.vue';
-import SpacerDiv from '../ui/SpacerDiv.vue';
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useBanner } from '../../composables/useBanner'
+import ActionBar from '../ui/ActionBar.vue'
+import Button from '../ui/Button.vue'
+import SpacerDiv from '../ui/SpacerDiv.vue'
 
 const { show, onCancel, onConfirm, hasAction, text }  = useBanner()
 

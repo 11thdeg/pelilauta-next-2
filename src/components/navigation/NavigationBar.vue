@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
-import { useI18n } from 'vue-i18n';
-import { useStore } from '../../stores/main';
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useStore } from '../../stores/main'
 import NavButton from './NavButton.vue'
 
 const store = useStore()

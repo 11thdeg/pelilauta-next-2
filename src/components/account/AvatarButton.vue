@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
-import { useAuthz } from '../../stores/authz';
+import { computed } from 'vue'
+import { useAuthz } from '../../stores/authz'
 import Icon from '../ui/Icon.vue'
 
 const authz = useAuthz()

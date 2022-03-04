@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useLightMode } from '../../composables/lightmode';
+import { useLightMode } from '../../composables/lightmode'
 import Icon from '../ui/Icon.vue'
 
 const { toggleMode } = useLightMode()

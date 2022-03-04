@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { useUxState } from '../../composables/useUxState';
+import { useUxState } from '../../composables/useUxState'
 
 const uxState = useUxState()
 

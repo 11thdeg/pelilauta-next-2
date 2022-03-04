@@ -1,7 +1,7 @@
-<script lang='ts' setup>import { Profile } from '@11thdeg/skaldstore';
-import { computed, onMounted, ref } from 'vue';
-import { useI18n } from 'vue-i18n';
-import { useProfiles } from '../../composables/useProfiles';
+<script lang='ts' setup>import { Profile } from '@11thdeg/skaldstore'
+import { computed, onMounted, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useProfiles } from '../../composables/useProfiles'
 
 const props = defineProps<{
   uid: string
