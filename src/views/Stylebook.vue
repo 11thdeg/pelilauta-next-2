@@ -12,6 +12,7 @@ import Cards from '../components/stylebook/Cards.vue'
 import Banner from '../components/navigation/Banner.vue'
 import NavigationTray from '../components/navigation/NavigationTray.vue'
 import { useRoute } from 'vue-router'
+import TrayButton from '../components/navigation/tray/TrayButton.vue'
 
 const props = defineProps<{
   page?: string
@@ -41,13 +42,16 @@ const laytoutClass = computed(() => {
         Stylebook
       </router-link>
     </h3>
-    <ul>
-      <li>
-        <router-link to="/stylebook/buttonsandactions">
-          Buttons and Actions
-        </router-link>
-      </li>
-    </ul>
+    <TrayButton
+      to="/stylebook/formcontrols"
+      label="Form Controls"
+      icon="edit"
+    />
+    <TrayButton
+      icon="delete"
+      to="/stylebook/buttonsandactions"
+      label="Buttons and Actions" 
+    />
   </NavigationTray>
   <main :class="laytoutClass">
     <StyleBookIntro v-if="!subPage" />

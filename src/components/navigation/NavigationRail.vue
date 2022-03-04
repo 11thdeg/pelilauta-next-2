@@ -24,16 +24,7 @@ const t = useI18n().t
       to="/sites"
       :active="$route.path.startsWith('/site')"
     />
-    <NavButton
-      icon="d6"
-      label="About"
-      to="/about"
-    />
-    <NavButton
-      icon="assets"
-      :label="t('assets.title')"
-      to="/assets"
-    />
+    <SpacerDiv />
     <NavButton
       icon="stylebook"
       to="/stylebook"
@@ -42,6 +33,11 @@ const t = useI18n().t
     />
     <SpacerDiv />
     <AdminNavButton />
+    <NavButton
+      icon="assets"
+      :label="t('assets.title')"
+      to="/assets"
+    />
     <AvatarButton />
   </nav>
 </template>
