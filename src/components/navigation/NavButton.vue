@@ -17,6 +17,7 @@ const props = defineProps<{
   >
     <div class="activeButtonHighlight" />
     <img
+      class="hoverable clickable"
       :src="`/proprietary/icons/dark/${props.icon}.svg`"
     >
     <div class="label">

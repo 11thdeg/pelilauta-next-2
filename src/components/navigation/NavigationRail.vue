@@ -3,6 +3,7 @@ import { useI18n } from 'vue-i18n'
 import NavButton from './NavButton.vue'
 import SpacerDiv from '../ui/SpacerDiv.vue'
 import AvatarButton from '../account/AvatarButton.vue'
+import AdminNavButton from './AdminNavButton.vue';
 
 const t = useI18n().t
 </script>
@@ -40,6 +41,7 @@ const t = useI18n().t
       :active="$route.path.startsWith('/stylebook')"
     />
     <SpacerDiv />
+    <AdminNavButton />
     <AvatarButton />
   </nav>
 </template>
