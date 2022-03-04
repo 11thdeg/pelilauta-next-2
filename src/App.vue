@@ -11,6 +11,8 @@ import { logDebug } from './utils/loghelpers'
 import { useBanner } from './composables/useBanner'
 import { useI18n } from 'vue-i18n'
 import { useUxState } from './composables/useUxState'
+import { getAuth } from 'firebase/auth'
+import { useAccount } from './composables/useAccount'
 
 const main = useStore()
 main.initAppMeta()
@@ -21,6 +23,17 @@ const showLoadingScreen = computed(() => !auth.operational)
 const showTray = computed(() => uxState.navTrayVisible.value)
 const { raise } = useBanner()
 const t = useI18n().t
+
+const { setAccountData } = useAccount()
+
+const fbAuth = getAuth()
+fbAuth.onAuthStateChanged(user => {
+  if (user) {
+    setAccountData(auth.user.docData)
+  } else {
+    setAccountData(null)
+  }
+})
 
 // *** Workbox/Service worker setup starts ******************************
 // let skipWaiting: CallableFunction|undefined

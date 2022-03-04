@@ -18,6 +18,7 @@
     "addThread": "Uusi keskustelu",
     "back": "Palaa",
     "cancel": "Peruuta",
+    "create": "Luo",
     "delete": "Poista",
     "edit": "Muokkaa",
     "login": "Kirjaudu",
@@ -100,6 +101,9 @@
     }
   },
   "site": {
+    "fields": {
+      "name": "Nimi"
+    },
     "home": {
       "title": "Etusivu"
     },

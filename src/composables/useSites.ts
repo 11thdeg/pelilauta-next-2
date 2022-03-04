@@ -1,6 +1,6 @@
 import { Site } from "@11thdeg/skaldstore"
 import { logDebug, logError } from "../utils/loghelpers"
-import { doc, getDoc, getFirestore, onSnapshot, query, where, collection } from "@firebase/firestore"
+import { doc, getDoc, getFirestore, onSnapshot, query, where, collection, addDoc } from "@firebase/firestore"
 import { computed, ref } from "vue"
 
 const siteCache = ref(new Map<string, Site>())
@@ -104,6 +104,14 @@ async function fetchSite(id: string): Promise<Site> {
   throw new Error('Site not found')
 }
 
+async function createSite (site: Site) {
+  logDebug('createSite()', site.name)
+  return addDoc(
+    collection(getFirestore(), 'sites'),
+    site.docData
+  )
+}
+
 export function useSites () {
   return {
     siteCache: computed(() => siteCache.value),
@@ -111,6 +119,7 @@ export function useSites () {
     subscribeToUserSites,
     subscribeToPlayerSites,
     userSites,
-    playerSites
+    playerSites,
+    createSite
   }
 }

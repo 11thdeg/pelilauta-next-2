@@ -22,7 +22,7 @@ const { t } = useI18n()
       >
         {{ t('cta.createSite.list') }}
       </Button>
-      <Button @click.prevent="$router.push('/add/site')">
+      <Button @click.prevent="$router.push('/create/site')">
         {{ t('cta.createSite.add') }}
       </Button>
     </template>
