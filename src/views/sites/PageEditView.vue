@@ -22,6 +22,7 @@ import Button from '../../components/ui/Button.vue'
 import SpacerDiv from '../../components/ui/SpacerDiv.vue'
 import { useAuthz } from '../../stores/authz'
 import { marked } from 'marked'
+import { useRouter } from 'vue-router'
 
 const props = defineProps<{
   siteid: string
@@ -35,6 +36,7 @@ const { fetchPage, createPage, updatePage } = usePages()
 const { fetchSite } = useSites()
 const { user } = useAuthz()
 const nhm = new NodeHtmlMarkdown({}, undefined, undefined)
+const router = useRouter()
 
 // The view has two modes:
 const MODE_CREATE = 'create'
@@ -80,11 +82,13 @@ async function postForm () {
   p.htmlContent = marked(p.markdownContent)
   if (mode.value === MODE_CREATE) {
     logDebug('PageEditView.postForm: create', p.docData)
-    createPage(p)
+    const pageDoc = await createPage(p)
+    router.push(`/site/${props.siteid}/page/${pageDoc.id}`)
   }
   else {
     logDebug('PageEditView.postForm: update', p.docData)
-    updatePage(p)
+    await updatePage(p)
+    router.push(`/site/${props.siteid}/page/${p.key}`)
   }
 }
 

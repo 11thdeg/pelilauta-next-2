@@ -11,10 +11,12 @@ import SpacerDiv from '../../components/ui/SpacerDiv.vue'
 import Button from '../../components/ui/Button.vue'
 import { useAccount } from '../../composables/useAccount'
 import { useSites } from '../../composables/useSites'
+import { useRouter } from 'vue-router'
 
 const { t } = useI18n()
 const { account } = useAccount()
 const { createSite } = useSites()
+const router = useRouter()
 const site = ref(new Site())
 
 const name = computed({
@@ -24,9 +26,10 @@ const name = computed({
   }
 })
 
-function submit () {
+async function submit () {
   site.value.owners = [account.value.uid]
-  createSite(site.value as Site)
+  const siteDoc = await createSite(site.value as Site)
+  router.push('/site/' + siteDoc.id)
 }
 
 </script>
