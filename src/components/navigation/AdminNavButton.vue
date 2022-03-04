@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useAccount } from '../../composables/useAccount';
+import { useAccount } from '../../composables/useAccount'
 import NavButton from './NavButton.vue'
 
 const { showAdminTools } = useAccount()

@@ -13,7 +13,11 @@ import ThreadMediaViewer from '../../components/threads/ThreadMediaViewer.vue'
 import ThreadDiscussionColumn from '../../components/dicsussion/ThreadDiscussionColumn.vue'
 import Column from '../../components/ui/Column.vue'
 import LoveAThreadButton from '../../components/threads/LoveAThreadButton.vue'
+import Button from '../../components/ui/Button.vue'
+import { useI18n } from 'vue-i18n'
+import ShareButton from '../../components/actions/ShareButton.vue'
 
+const { t } = useI18n()
 const { fetchThread } = useThreads()
 
 const props = defineProps<{
@@ -33,7 +37,12 @@ onMounted(async ()  => {
   <TopAppBar
     :title="title"
     sticky
-  />
+  >
+    <ShareButton />
+    <Button text icon="edit">
+      {{ t('actions.edit') }}
+    </Button>
+  </TopAppBar>
   <main class="singleColumnLayout">
     <Column class="double">
       <template v-if="thread">

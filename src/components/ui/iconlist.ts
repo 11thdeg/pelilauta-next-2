@@ -26,6 +26,7 @@ export const iconlist = [
   'loves',
   'mekanismi',
   'pelilauta-logo',
+  'share',
   'stylebook',
   'youtube'
 ]

@@ -3,7 +3,7 @@ import { useI18n } from 'vue-i18n'
 import NavButton from './NavButton.vue'
 import SpacerDiv from '../ui/SpacerDiv.vue'
 import AvatarButton from '../account/AvatarButton.vue'
-import AdminNavButton from './AdminNavButton.vue';
+import AdminNavButton from './AdminNavButton.vue'
 
 const t = useI18n().t
 </script>

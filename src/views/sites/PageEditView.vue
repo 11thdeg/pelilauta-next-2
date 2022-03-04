@@ -125,8 +125,8 @@ async function postForm () {
         <ActionBar>
           <PageCategorySelect
             v-if="site"
-            :site="site"
             v-model:selected="page.category"
+            :site="site"
           />
           <SpacerDiv />
           <Button

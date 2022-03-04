@@ -67,17 +67,7 @@ const hamburgerPadded = computed(() => uxState.navTrayVisible.value)
       {{ version }}
     </p>  
     <LightmodeButton class="hideOnMobile" />
-    <div
-      v-if="admin"
-      class="AdminButton hoverable clickable"
-      style="margin-top:12px"
-      @click="$router.push('/admin')"
-    >
-      <Icon
-        icon="admin"
-      />
-    </div>
-    <AvatarButton class="hideOnMobile" />
+    <slot />
   </nav>
 </template>
 
@@ -89,6 +79,7 @@ nav#TopAppBar
   margin: 0
   padding: 0 16px
   height: 56px
+  align-items: center
   h1
     line-height: 56px
     font-size: 24px
