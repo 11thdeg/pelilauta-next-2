@@ -16,6 +16,10 @@ const props = defineProps<{
   selected: string
 }>()
 
+const emit = defineEmits<{
+  (e: 'update:selected', selected: string): void
+}>()
+
 const { t } = useI18n()
 
 const hasCategories = computed(() => props.site.pageCategories && props.site.pageCategories.length > 0)
@@ -32,6 +36,7 @@ const selected = computed({
   get: () => props.selected,
   set: (value) => {
     logDebug('PageCategorySelect.vue: selected.set', value)
+    emit('update:selected', value)
   }
 })
 
