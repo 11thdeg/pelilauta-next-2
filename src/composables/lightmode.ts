@@ -1,7 +1,7 @@
 import { computed, ref } from "vue"
 import { useAuthz } from "../stores/authz"
 
-let mode = ref(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+const mode = ref(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
 
 window.matchMedia('(prefers-color-scheme: dark)')
   .addEventListener('change', event => {

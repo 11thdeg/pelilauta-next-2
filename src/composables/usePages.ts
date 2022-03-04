@@ -4,7 +4,7 @@ import { collection, getFirestore, onSnapshot, getDoc, doc, updateDoc, addDoc } 
 import { computed, ref } from "vue"
 import { logDebug } from "../utils/loghelpers"
 
-let pageCache = ref(new Map<string, Page>())
+const pageCache = ref(new Map<string, Page>())
 let activeSite:Site|undefined = undefined
 let unsubscribe:undefined|CallableFunction = undefined
 

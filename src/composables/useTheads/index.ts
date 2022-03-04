@@ -4,7 +4,7 @@ import { useStream } from "../../stores/stream"
 import { logDebug, logError } from "../../utils/loghelpers"
 import { loveThread, unLoveThread } from './reations'
 
-const threadCache = new Map<String, Thread>()
+const threadCache = new Map<string, Thread>()
 
 async function fetchThread (id: string):Promise<Thread|undefined> {
   logDebug('fetchThread', id)
