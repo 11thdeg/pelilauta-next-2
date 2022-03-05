@@ -39,7 +39,10 @@ onMounted(async ()  => {
     sticky
   >
     <ShareButton />
-    <Button text icon="edit">
+    <Button
+      text
+      icon="edit"
+    >
       {{ t('actions.edit') }}
     </Button>
   </TopAppBar>
