@@ -20,6 +20,7 @@ export const routes = [
     ]
   },
   { path: '/site/:siteid', component: () => import('./sites/SiteHomeView.vue'), props: true },
+  { path: '/site/:siteid/settings', component: () => import('./sites/SiteSettingsView.vue'), props: true },
   { path: '/site/:siteid/add/page', component: () => import('./sites/PageEditView.vue'), props: true },
   { path: '/site/:siteid/page/:pageid', component: () => import('./sites/PageView.vue'), props: true },
   { path: '/site/:siteid/page/:pageid/edit', component: () => import('./sites/PageEditView.vue'), props: true },

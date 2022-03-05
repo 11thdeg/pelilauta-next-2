@@ -11,6 +11,7 @@ import { Page, Site } from '@11thdeg/skaldstore'
 import MarkDownSection from '../../components/ui/MarkDownSection.vue'
 import { usePages } from '../../composables/usePages'
 import PageFabs from '../../components/sites/PageFabs.vue'
+import Button from '../../components/ui/Button.vue'
 
 const props = defineProps<{
   siteid: string
@@ -45,7 +46,15 @@ const homePage = computed(() => {
     class="themed"
     :class="themeClass"
   >
-    <TopAppBar :title="t('site.home.title')" />
+    <TopAppBar :title="t('site.home.title')">
+      <Button
+        text
+        icon="tools"
+        @click="$router.push('/site/' + props.siteid + '/settings')"
+      >
+        {{ t('site.settings.title') }}
+      </Button>
+    </TopAppBar>
     <Main book-layout>
       <NavigationTray>
         <SiteTray :siteid="siteid" />

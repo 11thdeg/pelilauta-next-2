@@ -109,6 +109,9 @@
     },
     "pages": {
       "withoutCategory": "Sivut"
+    },
+    "settings": {
+      "title": "Asetukset"
     }
   },
   "sites": {

@@ -28,5 +28,6 @@ export const iconlist = [
   'pelilauta-logo',
   'share',
   'stylebook',
+  'tools',
   'youtube'
 ]
