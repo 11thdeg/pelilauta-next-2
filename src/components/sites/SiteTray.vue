@@ -11,13 +11,15 @@ import { useI18n } from "vue-i18n"
 import ActionBar from "../ui/ActionBar.vue"
 import { computed } from "vue"
 import Section from "../layout/Section.vue"
+import TrayHeader from "../navigation/tray/TrayHeader.vue"
+import { logDebug } from "../../utils/loghelpers"
 
 const props = defineProps<{
   siteid: string
 }>()
 
 const { t } = useI18n()
-const { fetchSite } = useSites()
+const { fetchSite, updateSite } = useSites()
 const { pages, subscribeToSite } = usePages()
 const site = ref<Site|undefined>()
 
@@ -35,6 +37,35 @@ const withoutCategory = computed(() => {
   return Array.from(pages.value.values())
     .filter(page => !page.category)
 })
+
+function moveUp (slug: string) {
+  logDebug('moveDown', slug)
+  if (site.value) {
+    const index = site.value.pageCategories.findIndex(cat => cat.slug === slug)
+    if (index > site.value.pageCategories.length - 2) {
+      return
+    }
+    const cat = site.value.pageCategories[index]
+    site.value.pageCategories.splice(index, 1)
+    site.value.pageCategories.splice(index + 1, 0, cat)
+    updateSite(site.value)
+  }
+}
+
+function moveDown (slug: string) {
+  logDebug('moveUp', slug)
+  if (site.value) {
+    const index = site.value.pageCategories.findIndex(cat => cat.slug === slug)
+    if (index < 1) {
+      return
+    }
+    const cat = site.value.pageCategories[index]
+    site.value.pageCategories.splice(index, 1)
+    site.value.pageCategories.splice(index - 1, 0, cat)
+    updateSite(site.value)
+  }
+}
+
 </script>
 
 <template>
@@ -60,11 +91,16 @@ const withoutCategory = computed(() => {
         @click.prevent="$router.push(`/site/${siteid}/add/page`)"
       />
       <Section>
-        <h4
+        <template
           v-for="category in site.pageCategories"
           :key="category.slug"
         >
-          {{ category.name }}
+          <TrayHeader
+            :label="category.name"
+            tools
+            @move-down="moveUp(category.slug)"
+            @move-up="moveDown(category.slug)"
+          />
           <p
             v-for="page in inCategory(category.slug)"
             :key="page.key"
@@ -73,7 +109,7 @@ const withoutCategory = computed(() => {
               {{ page.name }}
             </router-link>
           </p>
-        </h4>
+        </template>
       </Section>
       <Section v-if="withoutCategory && withoutCategory.length">
         <h4>

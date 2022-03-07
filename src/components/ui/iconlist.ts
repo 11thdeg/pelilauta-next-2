@@ -6,6 +6,8 @@ export const iconlist = [
   'arrow_back',
   'avatar',
   'back',
+  'chevron-up',
+  'chevron-down',
   'close',
   'd6',
   'd12',

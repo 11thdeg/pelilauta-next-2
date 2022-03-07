@@ -1,6 +1,6 @@
 import { Site } from "@11thdeg/skaldstore"
 import { logDebug, logError } from "../utils/loghelpers"
-import { doc, getDoc, getFirestore, onSnapshot, query, where, collection, addDoc } from "@firebase/firestore"
+import { doc, getDoc, getFirestore, onSnapshot, query, where, collection, addDoc, updateDoc } from "@firebase/firestore"
 import { computed, ref } from "vue"
 
 const siteCache = ref(new Map<string, Site>())
@@ -112,6 +112,18 @@ async function createSite (site: Site) {
   )
 }
 
+async function updateSite (site: Site) {
+  logDebug('updateSite()', site.name)
+  return updateDoc(
+    doc(
+      getFirestore(),
+      'sites',
+      site.key || ''
+    ),
+    site.docData
+  )
+}
+
 export function useSites () {
   return {
     siteCache: computed(() => siteCache.value),
@@ -120,6 +132,7 @@ export function useSites () {
     subscribeToPlayerSites,
     userSites,
     playerSites,
-    createSite
+    createSite,
+    updateSite
   }
 }
