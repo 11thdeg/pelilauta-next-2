@@ -12,6 +12,9 @@ import TopicSelector from '../../components/threads/TopicSelector.vue'
 import SpacerDiv from '../../components/ui/SpacerDiv.vue'
 import Button from '../../components/ui/Button.vue'
 import MarkdownArea from '../../components/ui/MarkdownArea.vue'
+import Banner from '../../components/navigation/Banner.vue'
+import { useBanner } from '../../composables/useBanner'
+import { NodeHtmlMarkdown } from 'node-html-markdown'
 
 const props = defineProps<{
   threadid: string
@@ -19,6 +22,8 @@ const props = defineProps<{
 
 const { t } = useI18n()
 const { fetchThread } = useThreads()
+const { raise } = useBanner()
+const nhm = new NodeHtmlMarkdown({}, undefined, undefined)
 
 const thread = ref(new Thread())
 const notFound = ref(false)
@@ -36,10 +41,18 @@ onMounted(async () => {
   const tr = await fetchThread(props.threadid)
   if (tr) {
     thread.value = tr
+    if (!tr.markdownContent && tr.htmlContent) {
+      raise(t('thread.convert.warning'), convertThreadContentToMarkdown)
+    }
   } else {
     notFound.value = true
   }
 })
+
+function convertThreadContentToMarkdown() {
+  if (thread.value && !thread.value.markdownContent) thread.value.markdownContent = nhm.translate(thread.value.htmlContent)
+  else throw new Error('PageEditView.convertPageContentToMarkdown: page.value.markdownContent is already set')
+}
 
 </script>
 
@@ -49,6 +62,7 @@ onMounted(async () => {
     show-back-button
     sticky
   />
+  <Banner />
   <Main>
     <Loader v-if="loading" />
     <template v-if="!loading && notFound">
