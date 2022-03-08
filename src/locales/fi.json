@@ -62,6 +62,9 @@
   "discourse": {
     "title": "Keskustelu"
   },
+  "forum": {
+    "title": "Keskustelu"
+  },
   "info": {
     "ago": "sitten",
     "loves": "♡",

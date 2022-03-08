@@ -18,6 +18,7 @@ import { NodeHtmlMarkdown } from 'node-html-markdown'
 import YouTubeField from '../../components/content/YouTubeField.vue'
 import { useRouter } from 'vue-router'
 import { useSnack } from '../../composables/useSnack'
+import { marked } from 'marked'
 
 const props = defineProps<{
   threadid: string
@@ -61,7 +62,7 @@ function convertThreadContentToMarkdown() {
 }
 
 async function saveThread() {
-  if (thread.value.markdownContent) thread.value.htmlContent = nhm.translate(thread.value.markdownContent)
+  if (thread.value.markdownContent) thread.value.htmlContent = marked(thread.value.markdownContent)
   await updateThread(thread.value as Thread)
   pushSnack('snack.thread.saved')
   router.push(`/threads/${thread.value.key}`)

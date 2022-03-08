@@ -11,6 +11,7 @@ export const routes = [
   // Administration routes
   { path: '/admin',  component: () => import('./admin/AdminIndexView.vue') },
   { path: '/admin/entryfixer',  component: () => import('./admin/EntryFixerView.vue') },
+  { path: '/forum',  component: () => import('./forum/ForumIndexView.vue') },
   { path: '/sites', component: () => import('./sites/SiteIndexView.vue'),
     children: [
       { path: '', component: () => import('./sites/siteindex/OwnedSubview.vue') },

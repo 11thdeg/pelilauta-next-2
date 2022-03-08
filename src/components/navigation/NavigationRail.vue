@@ -19,6 +19,12 @@ const t = useI18n().t
       to="/"
     />
     <NavButton
+      icon="discussion"
+      :label="t('forum.title')"
+      to="/forum"
+      :active="$route.path === '/forum'"
+    />
+    <NavButton
       icon="mekanismi"
       :label="t('sites.title')"
       to="/sites"
