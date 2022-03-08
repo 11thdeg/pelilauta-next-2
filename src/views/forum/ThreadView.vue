@@ -16,9 +16,11 @@ import LoveAThreadButton from '../../components/threads/LoveAThreadButton.vue'
 import Button from '../../components/ui/Button.vue'
 import { useI18n } from 'vue-i18n'
 import ShareButton from '../../components/actions/ShareButton.vue'
+import { useAccount } from '../../composables/useAccount'
 
 const { t } = useI18n()
 const { fetchThread } = useThreads()
+const { account } = useAccount()
 
 const props = defineProps<{
   threadid: string
@@ -27,6 +29,7 @@ const props = defineProps<{
 const thread = ref<Thread|undefined>(undefined)
 const title = computed<string>(() => thread.value?.title ? thread.value.title : '...')
 const topic = computed(() => thread.value?.topicid ? thread.value.topicid : 'Yleinen')
+const owns = computed(() => thread.value?.hasOwner(account.value.uid))
 
 onMounted(async ()  => {
   thread.value = await fetchThread(props.threadid)
@@ -40,6 +43,7 @@ onMounted(async ()  => {
   >
     <ShareButton />
     <Button
+      v-if="owns"
       text
       icon="edit"
       @click.prevent="$router.push(`/threads/${props.threadid}/edit`)"
