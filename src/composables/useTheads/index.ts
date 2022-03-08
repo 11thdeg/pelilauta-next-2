@@ -1,5 +1,5 @@
 import { Thread } from '@11thdeg/skaldstore'
-import { doc, getDoc, getFirestore } from '@firebase/firestore'
+import { doc, getDoc, getFirestore, updateDoc } from '@firebase/firestore'
 import { useStream } from "../../stores/stream"
 import { logDebug, logError } from "../../utils/loghelpers"
 import { loveThread, unLoveThread } from './reations'
@@ -41,9 +41,22 @@ async function fetchThread (id: string):Promise<Thread|undefined> {
   return undefined
 }
 
+async function updateThread (thread:Thread) {
+  if (!thread.key) throw new Error('updateThread: thread has no key')
+  return updateDoc(
+    doc(
+      getFirestore(),
+      'stream',
+      thread.key
+    ),
+    thread.docData
+  )
+}
+
 function useThreads () {
   return {
-    fetchThread
+    fetchThread,
+    updateThread
   }
 }
 

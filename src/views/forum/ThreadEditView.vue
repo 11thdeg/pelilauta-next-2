@@ -15,19 +15,25 @@ import MarkdownArea from '../../components/ui/MarkdownArea.vue'
 import Banner from '../../components/navigation/Banner.vue'
 import { useBanner } from '../../composables/useBanner'
 import { NodeHtmlMarkdown } from 'node-html-markdown'
+import YouTubeField from '../../components/content/YouTubeField.vue'
+import { useRouter } from 'vue-router'
+import { useSnack } from '../../composables/useSnack'
 
 const props = defineProps<{
   threadid: string
 }>()
 
 const { t } = useI18n()
-const { fetchThread } = useThreads()
+const { fetchThread, updateThread } = useThreads()
 const { raise } = useBanner()
 const nhm = new NodeHtmlMarkdown({}, undefined, undefined)
+const router = useRouter()
+const { pushSnack } = useSnack()
 
 const thread = ref(new Thread())
 const notFound = ref(false)
 const preview = ref(false)
+const showYoutube = ref(false)
 
 const loading = computed(() => !(thread.value.title || notFound.value))
 const topic = computed({
@@ -52,6 +58,13 @@ onMounted(async () => {
 function convertThreadContentToMarkdown() {
   if (thread.value && !thread.value.markdownContent) thread.value.markdownContent = nhm.translate(thread.value.htmlContent)
   else throw new Error('PageEditView.convertPageContentToMarkdown: page.value.markdownContent is already set')
+}
+
+async function saveThread() {
+  if (thread.value.markdownContent) thread.value.htmlContent = nhm.translate(thread.value.markdownContent)
+  await updateThread(thread.value as Thread)
+  pushSnack('snack.thread.saved')
+  router.push(`/threads/${thread.value.key}`)
 }
 
 </script>
@@ -93,8 +106,10 @@ function convertThreadContentToMarkdown() {
         </Button>
         <SpacerDiv />
         <Button
+          :disabled="showYoutube"
           text
           icon="youtube"
+          @click="showYoutube = true"
         >
           {{ t('createThread.actions.addVideo') }}
         </Button>
@@ -105,17 +120,25 @@ function convertThreadContentToMarkdown() {
           {{ t('createThread.actions.addImages') }}
         </Button>
       </ActionBar>
+      <YouTubeField
+        v-model="thread.youtubeId"
+        v-model:show="showYoutube"
+      />
       <MarkdownArea
         v-model="thread.markdownContent"
         :preview="preview"
       />
       <ActionBar>
         <SpacerDiv />
-        <Button text>
+        <Button
+          text
+          @click="$router.back()"
+        >
           {{ t('actions.cancel') }}
         </Button>
         <Button
           icon="discussion"
+          @click.prevent="saveThread"
         >
           {{ t('actions.save') }}
         </Button>
