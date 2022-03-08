@@ -31,5 +31,6 @@ export const routes = [
   { path: '/account/delete', component: () => import('./AccountDeleteView.vue') },
   { path: '/assets', component: () => import('./AssetsView.vue') },
   { path: '/threads/:threadid', component: () => import('./forum/ThreadView.vue'), props: true},
+  { path: '/threads/:threadid/edit', component: () => import('./forum/ThreadEditView.vue'), props: true},
   { path: '/bio/:uid', component: () => import('./BioView.vue'), props: true }
 ]
