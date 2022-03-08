@@ -42,6 +42,7 @@ onMounted(async ()  => {
     <Button
       text
       icon="edit"
+      @click.prevent="$router.push(`/threads/${props.threadid}/edit`)"
     >
       {{ t('actions.edit') }}
     </Button>
