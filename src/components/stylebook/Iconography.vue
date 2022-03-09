@@ -4,9 +4,11 @@ import { iconlist } from '../ui/iconlist'
 import Icon from '../ui/Icon.vue'
 import ToggleButton from '../ui/ToggleButton.vue'
 import { ref } from 'vue'
+import ActionBar from '../ui/ActionBar.vue'
 
 const onSurface = ref(false)
 const invertIconColor = ref(false)
+const sizeDemoIcon = ref('fox')
 </script>
 
 <template>
@@ -32,8 +34,37 @@ const invertIconColor = ref(false)
           <Icon
             :icon="icon"
             :invert="invertIconColor"
+            class="hoverable clickable"
+            @click.prevent="sizeDemoIcon = icon"
           /><br>
           {{ icon }}
+        </div>
+      </div>
+      <div>
+        <h2>Icon sizes</h2>
+        <div class="sizeGrid">
+          <Icon
+            :icon="sizeDemoIcon"
+            xsmall
+          />
+          <Icon
+            :icon="sizeDemoIcon"
+            small
+          />
+          <Icon :icon="sizeDemoIcon" />
+          <Icon
+            :icon="sizeDemoIcon"
+            large
+          />
+          <Icon
+            :icon="sizeDemoIcon"
+            xlarge
+          />
+          <p><span class="code">xsmall</span></p>
+          <p><span class="code">small</span></p>
+          <p><i>[medium]</i></p>
+          <p><span class="code">large</span></p>
+          <p><span class="code">xlarge</span></p>
         </div>
       </div>
     </section>
@@ -57,4 +88,9 @@ const invertIconColor = ref(false)
   .preview
     text-align: center
     width: 56px
+.sizeGrid
+  display: grid
+  grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr 1fr
+  justify-items: center
+  align-items: center
 </style>

@@ -7,7 +7,6 @@ const props = defineProps<{
   icon: string,
   xsmall?: boolean,
   small?: boolean,
-  medium?: boolean,
   large?: boolean,
   xlarge?: boolean,
   onBright?: boolean,
@@ -35,7 +34,12 @@ const iconPath = computed(() => {
     :src="iconPath"
     :alt="icon"
     class="icon"
-    :class="{ medium: medium, large: large, small: small, xsmall: xsmall, xlarge: xlarge }"
+    :class="{
+      large: large,
+      small: small,
+      xsmall: xsmall,
+      xlarge: xlarge
+    }"
   >
 </template>
 
@@ -52,8 +56,8 @@ img.icon
     width: 24px
   //medium does nothing!
   &.large
-    height: 36px
-    height: 36px
+    height: 72px
+    width: 72px
   &.xsmall
     height: 16px
     width: 16px
