@@ -8,6 +8,7 @@ const props = defineProps<{
   small?: boolean,
   secondary?: boolean,
   tertiary?: boolean,
+  disabled?: boolean
 }>()
 
 const classes = computed(() => ({
@@ -55,6 +56,7 @@ button.Fab
   box-sizing: border-box
   margin: 0
   padding: 12px
+  padding-right: 16px
   border-radius: 16px
   background-color: var(--chroma-primary-h)
   transition: all 0.3s
@@ -89,6 +91,10 @@ button.Fab
       background: var(--chroma-alert) radial-gradient(circle, transparent 0%, var(--chroma-secondary-g) 200%)
     &:active
       background: var(--chroma-alert) radial-gradient(circle, transparent 0%, var(--chroma-secondary-i) 200%)
+  &:disabled
+    background: none
+    background-color: var(--color-button-disabled)
+    color: var(--color-button-disabled-text)
 .FabTray
   .Fab:not(.small)
     margin-top: 8px

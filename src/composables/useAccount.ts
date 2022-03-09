@@ -21,7 +21,8 @@ function useAccount () {
   return {
     setAccountData,
     showAdminTools,
-    account
+    account,
+    anonymous: computed(() => !account.value.uid)
   }
 }
 
