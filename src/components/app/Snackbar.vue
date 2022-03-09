@@ -50,12 +50,18 @@ onMounted(() => {
 </template>
 
 <style lang="sass" scoped>
+@import ../../styles/include-media.scss
+
 #SnackMessage
   position: fixed
   bottom: 16px
   left: 16px
   background-color: var(--color-rise-b)
-  z-index: 50000
+  z-index: var(--z-index-snacks)
   padding: 16px
   border-radius: 4px
+
+@include media('>=600px')
+  #SnackMessage
+    left: 88px
 </style>

@@ -57,6 +57,11 @@ const laytoutClass = computed(() => {
       to="/stylebook/buttonsandactions"
       label="Buttons and Actions" 
     />
+    <TrayButton
+      icon="love"
+      to="/stylebook/notifications"
+      label="Notifications" 
+    />
   </NavigationTray>
   <main :class="laytoutClass">
     <StyleBookIntro v-if="!subPage" />

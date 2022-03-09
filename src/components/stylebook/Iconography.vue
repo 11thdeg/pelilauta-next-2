@@ -4,7 +4,6 @@ import { iconlist } from '../ui/iconlist'
 import Icon from '../ui/Icon.vue'
 import ToggleButton from '../ui/ToggleButton.vue'
 import { ref } from 'vue'
-import ActionBar from '../ui/ActionBar.vue'
 
 const onSurface = ref(false)
 const invertIconColor = ref(false)

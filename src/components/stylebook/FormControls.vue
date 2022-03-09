@@ -18,7 +18,7 @@ const selectedOp = computed(() => selectOpts[selectValue.value])
 </script>
 
 <template>
-  <Column class="FormContols double">
+  <Column class="FormContols">
     <h1>Forms</h1>
     <p>
       <router-link to="/stylebook/formcontrols">
