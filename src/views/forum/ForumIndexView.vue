@@ -4,6 +4,8 @@ import Banner from '../../components/navigation/Banner.vue'
 import NavigationTray from '../../components/navigation/NavigationTray.vue'
 import { useI18n } from 'vue-i18n'
 import DiscussionsTray from '../../components/dicsussion/DiscussionsTray.vue'
+import MostDiscussedThreads from '../../components/threads/MostDiscussedThreads.vue'
+import Main from '../../components/layout/Main.vue'
 
 const { t } = useI18n()
 </script>
@@ -19,7 +21,7 @@ const { t } = useI18n()
       <DiscussionsTray />
     </NavigationTray>
     <Main book-layout>
-      ...
+      <MostDiscussedThreads />
     </Main>
   </div>
 </template>
