@@ -74,8 +74,8 @@
   "login": {
     "emailLoginHelper": "Osoite",
     "withEmail": "Kirjaudu",
-    "withGoogle": "Goog le-tunnuksilla",
-    "withFacebook": "Facebook-tunnuksilla",
+    "withGoogle": "Google -tunnuksilla",
+    "withFacebook": "Facebook -tunnuksilla",
     "continueAsAnonymous": "Jatka kirjautumatta",
     "title": "Kirjaudu",
     "loginWithEmail": "Sähköpostilinkillä"

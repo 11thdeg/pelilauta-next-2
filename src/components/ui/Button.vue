@@ -47,7 +47,7 @@ button.Button
   position: relative
   .inButton
    margin-left: -10px
-   padding-right: 4px
+   padding-right: 8px
    margin-top: -2px
   &:hover
     background-color: var(--color-button-hover)
