@@ -10,7 +10,8 @@ const props = defineProps<{
   medium?: boolean,
   large?: boolean,
   xlarge?: boolean,
-  onBright?: boolean
+  onBright?: boolean,
+  invert?: boolean,
 }>()
 
 const { mode: lightmode } = useLightMode()
@@ -19,6 +20,10 @@ const iconPath = computed(() => {
   const icon = props.icon
   if (!iconlist.includes(icon)) {
     throw new Error(`Icon ${icon} not found`)
+  }
+  if (props.invert) {
+    const mode = lightmode.value === 'dark' ? 'light' : 'dark'
+    return `/proprietary/icons/${mode}/${icon}.svg`
   }
   return `/proprietary/icons/${props.onBright ? 'light' : lightmode.value}/${icon}.svg`
 })

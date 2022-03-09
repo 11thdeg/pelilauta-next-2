@@ -43,6 +43,11 @@ const laytoutClass = computed(() => {
       </router-link>
     </h3>
     <TrayButton
+      to="/stylebook/iconography"
+      label="Iconography"
+      icon="stylebook"
+    />
+    <TrayButton
       to="/stylebook/formcontrols"
       label="Form Controls"
       icon="edit"
@@ -55,7 +60,7 @@ const laytoutClass = computed(() => {
   </NavigationTray>
   <main :class="laytoutClass">
     <StyleBookIntro v-if="!subPage" />
-    <Iconography v-if="!subPage" />
+    <Iconography v-if="!subPage || subPage === 'iconography'" />
     <FormControls v-if="!subPage || subPage === 'formcontrols' " />
     <Cards
       v-if="!subPage || subPage === 'cards' "

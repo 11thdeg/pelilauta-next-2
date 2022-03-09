@@ -5,10 +5,13 @@ import Fab from '../ui/Fab.vue'
 import Section from '../layout/Section.vue'
 import LoveButton from '../actions/LoveButton.vue'
 import { computed, ref } from 'vue'
+import ToggleButton from '../ui/ToggleButton.vue'
 
 
 const loveCount = ref(11)
 const loveState = ref(false)
+const toggled = ref(false)
+
 const loves = computed(
   {
     get: () => {
@@ -57,6 +60,11 @@ const loves = computed(
         icon="avatar"
         label="Avatar!"
       />
+    </Section>
+    <Section>
+      <h2>Toggle</h2>
+      <ToggleButton v-model="toggled" />
+      {{ toggled }}
     </Section>
     <Section>
       <h2>Clickables</h2>
