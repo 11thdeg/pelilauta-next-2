@@ -20,7 +20,10 @@ const invertIconColor = ref(false)
       <p>
         <ToggleButton v-model="invertIconColor" /> Invert icon color.
       </p>
-      <div class="iconlist" :class="{ surface: onSurface }">
+      <div
+        class="iconlist"
+        :class="{ surface: onSurface }"
+      >
         <div
           v-for="icon in iconlist"
           :key="icon"
