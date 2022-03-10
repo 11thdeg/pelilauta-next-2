@@ -10,7 +10,7 @@ const { streams } = useMeta()
 <template>
   <section class="DiscussionsTray">
     <TrayHeader
-      :label="t('discussions.tray.title')"
+      :label="t('discourse.tray.title')"
       icon="discussion"
       to="/forum"
     />
@@ -18,7 +18,7 @@ const { streams } = useMeta()
       v-for="stream in streams"
       :key="stream.slug"
       :label="stream.name"
-      :to="`/forum/topic/${stream.slug}`"
+      :to="`/forum/${stream.slug}`"
       :icon="stream.icon"
     />
   </section>

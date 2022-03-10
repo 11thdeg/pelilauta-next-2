@@ -19,7 +19,7 @@ const topic = computed(() => {
 
 <template>
   <span class="TopicTag">
-    <router-link :to="`/topic/${props.slug}`">
+    <router-link :to="`/forum/${props.slug}`">
       {{ topic.name }}
     </router-link>
   </span>

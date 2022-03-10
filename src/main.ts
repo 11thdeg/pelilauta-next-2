@@ -42,7 +42,6 @@ const auth = getAuth(fb)
 const authz = useAuthz()
 
 onAuthStateChanged(auth, (user) => {
-  console.log('User logged in:', user)
   authz.loginAs(user)
 })
 

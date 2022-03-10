@@ -60,7 +60,13 @@
     }
   },
   "discourse": {
-    "title": "Keskustelu"
+    "title": "Keskustelu",
+    "tray": {
+      "title": "Aiheet"
+    },
+    "mostDiscussed": {
+      "title": "Aktiivisimmat ketjut"
+    }
   },
   "forum": {
     "title": "Keskustelu"

@@ -12,6 +12,7 @@ export const routes = [
   { path: '/admin',  component: () => import('./admin/AdminIndexView.vue') },
   { path: '/admin/entryfixer',  component: () => import('./admin/EntryFixerView.vue') },
   { path: '/forum',  component: () => import('./forum/ForumIndexView.vue') },
+  { path: '/forum/:topic',  component: () => import('./forum/ForumIndexView.vue'), props: true },
   { path: '/sites', component: () => import('./sites/SiteIndexView.vue'),
     children: [
       { path: '', component: () => import('./sites/siteindex/OwnedSubview.vue') },

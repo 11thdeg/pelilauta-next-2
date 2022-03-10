@@ -25,7 +25,7 @@ const topFive = computed(() => {
 </script>
 <template>
   <Column class="MostDiscussedThreads">
-    <h3>{{ t('discourse.mostDiscussed.title') }}</h3>
+    <h3>{{ t('discourse.mostLoved.title') }}</h3>
     <CardStreamSection>
       <ThreadCard
         v-for="thread in topFive"

@@ -64,6 +64,7 @@ async function updateThread (thread:Thread) {
 let unsubscribeMostDiscussed:CallableFunction|undefined = undefined
 
 async function subscribeMostDiscussedThreads (count=5) {
+  if (unsubscribeMostDiscussed) return // can be done only once!
   const q = query(
     collection(
       getFirestore(),
@@ -73,17 +74,18 @@ async function subscribeMostDiscussedThreads (count=5) {
     where('public', '==', true),
     orderBy('replyCount', 'desc')
   )
+  logDebug('subscribeMostDiscussedThreads', count)
   unsubscribeMostDiscussed = await onSnapshot(q, (snapshot) => {
     snapshot.docChanges().forEach(change => {
       if (change.type === 'removed') {
         threadCache.value.delete(change.doc.id)
       } else {
-        logDebug('subscribeMostDiscussedThreads', change)
         threadCache.value.set(change.doc.id, new Thread(change.doc.data(), change.doc.id))
       }
     })
   })
 }
+
 function unsubscribeMostDiscussedThreads () {
   if (unsubscribeMostDiscussed) unsubscribeMostDiscussed()
 }
