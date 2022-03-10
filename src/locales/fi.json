@@ -65,7 +65,10 @@
       "title": "Aiheet"
     },
     "mostDiscussed": {
-      "title": "Aktiivisimmat ketjut"
+      "title": "Aktiivisimmat"
+    },
+    "mostLoved": {
+      "title": "Suosituimmat"
     }
   },
   "forum": {

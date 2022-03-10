@@ -8,19 +8,19 @@ import CardStreamSection from '../layout/CardStreamSection.vue'
 
 const { t } = useI18n()
 const {
-  mostDiscussedThreads,
-  subscribeMostDiscussedThreads,
-  unsubscribeMostDiscussedThreads
+  mostLovedThreads,
+  subscribeMostLovedThreads,
+  unsubscribeMostLovedThreads
 } = useThreads()
 
 onMounted(() => {
-  subscribeMostDiscussedThreads()
+  subscribeMostLovedThreads()
 })
 onUnmounted(() => {
-  unsubscribeMostDiscussedThreads()
+  unsubscribeMostLovedThreads()
 })
 const topFive = computed(() => {
-  return mostDiscussedThreads.value.slice(0, 5)
+  return mostLovedThreads.value.slice(0, 5)
 })
 </script>
 <template>

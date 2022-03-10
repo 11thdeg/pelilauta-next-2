@@ -14,6 +14,13 @@ const mostDiscussedThreads = computed(() => {
   return threads
 })
 
+const mostLovedThreads = computed(() => {
+  const threads = Array.from(threadCache.value.values())
+  threads.sort((a, b) => b.lovedCount - a.lovedCount)
+  logDebug('mostLovedThreads', threads)
+  return threads
+})
+
 async function fetchThread (id: string):Promise<Thread|undefined> {
   logDebug('fetchThread', id)
   const stream = useStream()
@@ -90,13 +97,45 @@ function unsubscribeMostDiscussedThreads () {
   if (unsubscribeMostDiscussed) unsubscribeMostDiscussed()
 }
 
+let unsubscribeMostLoved:CallableFunction|undefined = undefined
+
+async function subscribeMostLovedThreads (count=5) {
+  if (unsubscribeMostLoved) return // can be done only once!
+  const q = query(
+    collection(
+      getFirestore(),
+      'stream'
+    ),
+    limit(count),
+    where('public', '==', true),
+    orderBy('lovedCount', 'desc')
+  )
+  logDebug('subscribeMostDiscussedThreads', count)
+  unsubscribeMostLoved = await onSnapshot(q, (snapshot) => {
+    snapshot.docChanges().forEach(change => {
+      if (change.type === 'removed') {
+        threadCache.value.delete(change.doc.id)
+      } else {
+        threadCache.value.set(change.doc.id, new Thread(change.doc.data(), change.doc.id))
+      }
+    })
+  })
+}
+
+function unsubscribeMostLovedThreads () {
+  if (unsubscribeMostLoved) unsubscribeMostLoved()
+}
+
 function useThreads () {
   return {
     fetchThread,
     updateThread,
     mostDiscussedThreads,
     subscribeMostDiscussedThreads,
-    unsubscribeMostDiscussedThreads
+    unsubscribeMostDiscussedThreads,
+    mostLovedThreads,
+    subscribeMostLovedThreads,
+    unsubscribeMostLovedThreads
   }
 }
 
