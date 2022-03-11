@@ -7,6 +7,7 @@ import DiscussionsTray from '../../components/dicsussion/DiscussionsTray.vue'
 import MostDiscussedThreads from '../../components/threads/MostDiscussedThreads.vue'
 import Main from '../../components/layout/Main.vue'
 import MostLovedThreads from '../../components/threads/MostLovedThreads.vue'
+import StickyThreads from '../../components/threads/StickyThreads.vue'
 
 const { t } = useI18n()
 </script>
@@ -22,6 +23,7 @@ const { t } = useI18n()
       <DiscussionsTray />
     </NavigationTray>
     <Main book-layout>
+      <StickyThreads />
       <MostDiscussedThreads />
       <MostLovedThreads />
     </Main>

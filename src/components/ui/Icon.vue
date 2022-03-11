@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { iconlist } from './iconlist'
+import { iconlist, REMAP_ICONS } from './iconlist'
 import { computed } from 'vue'
 import { useLightMode } from '../../composables/lightmode'
 
@@ -13,13 +13,18 @@ const props = defineProps<{
   invert?: boolean,
 }>()
 
+const mapped = REMAP_ICONS
+
 const { mode: lightmode } = useLightMode()
 
 const iconPath = computed(() => {
-  const icon = props.icon
+  let icon = props.icon
   if (!iconlist.includes(icon)) {
-    throw new Error(`Icon ${icon} not found`)
-  }
+    if (mapped[icon]) {
+      icon = mapped[icon]
+    } else {
+      throw new Error(`Icon ${icon} not found`)
+  }} 
   if (props.invert) {
     const mode = lightmode.value === 'dark' ? 'light' : 'dark'
     return `/proprietary/icons/${mode}/${icon}.svg`

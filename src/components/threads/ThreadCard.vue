@@ -16,6 +16,7 @@ import LoveAThreadButton from './LoveAThreadButton.vue'
 
 const props = defineProps<{
   thread: Thread
+  zipped? : boolean
 }>()
 
 
@@ -56,32 +57,35 @@ const snippet = computed(() => {
         </h1>
       </div>
     </div>
-    <template v-if="thread.youtubeId">
-      <YoutubePreview
-        :video-id="thread.youtubeId"
-        :width="413+32"
-        :height="275+(32/3*2)"
-        style="margin: 12px -16px"
-      />
-    </template>
-    <template v-else>
-      <img
-        v-if="thread.poster"
-        class="poster"
-        :src="thread.poster"
-      >
-      <MarkDownSection
-        v-if="thread.markdownContent"
-        :content="snippet"
-        class="contentSnippet"
-      />
-      <p
-        v-else
-        class="contentSnippet TypeBody2"
-      >
-        {{ snippet }}
-      </p>
-    </template>
+    <hr v-if="zipped">
+    <div v-if="!zipped">
+      <template v-if="thread.youtubeId">
+        <YoutubePreview
+          :video-id="thread.youtubeId"
+          :width="413+32"
+          :height="275+(32/3*2)"
+          style="margin: 12px -16px"
+        />
+      </template>
+      <template v-else>
+        <img
+          v-if="thread.poster"
+          class="poster"
+          :src="thread.poster"
+        >
+        <MarkDownSection
+          v-if="thread.markdownContent"
+          :content="snippet"
+          class="contentSnippet"
+        />
+        <p
+          v-else
+          class="contentSnippet TypeBody2"
+        >
+          {{ snippet }}
+        </p>
+      </template>
+    </div>
     <ActionBar>
       <AuthorTag :uid="thread.author" />
       <SinceTag :time="thread.createdAt?.seconds" />
@@ -97,8 +101,9 @@ const snippet = computed(() => {
 </template>
 
 <style lang="sass" scoped>
-.ThreadCard
-  padding-bottom: 16px
+hr
+  border: none
+  border-top: var(--color-border) 1px solid !important
 img.poster
   object-fit: cover
   width: calc(100% + 32px)
@@ -110,4 +115,6 @@ div.cardHeader
   display: flex
   gap: var(--page-column-gap)
   margin-top: 4px
+  align-items: flex-start
+    
 </style>

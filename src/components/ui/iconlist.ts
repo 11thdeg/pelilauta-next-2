@@ -37,3 +37,6 @@ export const iconlist = [
   'tools',
   'youtube'
 ]
+export const REMAP_ICONS:Record<string, string> = {
+  'mekanismi-logo': 'mekanismi',
+}

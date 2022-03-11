@@ -46,6 +46,8 @@ const sitename = computed(() => site.value?.name || '...')
   box-sizing: border-box;
   border-radius: 50%;
   position: relative;
+  height: 48px;
+  flex-shrink: 0;
 }
 .siteAvatarIcon {
   position: absolute;

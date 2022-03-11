@@ -63,7 +63,6 @@ async function subscribeToUserSites(newUid: string) {
     ),
     (snapshot) => {
       snapshot.docChanges().forEach((docChange) => {
-        logDebug(`subscribeToUserSites(${uid}), docChange: ${docChange.type}, ${docChange.doc.id}`)
         if (docChange.type !== 'removed') {
           const site = new Site(docChange.doc.data(), docChange.doc.id)
           siteCache.value.set(docChange.doc.id, site)
