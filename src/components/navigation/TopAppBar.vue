@@ -6,6 +6,7 @@ import { version } from '../../../package.json'
 import { computed, onMounted, ref } from 'vue'
 import HamburgerButton from './HamburgerButton.vue'
 import { useUxState } from '../../composables/useUxState'
+import NotificationsButton from '../notifications/NotificationsButton.vue'
 
 const props = defineProps<{
   title?: string,
@@ -61,6 +62,7 @@ const hamburgerPadded = computed(() => uxState.navTrayVisible.value)
       {{ version }}
     </p>  
     <LightmodeButton class="hideOnMobile" />
+    <NotificationsButton />
     <slot />
   </nav>
 </template>
