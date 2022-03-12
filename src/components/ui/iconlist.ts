@@ -32,6 +32,7 @@ export const iconlist = [
   'monsters',
   'pelilauta-logo',
   'report',
+  'send',
   'share',
   'stylebook',
   'tools',

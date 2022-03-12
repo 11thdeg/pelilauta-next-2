@@ -4,6 +4,7 @@ import About from './About.vue'
 export const routes = [
   { path: '/', component: Home },
   { path: '/about', component: About },
+  { path: '/account/notifications', component: () => import('./NotificationsView.vue') },
   // Create an entry to db
   { path: '/create/site', component: () => import('./sites/CreateSiteView.vue') },
   { path: '/create/thread', component: () => import('./forum/CreateThreadView.vue') },
