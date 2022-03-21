@@ -92,6 +92,12 @@
     "title": "Kirjaudu",
     "loginWithEmail": "Sähköpostilinkillä"
   },
+  "notifications": {
+    "title": "Ilmoitukset",
+    "label": {
+      "thread": "Vastaus ketjussa"
+    }
+  },
   "page": {
     "convert": {
       "warning": "Sivun sisältö on luotu pelilaudan aiemmalla versiolla, ja se on muutettava Markdown -muotoon jatkaaksesi."
