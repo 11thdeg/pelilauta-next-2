@@ -19,7 +19,10 @@ const asset = computed(() => assetStore.assets.get(props.assetId))
     v-if="asset"
     class="AssetListItem"
   >
-    <img class="preview" :src="asset.url" />
+    <img
+      class="preview"
+      :src="asset.url"
+    >
     <div class="TypeCaption filedata">
       {{ asset.name || assetId }} <br>
       {{ asset.description }} <br>
