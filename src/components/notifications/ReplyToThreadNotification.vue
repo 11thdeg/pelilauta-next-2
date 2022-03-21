@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { Thread, Notification } from '@11thdeg/skaldstore'
+import { Thread } from '@11thdeg/skaldstore'
 import { onMounted, ref } from 'vue'
-import { useThreads } from '../../composables/useTheads';
-import { logDebug } from '../../utils/loghelpers';
+import { useThreads } from '../../composables/useTheads'
+import { logDebug } from '../../utils/loghelpers'
 import NotificationArticle from './NotificationArticle.vue'
 
 const props = defineProps<{
