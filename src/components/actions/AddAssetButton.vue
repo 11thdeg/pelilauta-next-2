@@ -8,6 +8,10 @@ import { FileData } from '../../utils/fileHelpers'
 import Select from '../ui/Select.vue'
 import { useAssets } from '../../stores/assets'
 import { useSnack } from '../../composables/useSnack'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+const { pushSnack } = useSnack()
 
 const dialog = ref(false)
 const uploading = ref(false)
@@ -19,8 +23,6 @@ const licenses = {
   '0': 'None',
   '1': 'CC-BY',
 }
-
-const { pushSnack } = useSnack()
 
 const file:Ref<FileData|undefined> = ref(undefined)
 
@@ -57,8 +59,11 @@ async function upload () {
 </script>
 
 <template>
-  <Button @click.prevent="open">
-    Open
+  <Button
+    icon="add"
+    @click.prevent="open"
+  >
+    {{ t('actions.add') }}
   </Button>
   <Dialog
     v-model="dialog"

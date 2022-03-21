@@ -3,8 +3,11 @@ import { useI18n } from 'vue-i18n'
 import TopAppBar from '../components/navigation/TopAppBar.vue'
 import AddAssetButton from '../components/actions/AddAssetButton.vue'
 import AssetListColumn from '../components/assets/AssetListColumn.vue'
+import Main from '../components/layout/Main.vue'
+import ActionBar from '../components/ui/ActionBar.vue'
+import SpacerDiv from '../components/ui/SpacerDiv.vue'
 
-const t = useI18n().t
+const { t } = useI18n()
 
 </script>
 
@@ -14,10 +17,13 @@ const t = useI18n().t
       icon="assets"
       :title="t('assets.title')"
     />
-    <main class="singleColumnLayout">
-      ...
-      <AddAssetButton />
+    <Main>
+      <ActionBar>
+        <h3>{{ t('assets.title') }}</h3>
+        <SpacerDiv />
+        <AddAssetButton />
+      </ActionBar>
       <AssetListColumn />
-    </main>
+    </Main>
   </div>
 </template>

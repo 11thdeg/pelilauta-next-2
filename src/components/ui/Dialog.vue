@@ -43,6 +43,8 @@ function close () {
 </template>
 
 <style scoped lang="sass">
+@import ../../styles/include-media.scss
+
 #Dialog
   background-color: rgba(0, 33, 58, 0.7)
   position: fixed
@@ -72,7 +74,19 @@ function close () {
   transform: translate(-50%, -50%)
   height: auto
   border-radius: 4px
-  width: 720px
+  min-width: 600px
+  max-width: 800px
   border-radius: 4px
+
+@include media('<=600px')
+  #DialogCard
+    width: 100vw
+    height: 100vh
+    top: 0
+    left: 0
+    transform: none
+    border-radius: 0
+    min-width: 100vw
+    max-width: 100vw
   
 </style>

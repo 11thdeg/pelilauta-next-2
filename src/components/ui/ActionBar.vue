@@ -12,7 +12,7 @@ const layoutClasses = ref({
 
 <template>
   <section
-    class="ActionBar"
+    class="ActionBar barComponent"
     :class="layoutClasses"
   >
     <slot />

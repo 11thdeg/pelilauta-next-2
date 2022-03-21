@@ -11,7 +11,6 @@ const assetList = computed(() => assetStore.assets)
 </script>
 <template>
   <Column class="AssetListColumn">
-    <h1>Assets</h1>
     <section class="assetListSection">
       <AssetListItem
         v-for="asset in assetList"

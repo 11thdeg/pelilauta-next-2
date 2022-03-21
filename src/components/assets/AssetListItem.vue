@@ -19,10 +19,7 @@ const asset = computed(() => assetStore.assets.get(props.assetId))
     v-if="asset"
     class="AssetListItem"
   >
-    <div
-      class="preview"
-      :style="`background-image: url('${asset.url}')`"
-    />
+    <img class="preview" :src="asset.url" />
     <div class="TypeCaption filedata">
       {{ asset.name || assetId }} <br>
       {{ asset.description }} <br>
@@ -38,8 +35,7 @@ const asset = computed(() => assetStore.assets.get(props.assetId))
 .preview
   height: 72px
   width: 72px
-  background-size: cover
-  background-position: center center
+  object-fit: cover
   position: absolute
   top: 8px
   left: 8px

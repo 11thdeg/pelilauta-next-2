@@ -83,12 +83,15 @@ function moveDown (slug: string) {
         </h3>
       </div>
       
-      <Fab
-        small
-        icon="add"
-        :label="t('actions.add')"
-        @click.prevent="$router.push(`/site/${siteid}/add/page`)"
-      />
+      <Section>
+        <Fab
+          small
+          icon="add"
+          :label="t('actions.add')"
+          @click.prevent="$router.push(`/site/${siteid}/add/page`)"
+        />
+      </Section>
+      
       <Section>
         <template
           v-for="category in site.pageCategories"
