@@ -45,6 +45,7 @@ const showTrayOnMobile = computed(() => uxState.showNavTrayOnMobile.value)
 @import ../../styles/include-media.scss
 
 #NavigationTray
+  background-color: var(--color-background)
   position: fixed
   top: 0
   left: 80px

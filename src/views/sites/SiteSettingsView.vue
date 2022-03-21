@@ -23,17 +23,17 @@ onMounted(async () => {
   site.value = await fetchSite(props.siteid) || new Site()
   loading.value = false
 })
-
-
 </script>
 
 <template>
-  <TopAppBar :title="t('site.settings.title')" show-back-button/>
+  <TopAppBar
+    :title="t('site.settings.title')"
+    show-back-button
+  />
   <NavigationTray>
     <SiteTray :siteid="siteid" />
   </NavigationTray>
   <Main book-layout>
-    Site Settings View
     <SiteMetaColumn :siteid="siteid" />
   </Main>
 </template>

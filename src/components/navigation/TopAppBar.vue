@@ -37,7 +37,8 @@ const hamburgerPadded = computed(() => uxState.navTrayVisible.value)
     :class="{
       'sticky': sticky,
       'overlay': overlay,
-      'rise-1': overlay
+      'rise-1': overlay && !showBackButton,
+      'rise-2': showBackButton,
     }"
   >
     <HamburgerButton style="margin-top:12px" />
@@ -58,11 +59,12 @@ const hamburgerPadded = computed(() => uxState.navTrayVisible.value)
     <p
       class="TypeCaption hideOnMobile"
       style="line-height: 48px;padding-top:6px"
+      v-if="!showBackButton"
     >
       {{ version }}
     </p>  
-    <LightmodeButton class="hideOnMobile" />
-    <NotificationsButton />
+    <LightmodeButton class="hideOnMobile" v-if="!showBackButton" />
+    <NotificationsButton v-if="!showBackButton" />
     <slot />
   </nav>
 </template>

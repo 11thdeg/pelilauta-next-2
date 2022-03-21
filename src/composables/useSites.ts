@@ -2,6 +2,7 @@ import { Site } from "@11thdeg/skaldstore"
 import { logDebug, logError } from "../utils/loghelpers"
 import { doc, getDoc, getFirestore, onSnapshot, query, where, collection, addDoc, updateDoc } from "@firebase/firestore"
 import { computed, ref } from "vue"
+import { useAccount } from "./useAccount"
 
 const siteCache = ref(new Map<string, Site>())
 let uid = ''
@@ -111,15 +112,22 @@ async function createSite (site: Site) {
   )
 }
 
-async function updateSite (site: Site) {
+async function updateSite (site: Site, silent = false) {
   logDebug('updateSite()', site.name)
+  const data = site.docData
+
+  if (silent) {
+    delete data.flowTime
+    delete data.updatedAt
+  }
+
   return updateDoc(
     doc(
       getFirestore(),
       'sites',
       site.key || ''
     ),
-    site.docData
+    data
   )
 }
 
