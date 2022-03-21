@@ -7,6 +7,7 @@ import { useI18n } from 'vue-i18n'
 import Main from '../../components/layout/Main.vue'
 import NavigationTray from '../../components/navigation/NavigationTray.vue'
 import SiteTray from '../../components/sites/SiteTray.vue'
+import SiteMetaColumn from '../../components/sites/SiteMetaColumn.vue'
 
 const props = defineProps<{
   siteid: string
@@ -33,5 +34,6 @@ onMounted(async () => {
   </NavigationTray>
   <Main book-layout>
     Site Settings View
+    <SiteMetaColumn :siteid="siteid" />
   </Main>
 </template>
