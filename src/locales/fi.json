@@ -124,7 +124,10 @@
   },
   "site": {
     "fields": {
-      "name": "Nimi"
+      "name": "Nimi",
+      "createdAt": "Luotu",
+      "updatedAt": "Päivitetty",
+      "flowTime": "Viimeisin muutos"
     },
     "home": {
       "title": "Etusivu"

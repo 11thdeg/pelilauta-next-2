@@ -21,8 +21,8 @@ onMounted(async () => {
 
 <template>
   <Column class="SiteMetaColumn">
-    <p>{{ t('site.fields.createdAt') }}<SinceTag :time="site.createdAt" /></p>
-    <p>{{ t('site.fields.updatedAt') }}<SinceTag :time="site.updatedAt" /></p>
-    <p>{{ t('site.fields.flowTime') }}<SinceTag :time="site.flowTime" /></p>
+    <p>{{ t('site.fields.createdAt') }} <SinceTag :time="site.createdAt" /></p>
+    <p>{{ t('site.fields.updatedAt') }} <SinceTag :time="site.updatedAt" /></p>
+    <p>{{ t('site.fields.flowTime') }} <SinceTag :time="site.flowTime" /></p>
   </Column>
 </template>
