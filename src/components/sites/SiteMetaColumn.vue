@@ -1,9 +1,9 @@
-<script lang="ts" setup>import { Site } from '@11thdeg/skaldstore';
-import { onMounted, ref } from 'vue';
-import { useI18n } from 'vue-i18n';
-import { useSites } from '../../composables/useSites';
-import Column from '../ui/Column.vue';
-import SinceTag from '../ui/SinceTag.vue';
+<script lang="ts" setup>import { Site } from '@11thdeg/skaldstore'
+import { onMounted, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useSites } from '../../composables/useSites'
+import Column from '../ui/Column.vue'
+import SinceTag from '../ui/SinceTag.vue'
 
 const props = defineProps<{
   siteid: string

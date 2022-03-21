@@ -57,13 +57,16 @@ const hamburgerPadded = computed(() => uxState.navTrayVisible.value)
     </h1>
     <SpacerDiv />
     <p
+      v-if="!showBackButton"
       class="TypeCaption hideOnMobile"
       style="line-height: 48px;padding-top:6px"
-      v-if="!showBackButton"
     >
       {{ version }}
     </p>  
-    <LightmodeButton class="hideOnMobile" v-if="!showBackButton" />
+    <LightmodeButton
+      v-if="!showBackButton"
+      class="hideOnMobile"
+    />
     <NotificationsButton v-if="!showBackButton" />
     <slot />
   </nav>

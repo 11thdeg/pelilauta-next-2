@@ -2,7 +2,6 @@ import { Site } from "@11thdeg/skaldstore"
 import { logDebug, logError } from "../utils/loghelpers"
 import { doc, getDoc, getFirestore, onSnapshot, query, where, collection, addDoc, updateDoc } from "@firebase/firestore"
 import { computed, ref } from "vue"
-import { useAccount } from "./useAccount"
 
 const siteCache = ref(new Map<string, Site>())
 let uid = ''
