@@ -5,6 +5,8 @@ import { useSites } from '../../composables/useSites'
 import TopAppBar from '../../components/navigation/TopAppBar.vue'
 import { useI18n } from 'vue-i18n'
 import Main from '../../components/layout/Main.vue'
+import NavigationTray from '../../components/navigation/NavigationTray.vue'
+import SiteTray from '../../components/sites/SiteTray.vue'
 
 const props = defineProps<{
   siteid: string
@@ -25,8 +27,11 @@ onMounted(async () => {
 </script>
 
 <template>
-  <TopAppBar :title="t('site.settings.title')" />
-  <Main>
+  <TopAppBar :title="t('site.settings.title')" show-back-button/>
+  <NavigationTray>
+    <SiteTray :siteid="siteid" />
+  </NavigationTray>
+  <Main book-layout>
     Site Settings View
   </Main>
 </template>

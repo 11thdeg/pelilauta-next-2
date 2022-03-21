@@ -45,7 +45,7 @@ const classes = computed(() => ({
 
 button.Fab
   @include TypeButton()
-  color: var(--color-background)
+  color: var(--color-button)
   position: relative
   display: block
   flex-grow: 0

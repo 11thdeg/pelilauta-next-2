@@ -8,7 +8,6 @@ import Loader from '../ui/Loader.vue'
 import SiteAvatar from "./SiteAvatar.vue"
 import Fab from "../ui/Fab.vue"
 import { useI18n } from "vue-i18n"
-import ActionBar from "../ui/ActionBar.vue"
 import { computed } from "vue"
 import Section from "../layout/Section.vue"
 import TrayHeader from "../navigation/tray/TrayHeader.vue"
@@ -72,7 +71,7 @@ function moveDown (slug: string) {
   <div id="SiteTray">
     <Loader v-if="!site" />
     <template v-if="site">
-      <ActionBar style="margin-bottom: 12px">
+      <div class="trayHeader">
         <SiteAvatar
           :siteid="siteid" 
           style="display:inline-block"
@@ -82,7 +81,7 @@ function moveDown (slug: string) {
             {{ site.name }}
           </router-link>
         </h3>
-      </ActionBar>
+      </div>
       
       <Fab
         small
@@ -127,3 +126,13 @@ function moveDown (slug: string) {
     </template>
   </div>
 </template>
+
+<style scoped>
+.trayHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: var(--page-grid-gap);
+  gap: var(--page-column-gap);
+}
+</style>
