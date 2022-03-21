@@ -9,4 +9,5 @@
   display: flex
   height: 48px
   background-color: var(--color-rise-1)
+  margin-bottom: var(--page-grid-gap)
 </style>

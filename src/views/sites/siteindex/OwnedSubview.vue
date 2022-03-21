@@ -19,7 +19,6 @@ const sites = computed(() => {
 </script>
 <template>
   <article class="OwnedSubView">
-    <h1>Owned!</h1>
     <CardStreamSection>
       <Card
         v-for="site in sites"

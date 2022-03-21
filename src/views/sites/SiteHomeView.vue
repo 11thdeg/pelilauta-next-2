@@ -49,6 +49,13 @@ const homePage = computed(() => {
     <TopAppBar :title="t('site.home.title')">
       <Button
         text
+        icon="keeper"
+        @click="$router.push('/site/' + props.siteid + '/keeper')"
+      >
+        {{ t('site.keeper.title') }}
+      </Button>
+      <Button
+        text
         icon="tools"
         @click="$router.push('/site/' + props.siteid + '/settings')"
       >

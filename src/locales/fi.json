@@ -129,6 +129,9 @@
     "home": {
       "title": "Etusivu"
     },
+    "keeper": {
+      "title": "Keeper"
+    },
     "pages": {
       "withoutCategory": "Sivut"
     },
