@@ -130,15 +130,44 @@ async function updateSite (site: Site, silent = false) {
   )
 }
 
+// Active Site subscription and caching
+let unsubscribeToFirestoreSite:undefined|CallableFunction = undefined
+let subscribedSiteId:undefined|string = undefined
+const activeSite = ref(new Site({}))
+
+async function subscribeToSite (siteid: string) {
+  if (subscribedSiteId == siteid) return
+  if (unsubscribeToFirestoreSite) unsubscribeToFirestoreSite()
+  subscribedSiteId = siteid
+  unsubscribeToFirestoreSite = onSnapshot(
+    doc(
+      getFirestore(),
+      'sites',
+      siteid
+    ),
+    (snapshot) => {
+      if (snapshot.exists()) {
+        const site = new Site(snapshot.data(), snapshot.id)
+        siteCache.value.set(snapshot.id, site)
+        activeSite.value = site
+      } else {
+        siteCache.value.delete(snapshot.id)
+      }
+    }
+  )
+}
+
 export function useSites () {
   return {
     siteCache: computed(() => siteCache.value),
+    activeSite: computed(() => activeSite.value),
     fetchSite,
     subscribeToUserSites,
     subscribeToPlayerSites,
     userSites,
     playerSites,
     createSite,
-    updateSite
+    updateSite,
+    subscribeToSite
   }
 }
