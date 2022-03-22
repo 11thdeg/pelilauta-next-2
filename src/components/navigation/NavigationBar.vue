@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStore } from '../../stores/main'
 import NavButton from './NavButton.vue'
+import AccountNavButton from './AccountNavButton.vue';
 
 const store = useStore()
 
@@ -29,7 +30,6 @@ const t = useI18n().t
       icon="discussion"
       :label="t('discourse.title')"
       to="/discourse"
-      disabled
     />
     <NavButton
       icon="mekanismi"
@@ -42,11 +42,7 @@ const t = useI18n().t
       to="/characters"
       disabled
     />
-    <NavButton
-      icon="avatar"
-      to="/account"
-      :label="t('account.title')"
-    />
+    <AccountNavButton />
   </nav>
 </template>
 

@@ -4,6 +4,7 @@ import NavButton from './NavButton.vue'
 import SpacerDiv from '../ui/SpacerDiv.vue'
 import AvatarButton from '../account/AvatarButton.vue'
 import AdminNavButton from './AdminNavButton.vue'
+import AccountNavButton from './AccountNavButton.vue'
 
 const t = useI18n().t
 </script>
@@ -44,7 +45,7 @@ const t = useI18n().t
       :label="t('assets.title')"
       to="/assets"
     />
-    <AvatarButton />
+    <AccountNavButton />
   </nav>
 </template>
 
