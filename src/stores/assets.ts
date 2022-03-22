@@ -37,7 +37,7 @@ export const useAssets = defineStore('assets', () => {
     logDebug('initAssetCache', 'loaded', docs?.size, 'assets')
 
     docs.forEach((assetDoc) => {
-      const asset = new Asset(assetDoc.data())
+      const asset = new Asset(assetDoc.data(), assetDoc.id)
       assetCache.value.set(assetDoc.id, asset)
     })
   }

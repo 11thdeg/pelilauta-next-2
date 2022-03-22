@@ -1,6 +1,8 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { Asset } from '@11thdeg/skaldstore';
+import { computed, ref } from 'vue'
 import { useAssets } from '../../stores/assets'
+import Section from '../layout/Section.vue'
 
 const props = defineProps<{
   assetId: string
@@ -10,14 +12,17 @@ const assetStore = useAssets()
 
 // const assets = computed(() => assetStore.assets)
 
-const asset = computed(() => assetStore.assets.get(props.assetId))
-
+const asset = computed(() => assetStore.assets.get(props.assetId) || new Asset())
+const hoverClass = ref(false)
 
 </script>
 <template>
-  <div
-    v-if="asset"
-    class="AssetListItem"
+  <Section
+    class="AssetListItem hoverable clickable"
+    :class="{ 'rise-1': hoverClass }"
+    @mouseover="hoverClass = true"
+    @mouseleave="hoverClass = false"
+    @click="$router.push('/assets/' + asset.key)"
   >
     <img
       class="preview"
@@ -29,12 +34,13 @@ const asset = computed(() => assetStore.assets.get(props.assetId))
       {{ asset.license }} <br>
       {{ asset.mimetype }}
     </div>
-  </div>
+  </Section>
 </template>
 
 <style lang="sass" scoped>
 .AssetListItem
   position: relative
+  border-radius: 6px
 .preview
   height: 72px
   width: 72px
