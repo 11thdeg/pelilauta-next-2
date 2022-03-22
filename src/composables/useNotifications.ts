@@ -1,5 +1,5 @@
 import { Notification } from "@11thdeg/skaldstore"
-import { collection, getFirestore, onSnapshot, query, where } from "firebase/firestore"
+import { collection, getFirestore, onSnapshot, query, where, updateDoc, doc } from "firebase/firestore"
 import { computed, ref } from "vue"
 import { useAccount } from "./useAccount"
 
@@ -37,10 +37,24 @@ async function init () {
   }
 }
 
+async function stampSeen (notificationKey: string) {
+  return updateDoc(
+    doc(
+    getFirestore(),
+    'notifications',
+    notificationKey,
+    ),
+    {
+      read: true
+    }
+  )
+}
+
 export function useNotifications () {
   init()
   return {
     notifications,
-    newNotificationsCount
+    newNotificationsCount,
+    stampSeen
   }
 }

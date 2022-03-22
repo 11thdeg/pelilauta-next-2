@@ -12,6 +12,7 @@ const props = defineProps<{
     targetKey: string
     message: string
     targetType: string
+    read: boolean
   }
 }>()
 
@@ -34,5 +35,7 @@ onMounted(async () => {
     :from="notification.from" 
     :message="notification.message" 
     :target-label="thread.title"
+    :notification-key="notification.key"
+    :read="notification.read"
   />
 </template>
