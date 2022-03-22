@@ -26,7 +26,10 @@ const { stampSeen } = useNotifications()
 </script>
 
 <template>
-  <article class="NotificationArticle" :class="{ 'rise-1': !read }">
+  <article
+    class="NotificationArticle"
+    :class="{ 'rise-1': !read }"
+  >
     <ActionBar>
       <h3>
         <router-link :to="link">
