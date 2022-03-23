@@ -8,7 +8,7 @@ import SiteListFilter from '../../../components/sites/SiteListFilter.vue'
 
 const { userSites, subscribeToUserSites } = useSites()
 const authz = useAuthz()
-const orderBy=ref('name_asc')
+const orderBy=ref('date_desc')
 
 watch(() => authz.user, (user) => {
   subscribeToUserSites(user.uid)

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Asset } from '@11thdeg/skaldstore';
+import { Asset } from '@11thdeg/skaldstore'
 import { computed, ref } from 'vue'
 import { useAssets } from '../../stores/assets'
 import Section from '../layout/Section.vue'

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import Button from '../ui/Button.vue'
 import ActionBar from '../ui/ActionBar.vue'
+import SpacerDiv from '../ui/SpacerDiv.vue'
 
 const emit = defineEmits<{
   (e: 'order_date_desc'): void
@@ -11,6 +12,7 @@ const emit = defineEmits<{
 <template>
   <ActionBar class="SiteListFilter">
     <h4>ORDER_BY</h4>
+    <SpacerDiv />
     <Button
       text
       icon="eye"
