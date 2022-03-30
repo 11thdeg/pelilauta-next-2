@@ -94,7 +94,7 @@ if ('serviceWorker' in navigator) {
 #AppContent 
   margin-bottom: 80px
 
-@include media('>=600px')
+@include media('>=1025px')
   #AppContent
     box-model: border-box
     margin: 0
@@ -102,6 +102,15 @@ if ('serviceWorker' in navigator) {
     padding-left: 72px
     &.showTray
       padding-left: calc(80px + 360px)
+
+@include media('>=600px')
+  #AppContent
+    padding-left: 72px
+    margin: 0
+    padding: 0
+    padding-left: 72px
+    &.showTray
+      padding-left: calc(80px + 300px)
 
 #app
   background-color: var(--color-background)

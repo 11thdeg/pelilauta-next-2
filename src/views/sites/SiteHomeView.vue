@@ -52,14 +52,14 @@ const homePage = computed(() => {
         icon="keeper"
         @click="$router.push('/site/' + props.siteid + '/keeper')"
       >
-        {{ t('site.keeper.title') }}
+        <span class="onlyOnDesktop">{{ t('site.keeper.title') }}</span>
       </Button>
       <Button
         text
         icon="tools"
         @click="$router.push('/site/' + props.siteid + '/settings')"
       >
-        {{ t('site.settings.title') }}
+        <span class="onlyOnDesktop">{{ t('site.settings.title') }}</span>
       </Button>
     </TopAppBar>
     <Main book-layout>

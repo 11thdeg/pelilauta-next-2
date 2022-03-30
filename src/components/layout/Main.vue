@@ -42,6 +42,11 @@ const layoutClasses = computed(() => ({
 
 @include media('>=600px')
   .singleColumnLayout
+    width: 400px
+    margin: 0 auto
+
+@include media('>=1025px')
+  .singleColumnLayout
     width: 720px
     margin: 0 auto
 
@@ -79,6 +84,16 @@ const layoutClasses = computed(() => ({
   @include LayoutBase()
 
 @include media('>=600px')
+  .bookLayout
+    display: flex
+    flex-direction: column
+    box-sizing: border-box
+    align-items: center
+  .Column
+     max-width: 720px
+      
+
+@include media('>=1025px')
   .bookLayout
     flex-direction: row
     flex-wrap: wrap

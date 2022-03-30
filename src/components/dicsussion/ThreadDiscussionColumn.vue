@@ -14,7 +14,7 @@ const t = useI18n().t
 
 <template>
   <Column>
-    <h2>{{ t('discussion.title') }}</h2>
+    <h2>{{ t('discourse.title') }}</h2>
     <ThreadRepliesSection :threadid="threadid" />
     <ReplyToThreadSection :threadid="threadid" />
   </Column>

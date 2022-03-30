@@ -122,6 +122,9 @@
       "description": "Julkinen profiilisi näkyy kaikille sivuston käyttäjille. Voit muokata julkaisemasi sisältöä ja kuvia."
     }
   },
+  "reply": {
+    "title": "Vastaa"
+  },
   "site": {
     "fields": {
       "name": "Nimi",

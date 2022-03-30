@@ -59,7 +59,7 @@ const hamburgerPadded = computed(() => uxState.navTrayVisible.value)
     <p
       v-if="!showBackButton"
       class="TypeCaption hideOnMobile"
-      style="line-height: 48px;padding-top:6px"
+      style="line-height: 48px;padding-top:6px; height: 48px; overflow: hidden;"
     >
       {{ version }}
     </p>  
@@ -87,6 +87,9 @@ nav#TopAppBar
     margin: 0
     padding: 0
     user-select: none
+    height: 48px
+    line-height: 48px
+    overflow: hidden
   &.sticky
     position: -webkit-sticky
     position: sticky

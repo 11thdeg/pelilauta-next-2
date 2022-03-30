@@ -59,6 +59,9 @@ const showTrayOnMobile = computed(() => uxState.showNavTrayOnMobile.value)
   scroll-bar-width: none
   &::-webkit-scrollbar
     display: none
+@include media('<1025px')
+  #NavigationTray
+    width: 300px
 @include media('<600px')
   #NavigationTray
     left: 0
