@@ -17,6 +17,7 @@ import Button from '../../components/ui/Button.vue'
 import { useI18n } from 'vue-i18n'
 import ShareButton from '../../components/actions/ShareButton.vue'
 import { useAccount } from '../../composables/useAccount'
+import Main from '../../components/layout/Main.vue'
 
 const { t } = useI18n()
 const { fetchThread } = useThreads()
@@ -51,8 +52,8 @@ onMounted(async ()  => {
       {{ t('actions.edit') }}
     </Button>
   </TopAppBar>
-  <main class="singleColumnLayout">
-    <Column class="double">
+  <Main>
+    <Column>
       <template v-if="thread">
         <h1>{{ thread.title }}</h1>
         <ActionBar>
@@ -80,5 +81,5 @@ onMounted(async ()  => {
       </template>
     </Column>
     <ThreadDiscussionColumn :threadid="threadid" />
-  </main>
+  </Main>
 </template>

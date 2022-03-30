@@ -42,7 +42,7 @@ const layoutClasses = computed(() => ({
 
 @include media('>=600px')
   .singleColumnLayout
-    width: 400px
+    max-width: 720px
     margin: 0 auto
 
 @include media('>=1025px')
