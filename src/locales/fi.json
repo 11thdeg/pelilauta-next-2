@@ -158,7 +158,8 @@
     }
   },
   "snacks": {
-    "profileCreated": "Uusi käyttäjäprofiili luotu onnistuneesti"
+    "profileCreated": "Uusi käyttäjäprofiili luotu onnistuneesti",
+    "threadSaved": "Viesti tallennettu"
   },
   "thread": {
     "fields": {

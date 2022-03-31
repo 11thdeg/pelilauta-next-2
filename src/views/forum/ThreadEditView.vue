@@ -64,7 +64,7 @@ function convertThreadContentToMarkdown() {
 async function saveThread() {
   if (thread.value.markdownContent) thread.value.htmlContent = marked(thread.value.markdownContent)
   await updateThread(thread.value as Thread)
-  pushSnack('snack.thread.saved')
+  pushSnack('snacks.threadSaved')
   router.push(`/threads/${thread.value.key}`)
 }
 
