@@ -1,12 +1,17 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
+import Icon from './Icon.vue'
 
 const props = defineProps<{
+  label?: string
+  icon?: string
   modelValue: boolean
 }>()
+
 const emit = defineEmits<{
   (e: 'update:modelValue', value: boolean): void
 }>()
+
 const checked = computed({
   get: () => props.modelValue,
     set: (value: boolean) => {
@@ -14,6 +19,12 @@ const checked = computed({
     }
   }
 )
+
+const resolvedIcon = computed(() => {
+  if (props.icon) return props.icon
+  if (props.modelValue) return 'check'
+  return 'add'
+})
 </script>
 <template>
   <div class="ToggleButton">
@@ -23,10 +34,12 @@ const checked = computed({
       class="checkbox"
     >
     <div class="knobs">
-      <img
-        src="/proprietary/icons/light/add.svg"
+      <Icon
+        :icon="resolvedIcon"
+        xsmall
         class="knob-icon"
-      >
+        on-bright
+      />
     </div>
     <div class="layer" />
   </div>

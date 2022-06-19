@@ -18,6 +18,7 @@ import { useI18n } from 'vue-i18n'
 import ShareButton from '../../components/actions/ShareButton.vue'
 import { useAccount } from '../../composables/useAccount'
 import Main from '../../components/layout/Main.vue'
+import WatchToggleButton from '../../components/threads/WatchToggleButton.vue'
 
 const { t } = useI18n()
 const { fetchThread } = useThreads()
@@ -79,6 +80,13 @@ onMounted(async ()  => {
           :innerHTML="thread.htmlContent"
         />
       </template>
+      <ActionBar>
+        <SpacerDiv />
+        <WatchToggleButton
+          v-if="thread"
+          :thread="thread"
+        />
+      </ActionBar>
     </Column>
     <ThreadDiscussionColumn :threadid="threadid" />
   </Main>
