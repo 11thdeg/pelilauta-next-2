@@ -5,8 +5,8 @@ import Main from '../components/layout/Main.vue'
 import { useNotifications } from '../composables/useNotifications'
 import ReplyToThreadNotification from '../components/notifications/ReplyToThreadNotification.vue'
 
-const { t } = useI18n()
-const { notifications } = useNotifications()
+const t = useI18n().t
+const notifications = useNotifications().notifications
 
 </script>
 

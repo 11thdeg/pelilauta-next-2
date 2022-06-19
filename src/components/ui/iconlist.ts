@@ -31,6 +31,7 @@ export const iconlist = [
   'mekanismi',
   'monsters',
   'pelilauta-logo',
+  'quick-logo',
   'report',
   'send',
   'share',
