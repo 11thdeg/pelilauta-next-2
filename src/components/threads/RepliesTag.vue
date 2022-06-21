@@ -30,8 +30,8 @@ const debug = computed(() =>{
 
 <template>
   <span
-    class="TopicTag"
-    :class="{newReplies: newReplies}"
+    class="TopicTag Pill"
+    :class="{alert: newReplies}"
   >
     <router-link :to="`/threads/${props.thread.key}`">
       {{ replies }} {{ t('info.replies') }}
@@ -41,10 +41,7 @@ const debug = computed(() =>{
 </template>
 
 <style scoped>
-.TopicTag {
-  background-color: var(--chroma-secondary-b);
-}
-.TopicTag.newReplies {
+.TopicTag.alert {
   background-color: var(--chroma-primary-b);
 }
 </style>

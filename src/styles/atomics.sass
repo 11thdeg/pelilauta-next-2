@@ -32,6 +32,13 @@ section.titledList, div.titledList
 .layer-important
   z-index: 239489023840923849
 
+.Pill
+  @include TypeBody2()
+  padding: 0px 12px
+  height: 20px
+  line-height: 20px
+  border-radius: 10px
+
 @mixin darkThemeAtomics
   .rise-0
     background: none
@@ -49,6 +56,13 @@ section.titledList, div.titledList
   .clickable
     &:active
       filter: drop-shadow(0px 0px 4px var(--chroma-secondary-i))
+  .Pill
+    color: white
+    background-color: var(--chroma-secondary-b)
+    a
+      color: white
+    &.alert
+      background-color: var(--chroma-primary-c)
 
 @mixin lightThemeAtomics
   .rise-0
