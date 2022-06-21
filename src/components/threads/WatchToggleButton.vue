@@ -2,20 +2,24 @@
 import ToggleButton from '../ui/ToggleButton.vue'
 import { useProfile } from '../../composables/useProfile'
 import { computed } from 'vue'
+import { logDebug } from '../../utils/loghelpers'
 
 
 const props = defineProps<{
   thread: {
-    key?: string
+    key: string,
+    flowTime: number,
   }
 }>()
 
 const profile = useProfile().profile
+const { watchThreadAt, unwatchThreadAt } = useProfile()
 const checked = computed({
   get: () => profile.value && profile.value.watchThreads.includes(props.thread.key || '') || false,
   set: (value: boolean) => {
-    if (value) profile?.value?.watchThreadAt(props.thread.key || '', new Date().getTime())
-    else profile?.value?.unWatchThread(props.thread.key || '')
+    logDebug('checked', value)
+    if (value) watchThreadAt(props.thread.key, props.thread.flowTime)
+    else unwatchThreadAt(props.thread.key)
   }
 })
 </script>
@@ -24,6 +28,9 @@ const checked = computed({
   <div class="WatchToggleButton">
     <ToggleButton
       v-model="checked"
+      icon="eye"
+      icon-closed="eye-slash"
     />
+    {{ checked }}
   </div>
 </template>

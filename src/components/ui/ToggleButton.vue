@@ -22,7 +22,7 @@ const checked = computed({
 
 const resolvedIcon = computed(() => {
   if (props.icon) return props.icon
-  if (props.modelValue) return 'check'
+  if (props.modelValue) return 'add'
   return 'add'
 })
 </script>

@@ -19,6 +19,7 @@ import ShareButton from '../../components/actions/ShareButton.vue'
 import { useAccount } from '../../composables/useAccount'
 import Main from '../../components/layout/Main.vue'
 import WatchToggleButton from '../../components/threads/WatchToggleButton.vue'
+import { useProfile } from '../../composables/useProfile'
 
 const { t } = useI18n()
 const { fetchThread } = useThreads()
@@ -35,6 +36,9 @@ const owns = computed(() => thread.value?.hasOwner(account.value.uid))
 
 onMounted(async ()  => {
   thread.value = await fetchThread(props.threadid)
+  if (!account.value.isAnonymous) {
+    useProfile().watchThreadAt(props.threadid, thread.value?.flowTime ?? 0)  
+  }
 })
 </script>
 
