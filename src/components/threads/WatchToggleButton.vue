@@ -7,8 +7,8 @@ import { logDebug } from '../../utils/loghelpers'
 
 const props = defineProps<{
   thread: {
-    key: string,
-    flowTime: number,
+    key?: string,
+    flowTime?: number,
   }
 }>()
 
@@ -18,8 +18,8 @@ const checked = computed({
   get: () => profile.value && profile.value.watchThreads.includes(props.thread.key || '') || false,
   set: (value: boolean) => {
     logDebug('checked', value)
-    if (value) watchThreadAt(props.thread.key, props.thread.flowTime)
-    else unwatchThreadAt(props.thread.key)
+    if (value) watchThreadAt(props.thread.key || '', props.thread.flowTime || 0)
+    else unwatchThreadAt(props.thread.key || '')
   }
 })
 </script>
