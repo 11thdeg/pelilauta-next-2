@@ -12,6 +12,7 @@ import 'animate.css'
 import { useAuthz } from './stores/authz'
 import fi from './locales/fi.json'
 import en from './locales/en.json'
+import '@11thdeg/cyan'
 
 const router = createRouter({
   history: createWebHistory(),
