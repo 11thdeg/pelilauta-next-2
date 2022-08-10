@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-import Column from '../ui/Column.vue'
 import { iconlist } from '../ui/iconlist'
-import Icon from '../ui/Icon.vue'
 import ToggleButton from '../ui/ToggleButton.vue'
 import { ref } from 'vue'
 
@@ -11,7 +9,7 @@ const sizeDemoIcon = ref('fox')
 </script>
 
 <template>
-  <Column id="Iconography">
+  <cyan-column id="Iconography">
     <section>
       <h1>Iconography</h1>
       <p>The icons are available onDark/dark and onBright/light variations.</p>
@@ -75,7 +73,7 @@ const sizeDemoIcon = ref('fox')
         </div>
       </div>
     </section>
-  </Column>
+  </cyan-column>
 </template>
 
 <style lang="sass" scoped>

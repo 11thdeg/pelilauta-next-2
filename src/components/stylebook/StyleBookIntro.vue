@@ -1,9 +1,8 @@
 <script lang="ts" setup>
-import Column from '../ui/Column.vue'
 </script>
 
 <template>
-  <Column class="double">
+  <cyan-column class="double">
     <section>
       <h1>Stylebook</h1>
       <p>
@@ -54,5 +53,5 @@ import Column from '../ui/Column.vue'
         </tbody>
       </table>
     </section>
-  </Column>
+  </cyan-column>
 </template>

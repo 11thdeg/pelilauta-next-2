@@ -1,6 +1,6 @@
 {
   "name": "pelilauta-next",
-  "version": "14.0.0-beta.7",
+  "version": "14.0.0-beta.8",
   "author": "Ville Takanen",
   "scripts": {
     "dev": "vite",
@@ -9,7 +9,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.vue"
   },
   "dependencies": {
-    "@11thdeg/cyan": "^0.0.1-alpha.3",
+    "@11thdeg/cyan": "^0.0.1-alpha.4",
     "@11thdeg/skaldstore": "^0.1.0-alpha.29",
     "animate.css": "^4.1.1",
     "downscale": "^1.0.6",

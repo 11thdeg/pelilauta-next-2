@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import Column from '../ui/Column.vue'
 import NavButton from '../navigation/NavButton.vue'
 </script>
 
 <template>
-  <Column>
+  <cyan-column>
     <h1>Navigation</h1>
     <div class="flexList">
       <NavButton
@@ -29,7 +28,7 @@ import NavButton from '../navigation/NavButton.vue'
         Stylebook
       </NavButton>
     </div>
-  </Column>
+  </cyan-column>
 </template>
 
 <style scoped>
