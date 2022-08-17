@@ -4,7 +4,15 @@ import { resolve } from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [vue({
+    template: {
+      compilerOptions: {
+        isCustomElement: (tag) => {
+          return tag.startsWith('cyan-') // (return true)
+        }
+      }
+    }
+  })],
   /*build: {
     rollupOptions: {
       output: {

@@ -17,7 +17,7 @@ const props = defineProps<{
   >
     <div class="activeButtonHighlight" />
     <cyan-icon
-      light
+      dark
       class="hoverable clickable"
       :noun="`${props.icon}`"
     />
