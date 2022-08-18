@@ -65,7 +65,7 @@ div.NavButton
     cursor: not-allowed
   .activeButtonHighlight
     position: absolute
-    pointer-actions: none
+    pointer-events: none
     top: 4px
     left: 4px
     width: 64px

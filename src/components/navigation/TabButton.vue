@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import Icon from '../ui/Icon.vue'
 
 const props = defineProps<{
   disabled?: boolean,
@@ -24,9 +23,9 @@ const active = computed(() => {
       active: active
     }"
   >
-    <Icon
+    <cyan-icon
       v-if="icon"
-      :icon="icon"
+      :noun="icon"
       small
     />
     <span class="label TypeButton hideOnMobile">{{ label }}</span>

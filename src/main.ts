@@ -13,6 +13,7 @@ import { useAuthz } from './stores/authz'
 import fi from './locales/fi.json'
 import en from './locales/en.json'
 import '@11thdeg/cyan'
+import { logDebug } from './utils/loghelpers'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -48,3 +49,7 @@ onAuthStateChanged(auth, (user) => {
 
 logEvent(analytics, "app_start")
 app.mount('#app')
+
+logDebug('Adding the Cyan theming to app by force')
+document.body.classList.add('cyan--themed')
+document.body.classList.add('cyan--mode--dark')
