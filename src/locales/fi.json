@@ -26,7 +26,10 @@
     "save": "Tallenna",
     "send": "Lähetä",
     "share": "Jaa",
-    "ok": "OK"
+    "ok": "OK",
+    "orderBy": "Järjestä",
+    "orderByDate": "Päivämäärän mukaan",
+    "orderByTitle": "Nimen mukaan"
   },
   "assets": {
     "title": "Lataukset"
@@ -154,7 +157,7 @@
       "title": "Pelit joissa pelaan"
     },
     "all": {
-      "title": "Kaikki"
+      "title": "Kaikki pelit"
     }
   },
   "snacks": {

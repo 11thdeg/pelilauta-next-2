@@ -16,7 +16,7 @@ export const routes = [
   { path: '/forum/:topic',  component: () => import('./forum/ForumIndexView.vue'), props: true },
   { path: '/sites', component: () => import('./sites/SiteIndexView.vue'),
     children: [
-      { path: '', component: () => import('./sites/siteindex/OwnedSubview.vue') },
+      { path: '', component: () => import('./sites/siteindex/AllSitesSubview.vue') },
       { path: 'owns', component: () => import('./sites/siteindex/OwnedSubview.vue') },
       { path: 'plays', component: () => import('./sites/siteindex/PlaysInSubview.vue') },
       { path: 'all', component: () => import('./sites/siteindex/AllSitesSubview.vue') },

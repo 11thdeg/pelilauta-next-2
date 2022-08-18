@@ -2,6 +2,9 @@
 import Button from '../ui/Button.vue'
 import ActionBar from '../ui/ActionBar.vue'
 import SpacerDiv from '../ui/SpacerDiv.vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const emit = defineEmits<{
   (e: 'order_date_desc'): void
@@ -11,21 +14,21 @@ const emit = defineEmits<{
 
 <template>
   <ActionBar class="SiteListFilter">
-    <h4>ORDER_BY</h4>
+    <h4>{{ t('actions.orderBy') }}</h4>
     <SpacerDiv />
     <Button
       text
       icon="eye"
       @click="emit('order_date_desc')"
     >
-      BY_DATE
+      {{ t('actions.orderByDate') }}
     </Button>
     <Button
       text
       icon="eye"
       @click="emit('order_name_asc')"
     >
-      BY_NAME
+      {{ t('actions.orderByTitle') }}
     </Button>
   </ActionBar>
 </template>

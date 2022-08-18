@@ -6,15 +6,21 @@ import { useI18n } from 'vue-i18n'
 import Main from '../../components/layout/Main.vue'
 import Column from '../../components/ui/Column.vue'
 import CreateSiteCta from '../../components/calltoaction/CreateSiteCta.vue'
+import { useAccount } from '../../composables/useAccount'
+import { computed } from 'vue'
 
 const { t } = useI18n()
+const { anonymous } = useAccount() 
+const showTabs = computed(() => {
+  return !anonymous.value
+})
 </script>
 
 <template>
   <TopAppBar />
   <Main book-layout>
     <Column double>
-      <TabTray>
+      <TabTray v-if="showTabs">
         <TabButton
           :label="t('sites.owns.title')"
           icon="d12"
