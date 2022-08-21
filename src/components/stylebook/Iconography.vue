@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-import Column from '../ui/Column.vue'
 import { iconlist } from '../ui/iconlist'
-import Icon from '../ui/Icon.vue'
 import ToggleButton from '../ui/ToggleButton.vue'
 import { ref } from 'vue'
 
@@ -11,7 +9,7 @@ const sizeDemoIcon = ref('fox')
 </script>
 
 <template>
-  <Column id="Iconography">
+  <cyan-column id="Iconography">
     <section>
       <h1>Iconography</h1>
       <p>The icons are available onDark/dark and onBright/light variations.</p>
@@ -30,8 +28,8 @@ const sizeDemoIcon = ref('fox')
           :key="icon"
           class="preview TypeCaption"
         >
-          <Icon
-            :icon="icon"
+          <cyan-icon
+            :noun="icon"
             :invert="invertIconColor"
             class="hoverable clickable"
             @click.prevent="sizeDemoIcon = icon"
@@ -42,23 +40,31 @@ const sizeDemoIcon = ref('fox')
       <div>
         <h2>Icon sizes</h2>
         <div class="sizeGrid">
-          <Icon
-            :icon="sizeDemoIcon"
+          <cyan-icon
+            :noun="sizeDemoIcon"
             xsmall
+            class="hoverable clickable"
           />
-          <Icon
-            :icon="sizeDemoIcon"
+          <cyan-icon
+            :noun="sizeDemoIcon"
             small
+            class="hoverable clickable"
           />
-          <Icon :icon="sizeDemoIcon" />
-          <Icon
-            :icon="sizeDemoIcon"
+          <cyan-icon
+            :noun="sizeDemoIcon"
+            class="hoverable clickable"
+          />
+          <cyan-icon
+            :noun="sizeDemoIcon"
             large
+            class="hoverable clickable"
           />
-          <Icon
-            :icon="sizeDemoIcon"
+          <cyan-icon
+            :noun="sizeDemoIcon"
             xlarge
+            class="hoverable clickable"
           />
+
           <p><span class="code">xsmall</span></p>
           <p><span class="code">small</span></p>
           <p><i>[medium]</i></p>
@@ -67,7 +73,7 @@ const sizeDemoIcon = ref('fox')
         </div>
       </div>
     </section>
-  </Column>
+  </cyan-column>
 </template>
 
 <style lang="sass" scoped>

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
-import Column from '../ui/Column.vue'
 import Textfield from '../ui/Textfield.vue'
 import Select from '../ui/Select.vue'
 import FileInput from '../actions/FileInput.vue'
@@ -18,7 +17,7 @@ const selectedOp = computed(() => selectOpts[selectValue.value])
 </script>
 
 <template>
-  <Column class="FormContols">
+  <cyan-column class="FormContols">
     <h1>Forms</h1>
     <p>
       <router-link to="/stylebook/formcontrols">
@@ -51,5 +50,5 @@ const selectedOp = computed(() => selectOpts[selectValue.value])
         <FileInput />
       </p>
     </section>
-  </Column>
+  </cyan-column>
 </template>

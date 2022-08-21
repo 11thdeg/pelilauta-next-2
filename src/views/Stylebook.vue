@@ -63,7 +63,7 @@ const laytoutClass = computed(() => {
       label="Notifications" 
     />
   </NavigationTray>
-  <main :class="laytoutClass">
+  <cyan-layout :class="laytoutClass">
     <StyleBookIntro v-if="!subPage" />
     <Iconography v-if="!subPage || subPage === 'iconography'" />
     <FormControls v-if="!subPage || subPage === 'formcontrols' " />
@@ -81,5 +81,5 @@ const laytoutClass = computed(() => {
       class="double"
     />
     <SnackbarTester v-if="!subPage || subPage === 'notifications' " />
-  </main>
+  </cyan-layout>
 </template>

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import Column from '../ui/Column.vue'
 import Button from '../ui/Button.vue'
 import Fab from '../ui/Fab.vue'
 import Section from '../layout/Section.vue'
@@ -28,7 +27,7 @@ const loves = computed(
 </script>
 
 <template>
-  <Column id="ButtonsAndActions">
+  <cyan-column id="ButtonsAndActions">
     <Section>
       <h1>Buttons and Actions</h1>
       <Button>A Standard button</Button>
@@ -73,5 +72,5 @@ const loves = computed(
         :count="loveCount"
       />
     </Section>
-  </Column>
+  </cyan-column>
 </template>

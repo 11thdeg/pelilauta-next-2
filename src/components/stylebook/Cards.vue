@@ -1,12 +1,11 @@
 <script lang="ts" setup>
-import Column from '../ui/Column.vue'
 import Card from '../ui/Card.vue'
 import Button from '../ui/Button.vue'
 
 </script>
 
 <template>
-  <Column class="MarkdownAndSubThemes">
+  <cyan-column class="MarkdownAndSubThemes">
     <h1>Cards</h1>
     <p>
       <router-link to="/stylebook/cards">
@@ -43,7 +42,7 @@ import Button from '../ui/Button.vue'
         <h1>Rise 3</h1>
       </Card>
     </div>
-  </Column>
+  </cyan-column>
 </template>
 
 <style lang="sass">

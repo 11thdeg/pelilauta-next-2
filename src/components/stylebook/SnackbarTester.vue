@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import Column from '../ui/Column.vue'
 import Select from '../ui/Select.vue'
 import Button from '../ui/Button.vue'
 import { useSnack } from '../../composables/useSnack'
@@ -26,7 +25,7 @@ function showBanner () {
 </script>
 
 <template>
-  <Column id="SnackBarTester">
+  <cyan-column id="SnackBarTester">
     <section>
       <h1>Snacks</h1>
       <Select
@@ -44,5 +43,5 @@ function showBanner () {
         Show Banner
       </Button>
     </section>
-  </Column>
+  </cyan-column>
 </template>

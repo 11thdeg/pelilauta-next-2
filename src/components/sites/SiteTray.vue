@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { Site } from "@11thdeg/skaldstore"
-import { ref } from "@vue/reactivity"
-import { onMounted } from "@vue/runtime-core"
+import { ref } from "vue"
+import { onMounted } from "vue"
 import { usePages } from "../../composables/usePages"
 import { useSites } from "../../composables/useSites"
 import Loader from '../ui/Loader.vue'

@@ -16,10 +16,11 @@ const props = defineProps<{
     @click.prevent="$router.push(props.to)"
   >
     <div class="activeButtonHighlight" />
-    <img
+    <cyan-icon
+      dark
       class="hoverable clickable"
-      :src="`/proprietary/icons/dark/${props.icon}.svg`"
-    >
+      :noun="`${props.icon}`"
+    />
     <div class="label">
       {{ props.label }}
     </div>
@@ -64,7 +65,7 @@ div.NavButton
     cursor: not-allowed
   .activeButtonHighlight
     position: absolute
-    pointer-actions: none
+    pointer-events: none
     top: 4px
     left: 4px
     width: 64px
