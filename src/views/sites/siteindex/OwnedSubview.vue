@@ -2,9 +2,9 @@
 import { computed, ref, watch } from 'vue'
 import { useSites } from '../../../composables/useSites'
 import { useAuthz } from '../../../stores/authz'
-import Card from '../../../components/ui/Card.vue'
 import CardStreamSection from '../../../components/layout/CardStreamSection.vue'
 import SiteListFilter from '../../../components/sites/SiteListFilter.vue'
+import SiteListItem from '../../../components/sites/SiteListItem.vue'
 
 const { userSites, subscribeToUserSites } = useSites()
 const authz = useAuthz()
@@ -31,17 +31,11 @@ const sites = computed(() => {
       @order_name_asc="orderBy ='name_asc'"
     />
     <CardStreamSection>
-      <Card
+      <SiteListItem
         v-for="site in sites"
         :key="site.key"
-      >
-        <h2>
-          <router-link :to="`/site/${site.key}`">
-            {{ site.name }}
-          </router-link>
-        </h2>
-        <p>{{ site.description }}</p>
-      </Card>
+        :site="site"
+      />
     </CardStreamSection>
   </article>
 </template>

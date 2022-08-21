@@ -19,7 +19,7 @@ onMounted(async () => {
   const q = query(collection(getFirestore(), 'sites'), where('hidden', '==', false))
   const docs = await getDocs(q)
   docs.forEach(doc => {
-    sites.value.set(doc.id, new Site(doc.data() as DocumentData))
+    sites.value.set(doc.id, new Site(doc.data() as DocumentData, doc.id))
   })
 })
 
