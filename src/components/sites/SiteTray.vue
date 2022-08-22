@@ -76,11 +76,16 @@ function moveDown (slug: string) {
           :siteid="siteid" 
           style="display:inline-block"
         />
-        <h3 style="margin:0">
-          <router-link :to="`/site/${site.key}`">
-            {{ site.name }}
-          </router-link>
-        </h3>
+        <div>
+          <h4 style="margin:0">
+            <router-link :to="`/site/${site.key}`">
+              {{ site.name }}
+            </router-link>
+          </h4>
+          <p class="TypeCaption">
+            {{ site.description }}
+          </p>
+        </div>
       </div>
       
       <Section>

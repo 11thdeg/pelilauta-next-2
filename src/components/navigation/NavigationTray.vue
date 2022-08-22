@@ -45,12 +45,12 @@ const showTrayOnMobile = computed(() => uxState.showNavTrayOnMobile.value)
 @import ../../styles/include-media.scss
 
 #NavigationTray
-  background-color: var(--color-background)
+  background-color: var(--color-tray-background)
   position: fixed
   top: 0
-  left: 80px
-  width: 360px
-  border-right: 1px solid var(--color-border)
+  left: 72px
+  width: 308px
+  // border-right: 1px solid var(--color-border)
   height: 100vh
   margin: 0
   padding: 12px 16px
@@ -59,9 +59,9 @@ const showTrayOnMobile = computed(() => uxState.showNavTrayOnMobile.value)
   scroll-bar-width: none
   &::-webkit-scrollbar
     display: none
-@include media('<1025px')
+/* @ include media('<1025px')
   #NavigationTray
-    width: 300px
+    width: 300px */
 @include media('<600px')
   #NavigationTray
     left: 0

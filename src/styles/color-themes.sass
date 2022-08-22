@@ -97,6 +97,7 @@
   --color-border: var(--chroma-secondary-d)
   --color-button-text: var(--chroma-secondary-i)
   --color-button-text-reverse: var(--chroma-secondary-a)
+  --color-tray-background: var(--color-rise-a)
 
   // Tags
   --color-tag-background: var(--chroma-secondary-b)
@@ -144,6 +145,7 @@
   --color-button-disabled: var(--chroma-secondary-h)
   --color-button-disabled-text: var(--chroma-secondary-i)
   --color-navbar-border: var(--color-navbar-background)
+  --color-tray-background: var(--chroma-secondary-i)
 
   // Tags
   --color-tag-background: var(--chroma-secondary-i)
@@ -189,3 +191,7 @@ body.light-theme
   body.dark-theme
     @include darkTheme()
 
+//Themeable portions
+:root
+  --theme-color-primary: #c2ef48
+  --theme-color-primary-tint: rgba(194, 239, 72, 0.5)

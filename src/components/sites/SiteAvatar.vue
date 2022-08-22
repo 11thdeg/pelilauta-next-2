@@ -2,7 +2,6 @@
 import { Site } from '@11thdeg/skaldstore'
 import { computed, onMounted, ref } from 'vue'
 import { useSites } from '../../composables/useSites'
-import Icon from '../ui/Icon.vue'
 
 const props = defineProps<{
   siteid: string
@@ -25,11 +24,15 @@ const sitename = computed(() => site.value?.name || '...')
     v-if="sitename"
     class="SiteAvatar"
   >
-    <Icon
+    <div
       v-if="!avatarURL"
-      :icon="badge"
-      class="siteAvatarIcon"
-    />
+      class="badgeContainer"
+    >
+      <cyan-icon
+        :noun="badge"
+        light
+      />
+    </div>
     <img
       v-if="avatarURL"
       :src="avatarURL"
@@ -41,13 +44,22 @@ const sitename = computed(() => site.value?.name || '...')
 
 <style scoped>
 .SiteAvatar {
-  background-color: rgba(34, 114, 134, 0.22);
+  background-color: --chroma-secondary-a;
   width: 48px;
   box-sizing: border-box;
   border-radius: 50%;
   position: relative;
   height: 48px;
   flex-shrink: 0;
+}
+.badgeContainer {
+  height: 40px;
+  width: 40px;
+  margin: 4px;
+  padding: 2px;
+  background-color: var(--theme-color-primary-tint);
+  box-sizing: border-box;
+  border-radius: 50%;
 }
 .siteAvatarIcon {
   position: absolute;
