@@ -131,9 +131,11 @@
   "site": {
     "fields": {
       "name": "Nimi",
+      "description": "Kuvaus",
       "createdAt": "Luotu",
       "updatedAt": "Päivitetty",
-      "flowTime": "Viimeisin muutos"
+      "flowTime": "Viimeisin muutos",
+      "hidden": "Piilotettu julkisista listoista"
     },
     "home": {
       "title": "Etusivu"
@@ -145,7 +147,10 @@
       "withoutCategory": "Sivut"
     },
     "settings": {
-      "title": "Asetukset"
+      "title": "Asetukset",
+      "info": {
+        "title": "Sivuston asetukset"
+      }
     }
   },
   "sites": {

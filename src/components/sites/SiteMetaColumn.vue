@@ -1,28 +1,21 @@
-<script lang="ts" setup>import { Site } from '@11thdeg/skaldstore'
-import { onMounted, ref } from 'vue'
+<script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
-import { useSites } from '../../composables/useSites'
 import Column from '../ui/Column.vue'
-import SinceTag from '../ui/SinceTag.vue'
+import { toDisplayString } from '../../utils/firestoreHelpers'
+import { useSite } from '../../composables/useSite'
 
 const props = defineProps<{
   siteid: string
 }>()
-
 const { t } = useI18n()
-const { fetchSite } = useSites()
+const { site } = useSite(props.siteid)
 
-const site = ref(new Site())
-
-onMounted(async () => {
-  site.value = await fetchSite(props.siteid)
-})
 </script>
 
 <template>
   <Column class="SiteMetaColumn">
-    <p>{{ t('site.fields.createdAt') }} <SinceTag :time="site.createdAt" /></p>
-    <p>{{ t('site.fields.updatedAt') }} <SinceTag :time="site.updatedAt" /></p>
-    <p>{{ t('site.fields.flowTime') }} <SinceTag :time="site.flowTime" /></p>
+    <p>{{ t('site.fields.createdAt') }} {{ toDisplayString(site.createdAt) }}</p>
+    <p>{{ t('site.fields.updatedAt') }} {{ toDisplayString(site.updatedAt) }}</p>
+    <p>{{ t('site.fields.flowTime') }} {{ toDisplayString(site.flowTime) }}</p>
   </Column>
 </template>

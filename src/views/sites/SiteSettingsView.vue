@@ -35,7 +35,7 @@ onMounted(async () => {
     <SiteTray :siteid="siteid" />
   </NavigationTray>
   <Main book-layout>
+    <SiteInfoColumn :site="site" />
     <SiteMetaColumn :siteid="siteid" />
-    <SiteInfoColumn :siteid="siteid" />
   </Main>
 </template>
