@@ -12,29 +12,32 @@ import { computed } from "vue"
 import Section from "../layout/Section.vue"
 import TrayHeader from "../navigation/tray/TrayHeader.vue"
 import { logDebug } from "../../utils/loghelpers"
+import { useSite } from "../../composables/useSite"
 
 const props = defineProps<{
   siteid: string
 }>()
 
 const { t } = useI18n()
-const { fetchSite, updateSite } = useSites()
-const { pages, subscribeToSite } = usePages()
-const site = ref<Site|undefined>()
+const { updateSite } = useSites()
+const { pages } = usePages(props.siteid)
+const { site, pageCategories } = useSite(props.siteid)
 
-onMounted(async () => {
-  site.value = await fetchSite(props.siteid)
-  subscribeToSite(props.siteid)
+const pageArray = computed(() => {
+  return Array.from(pages.value.values())
 })
 
 function inCategory (category: string) {
-  const arr = Array.from(pages.value.values())
-  return arr.filter(page => page.category === category) || []
+  if (!pageCategories.value || !pageCategories.value.find(c => c.slug === category)) {
+    return false
+  }
+  return pageArray.value.filter(page => page.category === category)
 }
 
 const withoutCategory = computed(() => {
-  return Array.from(pages.value.values())
-    .filter(page => !page.category)
+  return pageArray.value.filter(page => {
+    return !pageCategories.value.find(c => c.slug === page.category)
+  })
 })
 
 function moveUp (slug: string) {

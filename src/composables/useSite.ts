@@ -6,6 +6,11 @@ let activeKey = ''
 let unsubscribeToSite:undefined|CallableFunction
 const activeSite:Ref<Site|null> = ref(null)
 
+const pageCategories = computed(() => {
+    if (!activeSite.value) return []
+    return activeSite.value.pageCategories || []
+})
+
 async function subscribeToSite (key: string) {
     if (unsubscribeToSite) unsubscribeToSite()
     unsubscribeToSite = await onSnapshot(
@@ -24,6 +29,7 @@ export function useSite(key?: string) {
     subscribeToSite(key)
   }
   return {
-    site: computed(() => activeSite.value || new Site())
+    site: computed(() => activeSite.value || new Site()),
+    pageCategories
   }
 }
