@@ -1,7 +1,4 @@
 <script lang="ts" setup>
-import { Site } from "@11thdeg/skaldstore"
-import { ref } from "vue"
-import { onMounted } from "vue"
 import { usePages } from "../../composables/usePages"
 import { useSites } from "../../composables/useSites"
 import Loader from '../ui/Loader.vue'
@@ -29,7 +26,7 @@ const pageArray = computed(() => {
 
 function inCategory (category: string) {
   if (!pageCategories.value || !pageCategories.value.find(c => c.slug === category)) {
-    return false
+    return []
   }
   return pageArray.value.filter(page => page.category === category)
 }
