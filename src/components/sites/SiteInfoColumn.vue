@@ -1,34 +1,48 @@
 <script setup lang="ts">
-import { Site } from '@11thdeg/skaldstore'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useSite } from '../../composables/useSite'
 import Column from '../ui/Column.vue'
 
 const { t } = useI18n()
 
 const props = defineProps<{
-  site: { name: string, description: string, hidden: boolean }
+  siteid: string
 }>()
 
-const s = computed(() => {
-  return props.site || new Site()
-})
+const { site, updateSite } = useSite(props.siteid)
 
 const sitename = ref('')
 const sitenameComp = computed(() => {
-  return sitename.value || s.value.name || ''
+  return sitename.value || site.value.name || ''
 }) 
 
 const sitedescription = ref('')
 const sitedescriptionComp = computed(() => {
-  return sitedescription.value || s.value.description || ''
+  return sitedescription.value || site.value.description || ''
 })
+
+const saving = ref(false)
+
+async function toggleVisibility (e: Event) {
+  e.preventDefault()
+  e.stopPropagation()
+  saving.value = true
+  await updateSite({ hidden: (e as CustomEvent).detail })
+  saving.value = false
+}
 
 </script>
 
 <template>
   <Column class="SiteInfoColumn double-cut">
-    <h1>{{ t('site.settings.info.title') }}</h1>
+    <h1>
+      {{ t('site.settings.info.title') }}
+      <cyan-save-interaction
+        :active="saving"
+        style="display: inline-block"
+      />
+    </h1>
     <section class="verticalList">
       <cyan-textfield
         :label="t('site.fields.name')"
@@ -41,9 +55,10 @@ const sitedescriptionComp = computed(() => {
       <cyan-toggle
         :label="t('site.fields.hidden')"
         :checked="site.hidden"
+        @change="toggleVisibility($event)"
       />
       <div class="debug">
-        {{ s }}
+        {{ site }}
       </div>
     </section>
   </Column>

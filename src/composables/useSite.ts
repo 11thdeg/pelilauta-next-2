@@ -1,5 +1,5 @@
 import { Site } from "@11thdeg/skaldstore"
-import { doc, getFirestore, onSnapshot } from "firebase/firestore"
+import { doc, DocumentData, getFirestore, onSnapshot, updateDoc } from "firebase/firestore"
 import { computed, Ref, ref } from "vue"
 
 let activeKey = ''
@@ -22,6 +22,11 @@ async function subscribeToSite (key: string) {
     })
 }
 
+async function updateSite (data: DocumentData) {
+    if (!activeKey) return
+    return updateDoc(doc(getFirestore(), 'sites', activeKey), data)
+}
+
 export function useSite(key?: string) {
   if (key && key !== activeKey) {
     activeKey = key
@@ -30,6 +35,7 @@ export function useSite(key?: string) {
   }
   return {
     site: computed(() => activeSite.value || new Site()),
-    pageCategories
+    pageCategories,
+    updateSite
   }
 }
