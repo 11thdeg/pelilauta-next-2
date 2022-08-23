@@ -13,6 +13,7 @@ import { useAuthz } from './stores/authz'
 import fi from './locales/fi.json'
 import en from './locales/en.json'
 import '@11thdeg/cyan'
+import '@11thdeg/cyan/style.css'
 import { logDebug } from './utils/loghelpers'
 
 const router = createRouter({
