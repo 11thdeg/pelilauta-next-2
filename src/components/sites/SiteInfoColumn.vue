@@ -24,6 +24,13 @@ const sitedescriptionComp = computed(() => {
 
 const saving = ref(false)
 
+async function saveField (field: string, e: Event) {
+  saving.value = true
+  const value = (e.target as HTMLInputElement).value as string
+  await updateSite({ [field]: value })
+  saving.value = false
+}
+
 async function toggleVisibility (e: Event) {
   e.preventDefault()
   e.stopPropagation()
@@ -47,10 +54,12 @@ async function toggleVisibility (e: Event) {
       <cyan-textfield
         :label="t('site.fields.name')"
         :value="sitenameComp"
+        @change="saveField('name', $event)"
       />
       <cyan-textfield
         :label="t('site.fields.description')"
         :value="sitedescriptionComp"
+        @change="saveField('description', $event)"
       />
       <cyan-toggle
         :label="t('site.fields.hidden')"
