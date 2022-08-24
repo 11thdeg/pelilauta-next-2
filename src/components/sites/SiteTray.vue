@@ -3,13 +3,13 @@ import { usePages } from "../../composables/usePages"
 import { useSites } from "../../composables/useSites"
 import Loader from '../ui/Loader.vue'
 import SiteAvatar from "./SiteAvatar.vue"
-import Fab from "../ui/Fab.vue"
 import { useI18n } from "vue-i18n"
 import { computed } from "vue"
 import Section from "../layout/Section.vue"
 import TrayHeader from "../navigation/tray/TrayHeader.vue"
 import { logDebug } from "../../utils/loghelpers"
 import { useSite } from "../../composables/useSite"
+import AddItemToSiteDialog from "./AddItemToSiteDialog.vue"
 
 const props = defineProps<{
   siteid: string
@@ -89,12 +89,7 @@ function moveDown (slug: string) {
       </div>
       
       <Section>
-        <Fab
-          small
-          icon="add"
-          :label="t('actions.add')"
-          @click.prevent="$router.push(`/site/${siteid}/add/page`)"
-        />
+        <AddItemToSiteDialog :siteid="siteid" />
       </Section>
       
       <Section>
