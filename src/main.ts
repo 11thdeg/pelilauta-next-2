@@ -15,6 +15,7 @@ import en from './locales/en.json'
 import '@11thdeg/cyan'
 import '@11thdeg/cyan/style.css'
 import { logDebug } from './utils/loghelpers'
+import { useAccount } from './composables/useAccount'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -46,6 +47,7 @@ const authz = useAuthz()
 
 onAuthStateChanged(auth, (user) => {
   authz.loginAs(user)
+  useAccount(user?.uid)
 })
 
 logEvent(analytics, "app_start")

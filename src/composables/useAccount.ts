@@ -1,30 +1,41 @@
 import { Account } from '@11thdeg/skaldstore'
-import { computed, ref } from 'vue'
-import type { DocumentData } from '@firebase/firestore'
+import { computed, Ref, ref } from 'vue'
+import { onSnapshot, getFirestore, doc } from '@firebase/firestore'
 import { useStore } from '../stores/main'
 
+const activeUid:Ref<string|undefined> = ref('')
 const activeAccount = ref(new Account(null))
 const account = computed(() => activeAccount.value)
-
-function setAccountData(data: DocumentData|null) {
-  // logDebug('setAccountData', data)
-  activeAccount.value = new Account(data)
-}
 
 const showAdminTools = computed(() => {
   const meta = useStore()
   return meta.admins.includes(account.value.uid)
 })
 
-function useAccount () {
+let unSubscribeToAccountData:undefined|CallableFunction
+
+async function subscribeToAccountData(uid?:string) {
+  if (unSubscribeToAccountData) unSubscribeToAccountData()
+  if (!uid) return
+  unSubscribeToAccountData = await onSnapshot(
+    doc(getFirestore(), 'accounts', uid),
+    (snapshot) => {
+      if (snapshot.exists()) {
+        activeAccount.value = new Account(snapshot.data())
+      }
+    }
+  )
+}
+
+export function useAccount (uid?: string) {
+  if (uid !== activeUid.value) {
+    activeUid.value = uid
+    activeAccount.value = new Account(null)
+    subscribeToAccountData(uid)
+  }
   return {
-    setAccountData,
     showAdminTools,
     account,
     anonymous: computed(() => !account.value.uid)
   }
-}
-
-export {
-  useAccount
 }

@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-import LoadingScreen from './components/app/LoadingScreen.vue'
 import { computed } from 'vue'
-import { useAuthz } from './stores/authz'
 import NavigationRail from './components/navigation/NavigationRail.vue'
 import Snackbar from './components/app/Snackbar.vue'
 import { useStore } from './stores/main'
@@ -11,29 +9,13 @@ import { logDebug } from './utils/loghelpers'
 import { useBanner } from './composables/useBanner'
 import { useI18n } from 'vue-i18n'
 import { useUxState } from './composables/useUxState'
-import { getAuth } from 'firebase/auth'
-import { useAccount } from './composables/useAccount'
 
 const main = useStore()
 main.initAppMeta()
 const uxState = useUxState()
-
-const auth = useAuthz()
-const showLoadingScreen = computed(() => !auth.operational)
 const showTray = computed(() => uxState.navTrayVisible.value)
 const { raise } = useBanner()
 const t = useI18n().t
-
-const { setAccountData } = useAccount()
-
-const fbAuth = getAuth()
-fbAuth.onAuthStateChanged(user => {
-  if (user) {
-    setAccountData(auth.user.docData)
-  } else {
-    setAccountData(null)
-  }
-})
 
 // *** Workbox/Service worker setup starts ******************************
 // let skipWaiting: CallableFunction|undefined
@@ -64,25 +46,14 @@ if ('serviceWorker' in navigator) {
 </script>
 
 <template>
-  <transition
-    mode="out-in"
-    leave-active-class="animate__animated animate__fadeOut"
-    :duration="200"
+  <div
+    id="AppContent"
+    :class="{ showTray: showTray }"
   >
-    <div v-if="showLoadingScreen">
-      <LoadingScreen />
-    </div>
-  </transition>
-  <template v-if="!showLoadingScreen">
-    <div
-      id="AppContent"
-      :class="{ showTray: showTray }"
-    >
-      <router-view />
-    </div>
-    <NavigationRail />
-    <NavigationBar />
-  </template>
+    <router-view />
+  </div>
+  <NavigationRail />
+  <NavigationBar />
   <Snackbar />
 </template>
 
