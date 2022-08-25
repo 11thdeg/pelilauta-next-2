@@ -24,7 +24,7 @@ const mostLovedThreads = computed(() => {
 const stickyThreads = computed(() => {
   const threads = Array.from(threadCache.value.values()).filter(t => t.sticky)
   threads.sort((a, b) => a.compareFlowTime(b))
-  logDebug('stickyThreads', threads)
+  // logDebug('stickyThreads', threads)
   return threads
 })
 

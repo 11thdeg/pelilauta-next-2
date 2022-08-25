@@ -29,9 +29,9 @@ export const useProfile = defineStore('profile', () => {
       await enroll()
     }
     unsubscribeToProfile = onSnapshot(profileRef, async (snapshot) => {
-      logDebug('profile', 'snapshot', snapshot.data())
+      // logDebug('profile', 'snapshot', snapshot.data())
       if (snapshot.exists()) profile.value = new Profile(snapshot.data(), snapshot.id)
-      logDebug('profile', 'profile', profile.value)
+      // logDebug('profile', 'profile', profile.value)
     })
   }
 

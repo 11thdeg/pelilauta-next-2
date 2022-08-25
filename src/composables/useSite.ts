@@ -1,6 +1,7 @@
 import { Site } from "@11thdeg/skaldstore"
 import { doc, DocumentData, getFirestore, onSnapshot, updateDoc } from "firebase/firestore"
 import { computed, Ref, ref } from "vue"
+import { logDebug, logError } from "../utils/loghelpers"
 
 let activeKey = ''
 let unsubscribeToSite:undefined|CallableFunction
@@ -24,13 +25,19 @@ async function subscribeToSite (key: string) {
 
 async function updateSite (data: DocumentData) {
     if (!activeKey) return
+    logDebug('updateSite', data)
     return updateDoc(doc(getFirestore(), 'sites', activeKey), data)
 }
 
 async function addLink (title: string, link: string, icon?: string) {
+  if (!title || !link) {
+    logError('addLink', 'title or link is empty', {title, link})
+    return
+  }
   const links = activeSite.value?.links || []
-  if (icon) links.push({ title, link, icon })
-  else links.push({ title: title, link: link })
+  if (icon) links.push({ name:title, url:link, noun:icon })
+  else links.push({ name: title, url: link })
+  await updateSite({ links: links })
 }
 export function useSite(key?: string) {
   if (key && key !== activeKey) {
