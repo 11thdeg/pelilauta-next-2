@@ -27,6 +27,11 @@ async function updateSite (data: DocumentData) {
     return updateDoc(doc(getFirestore(), 'sites', activeKey), data)
 }
 
+async function addLink (title: string, link: string, icon?: string) {
+  const links = activeSite.value?.links || []
+  if (icon) links.push({ title, link, icon })
+  else links.push({ title: title, link: link })
+}
 export function useSite(key?: string) {
   if (key && key !== activeKey) {
     activeKey = key
@@ -36,6 +41,7 @@ export function useSite(key?: string) {
   return {
     site: computed(() => activeSite.value || new Site()),
     pageCategories,
-    updateSite
+    updateSite,
+    addLink
   }
 }

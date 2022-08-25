@@ -9,7 +9,8 @@ import Section from "../layout/Section.vue"
 import TrayHeader from "../navigation/tray/TrayHeader.vue"
 import { logDebug } from "../../utils/loghelpers"
 import { useSite } from "../../composables/useSite"
-import AddItemToSiteDialog from "./AddItemToSiteDialog.vue"
+import AddToSiteFab from "./AddToSiteFab.vue"
+
 
 const props = defineProps<{
   siteid: string
@@ -89,7 +90,7 @@ function moveDown (slug: string) {
       </div>
       
       <Section>
-        <AddItemToSiteDialog :siteid="siteid" />
+        <AddToSiteFab :siteid="siteid" />
       </Section>
       
       <Section>
