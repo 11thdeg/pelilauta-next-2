@@ -5,7 +5,7 @@ import { getFirestore, getDocs, query, where, collection, addDoc, getDoc, doc, d
 import { getStorage, ref as storageRef, uploadString, getDownloadURL, deleteObject } from '@firebase/storage'
 import { useAuthz } from "./authz"
 import { computed, ref } from "vue"
-import { logDebug, logError } from "../utils/loghelpers"
+import { logError } from "../utils/loghelpers"
 
 export const useAssets = defineStore('assets', () => {
   const assetCache = ref(new Map<string, Asset>())
@@ -22,7 +22,7 @@ export const useAssets = defineStore('assets', () => {
     const authz = useAuthz()
     assetCache.value = new Map<string, Asset>()
 
-    logDebug('initAssetCache', 'loading assets for', authz.user.uid)
+    // logDebug('initAssetCache', 'loading assets for', authz.user.uid)
 
     const q = query(
       collection(
@@ -34,7 +34,7 @@ export const useAssets = defineStore('assets', () => {
 
     const docs = await getDocs(q)
 
-    logDebug('initAssetCache', 'loaded', docs?.size, 'assets')
+    // logDebug('initAssetCache', 'loaded', docs?.size, 'assets')
 
     docs.forEach((assetDoc) => {
       const asset = new Asset(assetDoc.data(), assetDoc.id)
